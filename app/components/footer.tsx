@@ -89,15 +89,15 @@ const Footer: React.FC = () => {
 
   return (
     <div className="flex flex-col ">
-      <footer className="bg-gradient-to-l from-[#d28630] to-[#ffc62b9f] text-white py-10 px-10 md:px-10 lg:px-10 mt-[6rem] flex-grow">
+      <footer className="bg-gradient-to-l from-[#CB7224] to-[#E5CF63] text-white py-10 px-10 md:px-10 lg:px-10 mt-[6rem] flex-grow">
         <div className="container mx-auto flex flex-col lg:flex-row justify-between lg:items-center">
           {/* Logo and Title Section */}
           <div className="flex flex-col items-center lg:items-center mb-8 lg:mb-0">
             
             
             <div className="text-left lg:text-left mb-4">
-            <h3 className="text-lg font-semibold mb-3 mt-0 flex items-center space-x-2">
-              <p className="text-xl font-bold text-[#9e5224]">{text.templeName}</p>
+            <h3 className="text-lg font-bold mb-3 mt-0 flex items-center space-x-2">
+              <p className="text-xl font-bold text-[#710100]">{text.templeName}</p>
              
             </h3>
             <address>
@@ -211,7 +211,7 @@ const Footer: React.FC = () => {
       </footer>
 
       {/* Footer Bottom Section */}
-      <div className="bg-black text-white py-2 text-center site-footer-bottom mx-0 mb-0">
+      <div className="bg-black text-white py-1 text-center site-footer-bottom mx-0 mb-0">
         <p>
           © 2024 | Disclaimer - <Link href="/policy" className="text-yellow-400 hover:underline">{text.privacyPolicy}</Link> | 
           <Link href="/policy" className="text-yellow-400 hover:underline">{text.refundPolicy}</Link> |

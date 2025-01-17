@@ -44,10 +44,10 @@ export default function Component() {
     url="http://www.shriRama.org/"
   />
 
-    <main className="min-h-screen flex flex-col items-center p-4 sm:p-8 text-center">
+    <main className="min-h-screen flex flex-col items-center p-4 sm:p-8 text-center ">
       <Hero />
       <div className="w-full max-w-6xl mt-8 sm:mt-20">
-        <div className="flex flex-col md:flex-row items-center border-4 p-4 sm:p-8 md:p-16">
+        <div className="flex flex-col md:flex-row items-center border-4 p-4 sm:p-8 md:p-16 bg-gradient-to-b from-[#E8DEB4] via-[#E59A32] to-[#E8DEB4] h-screen">
           <Image
             src="/temple4.png"
             alt="Shri Rama Temple"

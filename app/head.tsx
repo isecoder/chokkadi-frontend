@@ -9,7 +9,7 @@ export default function Head() {
         />
         <meta
           name="keywords"
-          content="Shri Rama Temple, temple in Karnataka, religious site, Hariharapallathadka, pilgrimage, Hindu temple, Karnataka tourism"
+          content="Shri Rama Temple, temple in Karnataka, religious site, chokkadi, pilgrimage, Hindu temple, Karnataka tourism"
         />
   
         {/* Open Graph / Social Media Meta Tags */}

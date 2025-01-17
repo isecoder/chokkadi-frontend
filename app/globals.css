@@ -5,7 +5,7 @@
 @layer base {
   /* Apply a gradient background to the body */
   body {
-    background: linear-gradient(135deg, #ffff, #fdc8a0);
+    background: linear-gradient(135deg, #ffff, #ffffff);
     margin: 0;
     padding: 0;
   }

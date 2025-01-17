@@ -5,10 +5,9 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const images: string[] = [
-  "/p9.jpeg",
-  "/temple3.jpg",
-  "/parvat.jpg",
-  "/temple5.png",
+  "/hall.jpeg",
+  "/temple4.jpeg",
+ "/img1.jpg"
 ];
 
 const ImageSlider: React.FC = () => {
