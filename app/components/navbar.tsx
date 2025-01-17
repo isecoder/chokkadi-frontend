@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <Banner />
-      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#ffc62b9f] to-[#ffbc03c3] shadow-lg">
+      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#ffc62b9f] to-[#ffbc03c3] shadow-lg mt-8">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
           <nav className="hidden md:flex justify-center flex-1 space-x-6 text-sm">
             {navLinks.map(({ href, label, subLinks }) => (
