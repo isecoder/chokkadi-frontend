@@ -14,20 +14,20 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
-    address: "Shri Rama Temple,\nHariharapallathadka Post and Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574218",
-    phone: "Contact Number:+918073030594",
-    tele: "Telephone Number: 08257-283366",
-    president: "President: +919481321850",
+    address: "Shri Rama Temple Chokkadi\nAmarapadnur village,Sullia Taluk,\n Dakshina Kannada\n PIN - 574248",
+    phone: "Contact Number:9481286745",
+    tele: "phone Number: 8139982584",
+    president: "President: ",
     email: "E-mail: shriRama@gmail.com"
   },
   kn: {
     postalAddress: "ದೇವಸ್ಥಾನದ ವಿಳಾಸ",
     contactDetails: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
-    address: "ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ,\nಹರಿಹರಪಲ್ಲತಡ್ಕ ಅಂಚೆ ಮತ್ತು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574218",
-    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +919448116685, +918073030594",
-    tele: "ದೂರವಾಣಿ: 08257-283366",
-    president: "ಅಧ್ಯಕ್ಷರು: +919481321850",
+    address: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, \nಚೊಕ್ಕಡಿ,ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, \nದ.ಕ.ಪಿನ್ - 574248",
+    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: 9481286745",
+    tele: "ದೂರವಾಣಿ: 8139982584",
+    president: "ಅಧ್ಯಕ್ಷರು: +",
     email: "ಇ-ಮೇಲ್: shriRama@gmail.com"
   }
 };
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
         image="https://yourwebsite.com/images/temple-contact.jpg" // Replace with actual image URL
         url="http://www.shriRama.org/contact"
       />
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-[#fdc8a0] p-10 relative font-serif">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FFEB9B] to-[#FFEB9B] p-10 relative font-serif">
         <div className="flex flex-col lg:flex-row w-full max-w-5xl gap-10">
           {/* Address and Contact Details */}
           <div className="flex-1 text-center lg:text-left">
@@ -78,11 +78,11 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Google Map */}
-          <div className="flex-1">
+          {/* <div className="flex-1">
             <h2 className="text-red-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.googleMap}</h2>
             <div className="border border-gray-300 shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14154.300532021494!2d75.6074572!3d12.618683!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4e497c13f1aa5%3A0x5592ade3cc59cc91!2sRama%20Temple!5e1!3m2!1sen!2sin!4v1730361727124!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.5709138746074!2d75.41289837131286!3d12.62628846155243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4edcaff21607d%3A0xa945aecb849c2572!2sSri%20Rama%20Temple!5e1!3m2!1sen!2sin!4v1737099808615!5m2!1sen!2sin"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom orange bar */}

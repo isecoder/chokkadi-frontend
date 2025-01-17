@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
 
   return (
     <div className="flex flex-col ">
-      <footer className="bg-gradient-to-l from-[#CB7224] to-[#E5CF63] text-white py-10 px-10 md:px-10 lg:px-10 mt-[6rem] flex-grow">
+      <footer className="bg-gradient-to-l from-[#CB7224] to-[#E5CF63] text-white py-10 px-10 md:px-10 lg:px-10  flex-grow">
         <div className="container mx-auto flex flex-col lg:flex-row justify-between lg:items-center">
           {/* Logo and Title Section */}
           <div className="flex flex-col items-center lg:items-center mb-8 lg:mb-0">
