@@ -17,8 +17,8 @@ const welcomeTitle: Record<LocaleType, string> = {
 }
 
 const welcomeContent: Record<LocaleType, string> = {
-  en: "Shri Rama Temple is a sacred Triveni Sangam Kshetra located at the foot of the Western Ghats in this Tulunadu of Parasurama creation in South India. Sullia is a rural taluk in Dakshina Kannada where most of the land is covered by forests and agriculture lands. Hariharapallathadka is one of the villages in this Sullia Taluk where Lord Rama resides.",
-  kn: "ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಭಾರತದ ಪಶ್ಚಿಮ ಘಟ್ಟದ ತಪ್ಪಲಿನಲ್ಲಿರುವ ಪರಶುರಾಮ ಸೃಷ್ಟಿಯ ತುಳುನಾಡಿನಲ್ಲಿರುವ ಒಂದು ಪುಣ್ಯ ತ್ರಿವೇಣಿ ಸಂಗಮ ಕ್ಷೇತ್ರ. ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಗ್ರಾಮೀಣ ಭಾಗದ ಸುಳ್ಯ ತಾಲೂಕಿನ ಹರಿಹರಪಲ್ಲತ್ತಡ್ಕ ಎಂಬ ಗ್ರಾಮದಲ್ಲಿ ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವರು ನೆಲೆಸಿದ್ದಾರೆ. ",
+  en: "Shri Rama Temple is a sacred Triveni Sangam Kshetra located at the foot of the Western Ghats in this Tulunadu of Parasurama creation in South India. Sullia is a rural taluk in Dakshina Kannada where most of the land is covered by forests and agriculture lands. Amarapadnur is one of the villages in this Sullia Taluk where Lord Rama resides.",
+  kn: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯವು ದಕ್ಷಿಣ ಭಾರತದ ಪಶ್ಚಿಮ ಘಟ್ಟದ ಕಾಲುಭಾಗದಲ್ಲಿ ಪರಶುರಾಮ ಸೃಷ್ಟಿಯ ತುಳುನಾಡಿನಲ್ಲಿ ಇರುವ ಪುಣ್ಯ ತ್ರಿವೇಣಿ ಸಂಗಮ ಕ್ಷೇತ್ರ. ಸುಳ್ಯ ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯಲ್ಲಿ ಗ್ರಾಮೀಣ ಪ್ರದೇಶವಾಗಿದ್ದು, ಹೆಚ್ಚಿನ ಭೂಮಿಯು ಕಾಡುಗಳು ಮತ್ತು ಕೃಷಿ ಭೂಮಿಯೊಂದಿಗೆ ಆವರಿತವಾಗಿದೆ. ಅಮರಪಡ್ನೂರು ಈ ಸುಳ್ಯ ತಾಲೂಕಿನಲ್ಲಿ ಇರುವ ಒಂದು ಗ್ರಾಮವಾಗಿದೆ ",
 }
 
 export default function Component() {
