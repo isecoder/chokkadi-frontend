@@ -1,0 +1,8 @@
+# public/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow specific sections if needed
+# Disallow: /admin/
+# Disallow: /private/

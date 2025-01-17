@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Apply a gradient background to the body */
+  body {
+    background: linear-gradient(135deg, #ffff, #fdc8a0);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Optional: Reset other global padding/margins */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
