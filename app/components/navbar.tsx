@@ -46,7 +46,7 @@ export default function Navbar() {
                 key={label.en}
                 href={href}
                 onClick={closeMenu}
-                className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 hover:py-1 transition-all duration-200"
+                className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2  transition-all duration-200"
               >
                 {label[currentLocale as "en" | "kn"]}
               </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
               key={label.en}
               href={href}
               onClick={closeMenu}
-              className="text-[#8B0000] font-medium hover:bg-white hover:rounded-md hover:px-2 hover:py-1 transition-all duration-200"
+              className="text-[#8B0000] font-medium hover:bg-white hover:rounded-md hover:px-2  transition-all duration-200"
             >
               {label[currentLocale as "en" | "kn"]}
             </Link>
