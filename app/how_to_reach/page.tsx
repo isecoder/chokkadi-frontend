@@ -11,9 +11,9 @@ type LocaleType = "en" | "kn";
 // Define content in both English and Kannada
 const howToReachMessages: Record<LocaleType, string[]> = {
   en: [
-    "One can visit Shri Kshetra, which is 8 km from Kukke Subrahmanya, a famous religious site of the state, while coming to Subrahmanya. Shri Rama Temple can be reached if you take Sulya road from Subrahmanya and turn left at Malayala and go for 5 km.",
+    "One can visit Shri Kshetra, which is 8 km from Kukke Subrahmanya, a famous religious site of the state, while coming to Subrahmanya. Shri Harihareshwara Temple can be reached if you take Sulya road from Subrahmanya and turn left at Malayala and go for 5 km.",
     "Since there is no proper government bus service from Subrahmanya to Hariharapallattadka, travelling with your own vehicle to Shri Temple is preferred, or else you can arrange a vehicle from Subrahmanya. Sufficient KSRTC buses are available from Sulya, the taluk center, to Hariharapallattadka (Buses to Balgodu, Kollamogra).",
-    "Besides, there are 4 daily buses from Puttur to Balugodu and 1 evening bus to Kollamogra. If you take a bus from Subrahmanya to Nadugallu, from there you can also take a bus towards Hariharapallattadka to reach Shri Rama Temple.",
+    "Besides, there are 4 daily buses from Puttur to Balugodu and 1 evening bus to Kollamogra. If you take a bus from Subrahmanya to Nadugallu, from there you can also take a bus towards Hariharapallattadka to reach Shri Harihareshwara Temple.",
   ],
   kn: [
     "ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಧಾರ್ಮಿಕ ಕ್ಷೇತ್ರವಾದ ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ 8 ಕಿ.ಮಿ ದೂರದಲ್ಲಿರುವ ಶ್ರೀ ಕ್ಷೇತ್ರಕ್ಕೆ ತಾವು ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಬಂದಾಗ ಭೇಟಿ ನೀಡಬಹುದು. ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಸುಳ್ಯ ಮಾರ್ಗದಲ್ಲಿ ಸಾಗಿ ಮಲೆಯಾಳ ಎಂಬಲ್ಲಿ ಎಡ ಭಾಗಕ್ಕೆ ತಿರುಗಿ 5 ಕಿ.ಮಿ ಸಾಗಿದರೆ ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ ತಲುಪಬಹುದಾಗಿದೆ.",
@@ -23,7 +23,7 @@ const howToReachMessages: Record<LocaleType, string[]> = {
 };
 
 const titles: Record<LocaleType, string> = {
-  en: "How to Reach Shri Rama Temple",
+  en: "How to Reach Shri Harihareshwara Temple",
   kn: "ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ ತಲುಪುವ ದಾರಿ",
 };
 
@@ -45,17 +45,19 @@ const How_to_reach: React.FC = () => {
   if (!isLocaleLoaded) return null; // Prevent rendering until locale is loaded
 
   return (
-    <main className="min-h-screen flex flex-col items-center p-6 bg-[#f9f3e9] font-serif">
-      <h1 className="text-center text-3xl font-bold mb-6 text-black">
+    <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
+      <h1 className="text-center text-3xl font-bold mb-6 text-[var(--primary)]">
         {titles[currentLocale]}
       </h1>
-      <div className="max-w-2xl mx-auto bg-[#f9f3e9] p-8 rounded-lg shadow-lg">
+      <div className="max-w-2xl mx-auto bg-[var(--card-background)] p-8 rounded-lg shadow-lg">
         {messages.map((para: string, index: number) => (
-          <p key={index} className="text-[#4a4a4a] leading-relaxed text-lg mb-4 text-justify">
+          <p
+            key={index}
+            className="text-[var(--text)] leading-relaxed text-lg mb-4 text-justify"
+          >
             {para}
           </p>
         ))}
-      
       </div>
     </main>
   );

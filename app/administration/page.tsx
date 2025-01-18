@@ -59,7 +59,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
   kn: {
     sevaSamithiTitle: "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿ",
     sevaSamithiDescription:
-      "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಶ್ರೀ ರಾಮಚಂದ್ರಪುರ ಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಪರಮ ಪೂಜ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿ ಮಠದ ಮಾರ್ಗಸೂಚನೆಗಳನ್ನು ಅನುಸರಿಸಿ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
+      "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಶ್ರೀ ರಾಮಚಂದ್ರಾಪುರ ಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಪರಮಪೂಜ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಮಹಾಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿಯು ಮಠದ ಮಾರ್ಗದರ್ಶನದ ಪ್ರಕಾರ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
     managementPresidentTitle: "ಅಧ್ಯಕ್ಷರು:",
     managementPresidentName: "ಶ್ರೀ ಮಹೇಶ್ ಭಟ್ ಚೂಂತಾರು",
     contactNumber: "ದೂರವಾಣಿ ಸಂ: +91 9448625254, +91 7019616082",
@@ -79,11 +79,11 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
       "ಶ್ರೀ ಕಾರ್ತಿಕೇಶ ಹೆಬ್ಬಾರ್",
       "ಶ್ರೀ ಕೃಷ್ಣಪ್ರಸಾದ್.ಕೆ",
       "ಶ್ರೀ ಪ್ರಣೀತ ವೆಂಕಟೇಶ ಶರ್ಮ",
-      "ಶ್ರೀ ಸುದೇಷ್ಣ ದೇರಾಜೆ",
+      "ಶ್ರೀ ಸುಧೇಷ್ಣ ದೇರಾಜೆ",
       "ಶ್ರೀ ಆಶ್ರಯ ನೇಣಾರು",
     ],
     templePriestTitle: "ಅರ್ಚಕರು:",
-    templePriestName: "ಶ್ರೀ ರಘುರಾಮ ಶರ್ಮ",
+    templePriestName: "ಶ್ರೀ ರಘುರಾಮ ಶರ್ಮಾ",
   },
 };
 
@@ -102,51 +102,49 @@ const Administration: React.FC = () => {
     setIsLocaleLoaded(true);
   }, [dispatch]);
 
-  if (!isLocaleLoaded) return null;
+  if (!isLocaleLoaded) {
+    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen p-8 bg-[var(--background)] text-[var(--foreground)]">
       <div className="max-w-4xl mx-auto text-center">
-        {/* Seva Samithi Overview */}
-        <h1 className="text-[var(--primary)] font-bold text-2xl mb-4">{content.sevaSamithiTitle}</h1>
-        <p className="mb-8">{content.sevaSamithiDescription}</p>
+        <section aria-labelledby="seva-samithi">
+          <h1 id="seva-samithi" className="text-[var(--primary)] font-bold text-2xl mb-4">
+            {content.sevaSamithiTitle}
+          </h1>
+          <p className="mb-8">{content.sevaSamithiDescription}</p>
+        </section>
 
-        {/* Management Titles */}
-        <div className="mb-8">
-          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementPresidentTitle}</h3>
-          <p className="font-semibold mb-1">{content.managementPresidentName}</p>
-          <p>{content.contactNumber}</p>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementVicePresidentTitle}</h3>
-          <p className="font-semibold mb-1">{content.managementVicePresidentName}</p>
-          <p>{content.viceContactNumber}</p>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementSecretaryTitle}</h3>
-          <p className="font-semibold">{content.managementSecretaryName}</p>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementTreasurerTitle}</h3>
-          <p className="font-semibold">{content.managementTreasurerName}</p>
-        </div>
+        {/* Management Roles */}
+        {[
+          { title: content.managementPresidentTitle, name: content.managementPresidentName, contact: content.contactNumber },
+          { title: content.managementVicePresidentTitle, name: content.managementVicePresidentName, contact: content.viceContactNumber },
+          { title: content.managementSecretaryTitle, name: content.managementSecretaryName },
+          { title: content.managementTreasurerTitle, name: content.managementTreasurerName },
+        ].map((role, index) => (
+          <section key={index} className="mb-8">
+            <h3 className="text-[var(--primary)] font-bold mb-2">{role.title}</h3>
+            <p className="font-semibold mb-1">{role.name}</p>
+            {role.contact && <p>{role.contact}</p>}
+          </section>
+        ))}
 
         {/* Members Section */}
-        <h3 className="text-[var(--primary)] font-bold mb-6">{content.membersTitle}</h3>
-        <div className="grid grid-cols-2 gap-4">
-          {content.members.map((member, index) => (
-            <p key={index} className="font-semibold">{member}</p>
-          ))}
-        </div>
+        <section aria-labelledby="members">
+          <h3 id="members" className="text-[var(--primary)] font-bold mb-6">{content.membersTitle}</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {content.members.map((member, index) => (
+              <p key={index} className="font-semibold">{member}</p>
+            ))}
+          </div>
+        </section>
 
-        {/* Temple Priest Section */}
-        <div className="mt-10">
-          <h3 className="text-[var(--primary)] font-bold mb-2">{content.templePriestTitle}</h3>
+        {/* Temple Priest */}
+        <section aria-labelledby="priest" className="mt-10">
+          <h3 id="priest" className="text-[var(--primary)] font-bold mb-2">{content.templePriestTitle}</h3>
           <p className="font-semibold">{content.templePriestName}</p>
-        </div>
+        </section>
       </div>
     </div>
   );
