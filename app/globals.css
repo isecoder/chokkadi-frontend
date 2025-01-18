@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  /* Apply a gradient background to the body */
+  /* Apply a softer yellow gradient background */
   body {
-    background: linear-gradient(135deg, #ffff, #ffffff);
+    background: linear-gradient(135deg, #fff4b3, #ffeb99); /* Softer yellow gradient */
+    color: var(--text-color); /* Use text color variable */
     margin: 0;
     padding: 0;
   }
@@ -18,7 +19,47 @@
   }
 }
 
+/* Define custom theme variables for the color palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff4b3; /* Softer yellow */
+  --foreground: #2e7d32; /* Deep green */
+  --text-color: #2e7d32; /* Green for text */
+  --border-color: #388e3c; /* Slightly darker green for borders */
+}
+
+/* Add custom styles for headings and decorative elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground); /* Green text for headings */
+  font-family: 'Serif', Georgia, serif; /* Traditional font for headings */
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+hr {
+  border: 1px solid var(--border-color); /* Decorative green borders */
+}
+
+button {
+  background-color: var(--foreground); /* Green button background */
+  color: var(--background); /* Yellow text */
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--border-color); /* Darker green on hover */
+}
+
+/* Optional: Add decorative borders or accents */
+.decorative-border {
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
