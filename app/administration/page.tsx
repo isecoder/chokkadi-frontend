@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../store";
 import { changeLocale } from "../store/localeSlice";
@@ -8,70 +8,83 @@ import { changeLocale } from "../store/localeSlice";
 type LocaleType = "en" | "kn";
 
 interface AdministrationContent {
+  sevaSamithiTitle: string;
+  sevaSamithiDescription: string;
   managementPresidentTitle: string;
   managementPresidentName: string;
   contactNumber: string;
-  developmentPresidentTitle: string;
-  developmentPresidentName: string;
+  managementVicePresidentTitle: string;
+  managementVicePresidentName: string;
+  viceContactNumber: string;
+  managementSecretaryTitle: string;
+  managementSecretaryName: string;
+  managementTreasurerTitle: string;
+  managementTreasurerName: string;
   membersTitle: string;
   members: string[];
   templePriestTitle: string;
   templePriestName: string;
-  AssistantPriestTitle: string;
-  AssistantPriestName: string;
-  OfficeClerkTitle: string;
-  OfficeClerkName:string;
-
 }
 
-// Content in both English and Kannada
 const administrationContent: Record<LocaleType, AdministrationContent> = {
   en: {
-    managementPresidentTitle: "Management Committee President:",
-    managementPresidentName: "Shri Kishor Kumar Kujugodu",
-    contactNumber: "Contact no: +91 94813 21850",
-    developmentPresidentTitle: "Development Committee President:",
-    developmentPresidentName: "Shri Sheshappa Gowda Kiribhaga",
-    membersTitle: "Management Committee Members",
+    sevaSamithiTitle: "Shri Rama Seva Samithi",
+    sevaSamithiDescription:
+      "Shri Rama Seva Samithi operates under the guidance of Sri Ramachandrapura Matha, led by His Holiness Sri Sri Raghaveshwara Bharathi Swamiji. The Seva Samithi diligently follows the instructions and traditions set forth by the Matha to uphold the spiritual and cultural values of the temple.",
+    managementPresidentTitle: "President:",
+    managementPresidentName: "Shri Mahesh Bhat Choontharu",
+    contactNumber: "Contact no: +91 9448625254, +91 7019616082",
+    managementVicePresidentTitle: "Vice President:",
+    managementVicePresidentName: "Shri Krishnamoorthi Nenaru",
+    viceContactNumber: "Contact no: +91 9008145925",
+    managementSecretaryTitle: "Secretary:",
+    managementSecretaryName: "Shri Ganeshamoorthy.K",
+    managementTreasurerTitle: "Treasurer:",
+    managementTreasurerName: "Shri Sathyavenkatesha Hebbar",
+    membersTitle: "Members:",
     members: [
-      "Shri Chandrahasa S. Shivala",
-      "Shri Chandrashekhara K.K Kiribhaga",
-      "Shri Sharath D.S Kajjodi",
-      "Smt. Reshma Kattemane",
-      "Shri Bhavanishankara P. Pailaje",
-      "Smt. Jyothi K.L Kalige",
-      "Shri Ananda K. Kerekkodi"
+      "Shri Anekaru Ganapayya",
+      "Shri Gopalakrishna Bhat Katta",
+      "Shri Ramachandra Kote",
+      "Shri Adarsha Krishna Nenaru",
+      "Shri Karthikesha Hebbar",
+      "Shri Krishnaprasad K",
+      "Shri Praneetha Venkatesha Sharma",
+      "Shri Sudeshna Deraje",
+      "Shri Ashraya Nenaru",
     ],
     templePriestTitle: "Temple Priest:",
-    templePriestName: "Shri Subrahmanya Narasimha Bhat",
-    AssistantPriestTitle: "Assistant Priest:",
-    AssistantPriestName: "Shri B. KrishnaKumara",
-    OfficeClerkTitle:"Office Clerk",
-    OfficeClerkName: "Shri Lokanatha.K"
+    templePriestName: "Shri Raghurama Sharma",
   },
   kn: {
-    managementPresidentTitle: "ವ್ಯವಸ್ಥಾಪನ ಸಮಿತಿ ಅಧ್ಯಕ್ಷರು:",
-    managementPresidentName: "ಶ್ರೀ ಕಿಶೋರ್ ಕುಮಾರ್ ಕೂಜುಗೋಡು",
-    contactNumber: "ದೂರವಾಣಿ ಸಂ: +91 94813 21850",
-    developmentPresidentTitle: "ಅಭಿವೃದ್ಧಿ ಸಮಿತಿ ಅಧ್ಯಕ್ಷರು:",
-    developmentPresidentName: "ಶ್ರೀ ಶೇಷಪ್ಪ ಗೌಡ ಕಿರಿಭಾಗ",
-    membersTitle: "ಸದಸ್ಯರು",
+    sevaSamithiTitle: "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿ",
+    sevaSamithiDescription:
+      "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಶ್ರೀ ರಾಮಚಂದ್ರಪುರ ಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಪರಮ ಪೂಜ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿ ಮಠದ ಮಾರ್ಗಸೂಚನೆಗಳನ್ನು ಅನುಸರಿಸಿ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
+    managementPresidentTitle: "ಅಧ್ಯಕ್ಷರು:",
+    managementPresidentName: "ಶ್ರೀ ಮಹೇಶ್ ಭಟ್ ಚೂಂತಾರು",
+    contactNumber: "ದೂರವಾಣಿ ಸಂ: +91 9448625254, +91 7019616082",
+    managementVicePresidentTitle: "ಉಪಾಧ್ಯಕ್ಷರು:",
+    managementVicePresidentName: "ಶ್ರೀ ಕೃಷ್ಣಮೂರ್ತಿ ನೇಣಾರು",
+    viceContactNumber: "ದೂರವಾಣಿ ಸಂ: +91 9008145925",
+    managementSecretaryTitle: "ಕಾರ್ಯದರ್ಶಿ:",
+    managementSecretaryName: "ಶ್ರೀ ಗಣೇಶಮೂರ್ತಿ.ಕೆ",
+    managementTreasurerTitle: "ಖಜಾಂಚಿ:",
+    managementTreasurerName: "ಶ್ರೀ ಸತ್ಯವೆಂಕಟೇಶ ಹೆಬ್ಬಾರ್",
+    membersTitle: "ಸದಸ್ಯರು:",
     members: [
-      "ಶ್ರೀ ಚಂದ್ರಹಾಸ ಎಸ್. ಶಿವಾಲ",
-      "ಶ್ರೀ ಚಂದ್ರಶೇಖರ ಕೆ. ಕೆ. ಕಿರಿಭಾಗ",
-      "ಶ್ರೀ ಶರತ್ ಡಿ. ಎಸ್. ಕಜ್ಜೋಡಿ",
-      "ಶ್ರೀಮತಿ ರೇಷ್ಮಾ ಕಟ್ಟೆಮನೆ",
-      "ಶ್ರೀ ಭವಾನಿಶಂಕರ ಪಿ. ಪೈಲಾಜೆ",
-      "ಶ್ರೀಮತಿ ಜ್ಯೋತಿ ಕೆ. ಎಲ್ ಕಳಿಗೆ",
-      "ಶ್ರೀ ಆನಂದ ಕೆ. ಕೆರೆಕ್ಕೋಡಿ"
+      "ಶ್ರೀ ಆನೆಕಾರು ಗಣಪಯ್ಯ",
+      "ಶ್ರೀ ಗೋಪಾಲಕೃಷ್ಣ ಭಟ್‌ ಕಟ್ಟ",
+      "ಶ್ರೀ ರಾಮಚಂದ್ರ ಕೋಟೆ",
+      "ಶ್ರೀ ಆದರ್ಶ ಕೃಷ್ಣ ನೇಣಾರು",
+      "ಶ್ರೀ ಕಾರ್ತಿಕೇಶ ಹೆಬ್ಬಾರ್",
+      "ಶ್ರೀ ಕೃಷ್ಣಪ್ರಸಾದ್.ಕೆ",
+      "ಶ್ರೀ ಪ್ರಣೀತ ವೆಂಕಟೇಶ ಶರ್ಮ",
+      "ಶ್ರೀ ಸುದೇಷ್ಣ ದೇರಾಜೆ",
+      "ಶ್ರೀ ಆಶ್ರಯ ನೇಣಾರು",
     ],
     templePriestTitle: "ಅರ್ಚಕರು:",
-    templePriestName: "ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ನರಸಿಂಹ ಭಟ್",
-    AssistantPriestTitle: "ಸಹಾಯಕ ಅರ್ಚಕರು:",
-    AssistantPriestName: "ಶ್ರೀ ಬಿ. ಕೃಷ್ಣಕುಮಾರ",
-    OfficeClerkTitle:"ಕಚೇರಿ ಗುಮಾಸ್ತರು",
-    OfficeClerkName: "ಶ್ರೀ ಲೋಕನಾಥ.ಕೆ"
-  }
+    templePriestName: "ಶ್ರೀ ರಘುರಾಮ ಶರ್ಮ",
+  },
 };
 
 const Administration: React.FC = () => {
@@ -89,55 +102,51 @@ const Administration: React.FC = () => {
     setIsLocaleLoaded(true);
   }, [dispatch]);
 
-  if (!isLocaleLoaded) return null; // Prevent rendering until locale is loaded
+  if (!isLocaleLoaded) return null;
 
   return (
-    <div style={{ backgroundColor: '#f9f7e6', padding: '20px', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-      {/* Management Committee President */}
-      <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '5px' }}>{content.managementPresidentTitle}</h3>
-        <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{content.managementPresidentName}</p>
-        <p>{content.contactNumber}</p>
-        <hr style={{ width: '50%', margin: '10px auto', border: '0.5px solid #ccc' }} />
-      </div>
+    <div className="min-h-screen p-8 bg-[var(--background)] text-[var(--foreground)]">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Seva Samithi Overview */}
+        <h1 className="text-[var(--primary)] font-bold text-2xl mb-4">{content.sevaSamithiTitle}</h1>
+        <p className="mb-8">{content.sevaSamithiDescription}</p>
 
-      {/* Development Committee President */}
-      <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '5px' }}>{content.developmentPresidentTitle}</h3>
-        <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{content.developmentPresidentName}</p>
-      </div>
+        {/* Management Titles */}
+        <div className="mb-8">
+          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementPresidentTitle}</h3>
+          <p className="font-semibold mb-1">{content.managementPresidentName}</p>
+          <p>{content.contactNumber}</p>
+        </div>
 
-      {/* Members Section */}
-      <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '20px' }}>{content.membersTitle}</h3>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '40px', maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          {content.members.slice(0, Math.ceil(content.members.length / 2)).map((member: string, index: number) => (
-            <div key={index} style={{ marginBottom: '15px' }}>
-              <p style={{ fontWeight: 'bold' }}>{member}</p>
-            </div>
+        <div className="mb-8">
+          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementVicePresidentTitle}</h3>
+          <p className="font-semibold mb-1">{content.managementVicePresidentName}</p>
+          <p>{content.viceContactNumber}</p>
+        </div>
+
+        <div className="mb-8">
+          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementSecretaryTitle}</h3>
+          <p className="font-semibold">{content.managementSecretaryName}</p>
+        </div>
+
+        <div className="mb-8">
+          <h3 className="text-[var(--primary)] font-bold mb-2">{content.managementTreasurerTitle}</h3>
+          <p className="font-semibold">{content.managementTreasurerName}</p>
+        </div>
+
+        {/* Members Section */}
+        <h3 className="text-[var(--primary)] font-bold mb-6">{content.membersTitle}</h3>
+        <div className="grid grid-cols-2 gap-4">
+          {content.members.map((member, index) => (
+            <p key={index} className="font-semibold">{member}</p>
           ))}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          {content.members.slice(Math.ceil(content.members.length / 2)).map((member: string, index: number) => (
-            <div key={index} style={{ marginBottom: '15px' }}>
-              <p style={{ fontWeight: 'bold' }}>{member}</p>
-            </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Temple Priest Section */}
-      <div style={{ margin: '40px 0' }}>
-        <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '5px' }}>{content.templePriestTitle}</h3>
-        <p style={{ fontWeight: 'bold' }}>{content.templePriestName}</p>
-      </div>
-      <div style={{ margin: '40px 0' }}>
-        <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '5px' }}>{content.AssistantPriestTitle}</h3>
-        <p style={{ fontWeight: 'bold' }}>{content.AssistantPriestName}</p>
-      </div>
-      <div style={{ margin: '40px 0' }}>
-        <h3 style={{ color: 'red', fontWeight: 'bold', marginBottom: '5px' }}>{content.OfficeClerkTitle}</h3>
-        <p style={{ fontWeight: 'bold' }}>{content.OfficeClerkName}</p>
+        {/* Temple Priest Section */}
+        <div className="mt-10">
+          <h3 className="text-[var(--primary)] font-bold mb-2">{content.templePriestTitle}</h3>
+          <p className="font-semibold">{content.templePriestName}</p>
+        </div>
       </div>
     </div>
   );

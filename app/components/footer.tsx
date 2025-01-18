@@ -43,24 +43,24 @@ const footerText: Record<
       "Shri Rama Temple Chokkadi,",
       "Amarapadnur village,",
       "Sullia Taluk, Dakshina Kannada",
-      "PIN - 574248",
+      "PIN - 574212",
     ],
-    contactNumbers: "9481286745,8139982584",
-    email: "shriRama@gmail.com",
+    contactNumbers: "08257200585",
+    email: "srtchokkadi@gmail.com",
     privacyPolicy: "Privacy Policy",
     refundPolicy: " Refund & Cancellation",
     admin: " Admin",
     rightsReserved: " Shri Rama Temple, Chokkadi. All Rights Reserved",
     designedBy: "Designed:",
-    designerName: "ISCODERZ",
+    designerName: "ISDC",
   },
   kn: {
-    templeName: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ",
+    templeName: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯ",
     quickLinks: {
       title: "ಲಿಂಕ್ಸ್",
       links: [
         { name: "ಮುಖಪುಟ", path: "/" },
-        { name: "ದೇವಸ್ಥಾನದ ಬಗ್ಗೆ", path: "/history" },
+        { name: "ದೇವಾಲಯದ ಬಗ್ಗೆ", path: "/history" },
         { name: "ಮಂಟಪ ಬುಕಿಂಗ್", path: "/booking" },
         { name: "ಸುದ್ದಿಗಳು", path: "/newsupdates" },
         { name: "ಗ್ಯಾಲರಿ", path: "/gallery" },
@@ -68,19 +68,19 @@ const footerText: Record<
     },
     addressTitle: "ವಿಳಾಸ",
     address: [
-      "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, ಚೊಕ್ಕಡಿ,",
+      "ಶ್ರೀ ರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,",
       "ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,",
       "ಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.",
-      "ಪಿನ್ - 574248",
+      "ಪಿನ್ - 574212",
     ],
-    contactNumbers: "9481286745, 8139982584",
-    email: "shriRama@gmail.com",
+    contactNumbers: "08257200585",
+    email: "srtchokkadi@gmail.com",
     privacyPolicy: "ಗೌಪ್ಯತಾ ನೀತಿ",
     refundPolicy: " ಮರುಪಾವತಿ ಮತ್ತು ರದ್ದುಪಡಿಸುವಿಕೆ",
     admin: " ಅಡ್ಮಿನ್",
-    rightsReserved: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, ಚೊಕ್ಕಡಿ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ",
+    rightsReserved: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ",
     designedBy: "ಹೋಸ್ಟಿಂಗ್ ಮತ್ತು ನಿರ್ವಹಣೆ:",
-    designerName: "ಐಎಸ್ ಕೋಡರ್ಸ್",
+    designerName: "ಐಎಸ್‌ಡಿಸಿ",
   },
 };
 
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
 
   return (
     <div className="flex flex-col ">
-      <footer className="bg-gradient-to-l from-[#CB7224] to-[#E5CF63] text-white py-10 px-10 md:px-10 lg:px-10  flex-grow">
+      <footer className="bg-gradient-to-l from-[#CB7224] to-[#E5CF63] text-white py-10 px-10 md:px-10 lg:px-10 flex-grow">
         <div className="container mx-auto flex flex-col lg:flex-row justify-between lg:items-center">
           {/* Logo and Title Section */}
           <div className="flex flex-col items-center lg:items-center mb-8 lg:mb-0">
@@ -133,6 +133,25 @@ const Footer: React.FC = () => {
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5v2zM4 18v-8l8 5 8-5v8H4z" />
                   </svg>
                   <p className="mt-0.5">{text.email}</p>
+                </div>
+                {/* Facebook Link */}
+                <div className="flex items-center space-x-2 mt-2">
+                  <a
+                    href="https://www.facebook.com/srtchokkadi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="text-white hover:text-blue-500 transition-colors duration-200"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                      fill="currentColor"
+                    >
+                      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                    </svg>
+                  </a>
                 </div>
               </address>
             </div>
