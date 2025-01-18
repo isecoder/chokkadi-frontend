@@ -51,7 +51,7 @@ const footerText: Record<
     refundPolicy: " Refund & Cancellation",
     admin: " Admin",
     rightsReserved: " Shri Rama Temple, Chokkadi. All Rights Reserved",
-    designedBy: "Designed:",
+    designedBy: "Designed by:",
     designerName: "ISDC",
   },
   kn: {
@@ -195,7 +195,7 @@ const Footer: React.FC = () => {
 
       <div className="bg-black text-white py-1 text-center site-footer-bottom mx-0 mb-0">
         <p>
-          © 2024 | Disclaimer -{" "}
+          © 2025 | Disclaimer -{" "}
           <Link
             href="/policy"
             className="text-yellow-400 hover:underline"
