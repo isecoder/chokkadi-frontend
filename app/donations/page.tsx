@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
@@ -7,7 +7,20 @@ import { RootState } from "../store";
 type LocaleType = "en" | "kn";
 
 // Define text content for each language
-const donationText: Record<LocaleType, { title: string; generalDonation: string; annadanaDonation: string; bank: string; accountNumber: string; ifscCode: string; generalAccount: string; annadanaAccount: string; ifsc: string }> = {
+const donationText: Record<
+  LocaleType,
+  {
+    title: string;
+    generalDonation: string;
+    annadanaDonation: string;
+    bank: string;
+    accountNumber: string;
+    ifscCode: string;
+    generalAccount: string;
+    annadanaAccount: string;
+    ifsc: string;
+  }
+> = {
   en: {
     title: "Account Details",
     generalDonation: "General Donation",
@@ -17,7 +30,7 @@ const donationText: Record<LocaleType, { title: string; generalDonation: string;
     ifscCode: "IFSC Code",
     generalAccount: "70640100001978",
     annadanaAccount: "70640100000059",
-    ifsc: "BARB0VJKOMO"
+    ifsc: "BARB0VJKOMO",
   },
   kn: {
     title: "ಖಾತೆ ವಿವರಗಳು",
@@ -28,19 +41,30 @@ const donationText: Record<LocaleType, { title: string; generalDonation: string;
     ifscCode: "IFSC ಕೋಡ್",
     generalAccount: "70640100001978",
     annadanaAccount: "70640100000059",
-    ifsc: "BARB0VJKOMO"
-  }
+    ifsc: "BARB0VJKOMO",
+  },
 };
 
 const DonationsPage: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted to true after component has mounted
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const currentLocale: LocaleType = useSelector((state: RootState) => state.locale.locale) as LocaleType;
+
+  if (!mounted) {
+    return null; // Avoid rendering until the component has mounted
+  }
 
   const text = donationText[currentLocale];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-white to-orange-100">
       <h1 className="mb-8 text-3xl font-bold text-orange-600">{text.title}</h1>
-      
+
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl w-full">
         {/* Box 1: General Donation */}
         <div className="p-6 bg-gradient-to-b from-white to-orange-100 rounded-lg shadow-md text-center">
