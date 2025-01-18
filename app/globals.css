@@ -69,3 +69,11 @@ button:hover {
   --primary: #d9534f; /* Red for title */
   --text: #4a4a4a; /* Dark gray for text */
 }
+:root {
+  --background: #fff9c4; /* Light yellow background color */
+  --foreground: #4d4d4d; /* Text color for the main title */
+  --card-background: #fff7c0; /* Card background color */
+  --primary: #4d6600; /* Green for headings */
+  --text: #3d3d3d; /* Text color for descriptions */
+  --border: #b2a575; /* Border color for dividers */
+}
