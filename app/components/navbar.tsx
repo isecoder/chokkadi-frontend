@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: "/", label: { en: "HOME", kn: "ಮುಖಪುಟ" } },
   {
-    href: "/history",
+    href: "/",
     label: { en: "ABOUT", kn: "ದೇವಸ್ಥಾನದ ಮಾಹಿತಿ" },
     subLinks: [
       { href: "/about/temple", label: { en: "About Temple", kn: "ದೇವಸ್ಥಾನ" } },
@@ -37,7 +37,20 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted to true after the component has mounted
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Access current locale from Redux state
   const currentLocale = useSelector((state: RootState) => state.locale.locale);
+
+  // Handle undefined or fallback state
+  if (!mounted) {
+    return null; // Avoid rendering until the component has mounted
+  }
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const toggleAboutDropdown = () => setAboutDropdownOpen((prev) => !prev);
