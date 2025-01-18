@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <>
       <Banner />
-        <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#E5CF63] to-[#CB7224] via-[#e5a863] shadow-lg mt-8">
+      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg mt-8">
           <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
             <div className="flex items-center space-x-2 h-full">
               <h1 className="text-lg font-bold text-[#8B0000]">Shri Rama Temple</h1>
