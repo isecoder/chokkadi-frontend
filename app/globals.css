@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* Apply a softer yellow gradient background */
+  /* Apply a slightly more vibrant yellow gradient background */
   body {
-    background: linear-gradient(135deg, #fff4b3, #ffeb99); /* Softer yellow gradient */
+    background: linear-gradient(135deg, #ffee99, #ffe066); /* Slightly more intense yellow gradient */
     color: var(--text-color); /* Use text color variable */
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@
 
 /* Define custom theme variables for the color palette */
 :root {
-  --background: #fff4b3; /* Softer yellow */
+  --background: #ffee99; /* Slightly more vibrant yellow */
   --foreground: #2e7d32; /* Deep green */
   --text-color: #2e7d32; /* Green for text */
   --border-color: #388e3c; /* Slightly darker green for borders */

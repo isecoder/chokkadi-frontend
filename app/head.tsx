@@ -5,7 +5,7 @@ export default function Head() {
         <title>Shri Rama Temple</title>
         <meta
           name="description"
-          content="Explore the Shri Rama Temple, Hariharapallathadka, a revered spiritual destination for peace, devotion, and cultural heritage in Karnataka."
+          content="Explore the Shri Rama Temple, Chokkadi, a revered spiritual destination for peace, devotion, and cultural heritage in Karnataka."
         />
         <meta
           name="keywords"
