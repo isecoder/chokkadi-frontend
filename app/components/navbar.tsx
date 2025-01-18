@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import Banner from "@/app/components/banner";
@@ -70,16 +70,23 @@ export default function Navbar() {
           </div>
           <nav className="hidden md:flex justify-center flex-1 space-x-12 text-m">
             {navLinks.map(({ href, label, subLinks }) => (
-              <div key={label.en} className="relative">
+              <div key={label.en} className="relative group">
                 <Link
                   href={href}
                   onClick={subLinks ? toggleAboutDropdown : closeMenu}
-                  className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200"
+                  className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
                 >
                   {label[currentLocale as "en" | "kn"]}
+                  {subLinks && (
+                    <FaChevronDown
+                      className={`ml-2 transition-transform duration-200 ${
+                        aboutDropdownOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
                 </Link>
                 {subLinks && aboutDropdownOpen && (
-                  <div className="absolute bg-white shadow-md rounded-md mt-2">
+                  <div className="absolute bg-white shadow-md rounded-md mt-2 group-hover:block">
                     {subLinks.map((subLink) => (
                       <Link
                         key={subLink.label.en}
@@ -123,9 +130,16 @@ export default function Navbar() {
               <Link
                 href={href}
                 onClick={subLinks ? toggleAboutDropdown : closeMenu}
-                className="text-[#8B0000] font-medium hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200"
+                className="text-[#8B0000] font-medium hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center justify-between"
               >
                 {label[currentLocale as "en" | "kn"]}
+                {subLinks && (
+                  <FaChevronDown
+                    className={`ml-2 transition-transform duration-200 ${
+                      aboutDropdownOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                )}
               </Link>
               {subLinks && aboutDropdownOpen && (
                 <div className="ml-4 flex flex-col space-y-2">
