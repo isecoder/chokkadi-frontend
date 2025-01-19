@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 
-// Mock Data (replace this with your database query logic)
 const newsUpdates = [
   {
     news_id: 1,
@@ -22,7 +21,6 @@ const newsUpdates = [
 
 export async function GET() {
   try {
-    // Simulate fetching from a database
     return NextResponse.json({ data: newsUpdates });
   } catch (error) {
     console.error("Error fetching news updates:", error);

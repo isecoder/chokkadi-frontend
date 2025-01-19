@@ -28,24 +28,24 @@ const Banner = () => {
       {/* Mobile and Tablet Image */}
       <div className="block lg:hidden">
         <Image
-          src="/banner.png" // Path for mobile/tablet image
+          src="/banner.png" 
           alt="Mobile/Tablet Temple Banner"
           layout="responsive"
-          width={768} // Width for mobile/tablet
-          height={432} // Height for mobile/tablet
-          className="w-screen max-h-[300px]" // Optional height restrictions
+          width={768} 
+          height={432}
+          className="w-screen max-h-[300px]" 
         />
       </div>
 
       {/* PC Image */}
       <div className="hidden lg:block">
         <Image
-          src="/newbanner.png" // Path for PC image
+          src="/newbanner.png" 
           alt="PC Temple Banner"
           layout="responsive"
-          width={1920} // Width for PC
-          height={1080} // Height for PC
-          className="w-screen max-h-[400px]" // Optional height restrictions
+          width={1920} 
+          height={1080} 
+          className="w-screen max-h-[400px]" 
         />
       </div>
     </div>

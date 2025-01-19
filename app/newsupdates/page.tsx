@@ -86,7 +86,7 @@ export default function NewsUpdates(): JSX.Element {
             </p>
             <button
               className="bg-orange-600 text-white py-2 px-4 rounded hover:bg-orange-700 transition duration-200 ease-in-out"
-              onClick={() => openNewsDetail(news)} // Use router.push instead of window.open
+              onClick={() => openNewsDetail(news)} 
             >
               Read More
             </button>
