@@ -17,11 +17,6 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
       { title: "Morning Pooja", description: "7:30AM" },
       { title: "Maha Pooja", description: "12:30PM" },
       { title: "Night Pooja", description: "7:30PM" },
-      { title: "Nearest Bus Stand", description: "Chokkadi" },
-      { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km)" },
-      { title: "Nearest Railway Station", description: "Yedamangala (16.5 km)" },
-      { title: "Nearest Major Railway Station", description: "Subrahmanya Road (33.4 km)" },
-      { title: "Nearest Airport", description: "Mangalore International Airport (92.7 km)" },
     ],
   },
   kn: {
@@ -32,10 +27,6 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
       { title: "ಮಹಾಪೂಜೆ", description: "ಮಧ್ಯಾಹ್ನ 12:30ಕ್ಕೆ" },
       { title: "ರಾತ್ರಿಯ ಪೂಜೆ", description: "ರಾತ್ರಿ 7:30ಕ್ಕೆ" },
       { title: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯಕ್ಕೆ ಹತ್ತಿರದಲ್ಲಿರುವ ಬಸ್ಸು ನಿಲ್ದಾಣ", description: "ಚೊಕ್ಕಾಡಿ" },
-      { title: "ಹತ್ತಿರದ ಪ್ರಮುಖ ಬಸ್ಸು ನಿಲ್ದಾಣ", description: "ಬೆಳ್ಳಾರೆ (9.3 ಕಿ.ಮಿ)" },
-      { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ರೈಲು ನಿಲ್ದಾಣ", description: "ಎಡಮಂಗಲ (16.5 ಕಿ.ಮಿ)" },
-      { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ಪ್ರಮುಖ ರೈಲು ನಿಲ್ದಾಣ", description: "ಸುಬ್ರಹ್ಮಣ್ಯ ರೋಡ್ (33.4 ಕಿ.ಮಿ)" },
-      { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ವಿಮಾನ ನಿಲ್ದಾಣ", description: "ಮಂಗಳೂರು ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ (117 ಕಿ.ಮಿ)" },
     ],
   },
 };
