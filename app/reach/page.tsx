@@ -11,14 +11,16 @@ type LocaleType = "en" | "kn";
 // Define content in both English and Kannada
 const howToReachMessages: Record<LocaleType, string[]> = {
   en: [
-    "One can visit Shri Kshetra, which is 8 km from Kukke Subrahmanya, a famous religious site of the state, while coming to Subrahmanya. Shri Harihareshwara Temple can be reached if you take Sulya road from Subrahmanya and turn left at Malayala and go for 5 km.",
-    "Since there is no proper government bus service from Subrahmanya to Hariharapallattadka, travelling with your own vehicle to Shri Temple is preferred, or else you can arrange a vehicle from Subrahmanya. Sufficient KSRTC buses are available from Sulya, the taluk center, to Hariharapallattadka (Buses to Balgodu, Kollamogra).",
-    "Besides, there are 4 daily buses from Puttur to Balugodu and 1 evening bus to Kollamogra. If you take a bus from Subrahmanya to Nadugallu, from there you can also take a bus towards Hariharapallattadka to reach Shri Harihareshwara Temple.",
+    "One can visit the Shrirama Temple, located 9.3 km from Bellare, which is a major town along SH 100 (Manjeshwara-Puttur-Subrahmanya State Highway). While traveling from Puttur to Subrahmanya, the temple can be reached by taking the Bellare-Pajapalla Road from Bellare, turning right at Ayyanakatte Cross, and continuing for 6.4 km.",
+"Since there is no proper government bus service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare. Sufficient KSRTC buses are available from Sulya (the taluk center), Puttur, and Subrahmanya to Bellare.",
+"Although government bus services to Chokkadi are limited, there are four daily buses from Puttur to Chokkadi and four buses to Sulya, although these services may vary daily and are subject to cancellation.",
   ],
   kn: [
-    "ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಧಾರ್ಮಿಕ ಕ್ಷೇತ್ರವಾದ ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ 8 ಕಿ.ಮಿ ದೂರದಲ್ಲಿರುವ ಶ್ರೀ ಕ್ಷೇತ್ರಕ್ಕೆ ತಾವು ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಬಂದಾಗ ಭೇಟಿ ನೀಡಬಹುದು. ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಸುಳ್ಯ ಮಾರ್ಗದಲ್ಲಿ ಸಾಗಿ ಮಲೆಯಾಳ ಎಂಬಲ್ಲಿ ಎಡ ಭಾಗಕ್ಕೆ ತಿರುಗಿ 5 ಕಿ.ಮಿ ಸಾಗಿದರೆ ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ ತಲುಪಬಹುದಾಗಿದೆ.",
-    "ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಹರಿಹರಪಲ್ಲತ್ತಡ್ಕ ಭಾಗಕ್ಕೆ ಸರಿಯಾಗಿ ಸರಕಾರಿ ಬಸ್ಸು ಸೇವೆ ಇಲ್ಲದಿರುವ ಕಾರಣ ನೀವು ಶ್ರೀ ದೇವಸ್ಥಾನಕ್ಕೆ ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನ ಇಲ್ಲದಿದ್ದರೆ ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಬದಲು ವಾಹನ ವ್ಯವಸ್ಥೆ ಮಾಡಿ ತಲುಪಬಹುದಾಗಿದೆ. ತಾಲೂಕು ಕೇಂದ್ರವಾದ ಸುಳ್ಯದಿಂದ ಹರಿಹರಪಲ್ಲತ್ತಡ್ಕಕ್ಕೆ (ಬಾಳುಗೋಡು, ಕೊಲ್ಲಮೊಗ್ರಕ್ಕೆ ಸಾಗುವ ಬಸ್ಸುಗಳು)ಬೇಕಾದಷ್ಟು ಸರಕಾರಿ ಬಸ್ಸುಗಳ ಸೇವೆಯಿದೆ.",
-    "ಜೊತೆಗೆ ಪುತ್ತೂರಿನಿಂದ ಪ್ರತಿದಿನ 4 ಬಸ್ಸುಗಳು ಬಾಳುಗೋಡಿಗೆ ಹಾಗು ಸಂಜೆ 1 ಬಸ್ಸು ಕೊಲ್ಲಮೊಗ್ರಕ್ಕೆ ಸರಕಾರಿ ಬಸ್ಸು ಸೇವೆಯಿದೆ. ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಬಸ್ಸಿನಲ್ಲಿ ನಡುಗಲ್ಲು ಎಂಬಲ್ಲಿಗೆ ಬಂದರೆ ಅಲ್ಲಿಂದ ಹರಿಹರಪಲ್ಲತ್ತಡ್ಕ ಕಡೆಗೆ ಹೋಗುವ ಬಸ್ಸಿನಲ್ಲಿ ಸಹ ನೀವು ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ ತಲುಪಬಹುದಾಗಿದೆ.",
+    "ಶ್ರೀರಾಮ ದೇವಾಲಯವು ರಾ.ಹೆ.ಸಂ. 100 (ಮಂಜೇಶ್ವರ-ಪುತ್ತೂರು-ಸುಬ್ರಹ್ಮಣ್ಯ ರಾಜ್ಯ ಹೆದ್ದಾರಿ)ಯಲ್ಲಿ ಬೆಳ್ಳಾರೆ ಎಂಬ ಪ್ರಮುಖ ಪಟ್ಟಣದಿಂದ 9.3 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಚೊಕ್ಕಾಡಿ ಎಂಬ ಪುಟ್ಟ ಗ್ರಾಮದಲ್ಲಿದೆ. ಪುತ್ತೂರಿನಿಂದ ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಪ್ರಯಾಣಿಸುವಾಗ, ಬೆಳ್ಳಾರೆಯಿಂದ ಬಾಳಿಲ ರಸ್ತೆಯ ಮೂಲಕ ತೆರಳಿ ಅಯ್ಯನಕಟ್ಟೆ ಕ್ರಾಸ್‌ನಲ್ಲಿ ಬಲಗಡೆ ತಿರುಗಿ 6.4 ಕಿಮೀ ಸಾಗಿದರೆ ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.**
+
+"ಚೊಕ್ಕಾಡಿಗೆ ಸರಿಯಾದ ಸರ್ಕಾರಿ ಬಸ್ ಸೌಲಭ್ಯ ಲಭ್ಯವಿಲ್ಲದ ಕಾರಣ, ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನವನ್ನು ಬಳಸುವುದು ಉತ್ತಮ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು."
+
+"ಸರಕಾರದ ಬಸ್ ಸೇವೆಗಳು ಚೊಕ್ಕಾಡಿಗೆ ಸೀಮಿತವಾಗಿದ್ದರೂ, ಪುತ್ತೂರಿನಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ನಾಲ್ಕು ದೈನಂದಿನ ಬಸ್‌ಗಳು ಮತ್ತು ಸುಳ್ಯಕ್ಕೆ ನಾಲ್ಕು ಬಸ್‌ಗಳು ಲಭ್ಯವಿವೆ. ಈ ಬಸ್‌ ಸೇವೆಗಳು ದಿನನಿತ್ಯ ಬದಲಾಗುವ ಅಥವಾ ರದ್ದಾಗುವ ಸಾಧ್ಯತೆ ಇದೆ."
   ],
 };
 

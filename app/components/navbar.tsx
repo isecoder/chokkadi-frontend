@@ -22,9 +22,9 @@ const navLinks: NavLink[] = [
     subLinks: [
       { href: "/temple", label: { en: "About Temple", kn: "ದೇವಾಲಯ" } },
       { href: "/administration", label: { en: "Administration", kn: "ಸೇವಾ ಸಮಿತಿ" } },
-      { href: "facilities", label: { en: "Temple Facilities", kn: "ಸೌಲಭ್ಯಗಳು" } },
-      { href: "reach", label: { en: "How to Reach", kn: "ದೇವಾಲಯಕ್ಕೆ ಹೋಗುವ ದಾರಿಯ ಮಾಹಿತಿ" } },
-      { href: "nearby", label: { en: "Nearby Places", kn: "ಹತ್ತಿರದ ಸ್ಥಳಗಳು" } },
+      { href: "/facilities", label: { en: "Temple Facilities", kn: "ಸೌಲಭ್ಯಗಳು" } },
+      { href: "/reach", label: { en: "How to Reach", kn: "ದೇವಾಲಯಕ್ಕೆ ಹೋಗುವ ದಾರಿಯ ಮಾಹಿತಿ" } },
+      { href: "/nearby", label: { en: "Nearby Places", kn: "ಹತ್ತಿರದ ಸ್ಥಳಗಳು" } },
     ],
   },
   { href: "/booking", label: { en: "HALL BOOKING", kn: "ಸಭಾಂಗಣ ಬುಕ್ಕಿಂಗ್" } },

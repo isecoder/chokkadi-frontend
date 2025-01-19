@@ -125,7 +125,7 @@ const Administration: React.FC = () => {
         ].map((role, index) => (
           <section key={index} className="mb-8">
             <h3 className="text-[var(--primary)] font-bold mb-2">{role.title}</h3>
-            <p className="font-semibold mb-1">{role.name}</p>
+            <p className="font-semibold text-[var(--primary)] mb-1">{role.name}</p>
             {role.contact && <p>{role.contact}</p>}
           </section>
         ))}
@@ -135,7 +135,7 @@ const Administration: React.FC = () => {
           <h3 id="members" className="text-[var(--primary)] font-bold mb-6">{content.membersTitle}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {content.members.map((member, index) => (
-              <p key={index} className="font-semibold">{member}</p>
+              <p key={index} className="font-semibold text-[var(--primary)]">{member}</p>
             ))}
           </div>
         </section>
@@ -143,7 +143,7 @@ const Administration: React.FC = () => {
         {/* Temple Priest */}
         <section aria-labelledby="priest" className="mt-10">
           <h3 id="priest" className="text-[var(--primary)] font-bold mb-2">{content.templePriestTitle}</h3>
-          <p className="font-semibold">{content.templePriestName}</p>
+          <p className="font-semibold text-[var(--primary)]">{content.templePriestName}</p>
         </section>
       </div>
     </div>
