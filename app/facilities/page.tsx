@@ -50,7 +50,7 @@ export default function CommunityHall() {
     <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] text-[var(--foreground)]">
       <h1 className="text-3xl font-bold text-[var(--primary)] mb-8">{titles[currentLocale]}</h1>
       <Image
-        src="/hariharatemplehall.jpg"
+        src="/hall.jpeg"
         width={600}
         height={400}
         alt="Community Hall"
