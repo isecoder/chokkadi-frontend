@@ -25,18 +25,36 @@ const howToReachMessages: Record<LocaleType, MessageType[]> = {
     { title: "Nearest Bus Stand", description: "Chokkadi" },
     { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km)" },
     { title: "Nearest Railway Station", description: "Yedamangala (16.5 km)" },
-    { title: "Nearest Major Railway Station", description: "Subrahmanya Road (33.4 km)" },
-    { title: "Nearest Airport", description: "Mangalore International Airport (92.7 km)" },
+    {
+      title: "Nearest Major Railway Station",
+      description: "Subrahmanya Road (33.4 km)",
+    },
+    {
+      title: "Nearest Airport",
+      description: "Mangalore International Airport (92.7 km)",
+    },
   ],
   kn: [
     "ಶ್ರೀರಾಮ ದೇವಾಲಯವು ರಾ.ಹೆ.ಸಂ. 100 (ಮಂಜೇಶ್ವರ-ಪುತ್ತೂರು-ಸುಬ್ರಹ್ಮಣ್ಯ ರಾಜ್ಯ ಹೆದ್ದಾರಿ)ಯಲ್ಲಿ ಬೆಳ್ಳಾರೆ ಎಂಬ ಪ್ರಮುಖ ಪಟ್ಟಣದಿಂದ 9.3 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಚೊಕ್ಕಾಡಿ ಎಂಬ ಪುಟ್ಟ ಗ್ರಾಮದಲ್ಲಿದೆ. ಪುತ್ತೂರಿನಿಂದ ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಪ್ರಯಾಣಿಸುವಾಗ, ಬೆಳ್ಳಾರೆಯಿಂದ ಬಾಳಿಲ ರಸ್ತೆಯ ಮೂಲಕ ತೆರಳಿ ಅಯ್ಯನಕಟ್ಟೆ ಕ್ರಾಸ್‌ನಲ್ಲಿ ಬಲಗಡೆ ತಿರುಗಿ 6.4 ಕಿಮೀ ಸಾಗಿದರೆ ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
     "ಚೊಕ್ಕಾಡಿಗೆ ಸರಿಯಾದ ಸರ್ಕಾರಿ ಬಸ್ ಸೌಲಭ್ಯ ಲಭ್ಯವಿಲ್ಲದ ಕಾರಣ, ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನವನ್ನು ಬಳಸುವುದು ಉತ್ತಮ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
     "ಸರಕಾರದ ಬಸ್ ಸೇವೆಗಳು ಚೊಕ್ಕಾಡಿಗೆ ಸೀಮಿತವಾಗಿದ್ದರೂ, ಪುತ್ತೂರಿನಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ನಾಲ್ಕು ದೈನಂದಿನ ಬಸ್‌ಗಳು ಮತ್ತು ಸುಳ್ಯಕ್ಕೆ ನಾಲ್ಕು ಬಸ್‌ಗಳು ಲಭ್ಯವಿವೆ. ಈ ಬಸ್‌ ಸೇವೆಗಳು ದಿನನಿತ್ಯ ಬದಲಾಗುವ ಅಥವಾ ರದ್ದಾಗುವ ಸಾಧ್ಯತೆ ಇದೆ.",
     { title: "ಹತ್ತಿರದ ಬಸ್ ನಿಲ್ದಾಣ", description: "ಚೊಕ್ಕಾಡಿ" },
-    { title: "ಹತ್ತಿರದ ಪ್ರಮುಖ ಬಸ್ಸು ನಿಲ್ದಾಣ", description: "ಬೆಳ್ಳಾರೆ (9.3 ಕಿ.ಮಿ)" },
-    { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ರೈಲು ನಿಲ್ದಾಣ", description: "ಎಡಮಂಗಲ (16.5 ಕಿ.ಮಿ)" },
-    { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ಪ್ರಮುಖ ರೈಲು ನಿಲ್ದಾಣ", description: "ಸುಬ್ರಹ್ಮಣ್ಯ ರೋಡ್ (33.4 ಕಿ.ಮಿ)" },
-    { title: "ಹತ್ತಿರದಲ್ಲಿರುವ ವಿಮಾನ ನಿಲ್ದಾಣ", description: "ಮಂಗಳೂರು ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ (92.7 ಕಿ.ಮಿ)" },
+    {
+      title: "ಹತ್ತಿರದ ಪ್ರಮುಖ ಬಸ್ಸು ನಿಲ್ದಾಣ",
+      description: "ಬೆಳ್ಳಾರೆ (9.3 ಕಿ.ಮಿ)",
+    },
+    {
+      title: "ಹತ್ತಿರದಲ್ಲಿರುವ ರೈಲು ನಿಲ್ದಾಣ",
+      description: "ಎಡಮಂಗಲ (16.5 ಕಿ.ಮಿ)",
+    },
+    {
+      title: "ಹತ್ತಿರದಲ್ಲಿರುವ ಪ್ರಮುಖ ರೈಲು ನಿಲ್ದಾಣ",
+      description: "ಸುಬ್ರಹ್ಮಣ್ಯ ರೋಡ್ (33.4 ಕಿ.ಮಿ)",
+    },
+    {
+      title: "ಹತ್ತಿರದಲ್ಲಿರುವ ವಿಮಾನ ನಿಲ್ದಾಣ",
+      description: "ಮಂಗಳೂರು ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ (92.7 ಕಿ.ಮಿ)",
+    },
   ],
 };
 
@@ -45,7 +63,7 @@ const titles: Record<LocaleType, string> = {
   kn: "ಶ್ರೀರಾಮ ದೇವಾಲಯ ತಲುಪುವ ದಾರಿ",
 };
 
-const reach: React.FC = () => {
+const Reach: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const currentLocale: LocaleType = useSelector(
     (state: RootState) => state.locale.locale
@@ -68,7 +86,7 @@ const reach: React.FC = () => {
         {titles[currentLocale]}
       </h1>
       <div className="max-w-2xl mx-auto bg-[var(--card-background)] p-8 rounded-lg shadow-lg">
-        {messages.map((message: MessageType, index: number) => (
+        {messages.map((message: MessageType, index: number) =>
           typeof message === "string" ? (
             <p
               key={index}
@@ -81,13 +99,15 @@ const reach: React.FC = () => {
               <h2 className="text-xl font-semibold text-[var(--primary)]">
                 {message.title}
               </h2>
-              <p className="text-[var(--text)] text-lg">{message.description}</p>
+              <p className="text-[var(--text)] text-lg">
+                {message.description}
+              </p>
             </div>
           )
-        ))}
+        )}
       </div>
     </main>
   );
 };
 
-export default reach;
+export default Reach;
