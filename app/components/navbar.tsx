@@ -160,7 +160,7 @@ export default function Navbar() {
           <LanguageSwitcher />
         </div>
       </div>
-      <div className="pt-4"></div>
+     
     </>
   );
 }
