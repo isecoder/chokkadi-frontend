@@ -17,7 +17,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: "/", label: { en: "HOME", kn: "ಮುಖಪುಟ" } },
   {
-    href: "/",
+    href: "",
     label: { en: "ABOUT", kn: "ದೇವಾಲಯದ ಮಾಹಿತಿ" },
     subLinks: [
       { href: "/temple", label: { en: "About Temple", kn: "ದೇವಾಲಯ" } },

@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const images: string[] = [
   "/hall.jpeg",
   "/temple4.jpeg",
- "/img1.jpg"
+ "/img1.jpg",
+ "/img2.jpeg",
 ];
 
 const ImageSlider: React.FC = () => {

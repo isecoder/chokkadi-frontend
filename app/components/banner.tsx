@@ -28,7 +28,7 @@ const Banner = () => {
       {/* Mobile and Tablet Image */}
       <div className="block lg:hidden">
         <Image
-          src="/banner.png" 
+          src="/newbanner.png" 
           alt="Mobile/Tablet Temple Banner"
           layout="responsive"
           width={768} 
