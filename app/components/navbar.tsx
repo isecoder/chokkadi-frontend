@@ -126,7 +126,7 @@ export default function Navbar() {
           }`}
         >
           {navLinks.map(({ href, label, subLinks }) => (
-            <div key={label.en} className="w-full">
+            <div key={label.en} className="relative ">
               <Link
                 href={href}
                 onClick={subLinks ? toggleAboutDropdown : closeMenu}
