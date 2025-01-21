@@ -5,8 +5,8 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const images: string[] = [
-  "/hall.jpeg",
   "/temple4.jpeg",
+  "/hall.jpeg",
  "/img1.jpg",
  "/img2.jpeg",
 ];
