@@ -65,7 +65,7 @@ export default function Navbar() {
       {/* Conditionally Render Banner or KBanner */}
       {currentLocale === "en" ? <Banner /> : <KBanner />}
 
-      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg mt-8">
+      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
           {/* Update Shrirama Temple with locale */}
           <div className="flex items-center space-x-2 h-full">
