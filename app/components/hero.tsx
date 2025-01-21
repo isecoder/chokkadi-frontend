@@ -7,7 +7,7 @@ const images: string[] = [
   "/temple4.jpeg",
   "/hall.jpeg",
   "/img1.jpg",
-  "/templeside.jpg",
+  "/entrance.jpg",
 ];
 
 const ImageCarousel: React.FC = () => {
