@@ -11,7 +11,7 @@ import Image from "next/image"
 type LocaleType = "en" | "kn"
 
 const welcomeTitle: Record<LocaleType, string> = {
-  en: "WELCOME TO Shrirama TEMPLE",
+  en: "WELCOME TO SHRIRAMA TEMPLE",
   kn: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯಕ್ಕೆ ಸ್ವಾಗತ",
 }
 
