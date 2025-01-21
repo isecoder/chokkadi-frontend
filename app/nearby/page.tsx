@@ -23,6 +23,7 @@ import P15 from "/app/nearby/p15.jpeg";
 import P16 from "/app/nearby/p16.jpg";
 import P17 from "/app/nearby/p17.jpg";
 import P18 from "/app/nearby/p18.png";
+import P19 from "/app/nearby/p19.png";
 
 type LocaleType = "en" | "kn";
 type ImageType = typeof P1;
@@ -68,6 +69,12 @@ const placesContent: Record<
         description:
           "Hindu pilgrimage site dedicated to Lord Shiva. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 10.3 km from Shri Rama Temple.",
         image: P5,
+      },
+      {
+        name: "Kote Shri Subrahmanya Temple",
+        description:
+          "Kote Subrahmanya Temple, near Kalanja village in Sullia Taluk, is dedicated to Lord Subrahmanya, known as the protector of serpents. Nestled amidst serene landscapes, it is a popular destination for blessings of protection, wisdom, and good health. This temple located at the distance of 4.7 km from Chokkadi.",
+        image: P19,
       },
       {
         name: "Shri Kshethra Dharmasthala",
@@ -184,6 +191,12 @@ const placesContent: Record<
           description:
             "ಭಗವಾನ್ ಶಂಕರನನ್ನು ಪೂಜಿಸಲಾಗುವ ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಹಿಂದು ಕ್ಷೇತ್ರವಿದು. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 6.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
           image: P5,
+        },
+        {
+          name: "ಕೋಟೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
+          description:
+            "ಕೋಟೆ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಕಳಂಜ ಗ್ರಾಮದ ಸಮೀಪದಲ್ಲಿದ್ದು, ಸರ್ಪರಕ್ಷಕನಾದ ಸುಬ್ರಹ್ಮಣ್ಯ ಸ್ವಾಮಿಗೆ ಸಮರ್ಪಿತವಾಗಿದೆ. ನದಿ, ಕಾಡು, ಪರ್ವತಗಳಿಂದ ಆವರಿಸಿರುವ ಶಾಂತ ಪರಿಸರದಲ್ಲಿರುವ ಈ ದೇವಸ್ಥಾನ ಭಕ್ತರಿಗೆ ರಕ್ಷಣಾ ಕೃಪೆ, ಜ್ಞಾನ ಮತ್ತು ಆರೋಗ್ಯದ ಆಶೀರ್ವಾದಕ್ಕಾಗಿ ಪ್ರಸಿದ್ಧವಾಗಿದೆ. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 4.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
+          image: P19,
         },
         {
           name: "ಶ್ರೀ ಕ್ಷೇತ್ರ ಧರ್ಮಸ್ಥಳ", description: "ಭಗವಾನ್ ಶಂಕರನನ್ನು ಪೂಜಿಸಲಾಗುವ ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಹಿಂದು ಕ್ಷೇತ್ರವಿದು. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 59.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
