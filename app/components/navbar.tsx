@@ -37,7 +37,7 @@ const navLinks: NavLink[] = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   // Access the current locale from Redux
@@ -54,10 +54,10 @@ export default function Navbar() {
   }
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const toggleAboutDropdown = () => setAboutDropdownOpen((prev) => !prev);
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
   const closeMenu = () => {
     setMenuOpen(false);
-    setAboutDropdownOpen(false);
+    setDropdownOpen(false);
   };
 
   return (
@@ -67,7 +67,7 @@ export default function Navbar() {
 
       <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
-          {/* Update Shrirama Temple with locale */}
+          {/* Shrirama Temple with locale */}
           <div className="flex items-center space-x-2 h-full">
             <Link href="/" onClick={closeMenu} className="text-lg font-bold text-[#8B0000] hover:underline">
               {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
@@ -75,25 +75,31 @@ export default function Navbar() {
             <div className="w-[3px] bg-[#DD860B] h-10"></div>
           </div>
 
+          {/* Desktop Navbar */}
           <nav className="hidden md:flex justify-center flex-1 space-x-12 text-m">
             {navLinks.map(({ href, label, subLinks }) => (
-              <div key={label.en} className="relative group">
+              <div
+                key={label.en}
+                className="relative group"
+                onMouseEnter={() => subLinks && setDropdownOpen(true)}
+                onMouseLeave={() => subLinks && setDropdownOpen(false)}
+              >
                 <Link
-                  href={href}
-                  onClick={subLinks ? toggleAboutDropdown : closeMenu}
+                  href={href || "#"}
+                  onClick={closeMenu}
                   className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
                 >
                   {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
                       className={`ml-2 transition-transform duration-200 ${
-                        aboutDropdownOpen ? "rotate-180" : "rotate-0"
+                        dropdownOpen ? "rotate-180" : "rotate-0"
                       }`}
                     />
                   )}
                 </Link>
-                {subLinks && aboutDropdownOpen && (
-                  <div className="absolute bg-white shadow-md rounded-md mt-2 group-hover:block">
+                {subLinks && dropdownOpen && (
+                  <div className="absolute left-0 bg-white shadow-md rounded-md mt-2">
                     {subLinks.map((subLink) => (
                       <Link
                         key={subLink.label.en}
@@ -109,9 +115,8 @@ export default function Navbar() {
               </div>
             ))}
           </nav>
-          <div className="hidden md:flex items-center">
-            <LanguageSwitcher />
-          </div>
+
+          {/* Mobile Menu Toggle */}
           <div
             className="md:hidden cursor-pointer"
             onClick={toggleMenu}
@@ -125,47 +130,44 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div
-          className={`md:hidden flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md transition-all duration-300 ease-in-out transform origin-top ${
-            menuOpen
-              ? "opacity-100 scale-y-100"
-              : "opacity-0 scale-y-0 h-0 overflow-hidden"
-          }`}
-        >
-          {navLinks.map(({ href, label, subLinks }) => (
-            <div key={label.en} className="relative">
-              <Link
-                href={href}
-                onClick={subLinks ? toggleAboutDropdown : closeMenu}
-                className="text-[#8B0000] font-medium hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center justify-between"
-              >
-                {label[currentLocale as "en" | "kn"]}
-                {subLinks && (
-                  <FaChevronDown
-                    className={`ml-2 transition-transform duration-200 ${
-                      aboutDropdownOpen ? "rotate-180" : "rotate-0"
-                    }`}
-                  />
+        {/* Mobile Dropdown */}
+        {menuOpen && (
+          <div className="flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md">
+            {navLinks.map(({ href, label, subLinks }) => (
+              <div key={label.en} className="w-full relative">
+                <Link
+                  href={href || "#"}
+                  onClick={() => (subLinks ? toggleDropdown() : closeMenu())}
+                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
+                >
+                  {label[currentLocale as "en" | "kn"]}
+                  {subLinks && (
+                    <FaChevronDown
+                      className={`ml-2 transition-transform duration-200 ${
+                        dropdownOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
+                </Link>
+                {subLinks && dropdownOpen && (
+                  <div className="pl-8 flex flex-col bg-[#FFF9E6]">
+                    {subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.label.en}
+                        href={subLink.href}
+                        onClick={closeMenu}
+                        className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] transition-all duration-200"
+                      >
+                        {subLink.label[currentLocale as "en" | "kn"]}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              </Link>
-              {subLinks && aboutDropdownOpen && (
-                <div className="ml-4 flex flex-col space-y-2">
-                  {subLinks.map((subLink) => (
-                    <Link
-                      key={subLink.label.en}
-                      href={subLink.href}
-                      onClick={closeMenu}
-                      className="text-[#8B0000] font-medium hover:bg-[#F6E27F] hover:rounded-md hover:px-2 transition-all duration-200"
-                    >
-                      {subLink.label[currentLocale as "en" | "kn"]}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <LanguageSwitcher />
-        </div>
+              </div>
+            ))}
+            <LanguageSwitcher />
+          </div>
+        )}
       </div>
     </>
   );
