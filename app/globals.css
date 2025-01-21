@@ -3,82 +3,63 @@
 @tailwind utilities;
 
 @layer base {
-  /* Apply a slightly more vibrant yellow gradient background */
+  /* Apply the yellow gradient background globally */
   body {
-    background: linear-gradient(135deg, #ffee99, #ffe066); /* Slightly more intense yellow gradient */
-    color: var(--text-color); /* Use text color variable */
+    background: linear-gradient(135deg, #ffee99, #ffe066); /* Vibrant yellow gradient */
+    color: var(--text-color); /* Green text color */
     margin: 0;
     padding: 0;
   }
 
-  /* Optional: Reset other global padding/margins */
+  /* Reset global padding, margins, and box-sizing */
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+
+  /* Set default text color */
+  body, p, span, div, a, li {
+    color: var(--text-color); /* Green text globally */
+  }
+
+  /* Headings should also use the green color */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color); /* Green for headings */
+    font-family: 'Georgia', serif; /* Traditional serif font */
+  }
+
+  /* Links with green color */
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Borders with complementary green shades */
+  hr, .bordered {
+    border: 2px solid var(--border-color);
+  }
+
+  /* Buttons with green styling */
+  button {
+    background-color: var(--foreground); /* Darker green background */
+    color: var(--background); /* Yellow text */
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: var(--border-color); /* Slightly darker green */
+  }
 }
 
-/* Define custom theme variables for the color palette */
+/* Define custom theme variables */
 :root {
-  --background: #ffee99; /* Slightly more vibrant yellow */
-  --foreground: #2e7d32; /* Deep green */
-  --text-color: #2e7d32; /* Green for text */
-  --border-color: #388e3c; /* Slightly darker green for borders */
-}
-
-/* Add custom styles for headings and decorative elements */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--foreground); /* Green text for headings */
-  font-family: 'Serif', Georgia, serif; /* Traditional font for headings */
-  margin-bottom: 0.5rem;
-}
-
-a {
-  color: var(--foreground);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-hr {
-  border: 1px solid var(--border-color); /* Decorative green borders */
-}
-
-button {
-  background-color: var(--foreground); /* Green button background */
-  color: var(--background); /* Yellow text */
-  border: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: var(--border-color); /* Darker green on hover */
-}
-
-/* Optional: Add decorative borders or accents */
-.decorative-border {
-  border: 2px solid var(--border-color);
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-:root {
-  --background: #f9f7e6;
-  --card-background: #ffffff;
-  --primary: #d9534f; /* Red for title */
-  --text: #074f16; /* Dark gray for text */
-}
-:root {
-  --background: #fff9c4; /* Light yellow background color */
-  --foreground: #4d4d4d; /* Text color for the main title */
-  --card-background: #fff7c0; /* Card background color */
-  --primary: #087403; /* Green for headings */
-  --text: #074f16; /* Text color for descriptions */
-  --border: #b2a575; /* Border color for dividers */
-}
-:root {
-  --background: #fff9c4; /* Light yellow background */
-  --foreground: #3d3d3d; /* Dark text */
-  --primary: #4d6600; /* Green */
+  --background: #ffee99; /* Light yellow background */
+  --foreground: #2e7d32; /* Deep green for accents */
+  --text-color: #2e7d32; /* Green for all text */
+  --border-color: #388e3c; /* Darker green for borders */
 }
