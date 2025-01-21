@@ -11,7 +11,7 @@ type LocaleType = "en" | "kn";
 
 const hallDetails: Record<LocaleType, string[]> = {
   en: [
-    "Shri Rama Temple in Chokkadi offers a hall suitable for various functions, including marriages, upanayanas, and other ceremonies. The hall can accommodate between 1000-1500 guests.",
+    "Shrirama Temple in Chokkadi offers a hall suitable for various functions, including marriages, upanayanas, and other ceremonies. The hall can accommodate between 1000-1500 guests.",
     "The hall is spacious, with a comfortable environment for all your needs.",
     "Free WiFi facility is available with the hall.",
     "The hall is available at a very reasonable rent.",

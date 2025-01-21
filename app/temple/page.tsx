@@ -13,7 +13,7 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
   en: {
     title: "About Temple",
     details: [
-      { title: "Pooja Timings of Shri Rama Temple:", description: "7 am to 1 pm | 5 pm to 8 pm" },
+      { title: "Pooja Timings of Shrirama Temple:", description: "7 am to 1 pm | 5 pm to 8 pm" },
       { title: "Morning Pooja", description: "7:30AM" },
       { title: "Maha Pooja", description: "12:30PM" },
       { title: "Night Pooja", description: "7:30PM" },

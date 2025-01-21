@@ -5,16 +5,16 @@ import { useRouter } from 'next/router';
 // Optional: Create a mapping of page-specific metadata
 const pageMetadata: { [key: string]: { title: string; description: string } } = {
   events: {
-    title: 'Temple Events - Shri Rama Temple',
-    description: 'Stay updated on the latest events, festivals, and ceremonies at Shri Rama Temple.',
+    title: 'Temple Events - Shrirama Temple',
+    description: 'Stay updated on the latest events, festivals, and ceremonies at Shrirama Temple.',
   },
   sevas: {
-    title: 'Sevas - Shri Rama Temple',
-    description: 'Explore the various Sevas offered at Shri Rama Temple to connect with the divine.',
+    title: 'Sevas - Shrirama Temple',
+    description: 'Explore the various Sevas offered at Shrirama Temple to connect with the divine.',
   },
   gallery: {
-    title: 'Gallery - Shri Rama Temple',
-    description: 'View the beautiful gallery of Shri Rama Temple, showcasing its heritage and culture.',
+    title: 'Gallery - Shrirama Temple',
+    description: 'View the beautiful gallery of Shrirama Temple, showcasing its heritage and culture.',
   },
 };
 
@@ -23,8 +23,8 @@ export default function Head() {
   const page = router.query.page as string; // Get the page from the URL
 
   const metadata = pageMetadata[page] || {
-    title: 'Shri Rama Temple',
-    description: 'Welcome to the Shri Rama Temple, a sacred place for devotees.',
+    title: 'Shrirama Temple',
+    description: 'Welcome to the Shrirama Temple, a sacred place for devotees.',
   };
 
   return (

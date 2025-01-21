@@ -28,9 +28,9 @@ interface AdministrationContent {
 
 const administrationContent: Record<LocaleType, AdministrationContent> = {
   en: {
-    sevaSamithiTitle: "Shri Rama Seva Samithi",
+    sevaSamithiTitle: "Shrirama Seva Samithi",
     sevaSamithiDescription:
-      "Shri Rama Seva Samithi operates under the guidance of Sri Ramachandrapura Matha, led by His Holiness Sri Sri Raghaveshwara Bharathi Swamiji. The Seva Samithi diligently follows the instructions and traditions set forth by the Matha to uphold the spiritual and cultural values of the temple.",
+      "Shrirama Seva Samithi operates under the guidance of Sri Ramachandrapura Matha, led by His Holiness Sri Sri Raghaveshwara Bharathi Swamiji. The Seva Samithi diligently follows the instructions and traditions set forth by the Matha to uphold the spiritual and cultural values of the temple.",
     managementPresidentTitle: "President:",
     managementPresidentName: "Shri Mahesh Bhat Choontharu",
     contactNumber: "Contact no: +91 9448625254, +91 7019616082",
@@ -45,7 +45,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     members: [
       "Shri Anekaru Ganapayya",
       "Shri Gopalakrishna Bhat Katta",
-      "Shri Ramachandra Kote",
+      "Shriramachandra Kote",
       "Shri Adarsha Krishna Nenaru",
       "Shri Karthikesha Hebbar",
       "Shri Krishnaprasad K",

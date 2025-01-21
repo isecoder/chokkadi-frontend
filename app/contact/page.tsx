@@ -14,7 +14,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
-    address: "Shri Rama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
+    address: "Shrirama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
     phone: "Contact Number: +918481286745",
     tele: "Telephone Number: 08257200585",
     president: "President: +919448625254",
@@ -50,8 +50,8 @@ const Contact: React.FC = () => {
   return (
     <>
       <SEOComponent
-        title="Contact Shri Rama Temple, Chokkadi"
-        description="Get in touch with the Shri Rama Temple in Chokkadi for inquiries, visits, or support. We welcome your communication and support."
+        title="Contact Shrirama Temple, Chokkadi"
+        description="Get in touch with the Shrirama Temple in Chokkadi for inquiries, visits, or support. We welcome your communication and support."
         image="https://yourwebsite.com/images/temple-contact.jpg" // Replace with actual image URL
         url="http://www.srtchokkadi.org/contact"
       />

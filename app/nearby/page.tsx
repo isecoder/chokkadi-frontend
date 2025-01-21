@@ -55,19 +55,19 @@ const placesContent: Record<
       {
         name: "Shree Basaveshwara Temple",
         description:
-          "This temple is 12.1 Km from Shri Rama Temple. Located 12.1 km from Shri Rama Temple in Kulkunda, just 2 km from Subrahmanya. Here, Lord Shiva is worshipped in the form of the sacred bull (Basava).",
+          "This temple is 12.1 Km from Shrirama Temple. Located 12.1 km from Shrirama Temple in Kulkunda, just 2 km from Subrahmanya. Here, Lord Shiva is worshipped in the form of the sacred bull (Basava).",
         image: P3,
       },
       {
         name: "Shree Parivara Panchalingeshwara Temple, Panja",
         description:
-          "Shree Parivara Panchalingeshwara Temple, located in Panja village along the Manjeshwara-Puttur-Subrahmanya state highway, is a historic Hindu temple dating back to the 13th century. According to local legends, the five Shiva Lingams enshrined here were installed by the Pandavas during their exile, linking the temple to the Mahabharata. Devotees visit to perform rituals like Rudrabhisheka, seeking blessings for marriage and relief from personal crises. The temple hosts annual events such as Brahmarathotsava and monthly rituals believed to eliminate various doshas. It is approximately 18.5 km from Shri Rama Temple. For more information, please contact the temple authorities at 08257 278355.",
+          "Shree Parivara Panchalingeshwara Temple, located in Panja village along the Manjeshwara-Puttur-Subrahmanya state highway, is a historic Hindu temple dating back to the 13th century. According to local legends, the five Shiva Lingams enshrined here were installed by the Pandavas during their exile, linking the temple to the Mahabharata. Devotees visit to perform rituals like Rudrabhisheka, seeking blessings for marriage and relief from personal crises. The temple hosts annual events such as Brahmarathotsava and monthly rituals believed to eliminate various doshas. It is approximately 18.5 km from Shrirama Temple. For more information, please contact the temple authorities at 08257 278355.",
         image: P4,
       },
       {
         name: "Kanchodu Shri Manjunatheshwara Temple",
         description:
-          "Hindu pilgrimage site dedicated to Lord Shiva. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 10.3 km from Shri Rama Temple.",
+          "Hindu pilgrimage site dedicated to Lord Shiva. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 10.3 km from Shrirama Temple.",
         image: P5,
       },
       {
@@ -79,13 +79,13 @@ const placesContent: Record<
       {
         name: "Shri Kshethra Dharmasthala",
         description:
-          "Major Hindu pilgrimage site dedicated to Lord Shiva, fostering religious harmony. Located 59.7 km from Shri Rama Temple.",
+          "Major Hindu pilgrimage site dedicated to Lord Shiva, fostering religious harmony. Located 59.7 km from Shrirama Temple.",
         image: P6,
       },
       {
         name: "Ajapila Shri Mahalingeshwara Temple",
         description:
-          "Hindu pilgrimage site dedicated to Lord Shiva located at Bellare, a mjor town in Sullia Taluk. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 8.9 km from Shri Rama Temple.",
+          "Hindu pilgrimage site dedicated to Lord Shiva located at Bellare, a mjor town in Sullia Taluk. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 8.9 km from Shrirama Temple.",
         image: P7,
       },
       {
@@ -115,25 +115,25 @@ const placesContent: Record<
       {
         name: "Bisle Ghat Viewpoint",
         description:
-          "Known for scenic views of Kumara Parvatha and the Western Ghats, located 32.4 km from Shri Rama Temple.",
+          "Known for scenic views of Kumara Parvatha and the Western Ghats, located 32.4 km from Shrirama Temple.",
         image: P12,
       },
       {
         name: "Patla Betta",
         description:
-          "Picturesque hill in Sakleshpur, 40.5 km from Shri Rama Temple, ideal for trekking.",
+          "Picturesque hill in Sakleshpur, 40.5 km from Shrirama Temple, ideal for trekking.",
         image: P13,
       },
       {
         name: "Mallalli Falls",
         description:
-          "200-foot waterfall in Coorg, best visited during the monsoon, formed by the Kumaradhara River. Located 57.3 km from Shri Rama Temple.",
+          "200-foot waterfall in Coorg, best visited during the monsoon, formed by the Kumaradhara River. Located 57.3 km from Shrirama Temple.",
         image: P14,
       },
       {
         name: "Kumara Parvatha Trek",
         description:
-          "Known as Pushpagiri, this challenging trek to the fourth-highest peak in the Western Ghats starts from the base camp in Kukke Subrahmanya, 10.1 km from Shri Rama Temple.",
+          "Known as Pushpagiri, this challenging trek to the fourth-highest peak in the Western Ghats starts from the base camp in Kukke Subrahmanya, 10.1 km from Shrirama Temple.",
         image: P15,
       },
       {
@@ -145,7 +145,7 @@ const placesContent: Record<
       {
         name: "Shri Durgaparameshwari Temple,Marakatha",
         description:
-          "Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a revered Hindu temple dedicated to Goddess Durga Parameshwari. Situated 31.8 km from Sullia and 26.8 km from Shri Rama Temple in Chokkadi, it draws devotees seeking blessings and spiritual solace. Managed by local authorities, the temple hosts various rituals and festivals honoring the Goddess. For inquiries, please contact 08257 282166.",
+          "Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a revered Hindu temple dedicated to Goddess Durga Parameshwari. Situated 31.8 km from Sullia and 26.8 km from Shrirama Temple in Chokkadi, it draws devotees seeking blessings and spiritual solace. Managed by local authorities, the temple hosts various rituals and festivals honoring the Goddess. For inquiries, please contact 08257 282166.",
         image: P17,
       },
       {

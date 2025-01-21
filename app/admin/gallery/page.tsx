@@ -141,7 +141,7 @@ export default function Gallery(): JSX.Element {
 
       {/* Centered Title for the Temple */}
       <div className="text-center mt-10 mb-4">
-        <h1 className="text-3xl font-bold">SHRI Rama TEMPLE</h1>
+        <h1 className="text-3xl font-bold">Shrirama TEMPLE</h1>
       </div>
 
       {/* Upload Image Section */}

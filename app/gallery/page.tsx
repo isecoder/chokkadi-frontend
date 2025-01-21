@@ -23,11 +23,11 @@ export default function Gallery(): JSX.Element {
   // Hardcoded YouTube videos
   const videos = [
     {
-      title: "ಹರಿಹರ ಜಾತ್ರೆ 2024 |ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವರ ನೃತ್ಯ ಬಲಿ| |Thidambu Nritham| |Shri Rama Temple|",
+      title: "ಹರಿಹರ ಜಾತ್ರೆ 2024 |ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವರ ನೃತ್ಯ ಬಲಿ| |Thidambu Nritham| |Shrirama Temple|",
       video_url: "https://www.youtube.com/embed/nKGWrYaBm9o?si=Y5xDuv4J1BbYASpH",
     },
     {
-      title: "Shri Rama Temple, Harihara | ಪ್ರತಿಷ್ಠಾ ವಾರ್ಷಿಕೋತ್ಸವ ಮತ್ತು ಜಾತ್ರೋತ್ಸವ | LIVE",
+      title: "Shrirama Temple, Harihara | ಪ್ರತಿಷ್ಠಾ ವಾರ್ಷಿಕೋತ್ಸವ ಮತ್ತು ಜಾತ್ರೋತ್ಸವ | LIVE",
       video_url: "https://www.youtube.com/embed/aDmwh0ujr6Y?si=bdSh9OP6wXuF_shs",
     },
   ];
@@ -117,7 +117,7 @@ export default function Gallery(): JSX.Element {
 
       {/* Centered Title for the Temple */}
       <div className="text-center mt-10 mb-4">
-        <h1 className="text-3xl font-bold">SHRI Rama TEMPLE</h1>
+        <h1 className="text-3xl font-bold">Shrirama TEMPLE</h1>
       </div>
       
       {/* Image Gallery Section */}

@@ -27,7 +27,7 @@ const footerText: Record<
   }
 > = {
   en: {
-    templeName: "Shri Rama Temple",
+    templeName: "Shrirama Temple",
     quickLinks: {
       title: "QUICK LINKS",
       links: [
@@ -40,7 +40,7 @@ const footerText: Record<
     },
     addressTitle: "Address",
     address: [
-      "Shri Rama Temple Chokkadi,",
+      "Shrirama Temple Chokkadi,",
       "Amarapadnur village,",
       "Sullia Taluk, Dakshina Kannada",
       "PIN - 574212",
@@ -50,7 +50,7 @@ const footerText: Record<
     privacyPolicy: "Privacy Policy",
     refundPolicy: " Refund & Cancellation",
     admin: " Admin",
-    rightsReserved: " Shri Rama Temple, Chokkadi. All Rights Reserved",
+    rightsReserved: " Shrirama Temple, Chokkadi. All Rights Reserved",
     designedBy: "Designed by:",
     designerName: "ISDC",
   },
