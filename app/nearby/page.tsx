@@ -79,7 +79,7 @@ const placesContent: Record<
         name: "Shree Basaveshwara Temple",
         description: (
           <span>
-            &quot;This temple is 12.1 Km from Shrirama Temple. Located 12.1 km
+            &quot;This temple is 36.1 Km from Shrirama Temple. Located 12.1 km
             from Shrirama Temple in Kulkunda, just 2 km from Subrahmanya. Here,
             Lord Shiva is worshipped in the form of the sacred bull
             (Basava).,&quot;
@@ -342,7 +342,7 @@ const placesContent: Record<
         name: "ಕುಲ್ಕುಂದ ಶ್ರೀ ಬಸವೇಶ್ವರ ದೇವಸ್ಥಾನ",
         description: (
           <span>
-            &quot;ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 12.1 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಈ ಸ್ಥಳವು
+            &quot;ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 36.1 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಈ ಸ್ಥಳವು
             ಕುಲ್ಕುಂದದಲ್ಲಿ ಇದೆ ಹಾಗು ಇದು ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಕೇವಲ 2 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.
             ಇಲ್ಲಿ ಶಿವ ದೇವರನ್ನು ಬಸವ (ಬಸವ) ರೂಪದಲ್ಲಿ ಪೂಜಿಸಲಾಗುತ್ತದೆ. ಸುಬ್ರಹ್ಮಣ್ಯ
             ದೇವರು ತಾರಕಾಸುರನ ಜೊತೆಗೆ ಯುದ್ಧ ಮಾಡಿದ ಸಂದರ್ಭದಲ್ಲಿ ಭಗವಾನ್ ಶಂಕರ ಬಸವನ
