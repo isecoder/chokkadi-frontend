@@ -64,10 +64,14 @@ export default function Navbar() {
       <Banner />
       <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg mt-8">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
+          {/* Updated Shrirama Temple link */}
           <div className="flex items-center space-x-2 h-full">
-            <h1 className="text-lg font-bold text-[#8B0000]">Shrirama Temple</h1>
+            <Link href="/" onClick={closeMenu} className="text-lg font-bold text-[#8B0000] hover:underline">
+              Shrirama Temple
+            </Link>
             <div className="w-[3px] bg-[#DD860B] h-10"></div>
           </div>
+
           <nav className="hidden md:flex justify-center flex-1 space-x-12 text-m">
             {navLinks.map(({ href, label, subLinks }) => (
               <div key={label.en} className="relative group">
@@ -160,7 +164,6 @@ export default function Navbar() {
           <LanguageSwitcher />
         </div>
       </div>
-     
     </>
   );
 }
