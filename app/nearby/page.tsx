@@ -267,69 +267,69 @@ const placesContent: Record<
       ],
     },
   };
-export default function Nearby() {
-  const dispatch = useDispatch<AppDispatch>();
-  const currentLocale: LocaleType = useSelector(
-    (state: RootState) => state.locale.locale
-  ) as LocaleType;
-
-  const { title, buttonLabel, places } = placesContent[currentLocale];
-  const [isLocaleLoaded, setIsLocaleLoaded] = useState(false);
-  const [activePlace, setActivePlace] = useState<number | null>(null);
-
-  useEffect(() => {
-    const savedLocale = (localStorage.getItem("locale") || "en") as LocaleType;
-    dispatch(changeLocale(savedLocale));
-    setIsLocaleLoaded(true);
-  }, [dispatch]);
-
-  if (!isLocaleLoaded) return null;
-
-  return (
-    <main className="min-h-screen flex flex-col items-center p-6 bg-gradient-to-b from-white to-[#fbc687] font-serif">
-      <h1 className="text-3xl font-bold mb-6 text-center text-black">
-        {title}
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {places.map(({ name, description, image }, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
-          >
-            <Image
-              src={image}
-              alt={name}
-              className="rounded-lg"
-              width={270}
-              height={180}
-            />
-            <h2 className="text-orange-600 font-semibold text-lg mt-4">
-              {name}
-            </h2>
-            <button
-              onClick={() => setActivePlace(index)}
-              className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+  export default function Nearby() {
+    const dispatch = useDispatch<AppDispatch>();
+    const currentLocale: LocaleType = useSelector(
+      (state: RootState) => state.locale.locale
+    ) as LocaleType;
+  
+    const { title, buttonLabel, places } = placesContent[currentLocale];
+    const [isLocaleLoaded, setIsLocaleLoaded] = useState(false);
+    const [activePlace, setActivePlace] = useState<number | null>(null);
+  
+    useEffect(() => {
+      const savedLocale = (localStorage.getItem("locale") || "en") as LocaleType;
+      dispatch(changeLocale(savedLocale));
+      setIsLocaleLoaded(true);
+    }, [dispatch]);
+  
+    if (!isLocaleLoaded) return null;
+  
+    return (
+      <main className="min-h-screen flex flex-col items-center p-6 bg-gradient-to-b from-[#fff9c4] to-[#fff59d] font-serif">
+        <h1 className="text-3xl font-bold mb-6 text-center text-green-800">
+          {title}
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {places.map(({ name, description, image }, index) => (
+            <div
+              key={index}
+              className="bg-[#ffecb3] rounded-lg shadow-md p-4 flex flex-col items-center"
             >
-              {buttonLabel}
-            </button>
-
-            {activePlace === index && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-10">
-                <div className="bg-white p-6 rounded-md max-w-lg mx-auto">
-                  <h2 className="text-xl font-bold mb-2">{name}</h2>
-                  <p className="text-gray-700">{description}</p>
-                  <button
-                    onClick={() => setActivePlace(null)}
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
-                  >
-                    Close
-                  </button>
+              <Image
+                src={image}
+                alt={`Image of ${name}`}
+                className="rounded-lg"
+                width={270}
+                height={180}
+              />
+              <h2 className="text-green-800 font-semibold text-lg mt-4">{name}</h2>
+              <button
+                onClick={() => setActivePlace(index)}
+                aria-label={`View details about ${name}`}
+                className="mt-2 bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                {buttonLabel}
+              </button>
+  
+              {activePlace === index && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-10 overflow-auto">
+                  <div className="bg-[#ffecb3] p-6 rounded-md max-w-lg mx-auto">
+                    <h2 className="text-xl font-bold mb-2 text-green-800">{name}</h2>
+                    <p className="text-green-900">{description}</p>
+                    <button
+                      onClick={() => setActivePlace(null)}
+                      aria-label="Close details"
+                      className="mt-4 bg-green-700 text-white px-4 py-2 rounded-md"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </main>
-  );
-}
+              )}
+            </div>
+          ))}
+        </div>
+      </main>
+    );
+  }

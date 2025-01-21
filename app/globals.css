@@ -3,29 +3,29 @@
 @tailwind utilities;
 
 @layer base {
-  /* Apply the yellow gradient background globally */
+  /* Set the global background to a gradient */
   body {
-    background: linear-gradient(135deg, #ffee99, #ffe066); /* Vibrant yellow gradient */
-    color: var(--text-color); /* Green text color */
+    background: linear-gradient(135deg, #fff9c4, #fbc687); /* Light yellow gradient */
+    color: var(--text-color); /* Default green text */
     margin: 0;
     padding: 0;
   }
 
-  /* Reset global padding, margins, and box-sizing */
+  /* Reset margins, paddings, and box-sizing */
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  /* Set default text color */
-  body, p, span, div, a, li {
-    color: var(--text-color); /* Green text globally */
+  /* Default text color for all elements */
+  body, p, span, div, a, li, h1, h2, h3, h4, h5, h6, button {
+    color: var(--text-color); /* Green for all text globally */
   }
 
-  /* Headings should also use the green color */
+  /* Headings styles */
   h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color); /* Green for headings */
+    color: var(--text-color); /* Green headings */
     font-family: 'Georgia', serif; /* Traditional serif font */
   }
 
@@ -36,15 +36,15 @@
     font-weight: bold;
   }
 
-  /* Borders with complementary green shades */
+  /* Decorative elements */
   hr, .bordered {
     border: 2px solid var(--border-color);
   }
 
-  /* Buttons with green styling */
+  /* Buttons styling */
   button {
-    background-color: var(--foreground); /* Darker green background */
-    color: var(--background); /* Yellow text */
+    background-color: var(--foreground); /* Green button background */
+    color: var(--background); /* Yellow button text */
     border: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -52,14 +52,45 @@
   }
 
   button:hover {
-    background-color: var(--border-color); /* Slightly darker green */
+    background-color: var(--border-color); /* Darker green on hover */
   }
 }
 
 /* Define custom theme variables */
 :root {
-  --background: #ffee99; /* Light yellow background */
-  --foreground: #2e7d32; /* Deep green for accents */
-  --text-color: #2e7d32; /* Green for all text */
-  --border-color: #388e3c; /* Darker green for borders */
+  --background: #fff9c4; /* Light yellow */
+  --foreground: #087403; /* Dark green for accents */
+  --text-color: #087403; /* Green for all text */
+  --border-color: #065f03; /* Darker green for borders */
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Global background gradient */
+  body {
+    background: linear-gradient(135deg, #fff9c4, #fbc687); /* Light yellow gradient */
+    color: var(--text-color); /* Default green text */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Reset margins and box-sizing */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Default text color for all elements */
+  body, p, span, div, a, li, h1, h2, h3, h4, h5, h6, button {
+    color: var(--text-color); /* Green for all text globally */
+  }
+}
+
+/* Define theme colors */
+:root {
+  --text-color: #087403; /* Green for all text */
+  --background: #fff9c4; /* Light yellow background */
 }
