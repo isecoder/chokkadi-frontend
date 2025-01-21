@@ -15,7 +15,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     contactDetails: "Contact Details",
     googleMap: "Google Map",
     address: "Shri Rama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
-    //phone: "Contact Number: +918481286745",
+    phone: "Contact Number: +918481286745",
     tele: "Telephone Number: 08257200585",
     president: "President: +919448625254",
     email: "E-mail: srtchokkadi@gmail.com"
@@ -25,7 +25,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     contactDetails: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
     address: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, ಚೊಕ್ಕಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
-    //phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +918481286745",
+    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +918481286745",
     tele: "ದೂರವಾಣಿ: 08257200585",
     president: "ಅಧ್ಯಕ್ಷರು: +919448625254",
     email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com"
