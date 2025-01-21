@@ -37,7 +37,8 @@ const navLinks: NavLink[] = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
+  const [dropdownTimer, setDropdownTimer] = useState<NodeJS.Timeout | null>(null);
   const [mounted, setMounted] = useState(false);
 
   // Access the current locale from Redux
@@ -54,10 +55,25 @@ export default function Navbar() {
   }
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+
+  const handleMouseEnter = (label: string) => {
+    if (dropdownTimer) clearTimeout(dropdownTimer);
+    setDropdownOpen(label);
+  };
+
+  const handleMouseLeave = () => {
+    const timer = setTimeout(() => setDropdownOpen(null), 300);
+    setDropdownTimer(timer);
+  };
+
+  const handleMobileDropdownToggle = (label: string) => {
+    setDropdownOpen((prev) => (prev === label ? null : label));
+  };
+
   const closeMenu = () => {
     setMenuOpen(false);
-    setDropdownOpen(false);
+    setDropdownOpen(null);
+    if (dropdownTimer) clearTimeout(dropdownTimer);
   };
 
   return (
@@ -81,24 +97,23 @@ export default function Navbar() {
               <div
                 key={label.en}
                 className="relative group"
-                onMouseEnter={() => subLinks && setDropdownOpen(true)}
-                onMouseLeave={() => subLinks && setDropdownOpen(false)}
+                onMouseEnter={() => subLinks && handleMouseEnter(label.en)}
+                onMouseLeave={handleMouseLeave}
               >
                 <Link
                   href={href || "#"}
-                  onClick={closeMenu}
                   className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
                 >
                   {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
                       className={`ml-2 transition-transform duration-200 ${
-                        dropdownOpen ? "rotate-180" : "rotate-0"
+                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
                       }`}
                     />
                   )}
                 </Link>
-                {subLinks && dropdownOpen && (
+                {subLinks && dropdownOpen === label.en && (
                   <div className="absolute left-0 bg-white shadow-md rounded-md mt-2">
                     {subLinks.map((subLink) => (
                       <Link
@@ -115,6 +130,11 @@ export default function Navbar() {
               </div>
             ))}
           </nav>
+
+          {/* Desktop Language Switcher */}
+          <div className="hidden md:flex items-center">
+            <LanguageSwitcher />
+          </div>
 
           {/* Mobile Menu Toggle */}
           <div
@@ -137,19 +157,19 @@ export default function Navbar() {
               <div key={label.en} className="w-full relative">
                 <Link
                   href={href || "#"}
-                  onClick={() => (subLinks ? toggleDropdown() : closeMenu())}
+                  onClick={() => subLinks && handleMobileDropdownToggle(label.en)}
                   className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
                 >
                   {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
                       className={`ml-2 transition-transform duration-200 ${
-                        dropdownOpen ? "rotate-180" : "rotate-0"
+                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
                       }`}
                     />
                   )}
                 </Link>
-                {subLinks && dropdownOpen && (
+                {subLinks && dropdownOpen === label.en && (
                   <div className="pl-8 flex flex-col bg-[#FFF9E6]">
                     {subLinks.map((subLink) => (
                       <Link
@@ -165,6 +185,7 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+            {/* Mobile Language Switcher */}
             <LanguageSwitcher />
           </div>
         )}
