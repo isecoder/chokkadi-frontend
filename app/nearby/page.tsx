@@ -42,8 +42,15 @@ const placesContent: Record<
     places: [
       {
         name: "Kukke Shri Subrahmanya Temple",
-        description:
-          "Kukke Subrahmanya is a famous Hindu temple in Karnataka, India, dedicated to Lord Subrahmanya (Kartikeyan), worshipped as the deity of serpents. Nestled amidst the lush Western Ghats, it is a significant pilgrimage center for rituals like Sarpa Samskara and Ashlesha Bali.It is located at 31.7Km from Chokkadi.",
+        description: (
+          <span>
+            Kukke Subrahmanya is a famous Hindu temple in Karnataka, India,
+            dedicated to Lord Subrahmanya (Kartikeyan), worshipped as the deity
+            of serpents. Nestled amidst the lush Western Ghats, it is a
+            significant pilgrimage center for rituals like Sarpa Samskara and
+            Ashlesha Bali. It is located at 31.7Km from Chokkadi.
+          </span>
+        ),
         image: P1,
       },
       {
@@ -179,8 +186,15 @@ const placesContent: Record<
     places:[
         {
           name: "ಕುಕ್ಕೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
-          description:
-            "ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯ ಕರ್ನಾಟಕದ ಪ್ರಸಿದ್ಧ ಹಿಂದೂ ದೇವಸ್ಥಾನವಾಗಿದ್ದು, ನಾಗನ ರೂಪದಲ್ಲಿ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರನ್ನು ಆರಾಧಿಸಲಾಗುತ್ತದೆ. ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ ತಪ್ಪಲಿನಲ್ಲಿ ನೆಲೆಸಿರುವ ಈ ಕ್ಷೇತ್ರ ಸರ್ಪ ಸಂಸ್ಕಾರ ಮತ್ತು ಅಶ್ಲೇಷ ಬಲಿ ಮುಂತಾದ ಸರ್ಪ ದೋಷದ ನಿವಾರೆಣೆಗೆ ಮಾಡುವ ಸೇವೆಗಳಿಗೆ ಪ್ರಮುಖ ತೀರ್ಥ ಕ್ಷೇತ್ರವಾಗಿದೆ. ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 31.7 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
+          description: (
+            <span>
+              ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯ ಕರ್ನಾಟಕದ ಪ್ರಸಿದ್ಧ ಹಿಂದೂ ದೇವಸ್ಥಾನವಾಗಿದ್ದು, ನಾಗನ
+              ರೂಪದಲ್ಲಿ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರನ್ನು ಆರಾಧಿಸಲಾಗುತ್ತದೆ. ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ
+              ತಪ್ಪಲಿನಲ್ಲಿ ನೆಲೆಸಿರುವ ಈ ಕ್ಷೇತ್ರ ಸರ್ಪ ಸಂಸ್ಕಾರ ಮತ್ತು ಅಶ್ಲೇಷ ಬಲಿ ಮುಂತಾದ
+              ಸರ್ಪ ದೋಷದ ನಿವಾರೆಣೆಗೆ ಮಾಡುವ ಸೇವೆಗಳಿಗೆ ಪ್ರಮುಖ ತೀರ್ಥ ಕ್ಷೇತ್ರವಾಗಿದೆ. ಇದು
+              ಚೊಕ್ಕಾಡಿಯಿಂದ 31.7 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.
+            </span>
+          ),
           image: P1,
         },
         {
