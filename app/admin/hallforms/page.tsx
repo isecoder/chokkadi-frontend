@@ -4,26 +4,25 @@ import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner"; // Import the LoadingSpinner component
 import Swal from "sweetalert2";
 
-// Interface for each SevaForm entry
-interface SevaForm {
+// Interface for each HallForm entry
+interface HallForm {
   id: number;
   name: string;
-  nakshathra: string;
-  rashi: string;
+  reason: string;
   gotra?: string; // Optional
   mobileNumber: string;
   date: string; // DD/MM/YYYY format date string
-  sevaId: number;
-  sevaName: string;
+  hallId: number;
+  hallName: string;
 }
 
-// Interface for API response that includes the nested seva object
-interface ApiSevaForm extends SevaForm {
-  seva: { name: string };
+// Interface for API response that includes the nested hall object
+interface ApiHallForm extends HallForm {
+  hall: { name: string };
 }
 
-export default function SevaForms(): JSX.Element {
-  const [sevaForms, setSevaForms] = useState<SevaForm[]>([]);
+export default function HallForms(): JSX.Element {
+  const [hallForms, setHallForms] = useState<HallForm[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,34 +35,34 @@ export default function SevaForms(): JSX.Element {
   });
 
   // State for filtered results
-  const [filteredSevaForms, setFilteredSevaForms] = useState<SevaForm[]>([]);
+  const [filteredHallForms, setFilteredHallForms] = useState<HallForm[]>([]);
 
-  // Fetch Seva Forms with Seva name included
-  const fetchSevaForms = async () => {
+  // Fetch Hall Forms with Hall name included
+  const fetchHallForms = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/sevaforms`);
-      if (!res.ok) throw new Error("Failed to load seva forms");
+      const res = await fetch(`/api/hallforms`);
+      if (!res.ok) throw new Error("Failed to load hall forms");
 
-      const { data }: { data: ApiSevaForm[] } = await res.json(); // Type response data
+      const { data }: { data: ApiHallForm[] } = await res.json(); // Type response data
       const formattedData = data.map((form) => ({
         ...form,
-        sevaName: form.seva.name || "N/A", // Access seva name safely
-        bookingId: `BM${form.id}`, // Format id as bookingId
+        hallName: form.hall.name || "N/A", // Access hall name safely
+        bookingId: `${form.id}`, // Format id as bookingId
         date: new Date(form.date).toLocaleDateString("en-GB"), // Format date as DD/MM/YYYY
       }));
 
-      setSevaForms(formattedData);
-      setFilteredSevaForms(formattedData); // Initialize filtered results
+      setHallForms(formattedData);
+      setFilteredHallForms(formattedData); // Initialize filtered results
     } catch (err) {
       console.error(err);
-      setError("Failed to load seva forms. Please try again later.");
+      setError("Failed to load hall forms. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
 
-  const deleteSevaForm = async (id: number) => {
+  const deleteHallForm = async (id: number) => {
     const confirmDelete = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -76,24 +75,24 @@ export default function SevaForms(): JSX.Element {
 
     if (confirmDelete.isConfirmed) {
       try {
-        const response = await fetch(`/api/sevaforms/${id}`, {
+        const response = await fetch(`/api/hallforms/${id}`, {
           method: "DELETE",
         });
 
         if (!response.ok) {
-          throw new Error("Failed to delete seva form");
+          throw new Error("Failed to delete hall form");
         }
 
-        // Update the local state to remove the deleted seva form
-        setFilteredSevaForms((prevForms) =>
+        // Update the local state to remove the deleted hall form
+        setFilteredHallForms((prevForms) =>
           prevForms.filter((form) => form.id !== id)
         );
 
-        Swal.fire("Deleted!", "Your seva form has been deleted.", "success");
+        Swal.fire("Deleted!", "Your hall form has been deleted.", "success");
       } catch (error) {
         Swal.fire(
           "Error!",
-          error instanceof Error ? error.message : "Failed to delete seva",
+          error instanceof Error ? error.message : "Failed to delete hall",
           "error"
         );
       }
@@ -107,14 +106,14 @@ export default function SevaForms(): JSX.Element {
   };
 
   useEffect(() => {
-    fetchSevaForms();
+    fetchHallForms();
   }, []);
 
   useEffect(() => {
     const applyFilters = () => {
       const { name, mobileNumber, date, id } = filters;
 
-      const filteredForms = sevaForms.filter((form) => {
+      const filteredForms = hallForms.filter((form) => {
         const matchesName = form.name
           .toLowerCase()
           .includes(name.toLowerCase());
@@ -125,19 +124,19 @@ export default function SevaForms(): JSX.Element {
         return matchesName && matchesMobile && matchesDate && matchesId;
       });
 
-      setFilteredSevaForms(filteredForms);
+      setFilteredHallForms(filteredForms);
     };
 
     applyFilters(); // Apply filters whenever the filters change
-  }, [filters, sevaForms]); // Depend on both filters and original sevaForms
+  }, [filters, hallForms]); // Depend on both filters and original hallForms
 
   return (
     <div className="container mx-auto p-6">
       {error && <p className="text-red-500 text-center">{error}</p>}
       {loading && <LoadingSpinner />}
-      {!loading && filteredSevaForms.length === 0 && !error && (
+      {!loading && filteredHallForms.length === 0 && !error && (
         <p className="text-center text-orange-500 font-medium">
-          No seva forms available.
+          No hall forms available.
         </p>
       )}
 
@@ -178,7 +177,7 @@ export default function SevaForms(): JSX.Element {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {filteredSevaForms.map((form) => (
+        {filteredHallForms.map((form) => (
           <div
             key={form.id}
             className="bg-white border-l-4 border-orange-500 shadow-lg rounded-lg p-6 transition duration-300 transform hover:scale-105 flex flex-col justify-between max-w-xs mx-auto"
@@ -186,10 +185,9 @@ export default function SevaForms(): JSX.Element {
             <h2 className="text-xl font-semibold text-orange-600 mb-2">
               {form.name}
             </h2>
-            <p className="text-gray-700 mb-2">Booking ID: BM{form.id}</p>
-            <p className="text-gray-700 mb-2">Seva Name: {form.sevaName}</p>
-            <p className="text-gray-700 mb-2">Nakshathra: {form.nakshathra}</p>
-            <p className="text-gray-700 mb-2">Rashi: {form.rashi}</p>
+            <p className="text-gray-700 mb-2">Booking ID: {form.id}</p>
+            <p className="text-gray-700 mb-2">Hall Name: {form.hallName}</p>
+            <p className="text-gray-700 mb-2">Reason: {form.reason}</p>
             {form.gotra && (
               <p className="text-gray-700 mb-2">Gotra: {form.gotra}</p>
             )}
@@ -198,7 +196,7 @@ export default function SevaForms(): JSX.Element {
               Date: {form.date}
             </p>
             <button
-              onClick={() => deleteSevaForm(form.id)}
+              onClick={() => deleteHallForm(form.id)}
               className="mt-4 bg-red-500 text-white px-3 py-1 rounded block" // Visible on all devices
             >
               Delete

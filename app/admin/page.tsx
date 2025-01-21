@@ -3,33 +3,33 @@ import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link"; // Import Link for navigation
 
 const AdminPage = () => {
-  const [sevasCount, setSevasCount] = useState(0);
+  const [hallsCount, setHallsCount] = useState(0);
   const [newsUpdatesCount, setNewsUpdatesCount] = useState(0);
   const [galleryCount, setGalleryCount] = useState(0);
-  const [sevaFormsCount, setSevaFormsCount] = useState(0);
+  const [hallFormsCount, setHallFormsCount] = useState(0);
   const [loading, setLoading] = useState(true); // Loading state
 
   const fetchCounts = useCallback(async () => {
     setLoading(true); // Set loading to true when fetching
     try {
-      const [sevasRes, newsUpdatesRes, sevaFormsRes] = await Promise.all([
-        fetch("/api/sevas"),
+      const [hallsRes, newsUpdatesRes, hallFormsRes] = await Promise.all([
+        fetch("/api/halls"),
         fetch("/api/newsupdates"),
-        fetch("/api/sevaforms"),
+        fetch("/api/hallforms"),
       ]);
 
-      if (!sevasRes.ok || !newsUpdatesRes.ok || !sevaFormsRes.ok) {
+      if (!hallsRes.ok || !newsUpdatesRes.ok || !hallFormsRes.ok) {
         throw new Error("Failed to fetch data");
       }
 
-      const sevasData = await sevasRes.json();
+      const hallsData = await hallsRes.json();
       const newsUpdatesData = await newsUpdatesRes.json();
-      const sevaFormsData = await sevaFormsRes.json();
+      const hallFormsData = await hallFormsRes.json();
 
       // Update the counts from the data arrays
-      setSevasCount(sevasData.data.length);
+      setHallsCount(hallsData.data.length);
       setNewsUpdatesCount(newsUpdatesData.data.length);
-      setSevaFormsCount(sevaFormsData.data.length);
+      setHallFormsCount(hallFormsData.data.length);
 
       // Now, handle gallery count with pagination
       let totalGalleryCount = 0;
@@ -79,10 +79,10 @@ const AdminPage = () => {
           </div>
         ) : (
           <>
-            <Link href="/admin/sevas">
+            <Link href="/admin/halls">
               <div className="flex flex-col items-center bg-green-500 text-white rounded-lg p-6 h-40 w-full sm:w-40 text-center cursor-pointer transition duration-200 hover:bg-green-600">
-                <CountAnimation count={sevasCount} />
-                <span className="text-lg font-bold">Sevas</span>
+                <CountAnimation count={hallsCount} />
+                <span className="text-lg font-bold">Halls</span>
               </div>
             </Link>
             <Link href="/admin/news-updates">
@@ -97,10 +97,10 @@ const AdminPage = () => {
                 <span className="text-lg font-bold">Gallery</span>
               </div>
             </Link>
-            <Link href="/admin/sevaforms">
+            <Link href="/admin/hallforms">
               <div className="flex flex-col items-center bg-teal-500 text-white rounded-lg p-6 h-40 w-full sm:w-40 text-center cursor-pointer transition duration-200 hover:bg-teal-600">
-                <CountAnimation count={sevaFormsCount} />
-                <span className="text-lg font-bold">Seva Forms</span>
+                <CountAnimation count={hallFormsCount} />
+                <span className="text-lg font-bold">Hall Forms</span>
               </div>
             </Link>
           </>
