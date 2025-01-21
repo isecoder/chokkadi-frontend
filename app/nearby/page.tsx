@@ -78,104 +78,154 @@ const placesContent: Record<
       },
       {
         name: "Shree Basaveshwara Temple",
-        description:
+        description: (
+          <span>
           "This temple is 12.1 Km from Shrirama Temple. Located 12.1 km from Shrirama Temple in Kulkunda, just 2 km from Subrahmanya. Here, Lord Shiva is worshipped in the form of the sacred bull (Basava).",
+         </span>
+        ),
         image: P3,
       },
       {
         name: "Shree Parivara Panchalingeshwara Temple, Panja",
-        description:
+        description: (
+          <span>
           "Shree Parivara Panchalingeshwara Temple, located in Panja village along the Manjeshwara-Puttur-Subrahmanya state highway, is a historic Hindu temple dating back to the 13th century. According to local legends, the five Shiva Lingams enshrined here were installed by the Pandavas during their exile, linking the temple to the Mahabharata. Devotees visit to perform rituals like Rudrabhisheka, seeking blessings for marriage and relief from personal crises. The temple hosts annual events such as Brahmarathotsava and monthly rituals believed to eliminate various doshas. It is approximately 18.5 km from Shrirama Temple. For more information, please contact the temple authorities at 08257 278355.",
+         </span>
+        ),
         image: P4,
       },
       {
         name: "Kanchodu Shri Manjunatheshwara Temple",
-        description:
+        description:(
+          <span>
           "Hindu pilgrimage site dedicated to Lord Shiva. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 10.3 km from Shrirama Temple.",
+        </span>),
         image: P5,
       },
       {
         name: "Kote Shri Subrahmanya Temple",
-        description:
+        description: (
+          <span>
           "Kote Subrahmanya Temple, near Kalanja village in Sullia Taluk, is dedicated to Lord Subrahmanya, known as the protector of serpents. Nestled amidst serene landscapes, it is a popular destination for blessings of protection, wisdom, and good health. This temple located at the distance of 4.7 km from Chokkadi.",
+         </span>
+        ),
         image: P19,
       },
       {
         name: "Shri Kshethra Dharmasthala",
-        description:
+        description: (
+          <span>
           "Major Hindu pilgrimage site dedicated to Lord Shiva, fostering religious harmony. Located 59.7 km from Shrirama Temple.",
+          </span>
+        ),
         image: P6,
       },
       {
         name: "Ajapila Shri Mahalingeshwara Temple",
-        description:
+        description: (
+          <span>
           "Hindu pilgrimage site dedicated to Lord Shiva located at Bellare, a mjor town in Sullia Taluk. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 8.9 km from Shrirama Temple.",
+          </span>
+        ),
         image: P7,
       },
       {
         name: "Shree Panchalingeshwara Temple,Ivarnadu",
-        description:
+        description: (
+          <span>
           "Shree Panchalingeshwara Temple, located in Ivarnadu village along the Sullia-Bellare road, is a historic Hindu temple dedicated to Lord Shiva. This temple located 10.1 km from Chokkadi.",
+         </span>
+        ),
         image: P8,
       },
       {
         name: "Shree Durgaparameshwari Temple,Kanjarpane",
-        description:
+        description: (
+          <span>
           "Shree DurgaparameshwariTemple, located in Amaramudnoor village.Dedicated to Goddess Durga. This temple is located approximately 5 km from Chokkadi.",
+         </span>
+        ),
         image: P9,
         },
       {
           name: "Shree Chennakeshava Temple,Sullia",
-          description:
+          description: (
+          <span>
             "Shri Chennakeshava Temple in Sullia, Karnataka, is an 850-year-old historic temple dedicated to Lord Chennakeshava, with daily rituals and an annual festival, 'Jatrotsava,' in January. Known for its serene environment, it is a cultural and spiritual hub for devotees. It is located 11.7 km from Chokkadi.",
-          image: P10,
+           </span>
+        ),
+        image: P10,
         },
         {
           name: "Shree Mallikarjuna Temple,Thodikana",
-          description:
+          description: (
+          <span>
             "Shree Mallikarjuna Temple in Thodikana, Karnataka, is a 13th-century temple dedicated to Lord Shiva, attracting numerous visitors weekly. Nearby attractions include the 'Meenugundi' fish tank and the Devaragundi waterfall, enhancing its cultural and natural appeal.It is located 28.6 km from Chokkadi.",
-          image: P11,
+           </span>
+        ),
+        image: P11,
         },
       {
         name: "Bisle Ghat Viewpoint",
-        description:
+        description: (
+          <span>
           "Known for scenic views of Kumara Parvatha and the Western Ghats, located 32.4 km from Shrirama Temple.",
+         </span>
+        ),
         image: P12,
       },
       {
         name: "Patla Betta",
-        description:
+        description: (
+          <span>
           "Picturesque hill in Sakleshpur, 40.5 km from Shrirama Temple, ideal for trekking.",
+         </span>
+        ),
         image: P13,
       },
       {
         name: "Mallalli Falls",
-        description:
+        description: (
+          <span>
           "200-foot waterfall in Coorg, best visited during the monsoon, formed by the Kumaradhara River. Located 57.3 km from Shrirama Temple.",
+         </span>
+        ),
         image: P14,
       },
       {
         name: "Kumara Parvatha Trek",
-        description:
+        description: (
+          <span>
           "Known as Pushpagiri, this challenging trek to the fourth-highest peak in the Western Ghats starts from the base camp in Kukke Subrahmanya, 10.1 km from Shrirama Temple.",
+         </span>
+        ),
         image: P15,
       },
       {
         name: "Mahathobhara Shri Mahalingeshwara Temple,Puttur",
-        description:
+        description: (
+          <span>
           "Mahathobhara Shri Mahalingeshwara Temple in Puttur, Karnataka, is a 12th-century temple dedicated to Lord Shiva, renowned for its grand festivals like Rathotsava and Mahashivaratri. Its legend ties to a sacred Shiva Linga immovably placed, symbolizing divine presence.It is located 41.9 km from Chokkadi",
+         </span>
+        ),
         image: P16,
       },
       {
         name: "Shri Durgaparameshwari Temple,Marakatha",
-        description:
+        description: (
+          <span>
           "Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a revered Hindu temple dedicated to Goddess Durga Parameshwari. Situated 31.8 km from Sullia and 26.8 km from Shrirama Temple in Chokkadi, it draws devotees seeking blessings and spiritual solace. Managed by local authorities, the temple hosts various rituals and festivals honoring the Goddess. For inquiries, please contact 08257 282166.",
+         </span>
+        ),
         image: P17,
       },
       {
         name: "Shri Jaladurga Devi Temple,Peruvaje",
-        description:
+        description: (
+          <span>
           "Shri Jaladurga Devi Temple, located in Peruvaje, Karnataka, is a historic temple dedicated to Goddess Jaladurga Devi, renowned for its annual fair and Brahmarathotsava festival.  The temple is beautifully adorned with various flowers during festivals, attracting numerous devotees.",
+         </span>
+        ),
         image: P18,
       },
     ],
@@ -187,6 +237,7 @@ const placesContent: Record<
         {
           name: "ಕುಕ್ಕೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
           description: (
+          <span> (
             <span>
               ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯ ಕರ್ನಾಟಕದ ಪ್ರಸಿದ್ಧ ಹಿಂದೂ ದೇವಸ್ಥಾನವಾಗಿದ್ದು, ನಾಗನ
               ರೂಪದಲ್ಲಿ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರನ್ನು ಆರಾಧಿಸಲಾಗುತ್ತದೆ. ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ
@@ -195,11 +246,14 @@ const placesContent: Record<
               ಚೊಕ್ಕಾಡಿಯಿಂದ 31.7 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.
             </span>
           ),
-          image: P1,
+           </span>
+        ),
+        image: P1,
         },
         {
           name: "ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ,ಹರಿಹರಪಳ್ಳತ್ತಡ್ಕ",
-          description: (
+          description: 
+           (
             <>
               ಈ ಪ್ರಾಚೀನ ದೇವಸ್ಥಾನ ಹರಿಹರಪಳ್ಳತಡ್ಕ ಗ್ರಾಮದಲ್ಲಿದ್ದು, ಚೊಕ್ಕಾಡಿಯಿಂದ 29.1
               ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಇದು ಹರಿ (ವಿಷ್ಣು) ಮತ್ತು ಹರರ (ಶಿವ) ದಿವ್ಯ
@@ -217,100 +271,153 @@ const placesContent: Record<
               </a>
               .
             </>
-          ),
-          image: P2,
+          
+           
+        ),
+        image: P2,
         },
         {
-          name:"ಕುಲ್ಕುಂದ ಶ್ರೀ ಬಸವೇಶ್ವರ ದೇವಸ್ಥಾನ", description: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 12.1 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಈ ಸ್ಥಳವು ಕುಲ್ಕುಂದದಲ್ಲಿ ಇದೆ ಹಾಗು ಇದು ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಕೇವಲ 2 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ. ಇಲ್ಲಿ ಶಿವ ದೇವರನ್ನು ಬಸವ (ಬಸವ) ರೂಪದಲ್ಲಿ ಪೂಜಿಸಲಾಗುತ್ತದೆ. ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರು ತಾರಕಾಸುರನ ಜೊತೆಗೆ ಯುದ್ಧ ಮಾಡಿದ ಸಂದರ್ಭದಲ್ಲಿ ಭಗವಾನ್ ಶಂಕರ ಬಸವನ ರೂಪದಲ್ಲಿ ಈ ಸ್ಥಳದಲ್ಲಿ ನೆಲೆ ನಿಂತು ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಿದರು ಎಂದು ಇಲ್ಲಿನ ಇತಿಹಾಸ ಹೇಳುತ್ತದೆ.",
-          image: P3,
+          name:"ಕುಲ್ಕುಂದ ಶ್ರೀ ಬಸವೇಶ್ವರ ದೇವಸ್ಥಾನ", description: (
+          <span> "ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 12.1 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಈ ಸ್ಥಳವು ಕುಲ್ಕುಂದದಲ್ಲಿ ಇದೆ ಹಾಗು ಇದು ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಕೇವಲ 2 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ. ಇಲ್ಲಿ ಶಿವ ದೇವರನ್ನು ಬಸವ (ಬಸವ) ರೂಪದಲ್ಲಿ ಪೂಜಿಸಲಾಗುತ್ತದೆ. ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರು ತಾರಕಾಸುರನ ಜೊತೆಗೆ ಯುದ್ಧ ಮಾಡಿದ ಸಂದರ್ಭದಲ್ಲಿ ಭಗವಾನ್ ಶಂಕರ ಬಸವನ ರೂಪದಲ್ಲಿ ಈ ಸ್ಥಳದಲ್ಲಿ ನೆಲೆ ನಿಂತು ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವರಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಿದರು ಎಂದು ಇಲ್ಲಿನ ಇತಿಹಾಸ ಹೇಳುತ್ತದೆ.",
+           </span>
+        ),
+        image: P3,
         },
         {
-          name: "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ,ಪಂಜ", description: "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಾಲಯವು ಪಂಜ ಗ್ರಾಮದಲ್ಲಿ 13ನೇ ಶತಮಾನದಿಂದ ಇತಿಹಾಸ ಹೊಂದಿರುವ ಪವಿತ್ರ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ. ಮಹಾಭಾರತದ ಕಾಲದಲ್ಲಿ ಪಾಂಡವರು ವನವಾಸದ ಸಮಯದಲ್ಲಿ ಐದು ಶಿವಲಿಂಗಗಳನ್ನು ಪ್ರತಿಷ್ಠಾಪಿಸಿದ್ದರೆಂಬ ಇತಿಹಾಸವಿದೆ. ವಿವಾಹ, ಸಂತಾನ ಫಲ, ಮತ್ತು ಮೃತ್ಯು ಕಂಟಕವಿರುವವರು ಇಲ್ಲಿ ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ ಮಾಡಿಸಿದರೆ ನಿವಾರಣೆಯಾಗುತ್ತದೆ ಎಂಬ ನಂಬಿಕೆಯಿದೆ. ಈ ದೇವಸ್ಥಾನವು ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಾಲಯದಿಂದ ಅಂದಾಜು 18.5 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದಯವಿಟ್ಟು ದೇವಾಲಯವನ್ನು ಸಂಪರ್ಕಿಸಿ: 08257 278355.",
-          image: P4,
+          name: "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ,ಪಂಜ", description: (
+          <span> "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಾಲಯವು ಪಂಜ ಗ್ರಾಮದಲ್ಲಿ 13ನೇ ಶತಮಾನದಿಂದ ಇತಿಹಾಸ ಹೊಂದಿರುವ ಪವಿತ್ರ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ. ಮಹಾಭಾರತದ ಕಾಲದಲ್ಲಿ ಪಾಂಡವರು ವನವಾಸದ ಸಮಯದಲ್ಲಿ ಐದು ಶಿವಲಿಂಗಗಳನ್ನು ಪ್ರತಿಷ್ಠಾಪಿಸಿದ್ದರೆಂಬ ಇತಿಹಾಸವಿದೆ. ವಿವಾಹ, ಸಂತಾನ ಫಲ, ಮತ್ತು ಮೃತ್ಯು ಕಂಟಕವಿರುವವರು ಇಲ್ಲಿ ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ ಮಾಡಿಸಿದರೆ ನಿವಾರಣೆಯಾಗುತ್ತದೆ ಎಂಬ ನಂಬಿಕೆಯಿದೆ. ಈ ದೇವಸ್ಥಾನವು ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಾಲಯದಿಂದ ಅಂದಾಜು 18.5 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದಯವಿಟ್ಟು ದೇವಾಲಯವನ್ನು ಸಂಪರ್ಕಿಸಿ: 08257 278355.",
+           </span>
+        ),
+        image: P4,
         },
         {
           name: "ಕಾಂಚೋಡು ಶ್ರೀ ಮಂಜುನಾಥೇಶ್ವರ ದೇವಸ್ಥಾನ",
-          description:
+          description: (
+          <span>
             "ಭಗವಾನ್ ಶಂಕರನನ್ನು ಪೂಜಿಸಲಾಗುವ ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಹಿಂದು ಕ್ಷೇತ್ರವಿದು. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 6.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P5,
+           </span>
+        ),
+        image: P5,
         },
         {
           name: "ಕೋಟೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
-          description:
+          description: (
+          <span>
             "ಕೋಟೆ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಕಳಂಜ ಗ್ರಾಮದ ಸಮೀಪದಲ್ಲಿದ್ದು, ಸರ್ಪರಕ್ಷಕನಾದ ಸುಬ್ರಹ್ಮಣ್ಯ ಸ್ವಾಮಿಗೆ ಸಮರ್ಪಿತವಾಗಿದೆ. ನದಿ, ಕಾಡು, ಪರ್ವತಗಳಿಂದ ಆವರಿಸಿರುವ ಶಾಂತ ಪರಿಸರದಲ್ಲಿರುವ ಈ ದೇವಸ್ಥಾನ ಭಕ್ತರಿಗೆ ರಕ್ಷಣಾ ಕೃಪೆ, ಜ್ಞಾನ ಮತ್ತು ಆರೋಗ್ಯದ ಆಶೀರ್ವಾದಕ್ಕಾಗಿ ಪ್ರಸಿದ್ಧವಾಗಿದೆ. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 4.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P19,
+           </span>
+        ),
+        image: P19,
         },
         {
-          name: "ಶ್ರೀ ಕ್ಷೇತ್ರ ಧರ್ಮಸ್ಥಳ", description: "ಭಗವಾನ್ ಶಂಕರನನ್ನು ಪೂಜಿಸಲಾಗುವ ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಹಿಂದು ಕ್ಷೇತ್ರವಿದು. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 59.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P6,
+          name: "ಶ್ರೀ ಕ್ಷೇತ್ರ ಧರ್ಮಸ್ಥಳ", description: (
+          <span> "ಭಗವಾನ್ ಶಂಕರನನ್ನು ಪೂಜಿಸಲಾಗುವ ರಾಜ್ಯದ ಪ್ರಸಿದ್ಧ ಹಿಂದು ಕ್ಷೇತ್ರವಿದು. ಶ್ರೀರಾಮ ದೇವಾಲಯದಿಂದ 59.7 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
+           </span>
+        ),
+        image: P6,
         },
         {
           name: "ಅಜಪಿಲ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ",
-          description:
+          description: (
+          <span>
             "ಸುಲ್ಯ ತಾಲೂಕಿನ ಬೆಳ್ಳಾರೆ ಪಟ್ಟಣದಲ್ಲಿರುವ ಮುಖ್ಯ ಕ್ಷೇತ್ರ.ಭಗವಾನ್‌ ಶಂಕರನನ್ನು ಪೂಜಿಸಲ್ಪಡುವ ದೇವಸ್ಥಾನವಿದು. ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 8.9 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P7,
+           </span>
+        ),
+        image: P7,
         },
         {
           name: "ಶ್ರೀ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ, ಐವರ್ನಾಡು",
-          description:
+          description: (
+          <span>
             "ಶ್ರೀ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ, ಸುಳ್ಯ-ಬೆಳ್ಳಾರೆ ರಸ್ತೆಯಲ್ಲಿರುವ ಐವರ್ನಾಡು ಗ್ರಾಮದಲ್ಲಿ ಶಿವ ದೇವರ ಪ್ರಾಚೀನ ದೇವಸ್ಥಾನ. ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 10.1 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P8,
+           </span>
+        ),
+        image: P8,
         },
         {
           name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಕಂಜರ್ಪಣೆ",
-          description:
+          description: (
+          <span>
             "ಅಮರಮುಡ್ನೂರು ಗ್ರಾಮದಲ್ಲಿ ತಾಯಿ ದುರ್ಗಾದೇವಿಯನ್ನು ಆರಾಧಿಸಲಾಗುವ ದೇವಸ್ಥಾನವಿದು. ಚೊಕ್ಕಾಡಿಯಿಂದ 5 ಕಿ.ಮೀ ದೂರದಲ್ಲಿ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನವಿದೆ .",
-          image: P9,
+           </span>
+        ),
+        image: P9,
         },
         {
           name: "ಶ್ರೀ ಚೆನ್ನಕೇಶವ ದೇವಸ್ಥಾನ, ಸುಳ್ಯ",
-          description:
+          description: (
+          <span>
             "ಸುಳ್ಯದಲ್ಲಿರುವ 850 ವರ್ಷಗಳ ಹಿಂದಿನ ಈ ಪ್ರಾಚೀನ ದೇವಸ್ಥಾನ ಶ್ರೀ ಚೆನ್ನಕೇಶವನಿಗೆ ಮೀಸಲಾಗಿದ್ದು ಚೊಕ್ಕಾಡಿಯಿಂದ 11.7 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P10,
+           </span>
+        ),
+        image: P10,
         },
         {
           name: "ಶ್ರೀ ಮಲ್ಲಿಕಾರ್ಜುನ ದೇವಸ್ಥಾನ, ತೊಡಿಕಾನ",
-          description:
+          description: (
+          <span>
             "ತೊಡಿಕಾನ ಶ್ರೀ ಮಲ್ಲಿಕಾರ್ಜುನ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಸುಂದರವಾದ ಕಾಡುಪ್ರದೇಶದ ಮಧ್ಯದಲ್ಲಿ ಸ್ಥಿತವಾಗಿದೆ. ಇದು ಶಿವನಿಗೆ ಸಮರ್ಪಿತ ಪ್ರಾಚೀನ ದೇವಾಲಯವಾಗಿದ್ದು, ಭಕ್ತರು ಶ್ರದ್ಧೆಯಿಂದ ಪೂಜಿಸಿ ದೇವರ ಆಶೀರ್ವಾದ ಪಡೆಯುತ್ತಾರೆ. ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 28.6 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P11,
+           </span>
+        ),
+        image: P11,
         },
         {
           name: "ಬಿಸ್ಲೆ ಘಾಟ್ ವೀಕ್ಷಣಾ ಸ್ಥಳ",
-          description:
+          description: (
+          <span>
             "ಕುಮಾರ ಪರ್ವತ ಮತ್ತು ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ ವಿಹಂಗಮ ನೋಟಕ್ಕೆ ಪ್ರಸಿದ್ಧಿಯಾಗಿರುವ ಈ ಸ್ಥಳವು ದಕ್ಷಿಣ ಕನ್ನಡ, ಹಾಸನ ಮತ್ತು ಕೊಡಗು ಜಿಲ್ಲೆಗಳ ಸಂಗಮವಾಗುವ ವೀಕ್ಷಣಾ ಸ್ಥಳವಾಗಿದ್ದು, ಚೊಕ್ಕಾಡಿಯಿಂದ 56.3 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P12,
+           </span>
+        ),
+        image: P12,
         },
         {
           name: "ಪಟ್ಲ ಬೆಟ್ಟ",
-          description:
+          description: (
+          <span>
             "ಚೊಕ್ಕಾಡಿಯಿಂದ 64.4 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಈ ಸ್ಥಳವು ಸಕಲೇಶಪುರದಲ್ಲಿ ಇರುವ ಒಂದು ಪ್ರಸಿದ್ಧ ಶಿಖರ. ಇಲ್ಲಿಂದ ಕುಮಾರ ಪರ್ವತ ಹಾಗು ಪುಷ್ಪಗಿರಿ ಸಾಲಿನ ಪರ್ವತ ಶಿಖರಗಳು ಕಾಣಲು ಸಿಗುತ್ತದೆ.",
-          image: P13,
+           </span>
+        ),
+        image: P13,
         },
         {
           name: "ಮಲ್ಲಳ್ಳಿ ಜಲಪಾತ",
-          description:
+          description: (
+          <span>
             "ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 81.2 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಕುಮಾರಧಾರ ನದಿಯಿಂದ ನಿರ್ಮಾಣಗೊಳ್ಳುವ ಈ 200 ಅಡಿ ಎತ್ತರದ ಜಲಪಾತವನ್ನು ನೋಡಲು ಮಳೆಗಾಲ ಹೇಳಿದ ಸಮಯ.",
-          image: P14,
+           </span>
+        ),
+        image: P14,
         },
         {
-          name: "ಕುಮಾರ ಪರ್ವತ ಚಾರಣ", description: "ಪುಷ್ಪಗಿರಿ ಎಂದೇ ಪ್ರಸಿದ್ಧ, ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ ಸಾಲಿನಲ್ಲಿರುವ ಕರ್ನಾಟಕ ರಾಜ್ಯದ ನಾಲ್ಕನೇ ಎತ್ತರದ ಶಿಖರವಾಗಿದೆ ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಆರಂಭವಾಗುವ ಚಾರಣ ದಕ್ಷಿಣ ಭಾರತದ ಕಠಿಣ ಚಾರಣಗಳಲ್ಲಿ ಒಂದು. ಚಾರಣ ಆರಂಭಗೊಳ್ಳುವ ಸ್ಥಳವಾದ ಸುಬ್ರಹ್ಮಣ್ಯದ ದೇವರಗದ್ದೆ ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 34.4 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P15,
+          name: "ಕುಮಾರ ಪರ್ವತ ಚಾರಣ", description: (
+          <span> "ಪುಷ್ಪಗಿರಿ ಎಂದೇ ಪ್ರಸಿದ್ಧ, ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ ಸಾಲಿನಲ್ಲಿರುವ ಕರ್ನಾಟಕ ರಾಜ್ಯದ ನಾಲ್ಕನೇ ಎತ್ತರದ ಶಿಖರವಾಗಿದೆ ಕುಕ್ಕೆ ಸುಬ್ರಹ್ಮಣ್ಯದಿಂದ ಆರಂಭವಾಗುವ ಚಾರಣ ದಕ್ಷಿಣ ಭಾರತದ ಕಠಿಣ ಚಾರಣಗಳಲ್ಲಿ ಒಂದು. ಚಾರಣ ಆರಂಭಗೊಳ್ಳುವ ಸ್ಥಳವಾದ ಸುಬ್ರಹ್ಮಣ್ಯದ ದೇವರಗದ್ದೆ ಶ್ರೀ ರಾಮ ದೇವಾಲಯದಿಂದ 34.4 ಕಿಮೀ ದೂರದಲ್ಲಿದೆ.",
+           </span>
+        ),
+        image: P15,
         },
         {
           name: "ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ, ಪುತ್ತೂರು",
-          description:
+          description: (
+          <span>
             "ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಪುತ್ತೂರಿನಲ್ಲಿರುವ 12ನೇ ಶತಮಾನದ ಶಿವನಿಗೆ ಮೀಸಲಾಗಿರುವ ಪ್ರಸಿದ್ಧ ದೇವಾಲಯವಾಗಿದೆ.ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 41.9 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.",
-          image: P16,
+           </span>
+        ),
+        image: P16,
         },
         {
-          name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಮರಕತ", description: "ಸುಳ್ಯ ತಾಲೂಕಿನ ಮರಕತದಲ್ಲಿರುವ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನವು ದುರ್ಗಾಪರಮೇಶ್ವರಿ ತಾಯಿ ದುರ್ಗೆಗೆ ಅರ್ಪಿತವಾದ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ.ಸುಳ್ಯದಿಂದ 25 ಕಿಲೋಮೀಟರ್ ಮತ್ತು ಚೊಕ್ಕಾಡಿಯಿಂದ 26.8 ಕಿಲೋಮೀಟರ್ ದೂರದಲ್ಲಿರುವ ಈ ದೇವಾಲಯವನ್ನು ಸ್ಥಳೀಯ ಆಡಳಿತವು ದೇವಾಲಯವನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ, ಇಲ್ಲಿ ವಿವಿಧ ಪೂಜೆಗಳು ಮತ್ತು ಉತ್ಸವಗಳು ನಡೆಯುತ್ತವೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದೇವಾಲಯದ ದೂರವಾಣಿ ಸಂಖ್ಯೆ 08257 282166 ಕರೆ ಮಾಡಬಹುದು.",
-          image: P17,
+          name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಮರಕತ", description: (
+          <span> "ಸುಳ್ಯ ತಾಲೂಕಿನ ಮರಕತದಲ್ಲಿರುವ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನವು ದುರ್ಗಾಪರಮೇಶ್ವರಿ ತಾಯಿ ದುರ್ಗೆಗೆ ಅರ್ಪಿತವಾದ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ.ಸುಳ್ಯದಿಂದ 25 ಕಿಲೋಮೀಟರ್ ಮತ್ತು ಚೊಕ್ಕಾಡಿಯಿಂದ 26.8 ಕಿಲೋಮೀಟರ್ ದೂರದಲ್ಲಿರುವ ಈ ದೇವಾಲಯವನ್ನು ಸ್ಥಳೀಯ ಆಡಳಿತವು ದೇವಾಲಯವನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ, ಇಲ್ಲಿ ವಿವಿಧ ಪೂಜೆಗಳು ಮತ್ತು ಉತ್ಸವಗಳು ನಡೆಯುತ್ತವೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದೇವಾಲಯದ ದೂರವಾಣಿ ಸಂಖ್ಯೆ 08257 282166 ಕರೆ ಮಾಡಬಹುದು.",
+           </span>
+        ),
+        image: P17,
         },
         {
           name: "ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಸ್ಥಾನ, ಪೆರುವಾಜೆ",
-          description:
+          description: (
+          <span>
             "ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಾಲಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಪೆರುವಾಜೆಯಲ್ಲಿದೆ. ತಾಯಿ ದುರ್ಗೆಗೆ ಮೀಸಲಾಗಿರುವ ಐತಿಹಾಸಿಕ ಹಿಂದು ದೇವಾಲಯವಾಗಿದೆ. ಈ ದೇವಾಲಯವು ಪ್ರತಿವರ್ಷ ನಡೆಯುವ ಜಾತ್ರೆ ಮಹೋತ್ಸವ ಮತ್ತು ಬ್ರಹ್ಮರಥೋತ್ಸವಕ್ಕೆ ಪ್ರಸಿದ್ಧವಾಗಿದೆ, ಇದು ಸಾವಿರಾರು ಭಕ್ತರನ್ನು ಆಕರ್ಷಿಸುತ್ತದೆ.",
-          image: P18,
+           </span>
+        ),
+        image: P18,
         },
       ],
     },
