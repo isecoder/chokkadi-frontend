@@ -23,7 +23,7 @@ import P15 from "/app/nearby/p15.jpeg";
 import P16 from "/app/nearby/p16.jpg";
 import P17 from "/app/nearby/p17.jpg";
 import P18 from "/app/nearby/p18.png";
-import P19 from "/app/nearby/p19.png";
+import P19 from "/app/nearby/p19.jpg";
 
 type LocaleType = "en" | "kn";
 type ImageType = typeof P1;
