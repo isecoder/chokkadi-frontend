@@ -71,7 +71,7 @@ const placesContent: Record<
             >
               www.shriharihareshwara.org
             </a>
-            .
+            
           </>
         ),
         image: P2,
@@ -269,7 +269,7 @@ const placesContent: Record<
               >
                 www.shriharihareshwara.org
               </a>
-              .
+              
             </>
           
            
