@@ -1,85 +1,95 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const images: string[] = [
   "/temple4.jpeg",
   "/hall.jpeg",
- "/img1.jpg",
- "/img2.jpeg",
+  "/img1.jpg",
+  "/templeside.jpg",
 ];
 
-const ImageSlider: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const transitionSlide = useCallback(
-    (nextPage: number) => {
-      if (isAnimating) return; // Prevent rapid clicking
-      setIsAnimating(true);
-      setTimeout(() => setIsAnimating(false), 500); // Animation delay
-      setCurrentPage(nextPage);
-    },
-    [isAnimating]
-  );
+const ImageCarousel: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleImages = 2; // Number of images visible at a time
 
   useEffect(() => {
     const interval = setInterval(() => {
-      transitionSlide((currentPage + 1) % images.length);
-    }, 5000);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change slides every 5 seconds
     return () => clearInterval(interval);
-  }, [currentPage, transitionSlide]);
+  }, []);
 
-  const handlePrevPage = () =>
-    transitionSlide((currentPage - 1 + images.length) % images.length);
-  const handleNextPage = () =>
-    transitionSlide((currentPage + 1) % images.length);
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
   return (
-    <div className="relative flex flex-col w-full bg-gradient-to-b from-white to-orange-200">
-      {/* Responsive heights for different screen sizes */}
-      <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[350px] overflow-hidden">
-        <div className="transition-transform duration-500 ease-in-out">
-          <Image
-            src={images[currentPage]}
-            alt={`Image ${currentPage + 1}`}
-            fill
-            sizes="100vw"
-            className="object-contain" // Ensures the image covers the container proportionally
-            priority
-          />
-        </div>
-        {/* Left arrow */}
+    <div className="relative w-full bg-gradient-to-b from-white to-orange-200">
+      {/* Carousel Container */}
+      <div className="relative w-full overflow-hidden">
         <div
-          onClick={handlePrevPage}
-          className="absolute inset-y-1/2 left-4 text-white text-2xl cursor-pointer hover:text-orange-500"
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * (100 / visibleImages)}%)`,
+          }}
         >
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </div>
-        {/* Right arrow */}
-        <div
-          onClick={handleNextPage}
-          className="absolute inset-y-1/2 right-4 text-white text-2xl cursor-pointer hover:text-orange-500"
-        >
-          <FontAwesomeIcon icon={faArrowRight} />
-        </div>
-        {/* Dots navigation */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {images.map((_, index) => (
+          {[
+            ...images,
+            ...images.slice(0, visibleImages - 1), // Loop images to handle overflow smoothly
+          ].map((image, index) => (
             <div
               key={index}
-              onClick={() => transitionSlide(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer ${
-                index === currentPage ? "bg-orange-500" : "bg-gray-400"
-              }`}
-            ></div>
+              className="flex-shrink-0 w-1/2 h-96 p-2"
+              style={{ flex: `0 0 calc(100% / ${visibleImages})` }}
+            >
+              <Image
+                src={image}
+                alt={`Slide ${index + 1}`}
+                width={1920}
+                height={1080}
+                className="w-full h-full object-cover rounded-md"
+              />
+            </div>
           ))}
         </div>
+        {/* Navigation Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+        >
+          &#8249;
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+        >
+          &#8250;
+        </button>
+      </div>
+      {/* Dots Navigation */}
+      <div className="flex justify-center mt-4 space-x-2">
+        {Array.from({
+          length: images.length,
+        }).map((_, index) => (
+          <div
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full cursor-pointer ${
+              currentIndex === index ? "bg-orange-500" : "bg-gray-400"
+            }`}
+          ></div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default ImageSlider;
+export default ImageCarousel;
