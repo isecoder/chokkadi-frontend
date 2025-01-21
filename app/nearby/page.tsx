@@ -6,23 +6,23 @@ import { RootState, AppDispatch } from "../store";
 import { changeLocale } from "../store/localeSlice";
 import Image from "next/image";
 import P1 from "/app/nearby/p1.jpg";
-import P2 from "/app/nearby/p2.jpg";
-import P3 from "/app/nearby/p3.jpeg";
-import P4 from "/app/nearby/p4.jpeg";
+import P2 from "/app/nearby/p2.jpeg";
+import P3 from "/app/nearby/p3.jpg";
+import P4 from "/app/nearby/p4.jpg";
 import P5 from "/app/nearby/p5.jpg";
-import P6 from "/app/nearby/p6.jpg";
-import P7 from "/app/nearby/p7.jpg";
-import P8 from "/app/nearby/p8.jpeg";
-import P9 from "/app/nearby/p9.jpg";
-import P10 from "/app/nearby/p10.jpeg";
-import P11 from "/app/nearby/p11.jpeg";
+import P6 from "/app/nearby/p6.jpeg";
+import P7 from "/app/nearby/p7.png";
+import P8 from "/app/nearby/p8.png";
+import P9 from "/app/nearby/p9.png";
+import P10 from "/app/nearby/p10.jpg";
+import P11 from "/app/nearby/p11.jpg";
 import P12 from "/app/nearby/p12.jpeg";
 import P13 from "/app/nearby/p13.jpeg";
 import P14 from "/app/nearby/p14.jpeg";
 import P15 from "/app/nearby/p15.jpeg";
-import P16 from "/app/nearby/p16.png";
+import P16 from "/app/nearby/p16.jpg";
 import P17 from "/app/nearby/p17.jpg";
-import P18 from "/app/nearby/p18.jpg";
+import P18 from "/app/nearby/p18.png";
 
 type LocaleType = "en" | "kn";
 type ImageType = typeof P1;
@@ -42,69 +42,75 @@ const placesContent: Record<
       {
         name: "Kukke Shri Subrahmanya Temple",
         description:
-          "Famous Hindu temple in Subrahmanya, located 8.8 km from Shri Rama Temple.",
+          "Kukke Subrahmanya is a famous Hindu temple in Karnataka, India, dedicated to Lord Subrahmanya (Kartikeyan), worshipped as the deity of serpents. Nestled amidst the lush Western Ghats, it is a significant pilgrimage center for rituals like Sarpa Samskara and Ashlesha Bali.It is located at 31.7Km from Chokkadi.",
         image: P1,
       },
       {
-        name: "Adi Subrahmanya Temple",
+        name: "Shri Harihareshwara Temple",
         description:
-          "Dedicated to Lord Subrahmanya, worshipped in the form of an ant hill (valmika) for serpent-related afflictions, located 9.3 km from Shri Rama Temple.",
+          "This ancient temple is situated at the village Hariharapallathadka, 29.1 kilometers away from Chokkadi. It is the abode of both Lord Vishnu (Hari) and Lord Shiva (Hara). A panoramic view of Shesha Parvatha (Western Ghats) can be seen from this temple, which is famous for Shani Pooja.",
         image: P2,
-      },
-      {
-        name: "Shri Subrahmanya Mutt",
-        description:
-          "A mutt belonging to the Dwaitha tradition, southeast of Kukke Shri Subrahmanya Temple, and 8.8 km from Shri Rama Temple. Oversees various temples, including the Shri Abhaya Ganapathi Temple and Sri Vanadurga Devi Temple.",
-        image: P3,
-      },
-      {
-        name: "Kashikatte Shri Ganapathi Temple",
-        description:
-          "Located beside the main road at Kashikatte in Subrahmanya, about 9.0 km from Shri Rama Temple. Includes temples of Ganapathi and Anjaneya.",
-        image: P4,
-      },
-      {
-        name: "Biladwara",
-        description:
-          "A historical cave, about 9.3 km from Shri Rama Temple, where Vasuki, the serpent king, is said to have hidden to escape from Garuda.",
-        image: P5,
-      },
-      {
-        name: "Shri Vanadurga Devi Temple",
-        description:
-          "Temple dedicated to Goddess Durga, about 9.6 km from Shri Rama Temple, known for daily poojas.",
-        image: P6,
-      },
-      {
-        name: "Shree Abhaya Mahaganapathi",
-        description:
-          "Located on the main road to Subrahmanya, 9.6 km from Shri Rama Temple. Features a 21-foot-tall monolithic statue of Lord Ganesha in Nepali style.",
-        image: P7,
-      },
-      {
-        name: "Agrahara Shri Somanatha Temple",
-        description:
-          "Known as Panchami Theertha, located 10.1 km from Shri Rama Temple, this temple is dedicated to Lord Shiva and serves as the entombment site of Shri Subrahmanya Mutt swamijis.",
-        image: P8,
       },
       {
         name: "Shree Basaveshwara Temple",
         description:
           "This temple is 12.1 Km from Shri Rama Temple. Located 12.1 km from Shri Rama Temple in Kulkunda, just 2 km from Subrahmanya. Here, Lord Shiva is worshipped in the form of the sacred bull (Basava).",
-        image: P9,
+        image: P3,
       },
       {
-        name: "Kumaradhara River (Bathing Ghat)",
+        name: "Shree Parivara Panchalingeshwara Temple, Panja",
         description:
-          "Traditional bathing ghat 10.3 km from Shri Rama Temple. Originates from Kumaraparvatha and joins the Arabian Sea.",
-        image: P10,
+          "Shree Parivara Panchalingeshwara Temple, located in Panja village along the Manjeshwara-Puttur-Subrahmanya state highway, is a historic Hindu temple dating back to the 13th century. According to local legends, the five Shiva Lingams enshrined here were installed by the Pandavas during their exile, linking the temple to the Mahabharata. Devotees visit to perform rituals like Rudrabhisheka, seeking blessings for marriage and relief from personal crises. The temple hosts annual events such as Brahmarathotsava and monthly rituals believed to eliminate various doshas. It is approximately 18.5 km from Shri Rama Temple. For more information, please contact the temple authorities at 08257 278355.",
+        image: P4,
+      },
+      {
+        name: "Kanchodu Shri Manjunatheshwara Temple",
+        description:
+          "Hindu pilgrimage site dedicated to Lord Shiva. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 10.3 km from Shri Rama Temple.",
+        image: P5,
       },
       {
         name: "Shri Kshethra Dharmasthala",
         description:
-          "Major Hindu pilgrimage site dedicated to Lord Shiva, fostering religious harmony. Located 62.2 km from Shri Rama Temple.",
-        image: P11,
+          "Major Hindu pilgrimage site dedicated to Lord Shiva, fostering religious harmony. Located 59.7 km from Shri Rama Temple.",
+        image: P6,
       },
+      {
+        name: "Ajapila Shri Mahalingeshwara Temple",
+        description:
+          "Hindu pilgrimage site dedicated to Lord Shiva located at Bellare, a mjor town in Sullia Taluk. It is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands. Located 8.9 km from Shri Rama Temple.",
+        image: P7,
+      },
+      {
+        name: "Shree Panchalingeshwara Temple,Ivarnadu",
+        description:
+          "Shree Panchalingeshwara Temple, located in Ivarnadu village along the Sullia-Bellare road, is a historic Hindu temple dedicated to Lord Shiva. This temple located 10.1 km from Chokkadi.",
+        image: P8,
+      },
+      {
+        name: "Shree Durgaparameshwari Temple,Kanjarpane",
+        description:
+          "Shree DurgaparameshwariTemple, located in Amaramudnoor village.Dedicated to Goddess Durga. This temple is located approximately 5 km from Chokkadi.",
+        image: P9,
+        },
+      {
+          name: "Shree Chennakeshava Temple,Sullia",
+          description:
+            "Shri Chennakeshava Temple in Sullia, Karnataka, is an 850-year-old historic temple dedicated to Lord Chennakeshava, with daily rituals and an annual festival, 'Jatrotsava,' in January. Known for its serene environment, it is a cultural and spiritual hub for devotees. It is located 11.7 km from Chokkadi.",
+          image: P10,
+        },
+        {
+          name: "Shree Chennakeshava Temple,Sullia",
+          description:
+            "Shri Chennakeshava Temple in Sullia, Karnataka, is an 850-year-old historic temple dedicated to Lord Chennakeshava, with daily rituals and an annual festival, 'Jatrotsava,' in January. Known for its serene environment, it is a cultural and spiritual hub for devotees. It is located 11.7 km from Chokkadi.",
+          image: P10,
+        },
+        {
+          name: "Shree Mallikarjuna Temple,Thodikana",
+          description:
+            "Shree Mallikarjuna Temple in Thodikana, Karnataka, is a 13th-century temple dedicated to Lord Shiva, attracting numerous visitors weekly. Nearby attractions include the 'Meenugundi' fish tank and the Devaragundi waterfall, enhancing its cultural and natural appeal.It is located 28.6 km from Chokkadi.",
+          image: P11,
+        },
       {
         name: "Bisle Ghat Viewpoint",
         description:
@@ -130,21 +136,21 @@ const placesContent: Record<
         image: P15,
       },
       {
-        name: "Kochila Shree Mayuravahana Subrahmanya Swamy Temple",
+        name: "Mahathobhara Shri Mahalingeshwara Temple,Puttur",
         description:
-          "Located in Katta village. Lord Subrahmanya is worshipped here.",
+          "Mahathobhara Shri Mahalingeshwara Temple in Puttur, Karnataka, is a 12th-century temple dedicated to Lord Shiva, renowned for its grand festivals like Rathotsava and Mahashivaratri. Its legend ties to a sacred Shiva Linga immovably placed, symbolizing divine presence.It is located 41.9 km from Chokkadi",
         image: P16,
       },
       {
         name: "Shri Durgaparameshwari Temple,Marakatha",
         description:
-          "Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a revered Hindu temple dedicated to Goddess Durga Parameshwari. Situated 25 km from Sullia and 9.1 km from Shri Rama Temple in Hariharapallathadka, it draws devotees seeking blessings and spiritual solace. Managed by local authorities, the temple hosts various rituals and festivals honoring the Goddess. For inquiries, please contact 08257 282166.",
+          "Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a revered Hindu temple dedicated to Goddess Durga Parameshwari. Situated 31.8 km from Sullia and 26.8 km from Shri Rama Temple in Chokkadi, it draws devotees seeking blessings and spiritual solace. Managed by local authorities, the temple hosts various rituals and festivals honoring the Goddess. For inquiries, please contact 08257 282166.",
         image: P17,
       },
       {
-        name: "Shree Parivara Panchalingeshwara Temple, Panja",
+        name: "Shri Jaladurga Devi Temple,Peruvaje",
         description:
-          "Shree Parivara Panchalingeshwara Temple, located in Panja village along the Manjeshwara-Puttur-Subrahmanya state highway, is a historic Hindu temple dating back to the 13th century. According to local legends, the five Shiva Lingams enshrined here were installed by the Pandavas during their exile, linking the temple to the Mahabharata. Devotees visit to perform rituals like Rudrabhisheka, seeking blessings for marriage and relief from personal crises. The temple hosts annual events such as Brahmarathotsava and monthly rituals believed to eliminate various doshas. It is approximately 20.1 km from Shri Rama Temple. For more information, please contact the temple authorities at 08257 278355.",
+          "Shri Jaladurga Devi Temple, located in Peruvaje, Karnataka, is a historic temple dedicated to Goddess Jaladurga Devi, renowned for its annual fair and Brahmarathotsava festival.  The temple is beautifully adorned with various flowers during festivals, attracting numerous devotees.",
         image: P18,
       },
     ],
