@@ -33,7 +33,7 @@ const placesContent: Record<
   {
     title: string;
     buttonLabel: string;
-    places: { name: string; description: string; image: ImageType }[];
+    places: { name: string; description: JSX.Element; image: ImageType }[];
   }
 > = {
   en: {
@@ -50,11 +50,12 @@ const placesContent: Record<
         name: "Shri Harihareshwara Temple",
         description: (
           <>
-            This ancient temple is situated at the village Hariharapallathadka, 29.1
-            kilometers away from Chokkadi. It is the abode of both Lord Vishnu (Hari)
-            and Lord Shiva (Hara). A panoramic view of Shesha Parvatha (Western
-            Ghats) can be seen from this temple, which is famous for Shani Pooja. For
-            more information and Seva booking, visit the website:{" "}
+            This ancient temple is situated at the village Hariharapallathadka,
+            29.1 kilometers away from Chokkadi. It is the abode of both Lord
+            Vishnu (Hari) and Lord Shiva (Hara). A panoramic view of Shesha
+            Parvatha (Western Ghats) can be seen from this temple, which is
+            famous for Shani Pooja. For more information and Seva booking, visit
+            the website:{" "}
             <a
               href="http://www.shriharihareshwara.org"
               target="_blank"
@@ -67,7 +68,7 @@ const placesContent: Record<
           </>
         ),
         image: P2,
-      },      
+      },
       {
         name: "Shree Basaveshwara Temple",
         description:
@@ -186,7 +187,12 @@ const placesContent: Record<
           name: "ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಸ್ಥಾನ,ಹರಿಹರಪಳ್ಳತ್ತಡ್ಕ",
           description: (
             <>
-              ಈ ಪ್ರಾಚೀನ ದೇವಸ್ಥಾನ ಹರಿಹರಪಳ್ಳತಡ್ಕ ಗ್ರಾಮದಲ್ಲಿದ್ದು, ಚೊಕ್ಕಾಡಿಯಿಂದ 29.1 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಇದು ಹರಿ (ವಿಷ್ಣು) ಮತ್ತು ಹರರ (ಶಿವ) ದಿವ್ಯ ಸನ್ನಿಧಿಯನ್ನು ಹೊಂದಿದ ಕ್ಷೇತ್ರವಾಗಿದೆ. ಈ ದೇವಸ್ಥಾನದಿಂದ ಶೇಷ ಪರ್ವತ ಹಾಗು ಪಶ್ಚಿಮ ಘಟ್ಟದ ಪರ್ವತಗಳ ಸಾಲನ್ನು ಕಾಣಬಹುದು. ಇದು ಶನಿ ಪೂಜೆಗೆ ಪ್ರಸಿದ್ಧವಾದ ಕ್ಷೇತ್ರವಾಗಿದೆ.ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ಸೇವಾ ಬುಕಿಂಗ್‌ಗಾಗಿ ದಯವಿಟ್ಟು ವೆಬ್‌ಸೈಟ್‌ಗೆ ಭೇಟಿ ನೀಡಿ:{" "}
+              ಈ ಪ್ರಾಚೀನ ದೇವಸ್ಥಾನ ಹರಿಹರಪಳ್ಳತಡ್ಕ ಗ್ರಾಮದಲ್ಲಿದ್ದು, ಚೊಕ್ಕಾಡಿಯಿಂದ 29.1
+              ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಇದು ಹರಿ (ವಿಷ್ಣು) ಮತ್ತು ಹರರ (ಶಿವ) ದಿವ್ಯ
+              ಸನ್ನಿಧಿಯನ್ನು ಹೊಂದಿದ ಕ್ಷೇತ್ರವಾಗಿದೆ. ಈ ದೇವಸ್ಥಾನದಿಂದ ಶೇಷ ಪರ್ವತ ಹಾಗು
+              ಪಶ್ಚಿಮ ಘಟ್ಟದ ಪರ್ವತಗಳ ಸಾಲನ್ನು ಕಾಣಬಹುದು. ಇದು ಶನಿ ಪೂಜೆಗೆ ಪ್ರಸಿದ್ಧವಾದ
+              ಕ್ಷೇತ್ರವಾಗಿದೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ಮತ್ತು ಸೇವಾ ಬುಕಿಂಗ್‌ಗಾಗಿ ದಯವಿಟ್ಟು
+              ವೆಬ್‌ಸೈಟ್‌ಗೆ ಭೇಟಿ ನೀಡಿ:{" "}
               <a
                 href="http://www.shriharihareshwara.org"
                 target="_blank"
