@@ -32,7 +32,7 @@ const footerText: Record<
       title: "QUICK LINKS",
       links: [
         { name: "HOME", path: "/" },
-        { name: "ABOUT", path: "/history" },
+        { name: "ABOUT", path: "/administration" },
         { name: "HALL BOOKING", path: "/booking" },
         { name: "NEWS", path: "/newsupdates" },
         { name: "GALLERY", path: "/gallery" },
