@@ -21,10 +21,10 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     email: "E-mail: srtchokkadi@gmail.com"
   },
   kn: {
-    postalAddress: "ದೇವಸ್ಥಾನದ ವಿಳಾಸ",
+    postalAddress: "ದೇವಾಲಯದ ವಿಳಾಸ",
     contactDetails: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
-    address: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, ಚೊಕ್ಕಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
+    address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
     phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +918481286745",
     tele: "ದೂರವಾಣಿ: 08257200585",
     president: "ಅಧ್ಯಕ್ಷರು: +919448625254",
@@ -53,33 +53,33 @@ const Contact: React.FC = () => {
         title="Contact Shri Rama Temple, Chokkadi"
         description="Get in touch with the Shri Rama Temple in Chokkadi for inquiries, visits, or support. We welcome your communication and support."
         image="https://yourwebsite.com/images/temple-contact.jpg" // Replace with actual image URL
-        url="http://www.shriramatemplechokkadi.org/contact"
+        url="http://www.srtchokkadi.org/contact"
       />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FFEB9B] to-[#FFEB9B] p-10 relative font-serif">
         <div className="flex flex-col lg:flex-row w-full max-w-5xl gap-10">
           {/* Address and Contact Details */}
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="text-red-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.postalAddress}</h2>
-            <p className="text-gray-800 mb-8">{text.address}</p>
+            <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.postalAddress}</h2>
+            <p className="text-green-600 mb-8">{text.address}</p>
 
-            <h2 className="text-red-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
-            <p className="text-gray-800">
+            <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
+            <p className="text-green-600">
               <strong>{text.phone}</strong>
             </p>
             <p>
-              <strong>{text.tele}</strong>
+              <strong className="text-green-600">{text.tele}</strong>
             </p>
-            <p className="text-gray-800">
+            <p className="text-green-600">
               <strong>{text.president}</strong>
             </p>
             <p>
-              <strong>{text.email}</strong>
+              <strong className="text-green-600">{text.email}</strong>
             </p>
           </div>
 
           {/* Google Map */}
           <div className="flex-1">
-            <h2 className="text-red-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.googleMap}</h2>
+            <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.googleMap}</h2>
             <div className="border border-gray-300 shadow-lg">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.5709138746074!2d75.41289837131286!3d12.62628846155243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4edcaff21607d%3A0xa945aecb849c2572!2sSri%20Rama%20Temple!5e1!3m2!1sen!2sin!4v1737099808615!5m2!1sen!2sin"
