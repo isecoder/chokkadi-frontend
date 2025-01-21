@@ -6,6 +6,7 @@ import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import Banner from "@/app/components/banner";
+import KBanner from "@/app/components/kbanner";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
 interface NavLink {
@@ -39,13 +40,13 @@ export default function Navbar() {
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // Access the current locale from Redux
+  const currentLocale = useSelector((state: RootState) => state.locale.locale);
+
   // Set mounted to true after the component has mounted
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Access current locale from Redux state
-  const currentLocale = useSelector((state: RootState) => state.locale.locale);
 
   // Handle undefined or fallback state
   if (!mounted) {
@@ -61,13 +62,15 @@ export default function Navbar() {
 
   return (
     <>
-      <Banner />
+      {/* Conditionally Render Banner or KBanner */}
+      {currentLocale === "en" ? <Banner /> : <KBanner />}
+
       <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg mt-8">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
-          {/* Updated Shrirama Temple link */}
+          {/* Update Shrirama Temple with locale */}
           <div className="flex items-center space-x-2 h-full">
             <Link href="/" onClick={closeMenu} className="text-lg font-bold text-[#8B0000] hover:underline">
-              Shrirama Temple
+              {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
             </Link>
             <div className="w-[3px] bg-[#DD860B] h-10"></div>
           </div>
@@ -130,7 +133,7 @@ export default function Navbar() {
           }`}
         >
           {navLinks.map(({ href, label, subLinks }) => (
-            <div key={label.en} className="relative ">
+            <div key={label.en} className="relative">
               <Link
                 href={href}
                 onClick={subLinks ? toggleAboutDropdown : closeMenu}
