@@ -107,12 +107,6 @@ const placesContent: Record<
           image: P10,
         },
         {
-          name: "Shree Chennakeshava Temple,Sullia",
-          description:
-            "Shri Chennakeshava Temple in Sullia, Karnataka, is an 850-year-old historic temple dedicated to Lord Chennakeshava, with daily rituals and an annual festival, 'Jatrotsava,' in January. Known for its serene environment, it is a cultural and spiritual hub for devotees. It is located 11.7 km from Chokkadi.",
-          image: P10,
-        },
-        {
           name: "Shree Mallikarjuna Temple,Thodikana",
           description:
             "Shree Mallikarjuna Temple in Thodikana, Karnataka, is a 13th-century temple dedicated to Lord Shiva, attracting numerous visitors weekly. Nearby attractions include the 'Meenugundi' fish tank and the Devaragundi waterfall, enhancing its cultural and natural appeal.It is located 28.6 km from Chokkadi.",
