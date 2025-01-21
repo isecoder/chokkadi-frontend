@@ -14,21 +14,21 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
-    address: "Shri Rama Temple Chokkadi\nAmarapadnur village,Sullia Taluk,\n Dakshina Kannada\n PIN - 574248",
-    phone: "Contact Number:9481286745",
-    tele: "phone Number: 8139982584",
-    president: "President: ",
-    email: "E-mail: shriRama@gmail.com"
+    address: "Shri Rama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574248",
+    phone: "Contact Number: +918481286745",
+    tele: "Telephone Number: 08139982584",
+    president: "President: +918431321850",
+    email: "E-mail: shriramatemple@gmail.com"
   },
   kn: {
     postalAddress: "ದೇವಸ್ಥಾನದ ವಿಳಾಸ",
     contactDetails: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
-    address: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, \nಚೊಕ್ಕಡಿ,ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, \nದ.ಕ.ಪಿನ್ - 574248",
-    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: 9481286745",
-    tele: "ದೂರವಾಣಿ: 8139982584",
-    president: "ಅಧ್ಯಕ್ಷರು: +",
-    email: "ಇ-ಮೇಲ್: shriRama@gmail.com"
+    address: "ಶ್ರೀ ರಾಮ ದೇವಸ್ಥಾನ, ಚೊಕ್ಕಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574248",
+    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +918481286745",
+    tele: "ದೂರವಾಣಿ: 08139982584",
+    president: "ಅಧ್ಯಕ್ಷರು: +918431321850",
+    email: "ಇ-ಮೇಲ್: shriramatemple@gmail.com"
   }
 };
 
@@ -50,10 +50,10 @@ const Contact: React.FC = () => {
   return (
     <>
       <SEOComponent
-        title="Contact Shri Rama Temple"
-        description="Get in touch with the Shri Rama Temple for inquiries, visits, or support. We welcome your communication and support."
+        title="Contact Shri Rama Temple, Chokkadi"
+        description="Get in touch with the Shri Rama Temple in Chokkadi for inquiries, visits, or support. We welcome your communication and support."
         image="https://yourwebsite.com/images/temple-contact.jpg" // Replace with actual image URL
-        url="http://www.shriRama.org/contact"
+        url="http://www.shriramatemplechokkadi.org/contact"
       />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#FFEB9B] to-[#FFEB9B] p-10 relative font-serif">
         <div className="flex flex-col lg:flex-row w-full max-w-5xl gap-10">
@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Google Map */}
-          {/* <div className="flex-1">
+          <div className="flex-1">
             <h2 className="text-red-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.googleMap}</h2>
             <div className="border border-gray-300 shadow-lg">
               <iframe
@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Bottom orange bar */}
