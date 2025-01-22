@@ -100,7 +100,8 @@ const BookingPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage("Phone number verified successfully!");
+        setMessage("Phone number verified ");
+        alert("Phone number verified successfully!");
         setIsVerified(true); // Mark as verified
       } else {
         setMessage(`Error: ${data.message || "Invalid OTP"}`);
@@ -148,6 +149,7 @@ const BookingPage = () => {
 
       if (response.ok) {
         setMessage("Booking successful!");
+        alert("Booking successful!");
         setName("");
         setReason("");
         setMobileNumber("");
@@ -156,6 +158,7 @@ const BookingPage = () => {
         setSelectedHallId(null);
       } else {
         setMessage(`Error: ${data.message || "Something went wrong"}`);
+        alert(data.message || "Please try again later.");
       }
     } catch (error) {
       setMessage("Error: Failed to submit form");
@@ -198,16 +201,16 @@ const BookingPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Book a Hall</h1>
+    <div className="container max-w-prose mx-auto  p-4 mb-80">
+      <h1 className="text-2xl font-bold mb-6 mt-10 text-center">Book a Hall</h1>
 
       {!selectedHallId ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4  justify-center">
           {halls.map((hall) => (
             <div
               key={hall.hall_id}
               onClick={() => setSelectedHallId(hall.hall_id)}
-              className="border p-4 rounded cursor-pointer hover:bg-gray-100 text-center"
+              className="border p-4 rounded cursor-pointer   hover:bg-gray-100 text-center"
             >
               <h2 className="text-xl font-semibold">{hall.name}</h2>
               <p className="text-gray-600">{hall.description}</p>
@@ -309,10 +312,7 @@ const BookingPage = () => {
             />
           </div>
 
-          {message && (
-            <div className="text-center text-sm text-red-500">{message}</div>
-          )}
-
+          
           <div>
             <button
               type="submit"
@@ -327,7 +327,7 @@ const BookingPage = () => {
 
       {message && (
         <div className="mt-4 text-center">
-          <p className="text-lg">{message}</p>
+          <p className="text-xl">{message}</p>
         </div>
       )}
     </div>
