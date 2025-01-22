@@ -156,19 +156,25 @@ export default function Navbar() {
             {navLinks.map(({ href, label, subLinks }) => (
               <div key={label.en} className="w-full relative">
                 <Link
-                  href={href || "#"}
-                  onClick={() => subLinks && handleMobileDropdownToggle(label.en)}
-                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
-                >
-                  {label[currentLocale as "en" | "kn"]}
-                  {subLinks && (
-                    <FaChevronDown
-                      className={`ml-2 transition-transform duration-200 ${
-                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  )}
-                </Link>
+      href={href || "#"}
+      onClick={() => {
+        if (!subLinks) {
+          closeMenu(); // Close menu if no sublinks
+        } else {
+          handleMobileDropdownToggle(label.en); // Toggle dropdown if sublinks exist
+        }
+      }}
+      className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
+    >
+      {label[currentLocale as "en" | "kn"]} 
+      {subLinks && (
+        <FaChevronDown
+          className={`ml-2 transition-transform duration-200 ${
+            dropdownOpen === label.en ? "rotate-180" : "rotate-0"
+          }`}
+        />
+      )}
+    </Link>
                 {subLinks && dropdownOpen === label.en && (
                   <div className="pl-8 flex flex-col bg-[#FFF9E6]">
                     {subLinks.map((subLink) => (
