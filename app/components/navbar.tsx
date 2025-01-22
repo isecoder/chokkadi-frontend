@@ -99,9 +99,11 @@ export default function Navbar() {
                 className="relative group"
                 onMouseEnter={() => subLinks && handleMouseEnter(label.en)}
                 onMouseLeave={handleMouseLeave}
-              >
+              > 
+
+              
                 <Link
-                  href={href || "#"}
+                  href={href || ""}
                   className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
                 >
                   {label[currentLocale as "en" | "kn"]}
@@ -156,12 +158,13 @@ export default function Navbar() {
             {navLinks.map(({ href, label, subLinks }) => (
               <div key={label.en} className="w-full relative">
                 <Link
-      href={href || "#"}
-      onClick={() => {
+      href={href || ""}
+      onClick={(e) => {
         if (!subLinks) {
-          closeMenu(); // Close menu if no sublinks
+          closeMenu(); 
         } else {
-          handleMobileDropdownToggle(label.en); // Toggle dropdown if sublinks exist
+          e.preventDefault();
+          handleMobileDropdownToggle(label.en); 
         }
       }}
       className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
