@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Commenting out rewrites functionality
-  /*
+
   async rewrites() {
     return [
       {
@@ -11,9 +11,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  */
+
   // Commenting out images configuration
-  /*
   images: {
     remotePatterns: [
       {
@@ -26,7 +25,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  */
 };
 
 export default nextConfig;
