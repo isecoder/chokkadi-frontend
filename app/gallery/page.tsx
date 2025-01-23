@@ -5,10 +5,44 @@ import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ImageModal from "../components/ImageModal";
 
+interface GalleryImage {
+  image_id: number;
+  alt_text: string;
+  file_path: string;
+}
+
+interface GalleryItem {
+  gallery_id: number;
+  title: string;
+  image_id: number;
+  Images: GalleryImage;
+}
+
+interface GalleryResponse {
+  statusCode: number;
+  message: string;
+  data: GalleryItem[];
+}
+
+interface BatchImage {
+  image_id: number;
+  alt_text: string;
+  public_url: string;
+}
+
+interface BatchResponse {
+  statusCode: number;
+  message: string;
+  data: {
+    images: BatchImage[];
+  };
+}
+
 interface ImageData {
   image_id: number;
   alt_text: string;
   public_url: string;
+  title: string;
 }
 
 export default function Gallery(): JSX.Element {
@@ -20,23 +54,69 @@ export default function Gallery(): JSX.Element {
   const [currentIndex, setCurrentIndex] = useState(0);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
+  const fetchGalleryData = async (): Promise<GalleryItem[]> => {
+    try {
+      const res = await fetch(`/api/gallery`, { cache: "no-store" });
+      if (!res.ok) throw new Error("Failed to fetch gallery data");
+      const data: GalleryResponse = await res.json();
+      return data.data;
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        text: "Failed to load gallery data. Please try again.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      }).then(() => location.reload());
+      return [];
+    }
+  };
+
+  const fetchBatchImages = async (
+    currentPage: number
+  ): Promise<BatchImage[]> => {
+    try {
+      const res = await fetch(`/api/images/batch?size=5&page=${currentPage}`, {
+        cache: "no-store",
+      });
+      if (!res.ok) throw new Error("Failed to fetch batch images");
+      const data: BatchResponse = await res.json();
+      return data.data.images;
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        text: "Failed to load images. Please try again.",
+        icon: "error",
+        confirmButtonText: "Retry",
+      }).then(() => location.reload());
+      return [];
+    }
+  };
+
   const fetchImages = useCallback(async (currentPage: number) => {
     setLoading(true);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
-
     try {
-      const res = await fetch(`/api/images/batch?limit=5&page=${currentPage}`, {
-        cache: "no-store",
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId);
+      const galleryData = await fetchGalleryData();
+      const batchImages = await fetchBatchImages(currentPage);
 
-      if (!res.ok) throw new Error("Failed to load images");
+      // Map gallery data with public URLs from batchImages
+      const newImages: ImageData[] = galleryData
+        .map((galleryItem) => {
+          const matchingBatchImage = batchImages.find(
+            (batchImage) => batchImage.image_id === galleryItem.Images.image_id
+          );
+          return (
+            matchingBatchImage && {
+              image_id: matchingBatchImage.image_id,
+              alt_text:
+                matchingBatchImage.alt_text || "No description available",
+              public_url: matchingBatchImage.public_url,
+              title: galleryItem.title, // Map the title here
+            }
+          );
+        })
+        .filter((image): image is ImageData => !!image); // Filter out null/undefined matches
 
-      const data = await res.json();
-      const newImages: ImageData[] = data?.data?.images || [];
-      setHasMore(newImages.length > 0);
+      setHasMore(batchImages.length > 0);
       setImages((prev) => [
         ...prev,
         ...newImages.filter(
@@ -44,15 +124,8 @@ export default function Gallery(): JSX.Element {
         ),
       ]);
     } catch (error) {
-      if ((error as Error).name === "AbortError") {
-        Swal.fire({
-          text: "The request took too long and was aborted. Please try again.",
-          icon: "info",
-          confirmButtonText: "Reload",
-        }).then(() => location.reload());
-      }
+      console.error(error);
     } finally {
-      clearTimeout(timeoutId);
       setLoading(false);
     }
   }, []);
@@ -100,7 +173,7 @@ export default function Gallery(): JSX.Element {
   };
 
   return (
-    <div className="relative px-4 md:px-8 lg:px-16">
+    <div className="relative px-4 md:px-8 lg:px-16 mb-10">
       {loading && <LoadingSpinner />}
 
       {/* Centered Title for the Temple */}
@@ -115,9 +188,10 @@ export default function Gallery(): JSX.Element {
           {images.map((image, index) => (
             <div
               key={image.image_id}
-              className="relative w-full h-48 cursor-pointer overflow-hidden"
+              className="relative w-full h-48 cursor-pointer overflow-hidden group"
               onClick={() => openImageModal(index)}
             >
+              {/* Image */}
               <Image
                 src={image.public_url}
                 alt={image.alt_text}
@@ -125,6 +199,12 @@ export default function Gallery(): JSX.Element {
                 loading="lazy"
                 className="object-cover transition-transform duration-300 hover:scale-105"
               />
+              {/* Title Hover Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="text-white text-lg font-semibold">
+                  {image.title}
+                </p>
+              </div>
             </div>
           ))}
           <div

@@ -1,48 +1,150 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 
+import Image from "next/image"; // Import the Image component from next/image
+
+// Define the type for the hall image
+
+interface HallImage {
+  id: number;
+
+  hall_id: number;
+
+  image_id: number;
+
+  Images: {
+    image_id: number;
+
+    alt_text: string;
+
+    file_path: string;
+
+    public_url: string; // Assuming this is part of the image data
+  };
+}
+
 // Define the type for the hall object
+
 interface Hall {
   hall_id: string;
+
   name: string;
+
   description: string;
+
+  HallImages: HallImage[]; // Array of images associated with the hall
+
+  images: string[]; // Array to hold image URLs
+}
+
+// Define the type for the halls API response
+
+interface HallsResponse {
+  statusCode: number;
+
+  message: string;
+
+  data: Hall[];
+}
+
+// Define the type for the images API response
+
+interface ImagesResponse {
+  statusCode: number;
+
+  message: string;
+
+  data: {
+    images: {
+      image_id: number;
+
+      alt_text: string;
+
+      file_path: string;
+
+      public_url: string;
+    }[];
+  };
 }
 
 const BookingPage = () => {
   const [halls, setHalls] = useState<Hall[]>([]); // Specify the type as Hall[]
+
   const [selectedHallId, setSelectedHallId] = useState<string | null>(null);
+
   const [name, setName] = useState<string>("");
+
   const [reason, setReason] = useState<string>("");
+
   const [mobileNumber, setMobileNumber] = useState<string>("");
+
   const [otp, setOtp] = useState<string>("");
+
   const [message, setMessage] = useState<string>("");
+
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   const [isVerified, setIsVerified] = useState<boolean>(false); // Flag for OTP verification status
+
   const [date, setDate] = useState<string>("");
+
   const [isOtpSent, setIsOtpSent] = useState<boolean>(false); // Track OTP sent status
+
   const [otpTimeout, setOtpTimeout] = useState<number>(60); // Timeout for OTP in seconds
 
-  // Fetch halls on component mount
+  // Fetch halls and images on component mount
+
   useEffect(() => {
-    const fetchHalls = async () => {
+    const fetchHallsAndImages = async () => {
       try {
-        const response = await fetch("/api/halls");
-        const responseData = await response.json(); // Get the response
-        if (
-          responseData.statusCode === 200 &&
-          Array.isArray(responseData.data)
-        ) {
-          setHalls(responseData.data); // Set the halls data
+        const hallsResponse = await fetch("/api/halls");
+
+        const hallsData: HallsResponse = await hallsResponse.json();
+
+        if (hallsData.statusCode === 200 && Array.isArray(hallsData.data)) {
+          const imagesResponse = await fetch("/api/images/batch");
+
+          const imagesData: ImagesResponse = await imagesResponse.json();
+
+          if (imagesData.statusCode === 200) {
+            // Create a mapping of image_id to public_url
+
+            const imageMap = imagesData.data.images.reduce(
+              (acc: { [key: number]: string }, image) => {
+                acc[image.image_id] = image.public_url;
+
+                return acc;
+              },
+
+              {}
+            );
+
+            // Map halls to include the corresponding image URLs
+
+            const updatedHalls = hallsData.data.map((hall) => ({
+              ...hall,
+
+              images: hall.HallImages.map(
+                (img) => imageMap[img.image_id]
+              ).filter(Boolean), // Get public URLs
+            }));
+
+            setHalls(updatedHalls); // Set the halls data with images
+          } else {
+            setMessage("Error: Invalid images data format.");
+          }
         } else {
-          setMessage("Error: Invalid data format.");
+          setMessage("Error: Invalid halls data format.");
         }
       } catch (error) {
-        console.error("Failed to fetch halls", error);
-        setMessage("Error: Could not fetch hall data.");
+        console.error("Failed to fetch halls or images", error);
+
+        setMessage("Error: Could not fetch hall or image data.");
       }
     };
 
-    fetchHalls();
+    fetchHallsAndImages();
   }, []);
 
   const handleSendOtp = async () => {
@@ -201,19 +303,40 @@ const BookingPage = () => {
   };
 
   return (
-    <div className="container max-w-prose mx-auto  p-4 mb-80">
+    <div className="container max-w-prose mx-auto p-4 mb-80">
       <h1 className="text-2xl font-bold mb-6 mt-10 text-center">Book a Hall</h1>
 
       {!selectedHallId ? (
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4  justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 justify-center">
           {halls.map((hall) => (
             <div
               key={hall.hall_id}
               onClick={() => setSelectedHallId(hall.hall_id)}
-              className="border p-4 rounded cursor-pointer   hover:bg-gray-100 text-center"
+              className="border p-4 rounded cursor-pointer hover:bg-gray-100 text-center"
             >
               <h2 className="text-xl font-semibold">{hall.name}</h2>
+
               <p className="text-gray-600">{hall.description}</p>
+
+              {/* Display the hall images using the Image component */}
+
+              <div className="mt-2">
+                {hall.images.length > 0 ? (
+                  hall.images.map((imageUrl, index) => (
+                    <Image
+                      key={index}
+                      src={imageUrl}
+                      alt={hall.name}
+                      className="w-full h-auto rounded"
+                      width={500} // Set a width for the image
+                      height={300} // Set a height for the image
+                      layout="responsive" // Use responsive layout
+                    />
+                  ))
+                ) : (
+                  <p>No images available</p>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -312,7 +435,6 @@ const BookingPage = () => {
             />
           </div>
 
-          
           <div>
             <button
               type="submit"

@@ -8,20 +8,13 @@ const AddHall: React.FC = () => {
   const [description, setDescription] = useState<string>("");
   const [nameKannada, setNameKannada] = useState<string>(""); // For Kannada name
   const [descriptionKannada, setDescriptionKannada] = useState<string>(""); // For Kannada description
-  const [basePrice, setBasePrice] = useState<number | string>(0); // Start as 0 but can also be a string for controlled input
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent the default form submission
 
     // Validate inputs
-    if (
-      !name ||
-      !description ||
-      !nameKannada ||
-      !descriptionKannada ||
-      Number(basePrice) <= 0
-    ) {
+    if (!name || !description || !nameKannada || !descriptionKannada) {
       Swal.fire("Error!", "Please fill in all fields correctly.", "error");
       return;
     }
@@ -31,7 +24,6 @@ const AddHall: React.FC = () => {
       description,
       name_kannada: nameKannada, // Include Kannada name
       description_kannada: descriptionKannada, // Include Kannada description
-      base_price: Number(basePrice), // Ensure base_price is a number
     };
 
     setLoading(true); // Start loading
@@ -65,7 +57,6 @@ const AddHall: React.FC = () => {
       setDescription("");
       setNameKannada(""); // Reset Kannada name
       setDescriptionKannada(""); // Reset Kannada description
-      setBasePrice(0); // Reset base price
     } catch (error) {
       Swal.fire(
         "Error!",
@@ -118,17 +109,6 @@ const AddHall: React.FC = () => {
             value={descriptionKannada}
             onChange={(e) => setDescriptionKannada(e.target.value)}
             className="border border-gray-300 rounded-md p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Base Price</label>
-          <input
-            type="number"
-            value={basePrice}
-            onChange={(e) => setBasePrice(e.target.value)} // Allow for string input and convert on submit
-            className="border border-gray-300 rounded-md p-2 w-full"
-            min="0"
             required
           />
         </div>

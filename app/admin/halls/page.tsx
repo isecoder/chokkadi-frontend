@@ -7,14 +7,15 @@ import LoadingSpinner from "../../components/LoadingSpinner"; // Import the Load
 import AddHall from "../components/AddHallForm"; // Import the AddHall component
 import Swal from "sweetalert2"; // Import SweetAlert2 for alerts
 import UpdateHallForm from "../components/UpdateHallForm"; // Import UpdateHallForm component
+import Image from "next/image";
 
 interface Hall {
   id: number;
   name: string;
   description: string;
-  base_price: number;
   name_kannada?: string; // Kannada name
   description_kannada?: string; // Kannada description
+  images: string[]; // Array of image URLs
 }
 
 const HallsList = (): JSX.Element => {
@@ -40,16 +41,16 @@ const HallsList = (): JSX.Element => {
           hall_id: number;
           name: string;
           description: string;
-          base_price: string;
           name_kannada?: string;
           description_kannada?: string;
+          HallImages: { Images: { public_url: string } }[]; // Adjusted to include images
         }) => ({
           id: hall.hall_id,
           name: hall.name,
           description: hall.description,
-          base_price: parseFloat(hall.base_price), // Convert to number
           name_kannada: hall.name_kannada,
           description_kannada: hall.description_kannada,
+          images: hall.HallImages.map((image) => image.Images.public_url), // Extract public URLs
         })
       );
 
@@ -139,7 +140,20 @@ const HallsList = (): JSX.Element => {
               {/* Allow description to wrap properly */}
               {showKannada ? hall.description_kannada : hall.description}
             </p>
-            <p className="mt-4 font-bold text-lg">Price: ₹{hall.base_price}</p>
+            {/* Display images */}
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {hall.images.map((imageUrl, index) => (
+                <Image
+                  key={index}
+                  src={imageUrl} // Use public_url for src
+                  alt={`Hall image ${index + 1}`}
+                  width={500} // Adjust as needed
+                  height={300} // Adjust as needed
+                  className="rounded"
+                />
+              ))}
+            </div>
+
             <div className="mt-auto flex space-x-2">
               <button
                 onClick={(e) => {

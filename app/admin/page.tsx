@@ -14,7 +14,7 @@ const AdminPage = () => {
     try {
       const [hallsRes, newsUpdatesRes, hallFormsRes] = await Promise.all([
         fetch("/api/halls"),
-        fetch("/api/newsupdates"),
+        fetch("/api/news-updates"),
         fetch("/api/hallforms"),
       ]);
 

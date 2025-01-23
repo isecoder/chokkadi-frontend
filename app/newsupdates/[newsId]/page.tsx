@@ -20,14 +20,16 @@ const NewsDetail = () => {
   const [newsDetail, setNewsDetail] = useState<NewsDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const showKannada = useSelector((state: RootState) => state.locale.locale === "kn"); // Track language from Redux state
+  const showKannada = useSelector(
+    (state: RootState) => state.locale.locale === "kn"
+  ); // Track language from Redux state
   const router = useRouter(); // Use useRouter to handle navigation
 
   // Use useCallback to define the fetch function
   const fetchNewsDetail = useCallback(async () => {
     if (!newsId) return; // Check if newsId is available
     try {
-      const res = await fetch(`/api/newsupdates/${newsId}`);
+      const res = await fetch(`/api/news-updates/${newsId}`);
       if (!res.ok) throw new Error("Failed to load news detail");
 
       const responseData = await res.json();
@@ -53,8 +55,8 @@ const NewsDetail = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <button 
-        onClick={handleBackButtonClick} 
+      <button
+        onClick={handleBackButtonClick}
         className="mb-4 text-orange-600 hover:underline"
       >
         &larr; Back
@@ -70,7 +72,6 @@ const NewsDetail = () => {
           <p className="text-gray-700 text-lg">
             {showKannada ? newsDetail.content_kannada : newsDetail.content}
           </p>
-          
         </div>
       )}
     </div>

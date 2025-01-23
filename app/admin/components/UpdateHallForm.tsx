@@ -7,7 +7,6 @@ interface Hall {
   id: number;
   name: string;
   description: string;
-  base_price: number;
   name_kannada?: string;
   description_kannada?: string;
 }
@@ -25,7 +24,6 @@ const UpdateHallForm = ({
 }: UpdateHallFormProps): JSX.Element => {
   const [name, setName] = useState(hall.name);
   const [description, setDescription] = useState(hall.description);
-  const [basePrice, setBasePrice] = useState(hall.base_price);
   const [nameKannada, setNameKannada] = useState(hall.name_kannada || "");
   const [descriptionKannada, setDescriptionKannada] = useState(
     hall.description_kannada || ""
@@ -43,7 +41,6 @@ const UpdateHallForm = ({
         body: JSON.stringify({
           name,
           description,
-          base_price: basePrice,
           name_kannada: nameKannada,
           description_kannada: descriptionKannada,
         }),
@@ -106,18 +103,6 @@ const UpdateHallForm = ({
               rows={3}
               required
             ></textarea>
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Base Price
-            </label>
-            <input
-              type="number"
-              value={basePrice}
-              onChange={(e) => setBasePrice(Number(e.target.value))}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
