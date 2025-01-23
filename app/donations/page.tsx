@@ -51,11 +51,11 @@ const DonationsPage: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-white to-orange-100">
-      <h1 className="mb-8 text-3xl font-bold text-orange-600">{text.title}</h1>
+      <h1 className="mb-8 text-3xl font-bold text-orange-600 text-center">{text.title}</h1>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl w-full">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl w-full items-center">
         {/* Box 1: General Donation */}
-        <div className="p-6 bg-gradient-to-b from-white to-orange-100 rounded-lg shadow-md text-center">
+        <div className="p-6 bg-gradient-to-b from-white to-orange-100 rounded-lg shadow-md text-center text-band"> 
           <h2 className="text-xl font-bold text-orange-600 mb-2">{text.generalDonation}</h2>
           <p className="text-lg font-semibold text-gray-800">{text.bank}</p>
           <p className="text-lg text-gray-800">
