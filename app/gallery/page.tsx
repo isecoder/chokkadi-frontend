@@ -18,7 +18,7 @@ interface VideoData {
 
 export default function Gallery(): JSX.Element {
   const [images, setImages] = useState<ImageData[]>([]);
-  const [videos, setVideos] = useState<VideoData[]>([]); // State for videos
+  const [videos, setVideos] = useState<VideoData[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -63,9 +63,26 @@ export default function Gallery(): JSX.Element {
     }
   }, []);
 
+  const fetchVideos = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/videos`, { cache: "no-store" });
+      if (!res.ok) throw new Error("Failed to load videos");
+
+      const data = await res.json();
+      setVideos(data?.videos || []);
+    } catch (error) {
+      Swal.fire({
+        text: "Unable to fetch videos. Please try again later.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+  }, []);
+
   useEffect(() => {
     fetchImages(1);
-  }, [fetchImages]);
+    fetchVideos();
+  }, [fetchImages, fetchVideos]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -113,28 +130,34 @@ export default function Gallery(): JSX.Element {
       <div className="text-center mt-10 mb-4">
         <h1 className="text-3xl font-bold">Shrirama TEMPLE</h1>
       </div>
-      
+
       {/* Image Gallery Section */}
       <h2 className="text-xl font-semibold mt-10 mb-4">PHOTOS</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-        {images.map((image, index) => (
-          <div
-            key={image.image_id}
-            className="relative w-full h-48 cursor-pointer overflow-hidden"
-            onClick={() => openImageModal(index)}
-          >
-            <Image
-              src={image.public_url}
-              alt={image.alt_text}
-              fill
-              loading="lazy"
-              className="object-cover transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-        ))}
-        <div ref={loaderRef} className="w-full h-10 flex justify-center items-center" />
-      </div>
-      
+      {images.length > 0 ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+          {images.map((image, index) => (
+            <div
+              key={image.image_id}
+              className="relative w-full h-48 cursor-pointer overflow-hidden"
+              onClick={() => openImageModal(index)}
+            >
+              <Image
+                src={image.public_url}
+                alt={image.alt_text}
+                fill
+                loading="lazy"
+                className="object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          ))}
+          <div ref={loaderRef} className="w-full h-10 flex justify-center items-center" />
+        </div>
+      ) : (
+        <div className="text-center text-gray-600 text-lg">
+          No images found. Please check back later.
+        </div>
+      )}
+
       <ImageModal
         isOpen={isImageModalOpen}
         images={images}
