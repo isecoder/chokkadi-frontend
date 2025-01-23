@@ -116,7 +116,7 @@ const HallsList = (): JSX.Element => {
 
   return (
     <div className="container mx-auto p-6">
-      <AddHall />
+      <AddHall onAdd={fetchHalls} />
       {error && <p className="text-red-500 text-center">{error}</p>}
       {loading && <LoadingSpinner />}
       {!loading && halls.length === 0 && !error && (
