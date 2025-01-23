@@ -11,26 +11,20 @@ interface ImageData {
   public_url: string;
 }
 
+interface VideoData {
+  video_url: string;
+  title: string;
+}
+
 export default function Gallery(): JSX.Element {
   const [images, setImages] = useState<ImageData[]>([]);
+  const [videos, setVideos] = useState<VideoData[]>([]); // State for videos
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-
-  // Hardcoded YouTube videos
-  const videos = [
-    {
-      title: "ಹರಿಹರ ಜಾತ್ರೆ 2024 |ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವರ ನೃತ್ಯ ಬಲಿ| |Thidambu Nritham| |Shrirama Temple|",
-      video_url: "https://www.youtube.com/embed/nKGWrYaBm9o?si=Y5xDuv4J1BbYASpH",
-    },
-    {
-      title: "Shrirama Temple, Harihara | ಪ್ರತಿಷ್ಠಾ ವಾರ್ಷಿಕೋತ್ಸವ ಮತ್ತು ಜಾತ್ರೋತ್ಸವ | LIVE",
-      video_url: "https://www.youtube.com/embed/aDmwh0ujr6Y?si=bdSh9OP6wXuF_shs",
-    },
-  ];
 
   const fetchImages = useCallback(async (currentPage: number) => {
     setLoading(true);
@@ -152,18 +146,24 @@ export default function Gallery(): JSX.Element {
       {/* Video Gallery Section */}
       <h2 className="text-xl font-semibold mt-10 mb-4">VIDEOS</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-        {videos.map((video, index) => (
-          <div key={index} className="w-full h-64">
-            <iframe
-              src={video.video_url}
-              title={video.title}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+        {videos.length > 0 ? (
+          videos.map((video, index) => (
+            <div key={index} className="w-full h-64">
+              <iframe
+                src={video.video_url}
+                title={video.title}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center text-gray-600 text-lg">
+            Videos will be uploaded soon.
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
