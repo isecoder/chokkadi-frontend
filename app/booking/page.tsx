@@ -6,6 +6,14 @@ import Image from "next/image"; // Import the Image component from next/image
 
 // Define the type for the hall image
 
+interface Hall {
+  hall_id: string;
+  name: string;
+  description: string;
+  HallImages: HallImage[]; // Array of images associated with the hall
+  images: string[]; // Array of public URLs directly extracted
+}
+
 interface HallImage {
   id: number;
 
@@ -48,26 +56,6 @@ interface HallsResponse {
   data: Hall[];
 }
 
-// Define the type for the images API response
-
-interface ImagesResponse {
-  statusCode: number;
-
-  message: string;
-
-  data: {
-    images: {
-      image_id: number;
-
-      alt_text: string;
-
-      file_path: string;
-
-      public_url: string;
-    }[];
-  };
-}
-
 const BookingPage = () => {
   const [halls, setHalls] = useState<Hall[]>([]); // Specify the type as Hall[]
 
@@ -103,43 +91,20 @@ const BookingPage = () => {
         const hallsData: HallsResponse = await hallsResponse.json();
 
         if (hallsData.statusCode === 200 && Array.isArray(hallsData.data)) {
-          const imagesResponse = await fetch("/api/images/batch");
+          // Map halls to include the corresponding public URLs directly
+          const updatedHalls = hallsData.data.map((hall) => ({
+            ...hall,
+            images: hall.HallImages.map((img) => img.Images.public_url).filter(
+              Boolean
+            ), // Extract public URLs
+          }));
 
-          const imagesData: ImagesResponse = await imagesResponse.json();
-
-          if (imagesData.statusCode === 200) {
-            // Create a mapping of image_id to public_url
-
-            const imageMap = imagesData.data.images.reduce(
-              (acc: { [key: number]: string }, image) => {
-                acc[image.image_id] = image.public_url;
-
-                return acc;
-              },
-
-              {}
-            );
-
-            // Map halls to include the corresponding image URLs
-
-            const updatedHalls = hallsData.data.map((hall) => ({
-              ...hall,
-
-              images: hall.HallImages.map(
-                (img) => imageMap[img.image_id]
-              ).filter(Boolean), // Get public URLs
-            }));
-
-            setHalls(updatedHalls); // Set the halls data with images
-          } else {
-            setMessage("Error: Invalid images data format.");
-          }
+          setHalls(updatedHalls); // Set the halls data with images
         } else {
           setMessage("Error: Invalid halls data format.");
         }
       } catch (error) {
         console.error("Failed to fetch halls or images", error);
-
         setMessage("Error: Could not fetch hall or image data.");
       }
     };
