@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
-import { RootState } from "../store"; // Adjust the import if needed
-import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
+import { RootState } from "../store";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface NewsUpdate {
   news_id: number;
@@ -13,6 +14,7 @@ interface NewsUpdate {
   title_kannada?: string;
   content_kannada?: string;
   created_at: string;
+  images: { public_url: string; alt_text: string }[];
 }
 
 export default function NewsUpdates(): JSX.Element {
@@ -22,16 +24,21 @@ export default function NewsUpdates(): JSX.Element {
   const showKannada = useSelector(
     (state: RootState) => state.locale.locale === "kn"
   );
-  const router = useRouter(); // Initialize router
+  const router = useRouter();
 
   const fetchNewsUpdates = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/news-updates`);
-      if (!res.ok) throw new Error("Failed to load news updates");
+      const newsRes = await fetch(`/api/news-updates`);
+      if (!newsRes.ok) throw new Error("Failed to load news updates");
 
-      const { data } = await res.json();
-      const formattedData = data.map(
+      const { data: newsData } = await newsRes.json();
+      const imageRes = await fetch("/api/images/batch");
+      if (!imageRes.ok) throw new Error("Failed to load images");
+
+      const { data: imageData } = await imageRes.json();
+
+      const formattedNews = newsData.map(
         (news: {
           news_id: number;
           title: string;
@@ -39,17 +46,35 @@ export default function NewsUpdates(): JSX.Element {
           title_kannada?: string;
           content_kannada?: string;
           created_at: string;
-        }) => ({
-          news_id: news.news_id,
-          title: news.title,
-          content: news.content,
-          title_kannada: news.title_kannada,
-          content_kannada: news.content_kannada,
-          created_at: new Date(news.created_at).toLocaleDateString(),
-        })
+          NewsImages: { image_id: number }[];
+        }) => {
+          const images = news.NewsImages.map((newsImage) => {
+            const matchedImage = imageData.images.find(
+              (img: {
+                image_id: number;
+                public_url: string;
+                alt_text: string;
+              }) => img.image_id === newsImage.image_id
+            );
+            return {
+              public_url: matchedImage?.public_url || "",
+              alt_text: matchedImage?.alt_text || "",
+            };
+          });
+
+          return {
+            news_id: news.news_id,
+            title: news.title,
+            content: news.content,
+            title_kannada: news.title_kannada,
+            content_kannada: news.content_kannada,
+            created_at: new Date(news.created_at).toLocaleDateString(),
+            images,
+          };
+        }
       );
 
-      setNewsUpdates(formattedData);
+      setNewsUpdates(formattedNews);
     } catch (err) {
       console.error(err);
       setError("Failed to load news updates. Please try again later.");
@@ -63,8 +88,7 @@ export default function NewsUpdates(): JSX.Element {
   }, []);
 
   const openNewsDetail = (news: NewsUpdate) => {
-    // Navigate to the news detail page in the same tab
-    router.push(`/newsupdates/${news.news_id}`); // Ensure this URL structure matches your routing
+    router.push(`/newsupdates/${news.news_id}`);
   };
 
   return (
@@ -92,6 +116,17 @@ export default function NewsUpdates(): JSX.Element {
             <p className="text-gray-700 mb-4 line-clamp-3">
               {showKannada ? news.content_kannada : news.content}
             </p>
+            {news.images.length > 0 && (
+              <div className="relative w-full h-40 mb-4">
+                <Image
+                  src={news.images[0].public_url}
+                  alt={news.images[0].alt_text}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            )}
             <button
               className="bg-orange-600 text-white py-2 px-4 rounded hover:bg-orange-700 transition duration-200 ease-in-out"
               onClick={() => openNewsDetail(news)}

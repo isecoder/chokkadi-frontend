@@ -3,8 +3,9 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store"; // Adjust the import if needed
-import LoadingSpinner from "../../components/LoadingSpinner"; // Ensure LoadingSpinner is correctly imported
+import { RootState } from "../../store";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import Image from "next/image";
 
 interface NewsDetail {
   news_id: number;
@@ -13,44 +14,73 @@ interface NewsDetail {
   title_kannada?: string;
   content_kannada?: string;
   created_at: string;
+  images: { public_url: string; alt_text: string }[];
+}
+
+interface NewsImage {
+  image_id: number;
+}
+
+interface ImageData {
+  image_id: number;
+  public_url: string;
+  alt_text: string;
 }
 
 const NewsDetail = () => {
-  const { newsId } = useParams(); // Access the dynamic route parameter
+  const { newsId } = useParams();
   const [newsDetail, setNewsDetail] = useState<NewsDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const showKannada = useSelector(
     (state: RootState) => state.locale.locale === "kn"
-  ); // Track language from Redux state
-  const router = useRouter(); // Use useRouter to handle navigation
+  );
+  const router = useRouter();
 
-  // Use useCallback to define the fetch function
   const fetchNewsDetail = useCallback(async () => {
-    if (!newsId) return; // Check if newsId is available
+    if (!newsId) return;
     try {
       const res = await fetch(`/api/news-updates/${newsId}`);
       if (!res.ok) throw new Error("Failed to load news detail");
 
       const responseData = await res.json();
-      setNewsDetail(responseData.data);
+      const imageRes = await fetch("/api/images/batch");
+      if (!imageRes.ok) throw new Error("Failed to load images");
+
+      const { data: imageData } = await imageRes.json();
+      const images = responseData.data.NewsImages.map(
+        (newsImage: NewsImage) => {
+          const matchedImage = imageData.images.find(
+            (img: ImageData) => img.image_id === newsImage.image_id
+          );
+          return {
+            public_url: matchedImage?.public_url || "",
+            alt_text: matchedImage?.alt_text || "",
+          };
+        }
+      );
+
+      setNewsDetail({
+        ...responseData.data,
+        images,
+      });
     } catch (err) {
       console.error(err);
       setError("Failed to load news detail. Please try again later.");
     } finally {
       setLoading(false);
     }
-  }, [newsId]); // Add newsId as a dependency
+  }, [newsId]);
 
   useEffect(() => {
     fetchNewsDetail();
-  }, [fetchNewsDetail]); // Include fetchNewsDetail in the dependency array
+  }, [fetchNewsDetail]);
 
   const handleBackButtonClick = () => {
-    router.back(); // Go back to the previous page
+    router.back();
   };
 
-  if (loading) return <LoadingSpinner />; // Show loading spinner while fetching
+  if (loading) return <LoadingSpinner />;
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (
@@ -69,9 +99,20 @@ const NewsDetail = () => {
           <p className="text-sm text-gray-500 mb-4">
             Date: {new Date(newsDetail.created_at).toLocaleDateString()}
           </p>
-          <p className="text-gray-700 text-lg">
+          <p className="text-gray-700 text-lg mb-4">
             {showKannada ? newsDetail.content_kannada : newsDetail.content}
           </p>
+          {newsDetail.images.map((image, idx) => (
+            <div key={idx} className="relative w-half h-60 mb-4">
+              <Image
+                src={image.public_url}
+                alt={image.alt_text}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          ))}
         </div>
       )}
     </div>
