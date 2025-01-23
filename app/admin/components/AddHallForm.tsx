@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const AddSeva: React.FC = () => {
+const AddHall: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [nameKannada, setNameKannada] = useState<string>(""); // For Kannada name
@@ -26,7 +26,7 @@ const AddSeva: React.FC = () => {
       return;
     }
 
-    const newSeva = {
+    const newHall = {
       name,
       description,
       name_kannada: nameKannada, // Include Kannada name
@@ -37,22 +37,22 @@ const AddSeva: React.FC = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await fetch("/api/sevas", {
+      const response = await fetch("/api/halls", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newSeva),
+        body: JSON.stringify(newHall),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to add seva");
+        throw new Error(errorData.message || "Failed to add hall");
       }
 
       Swal.fire({
         title: "Success!",
-        text: "Seva added successfully.",
+        text: "Hall added successfully.",
         icon: "success",
         confirmButtonText: "OK",
       }).then(() => {
@@ -69,7 +69,7 @@ const AddSeva: React.FC = () => {
     } catch (error) {
       Swal.fire(
         "Error!",
-        error instanceof Error ? error.message : "Failed to add seva",
+        error instanceof Error ? error.message : "Failed to add hall",
         "error"
       );
     } finally {
@@ -79,7 +79,7 @@ const AddSeva: React.FC = () => {
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md">
-      <h2 className="text-lg font-semibold mb-4">Add Seva</h2>
+      <h2 className="text-lg font-semibold mb-4">Add Hall</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2">Name</label>
@@ -139,11 +139,11 @@ const AddSeva: React.FC = () => {
             loading ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
-          {loading ? "Adding..." : "Add Seva"}
+          {loading ? "Adding..." : "Add Hall"}
         </button>
       </form>
     </div>
   );
 };
 
-export default AddSeva;
+export default AddHall;

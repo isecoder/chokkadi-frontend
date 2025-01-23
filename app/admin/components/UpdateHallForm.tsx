@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-interface Seva {
+interface Hall {
   id: number;
   name: string;
   description: string;
@@ -12,30 +12,30 @@ interface Seva {
   description_kannada?: string;
 }
 
-interface UpdateSevaFormProps {
-  seva: Seva;
-  onUpdate: (updatedSeva: Seva) => void;
+interface UpdateHallFormProps {
+  hall: Hall;
+  onUpdate: (updatedHall: Hall) => void;
   onClose: () => void;
 }
 
-const UpdateSevaForm = ({
-  seva,
+const UpdateHallForm = ({
+  hall,
   onUpdate,
   onClose,
-}: UpdateSevaFormProps): JSX.Element => {
-  const [name, setName] = useState(seva.name);
-  const [description, setDescription] = useState(seva.description);
-  const [basePrice, setBasePrice] = useState(seva.base_price);
-  const [nameKannada, setNameKannada] = useState(seva.name_kannada || "");
+}: UpdateHallFormProps): JSX.Element => {
+  const [name, setName] = useState(hall.name);
+  const [description, setDescription] = useState(hall.description);
+  const [basePrice, setBasePrice] = useState(hall.base_price);
+  const [nameKannada, setNameKannada] = useState(hall.name_kannada || "");
   const [descriptionKannada, setDescriptionKannada] = useState(
-    seva.description_kannada || ""
+    hall.description_kannada || ""
   );
   const [loading, setLoading] = useState(false);
 
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/sevas/${seva.id}`, {
+      const res = await fetch(`/api/halls/${hall.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -51,20 +51,20 @@ const UpdateSevaForm = ({
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to update seva");
+        throw new Error(errorData.message || "Failed to update hall");
       }
 
-      const updatedSeva = await res.json();
-      onUpdate(updatedSeva); // Update the parent component
+      const updatedHall = await res.json();
+      onUpdate(updatedHall); // Update the parent component
       Swal.fire(
         "Updated!",
-        "The seva has been updated successfully.",
+        "The hall has been updated successfully.",
         "success"
       );
     } catch (error) {
       Swal.fire(
         "Error!",
-        error instanceof Error ? error.message : "Failed to update seva",
+        error instanceof Error ? error.message : "Failed to update hall",
         "error"
       );
     } finally {
@@ -76,7 +76,7 @@ const UpdateSevaForm = ({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">Update Seva</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">Update Hall</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -163,4 +163,4 @@ const UpdateSevaForm = ({
   );
 };
 
-export default UpdateSevaForm;
+export default UpdateHallForm;
