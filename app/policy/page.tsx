@@ -24,13 +24,12 @@ const PrivacyPolicy = () => {
           Privacy for all the participants is very important. We strongly
           believe that the personal information of the participants should not
           be shared with third parties without the prior consent or request from
-          the participants. Privacy is the right of an individual, and at Shree
-          Rama Temple, the information of the participants such as
+          the participants. Privacy is the right of an individual, and at Shrirama Temple, the information of the participants such as
           contact number, email, addresses, etc., is used only for internal
           purposes. Your contact information is stored in our database and is
           only used to contact you during the course of your stay with us for
           sharing the status of your room bookings and for announcing our latest
-          scientific information, etc. We at Shree Rama Temple condemn
+          scientific information, etc. We at Shrirama Temple condemn
           the unauthorized reach and misuse and/or disclosure of the personal
           information of the participants, and we have strict guidelines and
           high security features to prevent the same. Any changes in our Privacy

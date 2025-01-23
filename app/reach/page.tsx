@@ -20,14 +20,13 @@ type MessageType =
 const howToReachMessages: Record<LocaleType, MessageType[]> = {
   en: [
     "One can visit the Shrirama Temple, located 9.3 km from Bellare, which is a major town along SH 100 (Manjeshwara-Puttur-Subrahmanya State Highway). While traveling from Puttur to Subrahmanya, the temple can be reached by taking the Bellare-Pajapalla Road from Bellare, turning right at Ayyanakatte Cross, and continuing for 6.4 km.",
-    "Since there is no proper government bus service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare. Sufficient KSRTC buses are available from Sulya (the taluk center), Puttur, and Subrahmanya to Bellare.",
-    "Although government bus services to Chokkadi are limited, there are four daily buses from Puttur to Chokkadi and four buses to Sulya, although these services may vary daily and are subject to cancellation.",
+    "Since there is no proper public transport service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare.",
     { title: "Nearest Bus Stand", description: "Chokkadi" },
-    { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km)" },
-    { title: "Nearest Railway Station", description: "Yedamangala (16.5 km)" },
+    { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km),Sullia(11.3 km)" },
+    { title: "Nearest Railway Station", description: "Yedamangala (16.5 km),Kaniuru Halt(18.0 km)" },
     {
       title: "Nearest Major Railway Station",
-      description: "Subrahmanya Road (33.4 km)",
+      description: "Kabaka Puttur (36.0 km)",
     },
     {
       title: "Nearest Airport",
@@ -36,20 +35,19 @@ const howToReachMessages: Record<LocaleType, MessageType[]> = {
   ],
   kn: [
     "ಶ್ರೀರಾಮ ದೇವಾಲಯವು ರಾ.ಹೆ.ಸಂ. 100 (ಮಂಜೇಶ್ವರ-ಪುತ್ತೂರು-ಸುಬ್ರಹ್ಮಣ್ಯ ರಾಜ್ಯ ಹೆದ್ದಾರಿ)ಯಲ್ಲಿ ಬೆಳ್ಳಾರೆ ಎಂಬ ಪ್ರಮುಖ ಪಟ್ಟಣದಿಂದ 9.3 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಚೊಕ್ಕಾಡಿ ಎಂಬ ಪುಟ್ಟ ಗ್ರಾಮದಲ್ಲಿದೆ. ಪುತ್ತೂರಿನಿಂದ ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಪ್ರಯಾಣಿಸುವಾಗ, ಬೆಳ್ಳಾರೆಯಿಂದ ಬಾಳಿಲ ರಸ್ತೆಯ ಮೂಲಕ ತೆರಳಿ ಅಯ್ಯನಕಟ್ಟೆ ಕ್ರಾಸ್‌ನಲ್ಲಿ ಬಲಗಡೆ ತಿರುಗಿ 6.4 ಕಿಮೀ ಸಾಗಿದರೆ ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
-    "ಚೊಕ್ಕಾಡಿಗೆ ಸರಿಯಾದ ಸರ್ಕಾರಿ ಬಸ್ ಸೌಲಭ್ಯ ಲಭ್ಯವಿಲ್ಲದ ಕಾರಣ, ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನವನ್ನು ಬಳಸುವುದು ಉತ್ತಮ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
-    "ಸರಕಾರದ ಬಸ್ ಸೇವೆಗಳು ಚೊಕ್ಕಾಡಿಗೆ ಸೀಮಿತವಾಗಿದ್ದರೂ, ಪುತ್ತೂರಿನಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ನಾಲ್ಕು ದೈನಂದಿನ ಬಸ್‌ಗಳು ಮತ್ತು ಸುಳ್ಯಕ್ಕೆ ನಾಲ್ಕು ಬಸ್‌ಗಳು ಲಭ್ಯವಿವೆ. ಈ ಬಸ್‌ ಸೇವೆಗಳು ದಿನನಿತ್ಯ ಬದಲಾಗುವ ಅಥವಾ ರದ್ದಾಗುವ ಸಾಧ್ಯತೆ ಇದೆ.",
+    "ಚೊಕ್ಕಾಡಿಗೆ ಸರಿಯಾದ ಸಾರಿಗೆ ವ್ಯವಸ್ಥಿ ಇಲ್ಲದ ಕಾರಣ, ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನವನ್ನು ಬಳಸುವುದು ಉತ್ತಮ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
     { title: "ಹತ್ತಿರದ ಬಸ್ ನಿಲ್ದಾಣ", description: "ಚೊಕ್ಕಾಡಿ" },
     {
       title: "ಹತ್ತಿರದ ಪ್ರಮುಖ ಬಸ್ಸು ನಿಲ್ದಾಣ",
-      description: "ಬೆಳ್ಳಾರೆ (9.3 ಕಿ.ಮಿ)",
+      description: "ಬೆಳ್ಳಾರೆ (9.3 ಕಿ.ಮಿ),ಸುಳ್ಯ(11.3 ಕಿ.ಮಿ)",
     },
     {
       title: "ಹತ್ತಿರದಲ್ಲಿರುವ ರೈಲು ನಿಲ್ದಾಣ",
-      description: "ಎಡಮಂಗಲ (16.5 ಕಿ.ಮಿ)",
+      description: "ಎಡಮಂಗಲ (16.5 ಕಿ.ಮಿ),ಕಾಣಿಯೂರು (18.3 ಕಿ.ಮಿ)",
     },
     {
       title: "ಹತ್ತಿರದಲ್ಲಿರುವ ಪ್ರಮುಖ ರೈಲು ನಿಲ್ದಾಣ",
-      description: "ಸುಬ್ರಹ್ಮಣ್ಯ ರೋಡ್ (33.4 ಕಿ.ಮಿ)",
+      description: "ಕಬಕ ಪುತ್ತೂರು (36.0 ಕಿ.ಮಿ)",
     },
     {
       title: "ಹತ್ತಿರದಲ್ಲಿರುವ ವಿಮಾನ ನಿಲ್ದಾಣ",

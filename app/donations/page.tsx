@@ -12,36 +12,24 @@ const donationText: Record<
   {
     title: string;
     generalDonation: string;
-    annadanaDonation: string;
     bank: string;
     accountNumber: string;
     ifscCode: string;
-    generalAccount: string;
-    annadanaAccount: string;
-    ifsc: string;
   }
 > = {
   en: {
     title: "Account Details",
     generalDonation: "General Donation",
-    annadanaDonation: "Donation for Annadana",
-    bank: "Bank of Baroda",
+    bank: "To be updated",
     accountNumber: "Account Number",
     ifscCode: "IFSC Code",
-    generalAccount: "70640100001978",
-    annadanaAccount: "70640100000059",
-    ifsc: "BARB0VJKOMO",
   },
   kn: {
     title: "ಖಾತೆ ವಿವರಗಳು",
     generalDonation: "ಸಾಮಾನ್ಯ ದೇಣಿಗೆ",
-    annadanaDonation: "ಅನ್ನದಾನಕ್ಕಾಗಿ ದೇಣಿಗೆ",
     bank: "ಬ್ಯಾಂಕ್ ಆಫ್ ಬರೋಡಾ",
     accountNumber: "ಖಾತೆ ಸಂಖ್ಯೆ",
     ifscCode: "IFSC ಕೋಡ್",
-    generalAccount: "70640100001978",
-    annadanaAccount: "70640100000059",
-    ifsc: "BARB0VJKOMO",
   },
 };
 
@@ -71,22 +59,10 @@ const DonationsPage: React.FC = () => {
           <h2 className="text-xl font-bold text-orange-600 mb-2">{text.generalDonation}</h2>
           <p className="text-lg font-semibold text-gray-800">{text.bank}</p>
           <p className="text-lg text-gray-800">
-            {text.accountNumber}: <span className="font-normal">{text.generalAccount}</span>
+            {text.accountNumber}: <span className="font-normal">To be updated</span>
           </p>
           <p className="text-lg text-gray-800">
-            {text.ifscCode}: <span className="font-normal">{text.ifsc}</span>
-          </p>
-        </div>
-
-        {/* Box 2: Donation for Annadana */}
-        <div className="p-6 bg-gradient-to-b from-white to-orange-100 rounded-lg shadow-md text-center">
-          <h2 className="text-xl font-bold text-orange-600 mb-2">{text.annadanaDonation}</h2>
-          <p className="text-lg font-semibold text-gray-800">{text.bank}</p>
-          <p className="text-lg text-gray-800">
-            {text.accountNumber}: <span className="font-normal">{text.annadanaAccount}</span>
-          </p>
-          <p className="text-lg text-gray-800">
-            {text.ifscCode}: <span className="font-normal">{text.ifsc}</span>
+            {text.ifscCode}: <span className="font-normal">To be updated</span>
           </p>
         </div>
       </div>

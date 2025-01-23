@@ -22,7 +22,7 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
   kn: {
     title: "ದೇವಸ್ಥಾನದ ಮಾಹಿತಿ",
     details: [
-      { title: "ಶ್ರೀ ದೇವಾಲಯದ ಪೂಜಾ ಸಮಯ:", description: "ದರ್ಶನ ಸಮಯ:\nಬೆಳಗ್ಗೆ 7 ಗಂಟೆಯಿಂದ ಮಧ್ಯಾಹ್ನ 1 ಗಂಟೆಯ ತನಕ | ಸಂಜೆ 5 ಗಂಟೆಯಿಂದ ರಾತ್ರಿ 8 ಗಂಟೆಯ ತನಕ" },
+      { title: "ಶ್ರೀ ದೇವರ ಪೂಜಾ ಸಮಯ:", description: "ದರ್ಶನ ಸಮಯ:\nಬೆಳಗ್ಗೆ 7 ಗಂಟೆಯಿಂದ ಮಧ್ಯಾಹ್ನ 1 ಗಂಟೆಯ ತನಕ | ಸಂಜೆ 5 ಗಂಟೆಯಿಂದ ರಾತ್ರಿ 8 ಗಂಟೆಯ ತನಕ" },
       { title: "ಬೆಳಗ್ಗೆಯ ಪೂಜೆ", description: "ಬೆಳಗ್ಗೆ 7:30ಕ್ಕೆ" },
       { title: "ಮಹಾಪೂಜೆ", description: "ಮಧ್ಯಾಹ್ನ 12:30ಕ್ಕೆ" },
       { title: "ರಾತ್ರಿಯ ಪೂಜೆ", description: "ರಾತ್ರಿ 7:30ಕ್ಕೆ" },
