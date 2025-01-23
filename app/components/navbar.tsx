@@ -22,10 +22,22 @@ const navLinks: NavLink[] = [
     label: { en: "ABOUT", kn: "ದೇವಾಲಯದ ಮಾಹಿತಿ" },
     subLinks: [
       { href: "/temple", label: { en: "About Temple", kn: "ದೇವಾಲಯ" } },
-      { href: "/administration", label: { en: "Administration", kn: "ಸೇವಾ ಸಮಿತಿ" } },
-      { href: "/facilities", label: { en: "Temple Facilities", kn: "ಸೌಲಭ್ಯಗಳು" } },
-      { href: "/reach", label: { en: "How to Reach", kn: "ದೇವಾಲಯಕ್ಕೆ ಹೋಗುವ ದಾರಿಯ ಮಾಹಿತಿ" } },
-      { href: "/nearby", label: { en: "Nearby Places", kn: "ಹತ್ತಿರದ ಸ್ಥಳಗಳು" } },
+      {
+        href: "/administration",
+        label: { en: "Administration", kn: "ಸೇವಾ ಸಮಿತಿ" },
+      },
+      {
+        href: "/facilities",
+        label: { en: "Temple Facilities", kn: "ಸೌಲಭ್ಯಗಳು" },
+      },
+      {
+        href: "/reach",
+        label: { en: "How to Reach", kn: "ದೇವಾಲಯಕ್ಕೆ ಹೋಗುವ ದಾರಿಯ ಮಾಹಿತಿ" },
+      },
+      {
+        href: "/nearby",
+        label: { en: "Nearby Places", kn: "ಹತ್ತಿರದ ಸ್ಥಳಗಳು" },
+      },
     ],
   },
   { href: "/booking", label: { en: "HALL BOOKING", kn: "ಸಭಾಂಗಣ ಬುಕ್ಕಿಂಗ್" } },
@@ -38,7 +50,9 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
-  const [dropdownTimer, setDropdownTimer] = useState<NodeJS.Timeout | null>(null);
+  const [dropdownTimer, setDropdownTimer] = useState<NodeJS.Timeout | null>(
+    null
+  );
   const [mounted, setMounted] = useState(false);
 
   // Access the current locale from Redux
@@ -85,7 +99,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
           {/* Shrirama Temple with locale */}
           <div className="flex items-center space-x-2 h-full">
-            <Link href="/" onClick={closeMenu} className="text-lg font-bold text-[#8B0000] hover:underline">
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="text-lg font-bold text-[#8B0000] hover:underline"
+            >
               {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
             </Link>
             <div className="w-[3px] bg-[#DD860B] h-10"></div>
@@ -99,9 +117,7 @@ export default function Navbar() {
                 className="relative group"
                 onMouseEnter={() => subLinks && handleMouseEnter(label.en)}
                 onMouseLeave={handleMouseLeave}
-              > 
-
-              
+              >
                 <Link
                   href={href || ""}
                   className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
@@ -158,26 +174,26 @@ export default function Navbar() {
             {navLinks.map(({ href, label, subLinks }) => (
               <div key={label.en} className="w-full relative">
                 <Link
-      href={href || ""}
-      onClick={(e) => {
-        if (!subLinks) {
-          closeMenu(); 
-        } else {
-          e.preventDefault();
-          handleMobileDropdownToggle(label.en); 
-        }
-      }}
-      className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
-    >
-      {label[currentLocale as "en" | "kn"]} 
-      {subLinks && (
-        <FaChevronDown
-          className={`ml-2 transition-transform duration-200 ${
-            dropdownOpen === label.en ? "rotate-180" : "rotate-0"
-          }`}
-        />
-      )}
-    </Link>
+                  href={href || ""}
+                  onClick={(e) => {
+                    if (!subLinks) {
+                      closeMenu();
+                    } else {
+                      e.preventDefault();
+                      handleMobileDropdownToggle(label.en);
+                    }
+                  }}
+                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 justify-between"
+                >
+                  {label[currentLocale as "en" | "kn"]}
+                  {subLinks && (
+                    <FaChevronDown
+                      className={`ml-2 transition-transform duration-200 ${
+                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
+                </Link>
                 {subLinks && dropdownOpen === label.en && (
                   <div className="pl-8 flex flex-col bg-[#FFF9E6]">
                     {subLinks.map((subLink) => (
