@@ -17,16 +17,6 @@ interface NewsDetail {
   images: { public_url: string; alt_text: string }[];
 }
 
-interface NewsImage {
-  image_id: number;
-}
-
-interface ImageData {
-  image_id: number;
-  public_url: string;
-  alt_text: string;
-}
-
 const NewsDetail = () => {
   const { newsId } = useParams();
   const [newsDetail, setNewsDetail] = useState<NewsDetail | null>(null);
@@ -43,25 +33,17 @@ const NewsDetail = () => {
       const res = await fetch(`/api/news-updates/${newsId}`);
       if (!res.ok) throw new Error("Failed to load news detail");
 
-      const responseData = await res.json();
-      const imageRes = await fetch("/api/images/batch");
-      if (!imageRes.ok) throw new Error("Failed to load images");
+      const { data } = await res.json();
 
-      const { data: imageData } = await imageRes.json();
-      const images = responseData.data.NewsImages.map(
-        (newsImage: NewsImage) => {
-          const matchedImage = imageData.images.find(
-            (img: ImageData) => img.image_id === newsImage.image_id
-          );
-          return {
-            public_url: matchedImage?.public_url || "",
-            alt_text: matchedImage?.alt_text || "",
-          };
-        }
+      const images = data.NewsImages.map(
+        (newsImage: { Images: { public_url: string; alt_text: string } }) => ({
+          public_url: newsImage.Images.public_url,
+          alt_text: newsImage.Images.alt_text,
+        })
       );
 
       setNewsDetail({
-        ...responseData.data,
+        ...data,
         images,
       });
     } catch (err) {
@@ -103,7 +85,7 @@ const NewsDetail = () => {
             {showKannada ? newsDetail.content_kannada : newsDetail.content}
           </p>
           {newsDetail.images.map((image, idx) => (
-            <div key={idx} className="relative w-half h-60 mb-4">
+            <div key={idx} className="relative w-full h-60 mb-4">
               <Image
                 src={image.public_url}
                 alt={image.alt_text}

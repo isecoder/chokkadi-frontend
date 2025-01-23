@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store"; // Adjust the import if needed
+import { RootState } from "../../store";
 import Swal from "sweetalert2";
-import AddNewsUpdate from "../components/NewsUpdatesForm"; // Import the AddNewsUpdate component
+import AddNewsUpdate from "../components/NewsUpdatesForm";
+import Image from "next/image";
 
 interface NewsUpdate {
   news_id: number;
@@ -14,6 +15,7 @@ interface NewsUpdate {
   title_kannada?: string;
   content_kannada?: string;
   created_at: string;
+  images: { public_url: string; alt_text: string }[];
 }
 
 export default function NewsUpdates(): JSX.Element {
@@ -27,10 +29,11 @@ export default function NewsUpdates(): JSX.Element {
   const fetchNewsUpdates = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/newsupdates`);
+      const res = await fetch(`/api/news-updates`);
       if (!res.ok) throw new Error("Failed to load news updates");
 
       const { data } = await res.json();
+
       const formattedData = data.map(
         (news: {
           news_id: number;
@@ -39,6 +42,9 @@ export default function NewsUpdates(): JSX.Element {
           title_kannada?: string;
           content_kannada?: string;
           created_at: string;
+          NewsImages: {
+            Images: { public_url: string; alt_text: string };
+          }[];
         }) => ({
           news_id: news.news_id,
           title: news.title,
@@ -46,6 +52,10 @@ export default function NewsUpdates(): JSX.Element {
           title_kannada: news.title_kannada,
           content_kannada: news.content_kannada,
           created_at: new Date(news.created_at).toLocaleDateString(),
+          images: news.NewsImages.map((newsImage) => ({
+            public_url: newsImage.Images.public_url,
+            alt_text: newsImage.Images.alt_text,
+          })),
         })
       );
 
@@ -71,7 +81,7 @@ export default function NewsUpdates(): JSX.Element {
 
     if (confirmDelete.isConfirmed) {
       try {
-        const response = await fetch(`/api/newsupdates/${newsId}`, {
+        const response = await fetch(`/api/news-updates/${newsId}`, {
           method: "DELETE",
         });
 
@@ -79,7 +89,6 @@ export default function NewsUpdates(): JSX.Element {
           throw new Error("Failed to delete news update");
         }
 
-        // Update the local state to remove the deleted news update
         setNewsUpdates((prevUpdates) =>
           prevUpdates.filter((update) => update.news_id !== newsId)
         );
@@ -101,8 +110,9 @@ export default function NewsUpdates(): JSX.Element {
 
   return (
     <div className="container mx-auto p-6">
-      <AddNewsUpdate onAdd={fetchNewsUpdates} />{" "}
-      {/* Include the AddNewsUpdate component */}
+      {/* Add News Update Section */}
+      <AddNewsUpdate onAdd={fetchNewsUpdates} />
+
       {error && <p className="text-red-500 text-center">{error}</p>}
       {loading && <LoadingSpinner />}
       {!loading && newsUpdates.length === 0 && !error && (
@@ -128,6 +138,17 @@ export default function NewsUpdates(): JSX.Element {
             <p className="text-sm text-gray-500 font-medium mt-2">
               Date: {news.created_at}
             </p>
+            {news.images.map((image, idx) => (
+              <div key={idx} className="relative w-full h-40 mb-4">
+                <Image
+                  src={image.public_url}
+                  alt={image.alt_text}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            ))}
             <button
               onClick={() => deleteNewsUpdate(news.news_id)}
               className="mt-2 bg-red-500 text-white px-3 py-1 rounded"
@@ -137,25 +158,6 @@ export default function NewsUpdates(): JSX.Element {
           </div>
         ))}
       </div>
-      <style jsx>{`
-        /* Custom scrollbar styling */
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-        }
-        /* Hide scrollbar for other browsers */
-        .custom-scrollbar {
-          -ms-overflow-style: none; /* IE and Edge */
-          scrollbar-width: thin; /* Firefox */
-          scrollbar-color: white transparent; /* Firefox thumb color */
-        }
-      `}</style>
     </div>
   );
 }

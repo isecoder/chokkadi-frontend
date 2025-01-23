@@ -29,14 +29,10 @@ export default function NewsUpdates(): JSX.Element {
   const fetchNewsUpdates = async () => {
     setLoading(true);
     try {
-      const newsRes = await fetch(`/api/news-updates`);
-      if (!newsRes.ok) throw new Error("Failed to load news updates");
+      const res = await fetch(`/api/news-updates`);
+      if (!res.ok) throw new Error("Failed to load news updates");
 
-      const { data: newsData } = await newsRes.json();
-      const imageRes = await fetch("/api/images/batch");
-      if (!imageRes.ok) throw new Error("Failed to load images");
-
-      const { data: imageData } = await imageRes.json();
+      const { data: newsData } = await res.json();
 
       const formattedNews = newsData.map(
         (news: {
@@ -46,21 +42,14 @@ export default function NewsUpdates(): JSX.Element {
           title_kannada?: string;
           content_kannada?: string;
           created_at: string;
-          NewsImages: { image_id: number }[];
+          NewsImages: {
+            Images: { public_url: string; alt_text: string };
+          }[];
         }) => {
-          const images = news.NewsImages.map((newsImage) => {
-            const matchedImage = imageData.images.find(
-              (img: {
-                image_id: number;
-                public_url: string;
-                alt_text: string;
-              }) => img.image_id === newsImage.image_id
-            );
-            return {
-              public_url: matchedImage?.public_url || "",
-              alt_text: matchedImage?.alt_text || "",
-            };
-          });
+          const images = news.NewsImages.map((newsImage) => ({
+            public_url: newsImage.Images.public_url,
+            alt_text: newsImage.Images.alt_text,
+          }));
 
           return {
             news_id: news.news_id,
