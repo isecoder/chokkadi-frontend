@@ -1,87 +1,164 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import ImageModal from "../../components/ImageModal";
-import UploadImage from "../components/UploadImage"; // Import the UploadImage component
+import UploadImage from "../components/UploadImage";
+
+interface GalleryResponse {
+  gallery_id: number;
+  title: string;
+  Images: {
+    image_id: number;
+    public_url: string;
+    alt_text: string;
+  };
+}
 
 interface ImageData {
+  gallery_id: number;
+  title: string;
   image_id: number;
-  alt_text: string;
   public_url: string;
+  alt_text: string;
 }
 
 export default function Gallery(): JSX.Element {
   const [images, setImages] = useState<ImageData[]>([]);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const loaderRef = useRef<HTMLDivElement | null>(null);
+  const [newGalleryTitle, setNewGalleryTitle] = useState("");
+  const [newImageId, setNewImageId] = useState("");
 
-  const fetchImages = useCallback(async (currentPage: number) => {
+  // Fetch all gallery images
+  const fetchImages = useCallback(async () => {
     setLoading(true);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     try {
-      const res = await fetch(`/api/images/batch?limit=5&page=${currentPage}`, {
-        cache: "no-store",
-        signal: controller.signal,
+      const res = await fetch(`/api/gallery`, { cache: "no-store" });
+
+      if (!res.ok) throw new Error("Failed to load gallery data");
+
+      const data: { data: GalleryResponse[] } = await res.json();
+
+      const newImages: ImageData[] = data.data.map((gallery) => ({
+        gallery_id: gallery.gallery_id,
+        title: gallery.title,
+        image_id: gallery.Images.image_id,
+        public_url: gallery.Images.public_url,
+        alt_text: gallery.Images.alt_text,
+      }));
+
+      setImages(newImages);
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unexpected error occurred";
+      Swal.fire({
+        text: errorMessage,
+        icon: "error",
+        confirmButtonText: "Retry",
       });
-      clearTimeout(timeoutId);
-
-      if (!res.ok) throw new Error("Failed to load images");
-
-      const data = await res.json();
-      const newImages: ImageData[] = data?.data?.images || [];
-      setHasMore(newImages.length > 0);
-      setImages((prev) => [
-        ...prev,
-        ...newImages.filter(
-          (newImage) => !prev.some((img) => img.image_id === newImage.image_id)
-        ),
-      ]);
-    } catch (error) {
-      if ((error as Error).name === "AbortError") {
-        Swal.fire({
-          text: "The request took too long and was aborted. Please try again.",
-          icon: "info",
-          confirmButtonText: "Reload",
-        }).then(() => location.reload());
-      }
     } finally {
-      clearTimeout(timeoutId);
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchImages(1);
+    fetchImages();
   }, [fetchImages]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && hasMore && !loading) {
-          setPage((prev) => prev + 1);
-        }
-      },
-      { threshold: 1.0 }
+  // Handle Image Upload
+  const handleImageUpload = (imageData: {
+    imageId: number;
+    publicUrl: string;
+  }) => {
+    setNewImageId(imageData.imageId.toString()); // Automatically set the image ID
+    Swal.fire(
+      "Success!",
+      `Image uploaded. ID: ${imageData.imageId}`,
+      "success"
     );
-    const currentLoaderRef = loaderRef.current;
-    if (currentLoaderRef) observer.observe(currentLoaderRef);
+  };
 
-    return () => {
-      if (currentLoaderRef) observer.unobserve(currentLoaderRef);
-    };
-  }, [loading, hasMore]);
+  // Create a new gallery
+  const createGallery = async () => {
+    if (!newGalleryTitle || !newImageId) {
+      Swal.fire({
+        text: "Please provide both a title and image ID to create a gallery.",
+        icon: "warning",
+        confirmButtonText: "Okay",
+      });
+      return;
+    }
 
-  useEffect(() => {
-    if (page > 1 && hasMore) fetchImages(page);
-  }, [page, hasMore, fetchImages]);
+    try {
+      const response = await fetch(`/api/gallery/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: newGalleryTitle,
+          imageId: Number(newImageId),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create gallery");
+      }
+
+      Swal.fire("Success!", "Gallery created successfully.", "success");
+
+      // Refresh the page after gallery creation
+      window.location.reload();
+    } catch (error: unknown) {
+      Swal.fire(
+        "Error!",
+        error instanceof Error ? error.message : "Failed to create gallery",
+        "error"
+      );
+    }
+  };
+
+  // Delete a gallery
+  const deleteGallery = async (galleryId: number) => {
+    const confirmDelete = await Swal.fire({
+      title: "Are you sure?",
+      text: "This will delete the gallery and its associated image. You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (confirmDelete.isConfirmed) {
+      try {
+        const response = await fetch(`/api/gallery/delete/${galleryId}`, {
+          method: "DELETE",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to delete gallery");
+        }
+
+        // Update the local state to remove the deleted gallery
+        setImages((prevImages) =>
+          prevImages.filter((image) => image.gallery_id !== galleryId)
+        );
+
+        Swal.fire("Deleted!", "Your gallery has been deleted.", "success");
+      } catch (error: unknown) {
+        Swal.fire(
+          "Error!",
+          error instanceof Error ? error.message : "Failed to delete gallery",
+          "error"
+        );
+      }
+    }
+  };
 
   const openImageModal = (index: number) => {
     setCurrentIndex(index);
@@ -100,41 +177,6 @@ export default function Gallery(): JSX.Element {
     }
   };
 
-  const deleteImage = async (imageId: number) => {
-    const confirmDelete = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
-    });
-
-    if (confirmDelete.isConfirmed) {
-      try {
-        const response = await fetch(`/api/images/${imageId}`, {
-          method: "DELETE",
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to delete image");
-        }
-
-        // Update the local state to remove the deleted image
-        setImages((prevImages) =>
-          prevImages.filter((image) => image.image_id !== imageId)
-        );
-
-        Swal.fire("Deleted!", "Your image has been deleted.", "success");
-      } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : "Failed to delete image";
-        Swal.fire("Error!", errorMessage, "error");
-      }
-    }
-  };
-
   return (
     <div className="relative px-4 md:px-8 lg:px-16">
       {loading && <LoadingSpinner />}
@@ -145,7 +187,34 @@ export default function Gallery(): JSX.Element {
       </div>
 
       {/* Upload Image Section */}
-      <UploadImage />
+      <UploadImage onImageUpload={handleImageUpload} />
+
+      {/* Create Gallery Section */}
+      <div className="mt-8 mb-6">
+        <h2 className="text-lg font-semibold">Create New Gallery</h2>
+        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <input
+            type="text"
+            placeholder="Gallery Title"
+            value={newGalleryTitle}
+            onChange={(e) => setNewGalleryTitle(e.target.value)}
+            className="border rounded px-4 py-2 w-full"
+          />
+          <input
+            type="number"
+            placeholder="Image ID"
+            value={newImageId}
+            disabled // Make the input field read-only
+            className="border rounded px-4 py-2 w-full bg-gray-100 cursor-not-allowed"
+          />
+          <button
+            onClick={createGallery}
+            className="bg-blue-600 text-white px-6 py-2 rounded"
+          >
+            Create Gallery
+          </button>
+        </div>
+      </div>
 
       {/* Image Gallery Section */}
       <h2 className="text-xl font-semibold mt-10 mb-4">PHOTOS</h2>
@@ -167,17 +236,13 @@ export default function Gallery(): JSX.Element {
               className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded"
               onClick={(e) => {
                 e.stopPropagation(); // Prevent modal from opening
-                deleteImage(image.image_id); // Call delete function
+                deleteGallery(image.gallery_id); // Call deleteGallery function
               }}
             >
               Delete
             </button>
           </div>
         ))}
-        <div
-          ref={loaderRef}
-          className="w-full h-10 flex justify-center items-center"
-        />
       </div>
 
       <ImageModal

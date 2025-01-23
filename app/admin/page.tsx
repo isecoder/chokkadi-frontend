@@ -12,55 +12,42 @@ const AdminPage = () => {
   const fetchCounts = useCallback(async () => {
     setLoading(true); // Set loading to true when fetching
     try {
-      const [hallsRes, newsUpdatesRes, hallFormsRes] = await Promise.all([
-        fetch("/api/halls"),
-        fetch("/api/news-updates"),
-        fetch("/api/hallforms"),
-      ]);
+      const [hallsRes, newsUpdatesRes, hallFormsRes, galleryRes] =
+        await Promise.all([
+          fetch("/api/halls"),
+          fetch("/api/news-updates"),
+          fetch("/api/hallforms"),
+          fetch("/api/gallery"),
+        ]);
 
-      if (!hallsRes.ok || !newsUpdatesRes.ok || !hallFormsRes.ok) {
+      if (
+        !hallsRes.ok ||
+        !newsUpdatesRes.ok ||
+        !hallFormsRes.ok ||
+        !galleryRes.ok
+      ) {
         throw new Error("Failed to fetch data");
       }
 
       const hallsData = await hallsRes.json();
       const newsUpdatesData = await newsUpdatesRes.json();
       const hallFormsData = await hallFormsRes.json();
+      const galleryData = await galleryRes.json();
 
       // Update the counts from the data arrays
       setHallsCount(hallsData.data.length);
       setNewsUpdatesCount(newsUpdatesData.data.length);
       setHallFormsCount(hallFormsData.data.length);
 
-      // Now, handle gallery count with pagination
-      let totalGalleryCount = 0;
-      let currentPage = 1;
-      let hasMoreImages = true;
-
-      while (hasMoreImages) {
-        const galleryRes = await fetch(
-          `/api/images/batch?limit=7&page=${currentPage}`
-        );
-        if (!galleryRes.ok) {
-          throw new Error("Failed to fetch gallery data");
-        }
-
-        const galleryData = await galleryRes.json();
-        const images = galleryData.data.images || [];
-
-        totalGalleryCount += images.length;
-
-        // Check if there are no more images
-        hasMoreImages = images.length > 0;
-        currentPage++; // Increment to the next page
-      }
-
-      setGalleryCount(totalGalleryCount); // Set the total gallery count after fetching all pages
+      // Update gallery count based on the data structure
+      const galleryCount = galleryData.data.length;
+      setGalleryCount(galleryCount);
     } catch (error) {
       console.error("Error fetching counts:", error);
     } finally {
       setLoading(false); // Set loading to false when done
     }
-  }, []); // Removed currentPage from the dependency array
+  }, []); // Dependency array
 
   useEffect(() => {
     fetchCounts();
