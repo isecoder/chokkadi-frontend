@@ -20,14 +20,13 @@ type MessageType =
 const howToReachMessages: Record<LocaleType, MessageType[]> = {
   en: [
     "One can visit the Shrirama Temple, located 9.3 km from Bellare, which is a major town along SH 100 (Manjeshwara-Puttur-Subrahmanya State Highway). While traveling from Puttur to Subrahmanya, the temple can be reached by taking the Bellare-Pajapalla Road from Bellare, turning right at Ayyanakatte Cross, and continuing for 6.4 km.",
-    "Since there is no proper government bus service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare. Sufficient KSRTC buses are available from Sulya (the taluk center), Puttur, and Subrahmanya to Bellare.",
-    "Although government bus services to Chokkadi are limited, there are four daily buses from Puttur to Chokkadi and four buses to Sulya, although these services may vary daily and are subject to cancellation.",
+    "Since there is no proper public transport service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare.",
     { title: "Nearest Bus Stand", description: "Chokkadi" },
-    { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km)" },
-    { title: "Nearest Railway Station", description: "Yedamangala (16.5 km)" },
+    { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km),Sullia(11.3 km)" },
+    { title: "Nearest Railway Station", description: "Yedamangala (16.5 km),Kaniuru Halt(18.0 km)" },
     {
       title: "Nearest Major Railway Station",
-      description: "Subrahmanya Road (33.4 km)",
+      description: "Kabaka Puttur (36.0 km)",
     },
     {
       title: "Nearest Airport",
