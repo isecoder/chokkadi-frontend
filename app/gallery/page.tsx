@@ -11,14 +11,8 @@ interface ImageData {
   public_url: string;
 }
 
-interface VideoData {
-  video_url: string;
-  title: string;
-}
-
 export default function Gallery(): JSX.Element {
   const [images, setImages] = useState<ImageData[]>([]);
-  const [videos, setVideos] = useState<VideoData[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -63,26 +57,9 @@ export default function Gallery(): JSX.Element {
     }
   }, []);
 
-  const fetchVideos = useCallback(async () => {
-    try {
-      const res = await fetch(`/api/videos`, { cache: "no-store" });
-      if (!res.ok) throw new Error("Failed to load videos");
-
-      const data = await res.json();
-      setVideos(data?.videos || []);
-    } catch (error) {
-      Swal.fire({
-        text: "Unable to fetch videos. Please try again later.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-    }
-  }, []);
-
   useEffect(() => {
     fetchImages(1);
-    fetchVideos();
-  }, [fetchImages, fetchVideos]);
+  }, [fetchImages]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -150,7 +127,10 @@ export default function Gallery(): JSX.Element {
               />
             </div>
           ))}
-          <div ref={loaderRef} className="w-full h-10 flex justify-center items-center" />
+          <div
+            ref={loaderRef}
+            className="w-full h-10 flex justify-center items-center"
+          />
         </div>
       ) : (
         <div className="text-center text-gray-600 text-lg">
@@ -165,29 +145,6 @@ export default function Gallery(): JSX.Element {
         onClose={closeImageModal}
         onNavigate={navigateImage}
       />
-
-      {/* Video Gallery Section */}
-      <h2 className="text-xl font-semibold mt-10 mb-4">VIDEOS</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-        {videos.length > 0 ? (
-          videos.map((video, index) => (
-            <div key={index} className="w-full h-64">
-              <iframe
-                src={video.video_url}
-                title={video.title}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ))
-        ) : (
-          <div className="col-span-full text-center text-gray-600 text-lg">
-            Videos will be uploaded soon.
-          </div>
-        )}
-      </div>
     </div>
   );
 }
