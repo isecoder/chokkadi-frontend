@@ -167,7 +167,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
             <div className="flex justify-between mb-4 items-center">
               <button
                 onClick={handlePrevMonth}
-                className={`px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 ${
+                className={`px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 text-gray-800 font-medium ${
                   currentMonth === new Date().getMonth() &&
                   currentYear === new Date().getFullYear()
                     ? "cursor-not-allowed opacity-50"
@@ -188,7 +188,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
               </span>
               <button
                 onClick={handleNextMonth}
-                className={`px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 ${
+                className={`px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 text-gray-800 font-medium ${
                   currentMonth === (new Date().getMonth() + 2) % 12 &&
                   currentYear ===
                     new Date().getFullYear() +
