@@ -183,12 +183,12 @@ export default function Navbar() {
                       handleMobileDropdownToggle(label.en);
                     }
                   }}
-                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 justify-between"
+                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex items-center justify-between"
                 >
-                  {label[currentLocale as "en" | "kn"]}
+                  <span>{label[currentLocale as "en" | "kn"]}</span>
                   {subLinks && (
                     <FaChevronDown
-                      className={`ml-4 transition-transform duration-200 ${
+                      className={`ml-2 transition-transform duration-200 ${
                         dropdownOpen === label.en ? "rotate-180" : "rotate-0"
                       }`}
                     />
