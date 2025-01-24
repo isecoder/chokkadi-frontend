@@ -72,7 +72,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     managementTreasurerName: "ಶ್ರೀ ಸತ್ಯವೆಂಕಟೇಶ ಹೆಬ್ಬಾರ್",
     membersTitle: "ಸದಸ್ಯರು:",
     members: [
-      "ಶ್ರೀ ಆನೆಕಾರಾ ಗಣಪಯ್ಯ",
+      "ಶ್ರೀ ಆನೆಕಾರ ಗಣಪಯ್ಯ",
       "ಶ್ರೀ ಗೋಪಾಲಕೃಷ್ಣ ಭಟ್‌ ಕಟ್ಟ",
       "ಶ್ರೀ ರಾಮಚಂದ್ರ ಕೋಟೆ",
       "ಶ್ರೀ ಆದರ್ಶ ಕೃಷ್ಣ ನೇಣಾರು",
