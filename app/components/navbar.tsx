@@ -184,6 +184,7 @@ export default function Navbar() {
                     // Prevent scroll behavior on sublink click
                     if (!subLinks) {
                       window.scrollTo({ top: 0, behavior: "smooth" });
+                      closeMenu();
                     } else {
                       e.preventDefault(); // Prevent default behavior for sublinks
                       handleMobileDropdownToggle(label.en);
