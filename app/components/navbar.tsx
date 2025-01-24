@@ -181,11 +181,11 @@ export default function Navbar() {
                 <Link
                   href={href || ""}
                   onClick={(e) => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    // Prevent scroll behavior on sublink click
                     if (!subLinks) {
-                      closeMenu();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                     } else {
-                      e.preventDefault();
+                      e.preventDefault(); // Prevent default behavior for sublinks
                       handleMobileDropdownToggle(label.en);
                     }
                   }}

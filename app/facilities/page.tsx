@@ -30,7 +30,7 @@ const titles: Record<LocaleType, string> = {
 };
 
 export default function CommunityHall() {
-  
+ 
   const dispatch = useDispatch<AppDispatch>();
   const currentLocale: LocaleType = useSelector(
     (state: RootState) => state.locale.locale
