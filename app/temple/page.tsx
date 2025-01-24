@@ -11,7 +11,7 @@ type LocaleType = "en" | "kn";
 // Define content for transport and pooja timings in both English and Kannada
 const content: Record<LocaleType, { title: string; details: { title: string; description: string }[] }> = {
   en: {
-    title: "About Temple",
+    title: "Temple Timings",
     details: [
       { title: "Pooja Timings of Shrirama Temple:", description: "7 am to 1 pm | 5 pm to 8 pm" },
       { title: "Morning Pooja", description: "7:30AM" },
@@ -20,7 +20,7 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
     ],
   },
   kn: {
-    title: "ದೇವಸ್ಥಾನದ ಮಾಹಿತಿ",
+    title: "ದೇವಾಲಯದ ಸಮಯ",
     details: [
       { title: "ಶ್ರೀ ದೇವರ ಪೂಜಾ ಸಮಯ:", description: "ದರ್ಶನ ಸಮಯ:\nಬೆಳಗ್ಗೆ 7 ಗಂಟೆಯಿಂದ ಮಧ್ಯಾಹ್ನ 1 ಗಂಟೆಯ ತನಕ | ಸಂಜೆ 5 ಗಂಟೆಯಿಂದ ರಾತ್ರಿ 8 ಗಂಟೆಯ ತನಕ" },
       { title: "ಬೆಳಗ್ಗೆಯ ಪೂಜೆ", description: "ಬೆಳಗ್ಗೆ 7:30ಕ್ಕೆ" },
