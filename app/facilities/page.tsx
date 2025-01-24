@@ -30,6 +30,7 @@ const titles: Record<LocaleType, string> = {
 };
 
 export default function CommunityHall() {
+  window.scrollTo({top: 0,behavior:'smooth'});
   const dispatch = useDispatch<AppDispatch>();
   const currentLocale: LocaleType = useSelector(
     (state: RootState) => state.locale.locale

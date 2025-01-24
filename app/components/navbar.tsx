@@ -90,124 +90,140 @@ export default function Navbar() {
     if (dropdownTimer) clearTimeout(dropdownTimer);
   };
 
-  return ( <>
-    {currentLocale === "en" ? <Banner /> : <KBanner />}
-    <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg">
-  <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
-    {/* Name Bar */}
-    <div className="flex items-center flex-shrink-0 space-x-2">
-      <Link href="/" onClick={closeMenu} className="text-lg font-bold text-[#8B0000] hover:underline">
-        {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
-      </Link>
-      <div className="w-[3px] bg-[#DD860B] h-10"></div>
-    </div>
-
-    {/* Navigation Links */}
-    <nav className="hidden md:flex flex-1 justify-center gap-x-[2.5vw] text-m">
-      {navLinks.map(({ href, label, subLinks }) => (
-        <div
-          key={label.en}
-          className="relative group"
-          onMouseEnter={() => subLinks && handleMouseEnter(label.en)}
-          onMouseLeave={handleMouseLeave}
-        >
+  return (
+    <>
+      {currentLocale === "en" ? <Banner /> : <KBanner />}
+      <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg">
+        <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
+          {/* Name Bar */}
+          <div className="flex items-center flex-shrink-0 space-x-2">
             <Link
-              href={href || ""}
-              className="text-[#8B0000] font-lg flex items-center space-x-1 hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200"
-            >
-              {label[currentLocale as "en" | "kn"]}
-              {subLinks && (
-                <FaChevronDown
-                  className={` transition-transform duration-200 ${
-                    dropdownOpen === label.en ? "rotate-180" : "rotate-0"
-                  }`}
-                />
-              )}
-            </Link>
-          {subLinks && dropdownOpen === label.en && (
-            <div className="absolute left-0 bg-white shadow-md rounded-md mt-2">
-              {subLinks.map((subLink) => (
-                <Link
-                  key={subLink.label.en}
-                  href={subLink.href}
-                  onClick={closeMenu}
-                  className="block px-4 py-2 text-[#8B0000] hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200"
-                >
-                  {subLink.label[currentLocale as "en" | "kn"]}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </nav>
-
-    {/* Language Switcher */}
-    <div className="hidden md:flex items-center flex-shrink-0">
-      <LanguageSwitcher />
-    </div>
-
-    {/* Mobile Menu Toggle */}
-    <div
-      className="md:hidden cursor-pointer"
-      onClick={toggleMenu}
-      aria-label="Toggle menu"
-    >
-      {menuOpen ? (
-        <FaTimes className="text-[#8B0000] text-2xl" />
-      ) : (
-        <FaBars className="text-[#8B0000] text-2xl" />
-      )}
-    </div>
-  </div>
-
-  {/* Mobile Dropdown */}
-  {menuOpen && (
-    <div className="flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md">
-      {navLinks.map(({ href, label, subLinks }) => (
-        <div key={label.en} className="w-full relative">
-          <Link
-            href={href || ""}
-            onClick={(e) => {
-              if (!subLinks) {
+              href="/"
+              onClick={() => {
                 closeMenu();
-              } else {
-                e.preventDefault();
-                handleMobileDropdownToggle(label.en);
-              }
-            }}
-            className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
-          >
-            {label[currentLocale as "en" | "kn"]}
-            {subLinks && (
-              <FaChevronDown
-                className={`ml-2 transition-transform duration-200 ${
-                  dropdownOpen === label.en ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            )}
-          </Link>
-          {subLinks && dropdownOpen === label.en && (
-            <div className="pl-8 flex flex-col bg-[#FFF9E6]">
-              {subLinks.map((subLink) => (
-                <Link
-                  key={subLink.label.en}
-                  href={subLink.href}
-                  onClick={closeMenu}
-                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] transition-all duration-200"
-                >
-                  {subLink.label[currentLocale as "en" | "kn"]}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-      {/* Mobile Language Switcher */}
-      <LanguageSwitcher />
-    </div>
-  )}
-</div>
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="text-lg font-bold text-[#8B0000] hover:underline"
+            >
+              {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
+            </Link>
+            <div className="w-[3px] bg-[#DD860B] h-10"></div>
+          </div>
 
- </> );
+          {/* Navigation Links */}
+          <nav className="hidden md:flex flex-1 justify-center gap-x-[2.5vw] text-m">
+            {navLinks.map(({ href, label, subLinks }) => (
+              <div
+                key={label.en}
+                className="relative group"
+                onMouseEnter={() => subLinks && handleMouseEnter(label.en)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Link
+                  href={href || ""}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="text-[#8B0000] font-lg flex items-center space-x-1 hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200"
+                >
+                  {label[currentLocale as "en" | "kn"]}
+                  {subLinks && (
+                    <FaChevronDown
+                      className={` transition-transform duration-200 ${
+                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
+                </Link>
+                {subLinks && dropdownOpen === label.en && (
+                  <div className="absolute left-0 bg-white shadow-md rounded-md mt-2">
+                    {subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.label.en}
+                        href={subLink.href}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          closeMenu();
+                        }}
+                        className="block px-4 py-2 text-[#8B0000] hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200"
+                      >
+                        {subLink.label[currentLocale as "en" | "kn"]}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Language Switcher */}
+          <div className="hidden md:flex items-center flex-shrink-0">
+            <LanguageSwitcher />
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div
+            className="md:hidden cursor-pointer"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? (
+              <FaTimes className="text-[#8B0000] text-2xl" />
+            ) : (
+              <FaBars className="text-[#8B0000] text-2xl" />
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {menuOpen && (
+          <div className="flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md">
+            {navLinks.map(({ href, label, subLinks }) => (
+              <div key={label.en} className="w-full relative">
+                <Link
+                  href={href || ""}
+                  onClick={(e) => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    if (!subLinks) {
+                      closeMenu();
+                    } else {
+                      e.preventDefault();
+                      handleMobileDropdownToggle(label.en);
+                    }
+                  }}
+                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
+                >
+                  {label[currentLocale as "en" | "kn"]}
+                  {subLinks && (
+                    <FaChevronDown
+                      className={`ml-2 transition-transform duration-200 ${
+                        dropdownOpen === label.en ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
+                </Link>
+                {subLinks && dropdownOpen === label.en && (
+                  <div className="pl-8 flex flex-col bg-[#FFF9E6]">
+                    {subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.label.en}
+                        href={subLink.href}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          closeMenu();
+                        }}
+                        className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] transition-all duration-200"
+                      >
+                        {subLink.label[currentLocale as "en" | "kn"]}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            {/* Mobile Language Switcher */}
+            <LanguageSwitcher />
+          </div>
+        )}
+      </div>
+    </>
+  );
 }
