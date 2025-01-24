@@ -9,25 +9,25 @@ import { changeLocale } from "../store/localeSlice";
 type LocaleType = "en" | "kn";
 
 // Define text content for each language
-const contactText: Record<LocaleType, { postalAddress: string; contactDetails: string; googleMap: string; address: string; phone: string; tele: string; president: string; email: string }> = {
+const contactText: Record<LocaleType, { postalAddress: string; contactDetails: string; googleMap: string; address: string; priest: string; president: string; tele: string; email: string }> = {
   en: {
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
     address: "Shrirama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
-    phone: "Contact Number: +918481286745",
-    tele: "Telephone Number: 08257200585",
-    president: "President: +919448625254",
+    priest: "Priest: +919481266745",
+    president: "President: +919448625254,+917019616082",
+    tele: "Temple Office: 08257200585",
     email: "E-mail: srtchokkadi@gmail.com"
   },
   kn: {
     postalAddress: "ದೇವಾಲಯದ ವಿಳಾಸ",
-    contactDetails: "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+    contactDetails: "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
     address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
-    phone: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ: +918481286745",
-    tele: "ದೂರವಾಣಿ: 08257200585",
-    president: "ಅಧ್ಯಕ್ಷರು: +919448625254",
+    priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919481266745",
+    president: "ಅಧ್ಯಕ್ಷರು: +919448625254,+917019616082",
+    tele: "ದೇವಾಲಯದ ಕಚೇರಿ: 08257200585",
     email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com"
   }
 };
@@ -64,13 +64,16 @@ const Contact: React.FC = () => {
 
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
             <p className="text-green-600">
-              <strong>{text.phone}</strong>
+              <strong>Contact Number:</strong>
             </p>
             <p>
-              <strong className="text-green-600">{text.tele}</strong>
+              <strong className="text-green-600">{text.president}</strong>
             </p>
             <p className="text-green-600">
-              <strong>{text.president}</strong>
+              <strong>{text.priest}</strong>
+            </p>
+            <p className="text-green-600">
+              <strong>{text.tele}</strong>
             </p>
             <p>
               <strong className="text-green-600">{text.email}</strong>
