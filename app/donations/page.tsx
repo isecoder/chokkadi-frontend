@@ -13,6 +13,7 @@ const donationText: Record<
     title: string;
     generalDonation: string;
     bank: string;
+    branch: string;
     accountNumber: string;
     ifscCode: string;
   }
@@ -20,16 +21,18 @@ const donationText: Record<
   en: {
     title: "Account Details",
     generalDonation: "General Donation",
-    bank: "To be updated",
-    accountNumber: "Account Number",
-    ifscCode: "IFSC Code",
+    bank: "Bank of Baroda",
+    branch: "Kukkujadka",
+    accountNumber: "70690100003088",
+    ifscCode: "BARBOVJKJDK",
   },
   kn: {
     title: "ಖಾತೆ ವಿವರಗಳು",
     generalDonation: "ಸಾಮಾನ್ಯ ದೇಣಿಗೆ",
     bank: "ಬ್ಯಾಂಕ್ ಆಫ್ ಬರೋಡಾ",
-    accountNumber: "ಖಾತೆ ಸಂಖ್ಯೆ",
-    ifscCode: "IFSC ಕೋಡ್",
+    branch: "ಕುಕ್ಕುಜಡ್ಕ",
+    accountNumber: "70690100003088",
+    ifscCode: "BARBOVJKJDK",
   },
 };
 
@@ -50,23 +53,31 @@ const DonationsPage: React.FC = () => {
   const text = donationText[currentLocale];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-white to-orange-100">
-      <h1 className="mb-8 text-3xl font-bold text-orange-600 text-center">{text.title}</h1>
-
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 max-w-4xl w-full items-center">
-        {/* Box 1: General Donation */}
-        <div className="p-6 bg-gradient-to-b from-white to-orange-100 rounded-lg shadow-md text-center text-band"> 
-          <h2 className="text-xl font-bold text-orange-600 mb-2">{text.generalDonation}</h2>
-          <p className="text-lg font-semibold text-gray-800">{text.bank}</p>
-          <p className="text-lg text-gray-800">
-            {text.accountNumber}: <span className="font-normal">To be updated</span>
+    <main className="min-h-screen flex flex-col items-center p-6 bg-yellow-200 font-serif">
+      <h1 className="text-3xl font-bold mb-6 text-green-800 text-center">{text.title}</h1>
+      <div className="max-w-2xl w-full p-6 space-y-6">
+        <div className="p-4 bg-yellow-300 rounded-lg shadow-md">
+          <p className="text-green-700 text-base font-semibold">
+            Bank (ಬ್ಯಾಂಕ್): <span className="font-bold">{text.bank}</span>
           </p>
-          <p className="text-lg text-gray-800">
-            {text.ifscCode}: <span className="font-normal">To be updated</span>
+        </div>
+        <div className="p-4 bg-yellow-300 rounded-lg shadow-md">
+          <p className="text-green-700 text-base font-semibold">
+            Branch (ಶಾಖೆ): <span className="font-bold">{text.branch}</span>
+          </p>
+        </div>
+        <div className="p-4 bg-yellow-300 rounded-lg shadow-md">
+          <p className="text-green-700 text-base font-semibold">
+            Account Number (ಖಾತೆ ಸಂಖ್ಯೆ): <span className="font-bold">{text.accountNumber}</span>
+          </p>
+        </div>
+        <div className="p-4 bg-yellow-300 rounded-lg shadow-md">
+          <p className="text-green-700 text-base font-semibold">
+            IFSC Code (ಐಎಫ್ಎಸ್ಸಿ ಕೋಡ್): <span className="font-bold">{text.ifscCode}</span>
           </p>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

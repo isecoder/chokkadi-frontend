@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Set the global background to a gradient */
+  /* Global background gradient */
   body {
     background: linear-gradient(135deg, #fff9c4, #fbc687); /* Light yellow gradient */
     color: var(--text-color); /* Default green text */
@@ -11,7 +11,7 @@
     padding: 0;
   }
 
-  /* Reset margins, paddings, and box-sizing */
+  /* Reset margins and box-sizing */
   * {
     margin: 0;
     padding: 0;
@@ -25,13 +25,11 @@
 
   /* Headings styles */
   h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color); /* Green headings */
     font-family: 'Georgia', serif; /* Traditional serif font */
   }
 
-  /* Links with green color */
+  /* Links styling */
   a {
-    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
   }
@@ -56,41 +54,10 @@
   }
 }
 
-/* Define custom theme variables */
-:root {
-  --background: #fff9c4; /* Light yellow */
-  --foreground: #087403; /* Dark green for accents */
-  --text-color: #087403; /* Green for all text */
-  --border-color: #065f03; /* Darker green for borders */
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  /* Global background gradient */
-  body {
-    background: linear-gradient(135deg, #fff9c4, #fbc687); /* Light yellow gradient */
-    color: var(--text-color); /* Default green text */
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Reset margins and box-sizing */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  /* Default text color for all elements */
-  body, p, span, div, a, li, h1, h2, h3, h4, h5, h6, button {
-    color: var(--text-color); /* Green for all text globally */
-  }
-}
-
 /* Define theme colors */
 :root {
   --text-color: #087403; /* Green for all text */
-  --background: #fff9c4; /* Light yellow background */
+  --background: #f8f18f; /* Yellow as shown in the image */
+  --foreground: #087403; /* Dark green for accents */
+  --border-color: #065f03; /* Darker green for borders */
 }
