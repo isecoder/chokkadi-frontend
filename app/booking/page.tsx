@@ -49,7 +49,9 @@ const BookingPage = () => {
 
   return (
     <div className="container max-w-prose mx-auto p-4 mb-80">
-      <h1 className="text-2xl font-bold mb-6 mt-10 text-center">Book a Hall</h1>
+      <h1 className="text-2xl font-bold mb-6 mt-10 text-center">
+        Reserve a Hall
+      </h1>
       {!selectedHallId || !selectedDate ? (
         <HallList halls={halls} onDateSelect={handleDateSelect} />
       ) : (

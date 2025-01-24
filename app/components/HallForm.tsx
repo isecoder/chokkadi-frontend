@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface HallFormProps {
-  selectedHallId: number; // Changed from string to number
+  selectedHallId: number;
   selectedDate: string;
   setMessage: (message: string) => void;
 }
@@ -13,6 +13,7 @@ const HallForm: React.FC<HallFormProps> = ({
 }) => {
   const [name, setName] = useState<string>("");
   const [reason, setReason] = useState<string>("");
+  const [customReason, setCustomReason] = useState<string>("");
   const [mobileNumber, setMobileNumber] = useState<string>("");
   const [otp, setOtp] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -88,26 +89,27 @@ const HallForm: React.FC<HallFormProps> = ({
           mobileNumber: "+91" + mobileNumber,
           formDetails: {
             name,
-            reason,
+            reason: reason === "Others" ? customReason : reason,
             mobileNumber: "+91" + mobileNumber,
-            mobileNumberConfirmation: "+91" + mobileNumber, // Add this field
+            mobileNumberConfirmation: "+91" + mobileNumber,
             date: selectedDate,
-            hallId: selectedHallId, // Ensure it sends the number as is
+            hallId: selectedHallId,
           },
         }),
       });
 
       const data = await response.json();
       if (response.ok) {
-        alert("Booking successful!");
+        alert("Reserve successful!");
         setName("");
         setReason("");
+        setCustomReason("");
         setMobileNumber("");
         setOtp("");
         setIsOtpSent(false);
         setIsOtpVerified(false);
       } else {
-        setMessage(`Error: ${data.message || "Failed to book hall."}`);
+        setMessage(`Error: ${data.message || "Failed to Reserve hall."}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -115,6 +117,13 @@ const HallForm: React.FC<HallFormProps> = ({
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const reasonColors: Record<string, string> = {
+    Wedding: "bg-blue-200 text-blue-700",
+    Upanayana: "bg-yellow-200 text-yellow-700",
+    Reception: "bg-red-200 text-red-700",
+    Others: "bg-purple-200 text-purple-700",
   };
 
   return (
@@ -131,14 +140,41 @@ const HallForm: React.FC<HallFormProps> = ({
       </div>
       <div>
         <label className="block text-sm font-medium">Reason for Booking</label>
-        <input
-          type="text"
+        <select
           value={reason}
           onChange={(e) => setReason(e.target.value)}
-          className="mt-1 p-2 border rounded w-full"
+          className={`mt-1 p-2 border rounded w-full ${
+            reasonColors[reason] || ""
+          }`}
           required
-        />
+        >
+          <option value="">Select a reason</option>
+          <option value="Wedding" className="bg-blue-200 text-blue-700">
+            Wedding
+          </option>
+          <option value="Upanayana" className="bg-yellow-200 text-yellow-700">
+            Upanayana
+          </option>
+          <option value="Reception" className="bg-red-200 text-red-700">
+            Reception
+          </option>
+          <option value="Others" className="bg-purple-200 text-purple-700">
+            Others
+          </option>
+        </select>
       </div>
+      {reason === "Others" && (
+        <div>
+          <label className="block text-sm font-medium">Custom Reason</label>
+          <input
+            type="text"
+            value={customReason}
+            onChange={(e) => setCustomReason(e.target.value)}
+            className="mt-1 p-2 border rounded w-full"
+            required
+          />
+        </div>
+      )}
       <div>
         <label className="block text-sm font-medium">Mobile Number</label>
         <input
@@ -184,7 +220,7 @@ const HallForm: React.FC<HallFormProps> = ({
         disabled={isSubmitting}
         className="w-full bg-blue-500 text-white p-2 rounded disabled:bg-gray-400"
       >
-        {isSubmitting ? "Submitting..." : "Book Now"}
+        {isSubmitting ? "Submitting..." : "Reserve Now"}
       </button>
     </form>
   );

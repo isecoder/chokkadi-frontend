@@ -119,6 +119,22 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
     }
   };
 
+  const reasonColors: Record<string, string> = {
+    Wedding: "text-blue-600",
+    Upanayana: "text-yellow-600",
+    Reception: "text-red-600",
+    Available: "text-green-600",
+    Others: "text-purple-600",
+  };
+
+  const getReasonColor = (reason: string): string => {
+    if (reason.includes("Wedding")) return reasonColors["Wedding"];
+    if (reason.includes("Upanayana")) return reasonColors["Upanayana"];
+    if (reason.includes("Reception")) return reasonColors["Reception"];
+    if (reason.includes("Available")) return reasonColors["Available"];
+    return reasonColors["Others"];
+  };
+
   const daysInMonth = getDaysInMonth(currentMonth, currentYear);
 
   return (
@@ -204,15 +220,19 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
                       }
                       className={`p-3 rounded-lg w-full ${
                         availability?.isBooked
-                          ? "bg-red-100 text-red-600 cursor-not-allowed"
-                          : "bg-green-100 text-green-800 hover:bg-green-200"
+                          ? "bg-red-100 cursor-not-allowed"
+                          : "bg-green-100 hover:bg-green-200"
                       }`}
                       disabled={availability?.isBooked}
                     >
                       <span>{new Date(day).getDate()}</span>
                     </button>
                     {availability?.isBooked && (
-                      <div className="text-xs mt-1 text-red-500">
+                      <div
+                        className={`text-xs mt-1 font-medium ${getReasonColor(
+                          availability.reason
+                        )}`}
+                      >
                         {availability.reason}
                       </div>
                     )}
