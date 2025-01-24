@@ -188,7 +188,7 @@ export default function Navbar() {
                   {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
-                      className={`ml-2 transition-transform duration-200 ${
+                      className={`ml-4 transition-transform duration-200 ${
                         dropdownOpen === label.en ? "rotate-180" : "rotate-0"
                       }`}
                     />

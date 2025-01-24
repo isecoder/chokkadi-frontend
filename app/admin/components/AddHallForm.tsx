@@ -2,31 +2,64 @@
 
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import UploadImage from "../components/UploadImage"; // Ensure you have the UploadImage component
 
-const AddHall: React.FC = () => {
+interface AddHallProps {
+  onAdd: () => void; // Callback to refresh the hall list
+}
+
+const AddHall: React.FC<AddHallProps> = ({ onAdd }) => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [nameKannada, setNameKannada] = useState<string>(""); // For Kannada name
-  const [descriptionKannada, setDescriptionKannada] = useState<string>(""); // For Kannada description
+  const [nameKannada, setNameKannada] = useState<string>("");
+  const [descriptionKannada, setDescriptionKannada] = useState<string>("");
+  const [imageIds, setImageIds] = useState<number[]>([]); // Store multiple image IDs
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent the default form submission
+  // Handle image upload and add the image ID to the list
+  const handleImageUpload = (imageData: {
+    imageId: number;
+    publicUrl: string;
+  }) => {
+    setImageIds((prev) => [...prev, imageData.imageId]); // Add the new image ID to the array
+    Swal.fire(
+      "Success!",
+      `Image uploaded successfully. Image ID: ${imageData.imageId}`,
+      "success"
+    );
+  };
 
-    // Validate inputs
+  // Handle removing an image ID from the list
+  const handleRemoveImageId = (imageId: number) => {
+    setImageIds((prev) => prev.filter((id) => id !== imageId)); // Remove the selected image ID
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     if (!name || !description || !nameKannada || !descriptionKannada) {
-      Swal.fire("Error!", "Please fill in all fields correctly.", "error");
+      Swal.fire("Error!", "Please fill in all fields.", "error");
+      return;
+    }
+
+    if (imageIds.length === 0) {
+      Swal.fire(
+        "Error!",
+        "Please upload at least one image to proceed.",
+        "error"
+      );
       return;
     }
 
     const newHall = {
       name,
       description,
-      name_kannada: nameKannada, // Include Kannada name
-      description_kannada: descriptionKannada, // Include Kannada description
+      name_kannada: nameKannada,
+      description_kannada: descriptionKannada,
+      imageIds, // Include the list of image IDs
     };
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const response = await fetch("/api/halls", {
@@ -42,21 +75,15 @@ const AddHall: React.FC = () => {
         throw new Error(errorData.message || "Failed to add hall");
       }
 
-      Swal.fire({
-        title: "Success!",
-        text: "Hall added successfully.",
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(() => {
-        // Refresh the page after the user clicks OK
-        window.location.reload();
-      });
+      Swal.fire("Success!", "Hall added successfully.", "success");
 
-      // Reset form fields after successful submission
+      // Reset the form
       setName("");
       setDescription("");
-      setNameKannada(""); // Reset Kannada name
-      setDescriptionKannada(""); // Reset Kannada description
+      setNameKannada("");
+      setDescriptionKannada("");
+      setImageIds([]);
+      onAdd(); // Refresh the hall list
     } catch (error) {
       Swal.fire(
         "Error!",
@@ -64,13 +91,39 @@ const AddHall: React.FC = () => {
         "error"
       );
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md">
+    <div className="bg-white p-6 rounded-md shadow-md mb-6">
       <h2 className="text-lg font-semibold mb-4">Add Hall</h2>
+
+      {/* Image Upload Section */}
+      <UploadImage onImageUpload={handleImageUpload} />
+
+      {/* Display Image IDs */}
+      <div className="mb-4">
+        <label className="block text-gray-700 mb-2">Uploaded Image IDs</label>
+        {imageIds.length > 0 ? (
+          <ul className="list-disc list-inside bg-gray-100 p-3 rounded-md">
+            {imageIds.map((id) => (
+              <li key={id} className="flex justify-between items-center mb-2">
+                <span>Image ID: {id}</span>
+                <button
+                  onClick={() => handleRemoveImageId(id)}
+                  className="text-red-500 hover:underline"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-gray-500">No images uploaded yet.</p>
+        )}
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2">Name</label>

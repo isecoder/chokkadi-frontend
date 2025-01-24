@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import Image from "next/image";
 
-const UploadImage: React.FC = () => {
+interface UploadImageProps {
+  onImageUpload: (imageData: { imageId: number; publicUrl: string }) => void; // Callback to pass uploaded image data
+}
+
+const UploadImage: React.FC<UploadImageProps> = ({ onImageUpload }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null); // State for image preview
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +31,7 @@ const UploadImage: React.FC = () => {
     }
 
     const formData = new FormData();
-    formData.append("file", selectedFile); // Change to "file"
+    formData.append("file", selectedFile);
 
     setLoading(true);
 
@@ -38,21 +42,30 @@ const UploadImage: React.FC = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json(); // Extract error message from response
-        throw new Error(errorData.message || "Failed to upload image"); // Use the error message from the response
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to upload image");
       }
 
-      const data = await response.json(); // Store the response data
+      const data = await response.json();
+
       Swal.fire("Uploaded!", "Your image has been uploaded.", "success");
-      console.log(data); // You can log or use the data as needed
-      setSelectedFile(null); // Clear the selected file after upload
-      setImagePreview(null); // Clear the image preview after upload
+
+      // Extract relevant data from the response
+      const uploadedImage = data.data; // Access `data` from the response
+      const imageId = uploadedImage.image_id;
+      const publicUrl = `/storage/${uploadedImage.file_path}`; // Construct public URL from file path
+
+      // Pass uploaded image details to the parent component
+      onImageUpload({ imageId, publicUrl });
+
+      setSelectedFile(null);
+      setImagePreview(null);
     } catch (error) {
       Swal.fire(
         "Error!",
         error instanceof Error ? error.message : "Failed to upload image",
         "error"
-      ); // Display the error message
+      );
     } finally {
       setLoading(false);
     }
@@ -60,7 +73,7 @@ const UploadImage: React.FC = () => {
 
   const handleCancel = () => {
     setSelectedFile(null);
-    setImagePreview(null); // Clear the preview
+    setImagePreview(null);
   };
 
   return (
@@ -82,7 +95,7 @@ const UploadImage: React.FC = () => {
         </label>
       </div>
 
-      {imagePreview && ( // Display the preview if available
+      {imagePreview && (
         <div className="mb-4 relative w-full h-48">
           <Image
             src={imagePreview}
@@ -97,7 +110,7 @@ const UploadImage: React.FC = () => {
         <button
           onClick={handleUpload}
           disabled={loading}
-          className={`bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200`}
+          className="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200"
         >
           {loading ? "Uploading..." : "Upload"}
         </button>
