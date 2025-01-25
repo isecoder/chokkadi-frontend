@@ -20,7 +20,7 @@ type MessageType =
 const howToReachMessages: Record<LocaleType, MessageType[]> = {
   en: [
     "One can visit the Shrirama Temple, located 9.3 km from Bellare, which is a major town along SH 100 (Manjeshwara-Puttur-Subrahmanya State Highway). While traveling from Puttur to Subrahmanya, the temple can be reached by taking the Bellare-Pajapalla Road from Bellare, turning right at Ayyanakatte Cross, and continuing for 6.4 km.",
-    "Since there is no proper public transport service to Chokkadi, it is recommended to travel using your own vehicle. Alternatively, private vans operating between Bellare and Chokkadi can be used, or a vehicle can be arranged from Bellare.",
+    "You can reach Chokkadi using your own vehicle. Alternatively, you can use government buses or private vans operating between Bellare and Chokkadi. Additionally, a vehicle can be arranged from Bellare if needed.",
     { title: "Nearest Bus Stand", description: "Chokkadi" },
     { title: "Nearest Major Bus Stand", description: "Bellare (9.3 km),Sullia(11.3 km)" },
     { title: "Nearest Railway Station", description: "Yedamangala (16.5 km),Kaniuru Halt(18.0 km)" },
@@ -35,7 +35,7 @@ const howToReachMessages: Record<LocaleType, MessageType[]> = {
   ],
   kn: [
     "ಶ್ರೀರಾಮ ದೇವಾಲಯವು ರಾ.ಹೆ.ಸಂ. 100 (ಮಂಜೇಶ್ವರ-ಪುತ್ತೂರು-ಸುಬ್ರಹ್ಮಣ್ಯ ರಾಜ್ಯ ಹೆದ್ದಾರಿ)ಯಲ್ಲಿ ಬೆಳ್ಳಾರೆ ಎಂಬ ಪ್ರಮುಖ ಪಟ್ಟಣದಿಂದ 9.3 ಕಿಮೀ ದೂರದಲ್ಲಿರುವ ಚೊಕ್ಕಾಡಿ ಎಂಬ ಪುಟ್ಟ ಗ್ರಾಮದಲ್ಲಿದೆ. ಪುತ್ತೂರಿನಿಂದ ಸುಬ್ರಹ್ಮಣ್ಯಕ್ಕೆ ಪ್ರಯಾಣಿಸುವಾಗ, ಬೆಳ್ಳಾರೆಯಿಂದ ಬಾಳಿಲ ರಸ್ತೆಯ ಮೂಲಕ ತೆರಳಿ ಅಯ್ಯನಕಟ್ಟೆ ಕ್ರಾಸ್‌ನಲ್ಲಿ ಬಲಗಡೆ ತಿರುಗಿ 6.4 ಕಿಮೀ ಸಾಗಿದರೆ ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
-    "ಚೊಕ್ಕಾಡಿಗೆ ಸರಿಯಾದ ಸಾರಿಗೆ ವ್ಯವಸ್ಥಿ ಇಲ್ಲದ ಕಾರಣ, ನಿಮ್ಮ ಸ್ವಂತ ವಾಹನವನ್ನು ಬಳಸುವುದು ಉತ್ತಮ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
+    "ಚೊಕ್ಕಾಡಿಗೆ ತಲುಪಲು ತಮ್ಮ ಸ್ವಂತ ವಾಹನದ ಮೂಲಕ ಅಥವ ಬೆಳ್ಳಾರೆಯಿಂದ ಚೊಕ್ಕಾಡಿಗೆ ಸಂಚರಿಸುವ ಸರಕಾರಿ ಬಸ್‌ ಅಥವ ಖಾಸಗಿ ವ್ಯಾನ್‌ಗಳನ್ನು ಬಳಸಿಕೊಂಡು ದೇವಾಲಯವನ್ನು ತಲುಪಬಹುದು.",
     { title: "ಹತ್ತಿರದ ಬಸ್ ನಿಲ್ದಾಣ", description: "ಚೊಕ್ಕಾಡಿ" },
     {
       title: "ಹತ್ತಿರದ ಪ್ರಮುಖ ಬಸ್ಸು ನಿಲ್ದಾಣ",
@@ -58,7 +58,7 @@ const howToReachMessages: Record<LocaleType, MessageType[]> = {
 
 const titles: Record<LocaleType, string> = {
   en: "How to Reach Shrirama Temple",
-  kn: "ಶ್ರೀರಾಮ ದೇವಾಲಯ ತಲುಪುವ ದಾರಿ",
+  kn: "ಶ್ರೀರಾಮ ದೇವಾಲಯ ತಲುಪುವ ಮಾಹಿತಿ",
 };
 
 const Reach: React.FC = () => {

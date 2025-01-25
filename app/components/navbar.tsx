@@ -32,7 +32,7 @@ const navLinks: NavLink[] = [
       },
       {
         href: "/reach",
-        label: { en: "How to Reach", kn: "ದೇವಾಲಯಕ್ಕೆ ಹೋಗುವ ದಾರಿಯ ಮಾಹಿತಿ" },
+        label: { en: "How to Reach", kn: "ದೇವಾಲಯ ತಲುಪುವ ಮಾಹಿತಿ" },
       },
       {
         href: "/nearby",

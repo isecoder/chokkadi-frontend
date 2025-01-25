@@ -26,7 +26,6 @@ const content: Record<LocaleType, { title: string; details: { title: string; des
       { title: "ಬೆಳಗ್ಗೆಯ ಪೂಜೆ", description: "ಬೆಳಗ್ಗೆ 7:30ಕ್ಕೆ" },
       { title: "ಮಹಾಪೂಜೆ", description: "ಮಧ್ಯಾಹ್ನ 12:30ಕ್ಕೆ" },
       { title: "ರಾತ್ರಿಯ ಪೂಜೆ", description: "ರಾತ್ರಿ 7:30ಕ್ಕೆ" },
-      { title: "ಶ್ರೀ ರಾಮ ದೇವಾಲಯಕ್ಕೆ ಹತ್ತಿರದಲ್ಲಿರುವ ಬಸ್ಸು ನಿಲ್ದಾಣ", description: "ಚೊಕ್ಕಾಡಿ" },
     ],
   },
 };
