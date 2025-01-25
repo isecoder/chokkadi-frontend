@@ -108,7 +108,7 @@ const HallForm: React.FC<HallFormProps> = ({
         const { bookingId, formDetails } = data.data;
         const formattedDate = formatDate(formDetails.date);
         alert(
-          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at {Contact Number} for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formattedDate}\n\nTo confirm the booking, please make the necessary payment and contact the temple authority. Failure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
+          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at +917259810343 for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formattedDate}\n\nTo confirm the booking, please make the necessary payment and contact the temple authority. Failure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
         );
         setName("");
         setReason("");
