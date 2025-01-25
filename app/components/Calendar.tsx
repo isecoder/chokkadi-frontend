@@ -26,15 +26,9 @@ interface APIResponse {
 }
 
 const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
-  const [availabilityData, setAvailabilityData] = useState<AvailabilityData[]>(
-    []
-  );
-  const [currentMonth, setCurrentMonth] = useState<number>(
-    new Date().getMonth()
-  );
-  const [currentYear, setCurrentYear] = useState<number>(
-    new Date().getFullYear()
-  );
+  const [availabilityData, setAvailabilityData] = useState<AvailabilityData[]>([]);
+  const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
 
   const fetchAvailability = useCallback(async () => {
     try {
@@ -61,23 +55,6 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
   useEffect(() => {
     fetchAvailability();
   }, [fetchAvailability]);
-
-  const getDaysInMonth = (month: number, year: number): string[] => {
-    const days = [];
-    const startDate = new Date(year, month, 1);
-    const endDate = new Date(year, month + 1, 0);
-
-    for (
-      let date = startDate;
-      date <= endDate;
-      date.setDate(date.getDate() + 1)
-    ) {
-      if (date >= new Date()) {
-        days.push(date.toISOString().split("T")[0]);
-      }
-    }
-    return days;
-  };
 
   const handlePrevMonth = () => {
     if (
@@ -110,24 +87,60 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
     }
   };
 
-  const reasonColors: Record<string, string> = {
-    Wedding: "text-blue-600",
-    Upanayana: "text-yellow-600",
-    Reception: "text-red-600",
-    Available: "text-green-600",
-    OnHold: "text-orange-600",
-    Others: "text-purple-600",
+  const getReasonColor = (reason: string) => {
+    switch (reason) {
+      case "Available":
+        return "text-green-500";
+      case "On hold":
+        return "text-orange-500";
+      case "Booked":
+        return "text-red-500";
+      default:
+        return "text-gray-500";
+    }
   };
 
-  const getReasonColor = (reason: string): string => {
-    if (reason.includes("Wedding")) return reasonColors["Wedding"];
-    if (reason.includes("Upanayana")) return reasonColors["Upanayana"];
-    if (reason.includes("Reception")) return reasonColors["Reception"];
-    if (reason.includes("Available")) return reasonColors["Available"];
-    if (reason.includes("On hold")) return reasonColors["OnHold"];
-    return reasonColors["Others"];
+  const getDaysInMonth = (month: number, year: number): string[] => {
+    const days = [];
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0);
+    const startDay = startDate.getDay();
+  
+    // Start from tomorrow
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+  
+    // Add empty days until tomorrow (if the month starts before tomorrow)
+    for (let i = 0; i < startDay; i++) {
+      days.push("");
+    }
+  
+    for (let date = new Date(year, month, 1); date <= endDate; date.setDate(date.getDate() + 1)) {
+      const currentDate = new Date(date);
+  
+      // Skip the first date button if the month is not the current month
+      if (currentDate.getMonth() !== today.getMonth() && currentDate.getDate() === 1) {
+        continue; // Skip first day of months other than the current month
+      }
+  
+      if (currentDate >= tomorrow) {
+        days.push(currentDate.toISOString().split("T")[0]);
+      }
+    }
+  
+    // Add the 1st of the next month as an additional day
+    const nextMonthFirstDay = new Date(year, month + 1, 1);
+    days.push(nextMonthFirstDay.toISOString().split("T")[0]);
+  
+    // Fill the rest of the calendar grid
+    while (days.length % 7 !== 0) {
+      days.push(""); // Fill empty days to complete the week
+    }
+  
+    return days;
   };
-
+  
   const daysInMonth = getDaysInMonth(currentMonth, currentYear);
 
   return (
@@ -175,16 +188,23 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
         </button>
       </div>
       <div className="grid grid-cols-7 md:grid-cols-5 sm:grid-cols-3 gap-2">
-        {daysInMonth.map((day) => {
-          const availability = availabilityData.find(
-            (data) => data.date === day
-          );
+        {daysInMonth.map((day, index) => {
+          if (!day) {
+            return <div key={index} className="text-center"></div>;
+          }
+
+          const availability = availabilityData.find((data) => data.date === day);
+          const isToday = new Date(day).toDateString() === new Date().toDateString();
+          const isTomorrow = new Date(day).toDateString() === new Date(new Date().setDate(new Date().getDate() + 1)).toDateString();
+
           return (
             <div key={day} className="text-center">
               <button
                 onClick={() =>
                   !availability?.isBooked &&
                   availability?.reason !== "On hold" &&
+                  !isToday &&
+                  !isTomorrow &&
                   onDateSelect(hallId, day)
                 }
                 className={`p-2 rounded-lg w-full ${
@@ -195,7 +215,10 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
                     : "bg-green-100 hover:bg-green-200"
                 }`}
                 disabled={
-                  availability?.isBooked || availability?.reason === "On hold"
+                  availability?.isBooked ||
+                  availability?.reason === "On hold" ||
+                  isToday ||
+                  isTomorrow
                 }
               >
                 <span>{new Date(day).getDate()}</span>
@@ -216,5 +239,4 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
     </div>
   );
 };
-
 export default Calendar;
