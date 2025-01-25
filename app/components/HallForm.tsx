@@ -100,7 +100,10 @@ const HallForm: React.FC<HallFormProps> = ({
 
       const data = await response.json();
       if (response.ok) {
-        alert("Reserve successful!");
+        const { bookingId, formDetails } = data.data;
+        alert(
+          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at {Contact Number} for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formDetails.date}\n\nFailure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
+        );
         setName("");
         setReason("");
         setCustomReason("");
@@ -109,7 +112,7 @@ const HallForm: React.FC<HallFormProps> = ({
         setIsOtpSent(false);
         setIsOtpVerified(false);
       } else {
-        setMessage(`Error: ${data.message || "Failed to Reserve hall."}`);
+        setMessage(`Error: ${data.message || "Failed to reserve hall."}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
