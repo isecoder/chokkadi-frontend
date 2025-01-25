@@ -85,25 +85,25 @@ const NewsDetail = () => {
   };
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <p className="text-red-500 text-center">{error}</p>;
+  if (error) return <p className="text-green-600 text-center">{error}</p>;
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 bg-[#FFFFCC]">
       <button
         onClick={handleBackButtonClick}
-        className="mb-4 text-orange-600 hover:underline"
+        className="mb-4 px-4 py-2 text-white bg-orange-600 hover:bg-orange-700 rounded-lg shadow-md"
       >
         &larr; Back
       </button>
       {newsDetail && (
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h1 className="text-4xl font-bold text-orange-600 mb-4">
+        <div className="bg-[#FFFFE0] rounded-lg shadow-md p-6">
+          <h1 className="text-4xl font-bold text-green-700 mb-4">
             {showKannada ? newsDetail.title_kannada : newsDetail.title}
           </h1>
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-green-600 mb-4">
             Date: {new Date(newsDetail.created_at).toLocaleDateString()}
           </p>
-          <p className="text-gray-700 text-lg mb-4">
+          <p className="text-green-700 text-lg mb-4">
             {showKannada ? newsDetail.content_kannada : newsDetail.content}
           </p>
           <div className="flex justify-center flex-wrap gap-4">
@@ -131,14 +131,14 @@ const NewsDetail = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
           {/* Close Button */}
           <button
-            className="absolute top-4 right-4 text-white text-3xl font-bold"
+            className="absolute top-4 right-4 text-green-700 text-3xl font-bold"
             onClick={closeZoom}
           >
             &times;
           </button>
           {/* Previous Button */}
           <button
-            className="absolute left-4 text-white text-3xl font-bold"
+            className="absolute left-4 text-green-700 text-3xl font-bold"
             onClick={() => navigateImage("prev")}
           >
             &larr;
@@ -157,7 +157,7 @@ const NewsDetail = () => {
           </div>
           {/* Next Button */}
           <button
-            className="absolute right-4 text-white text-3xl font-bold"
+            className="absolute right-4 text-green-700 text-3xl font-bold"
             onClick={() => navigateImage("next")}
           >
             &rarr;

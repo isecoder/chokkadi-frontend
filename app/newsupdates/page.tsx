@@ -81,11 +81,11 @@ export default function NewsUpdates(): JSX.Element {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 bg-[#FFFFCC]">
       {error && <p className="text-red-500 text-center">{error}</p>}
       {loading && <LoadingSpinner />}
       {!loading && newsUpdates.length === 0 && !error && (
-        <p className="text-center text-orange-500 font-medium">
+        <p className="text-center text-green-700 font-medium">
           No news updates available.
         </p>
       )}
@@ -94,15 +94,15 @@ export default function NewsUpdates(): JSX.Element {
         {newsUpdates.map((news) => (
           <div
             key={news.news_id}
-            className="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 p-6"
+            className="bg-[#FFFFE0] rounded-lg shadow-lg transition-transform transform hover:scale-105 p-6"
           >
-            <h2 className="text-2xl font-bold text-orange-600 mb-2">
+            <h2 className="text-2xl font-bold text-green-700 mb-2">
               {showKannada ? news.title_kannada : news.title}
             </h2>
-            <p className="text-sm text-gray-500 mb-2">
+            <p className="text-sm text-green-600 mb-2">
               Date: {news.created_at}
             </p>
-            <p className="text-gray-700 mb-4 line-clamp-3">
+            <p className="text-green-700 mb-4 line-clamp-3">
               {showKannada ? news.content_kannada : news.content}
             </p>
             {news.images.length > 0 && (
@@ -117,7 +117,7 @@ export default function NewsUpdates(): JSX.Element {
               </div>
             )}
             <button
-              className="bg-orange-600 text-white py-2 px-4 rounded hover:bg-orange-700 transition duration-200 ease-in-out"
+              className="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200 ease-in-out"
               onClick={() => openNewsDetail(news)}
             >
               Read More
