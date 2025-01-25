@@ -124,6 +124,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
     Upanayana: "text-yellow-600",
     Reception: "text-red-600",
     Available: "text-green-600",
+    OnHold: "text-orange-600",
     Others: "text-purple-600",
   };
 
@@ -132,6 +133,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
     if (reason.includes("Upanayana")) return reasonColors["Upanayana"];
     if (reason.includes("Reception")) return reasonColors["Reception"];
     if (reason.includes("Available")) return reasonColors["Available"];
+    if (reason.includes("On hold")) return reasonColors["OnHold"];
     return reasonColors["Others"];
   };
 
@@ -145,7 +147,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
           className="border p-4 rounded-lg text-center shadow-lg"
         >
           <h2 className="text-xl font-semibold text-gray-700">{hall.name}</h2>
-          <p className="text-green-600 text-sm">{hall.description}</p>
+          <p className="text-gray-600 text-sm">{hall.description}</p>
           <div className="mt-2">
             {hall.images.length > 0 ? (
               hall.images.map((imageUrl, index) => (
@@ -216,18 +218,24 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
                     <button
                       onClick={() =>
                         !availability?.isBooked &&
+                        availability?.reason !== "On hold" &&
                         onDateSelect(hall.hall_id, day)
                       }
                       className={`p-3 rounded-lg w-full ${
                         availability?.isBooked
                           ? "bg-red-100 cursor-not-allowed"
+                          : availability?.reason === "On hold"
+                          ? "bg-orange-100 cursor-not-allowed"
                           : "bg-green-100 hover:bg-green-200"
                       }`}
-                      disabled={availability?.isBooked}
+                      disabled={
+                        availability?.isBooked ||
+                        availability?.reason === "On hold"
+                      }
                     >
                       <span>{new Date(day).getDate()}</span>
                     </button>
-                    {availability?.isBooked && (
+                    {availability && (
                       <div
                         className={`text-xs mt-1 font-medium ${getReasonColor(
                           availability.reason
