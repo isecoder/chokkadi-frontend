@@ -22,6 +22,9 @@ const NewsDetail = () => {
   const [newsDetail, setNewsDetail] = useState<NewsDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(
+    null
+  ); // For image navigation
   const showKannada = useSelector(
     (state: RootState) => state.locale.locale === "kn"
   );
@@ -62,6 +65,25 @@ const NewsDetail = () => {
     router.back();
   };
 
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index); // Set the clicked image's index
+  };
+
+  const closeZoom = () => {
+    setCurrentImageIndex(null); // Close the modal
+  };
+
+  const navigateImage = (direction: "prev" | "next") => {
+    if (currentImageIndex !== null && newsDetail?.images) {
+      const totalImages = newsDetail.images.length;
+      if (direction === "prev") {
+        setCurrentImageIndex((currentImageIndex - 1 + totalImages) % totalImages);
+      } else {
+        setCurrentImageIndex((currentImageIndex + 1) % totalImages);
+      }
+    }
+  };
+
   if (loading) return <LoadingSpinner />;
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
@@ -84,17 +106,62 @@ const NewsDetail = () => {
           <p className="text-gray-700 text-lg mb-4">
             {showKannada ? newsDetail.content_kannada : newsDetail.content}
           </p>
-          {newsDetail.images.map((image, idx) => (
-            <div key={idx} className="relative w-full h-60 mb-4">
-              <Image
-                src={image.public_url}
-                alt={image.alt_text}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
-              />
-            </div>
-          ))}
+          <div className="flex justify-center flex-wrap gap-4">
+            {newsDetail.images.map((image, idx) => (
+              <div
+                key={idx}
+                className="relative w-1/6 aspect-[9/16] overflow-hidden rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform"
+                onClick={() => handleImageClick(idx)}
+              >
+                <Image
+                  src={image.public_url}
+                  alt={image.alt_text}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Zoomed Image Modal */}
+      {currentImageIndex !== null && newsDetail && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 text-white text-3xl font-bold"
+            onClick={closeZoom}
+          >
+            &times;
+          </button>
+          {/* Previous Button */}
+          <button
+            className="absolute left-4 text-white text-3xl font-bold"
+            onClick={() => navigateImage("prev")}
+          >
+            &larr;
+          </button>
+          {/* Image Display */}
+          <div className="relative max-w-3xl w-full p-4">
+            <Image
+              src={newsDetail.images[currentImageIndex].public_url}
+              alt={newsDetail.images[currentImageIndex].alt_text}
+              layout="responsive"
+              width={9}
+              height={16}
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
+          {/* Next Button */}
+          <button
+            className="absolute right-4 text-white text-3xl font-bold"
+            onClick={() => navigateImage("next")}
+          >
+            &rarr;
+          </button>
         </div>
       )}
     </div>
