@@ -2,6 +2,8 @@ export interface Hall {
   hall_id: number;
   name: string;
   description: string;
+  name_kannada: string;
+  description_kannada: string;
   HallImages: HallImage[];
   images: string[];
 }

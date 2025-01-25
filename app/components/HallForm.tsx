@@ -20,9 +20,16 @@ const HallForm: React.FC<HallFormProps> = ({
   const [isOtpSent, setIsOtpSent] = useState<boolean>(false);
   const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
 
+  const reasonColors: Record<string, string> = {
+    Wedding: "bg-blue-200 text-blue-700",
+    Upanayana: "bg-yellow-200 text-yellow-700",
+    Reception: "bg-red-200 text-red-700",
+    Others: "bg-purple-200 text-purple-700",
+  };
+
   const sendOtp = async () => {
-    if (!mobileNumber) {
-      setMessage("Please enter your mobile number.");
+    if (!mobileNumber || mobileNumber.length !== 10) {
+      setMessage("Please enter a valid 10-digit mobile number.");
       return;
     }
 
@@ -72,9 +79,11 @@ const HallForm: React.FC<HallFormProps> = ({
     }
   };
 
-  const formatDate = (date: string) => {
-    const [year, month, day] = date.split("-");
-    return `${day}-${month}-${year}`;
+  const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    if (value.length <= 10) {
+      setMobileNumber(value);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -106,9 +115,11 @@ const HallForm: React.FC<HallFormProps> = ({
       const data = await response.json();
       if (response.ok) {
         const { bookingId, formDetails } = data.data;
-        const formattedDate = formatDate(formDetails.date);
+        const formattedDate = new Date(formDetails.date).toLocaleDateString(
+          "en-GB"
+        );
         alert(
-          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at +917259810343 for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formattedDate}\n\nTo confirm the booking, please make the necessary payment and contact the temple authority. Failure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
+          `Hare Raama!\n\nThank you for reserving the hall at Shrirama Temple Chokkadi.\n\nYour request is under review. Please contact the temple authority at +917259810343 for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you:\n- Name: ${formDetails.name}\n- Purpose: ${formDetails.reason}\n- Mobile: ${formDetails.mobileNumber}\n- Booking Date: ${formattedDate}\n\nTo confirm the booking, please make the necessary payment and contact the temple authority. Failure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
         );
         setName("");
         setReason("");
@@ -128,15 +139,9 @@ const HallForm: React.FC<HallFormProps> = ({
     }
   };
 
-  const reasonColors: Record<string, string> = {
-    Wedding: "bg-blue-200 text-blue-700",
-    Upanayana: "bg-yellow-200 text-yellow-700",
-    Reception: "bg-red-200 text-red-700",
-    Others: "bg-purple-200 text-purple-700",
-  };
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
+      {/* Full Name */}
       <div>
         <label className="block text-sm font-medium">Full Name</label>
         <input
@@ -147,6 +152,7 @@ const HallForm: React.FC<HallFormProps> = ({
           required
         />
       </div>
+      {/* Reason for Booking */}
       <div>
         <label className="block text-sm font-medium">Reason for Booking</label>
         <select
@@ -158,18 +164,10 @@ const HallForm: React.FC<HallFormProps> = ({
           required
         >
           <option value="">Select a reason</option>
-          <option value="Wedding" className="bg-blue-200 text-blue-700">
-            Wedding
-          </option>
-          <option value="Upanayana" className="bg-yellow-200 text-yellow-700">
-            Upanayana
-          </option>
-          <option value="Reception" className="bg-red-200 text-red-700">
-            Reception
-          </option>
-          <option value="Others" className="bg-purple-200 text-purple-700">
-            Others
-          </option>
+          <option value="Wedding">Wedding</option>
+          <option value="Upanayana">Upanayana</option>
+          <option value="Reception">Reception</option>
+          <option value="Others">Others</option>
         </select>
       </div>
       {reason === "Others" && (
@@ -184,15 +182,26 @@ const HallForm: React.FC<HallFormProps> = ({
           />
         </div>
       )}
+      {/* Mobile Number */}
       <div>
         <label className="block text-sm font-medium">Mobile Number</label>
-        <input
-          type="text"
-          value={mobileNumber}
-          onChange={(e) => setMobileNumber(e.target.value)}
-          className="mt-1 p-2 border rounded w-full"
-          required
-        />
+        <div className="flex items-center mt-1 space-x-2">
+          <div className="flex items-center bg-gray-100 border border-gray-300 rounded px-3 py-2">
+            <span role="img" aria-label="India flag">
+              🇮🇳
+            </span>
+            <span className="ml-2 text-gray-700 font-medium">+91</span>
+          </div>
+          <input
+            type="text"
+            value={mobileNumber}
+            onChange={handleMobileNumberChange}
+            className="flex-1 p-2 border border-gray-300 rounded w-full"
+            placeholder="Enter your mobile number"
+            maxLength={10}
+            required
+          />
+        </div>
         {!isOtpSent && (
           <button
             type="button"
@@ -224,6 +233,7 @@ const HallForm: React.FC<HallFormProps> = ({
           )}
         </div>
       )}
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}

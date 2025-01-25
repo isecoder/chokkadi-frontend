@@ -1,15 +1,28 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 import HallList from "../components/HallList";
 import HallForm from "../components/HallForm";
 import { Hall, HallsResponse } from "./types";
 
 const BookingPage = () => {
   const [halls, setHalls] = useState<Hall[]>([]);
-  const [selectedHallId, setSelectedHallId] = useState<number | null>(null); // Updated to number | null
+  const [selectedHallId, setSelectedHallId] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
+  const [mounted, setMounted] = useState(false); // Mount state
+
+  // Get translated text from Redux
+  const { reserveAHall } = useSelector(
+    (state: RootState) => state.locale.messages
+  );
+
+  // Set mounted state after component mounts
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchHallsAndImages = async () => {
@@ -37,29 +50,34 @@ const BookingPage = () => {
   }, []);
 
   const handleDateSelect = (hallId: number, date: string) => {
-    window.scrollTo({top: 30,behavior:'smooth'});
-    setSelectedHallId(hallId); // Ensure hallId is a number
+    window.scrollTo({ top: 30, behavior: "smooth" });
+    setSelectedHallId(hallId);
     setSelectedDate(date);
   };
 
   const goBack = () => {
-    setSelectedHallId(null); // Reset selectedHallId to null
-    setSelectedDate(null); // Reset selectedDate to null
+    setSelectedHallId(null);
+    setSelectedDate(null);
     setMessage("");
   };
+
+  if (!mounted) {
+    // Prevent rendering until component has mounted
+    return null;
+  }
 
   return (
     <div className="container max-w-prose mx-auto p-4 mb-80">
       <h1 className="text-2xl font-bold mb-6 mt-10 text-center">
-        Reserve a Hall
+        {reserveAHall}
       </h1>
       {!selectedHallId || !selectedDate ? (
         <HallList halls={halls} onDateSelect={handleDateSelect} />
       ) : (
         <div>
           <HallForm
-            selectedHallId={selectedHallId as number} // Ensure selectedHallId is passed as a number
-            selectedDate={selectedDate as string} // Ensure selectedDate is passed as a string
+            selectedHallId={selectedHallId as number}
+            selectedDate={selectedDate as string}
             setMessage={setMessage}
           />
           <button
