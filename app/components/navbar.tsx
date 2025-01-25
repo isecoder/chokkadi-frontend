@@ -92,16 +92,17 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Conditionally Render Banner or KBanner */}
       {currentLocale === "en" ? <Banner /> : <KBanner />}
-
       <div className="sticky top-0 w-full z-10 bg-gradient-to-r from-[#EED97E] to-[#D9A857] via-[#ECC76A] shadow-lg">
         <div className="flex justify-between items-center mx-auto py-4 px-4 md:px-8">
-          {/* Shrirama Temple with locale */}
-          <div className="flex items-center space-x-2 h-full">
+          {/* Name Bar */}
+          <div className="flex items-center flex-shrink-0 space-x-2">
             <Link
               href="/"
-              onClick={closeMenu}
+              onClick={() => {
+                closeMenu();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="text-lg font-bold text-[#8B0000] hover:underline"
             >
               {currentLocale === "en" ? "Shrirama Temple" : "ಶ್ರೀರಾಮ ದೇವಾಲಯ"}
@@ -109,8 +110,8 @@ export default function Navbar() {
             <div className="w-[3px] bg-[#DD860B] h-10"></div>
           </div>
 
-          {/* Desktop Navbar */}
-          <nav className="hidden md:flex justify-center flex-1 space-x-12 text-m">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex flex-1 justify-center gap-x-[2.5vw] text-m">
             {navLinks.map(({ href, label, subLinks }) => (
               <div
                 key={label.en}
@@ -120,12 +121,13 @@ export default function Navbar() {
               >
                 <Link
                   href={href || ""}
-                  className="text-[#8B0000] font-medium flex-grow text-center hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200 flex items-center"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="text-[#8B0000] font-lg flex items-center space-x-1 hover:bg-white hover:rounded-md hover:px-2 transition-all duration-200"
                 >
                   {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
-                      className={`ml-2 transition-transform duration-200 ${
+                      className={` transition-transform duration-200 ${
                         dropdownOpen === label.en ? "rotate-180" : "rotate-0"
                       }`}
                     />
@@ -137,7 +139,10 @@ export default function Navbar() {
                       <Link
                         key={subLink.label.en}
                         href={subLink.href}
-                        onClick={closeMenu}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          closeMenu();
+                        }}
                         className="block px-4 py-2 text-[#8B0000] hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200"
                       >
                         {subLink.label[currentLocale as "en" | "kn"]}
@@ -149,8 +154,8 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Language Switcher */}
-          <div className="hidden md:flex items-center">
+          {/* Language Switcher */}
+          <div className="hidden md:flex items-center flex-shrink-0">
             <LanguageSwitcher />
           </div>
 
@@ -176,16 +181,18 @@ export default function Navbar() {
                 <Link
                   href={href || ""}
                   onClick={(e) => {
+                    // Prevent scroll behavior on sublink click
                     if (!subLinks) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                       closeMenu();
                     } else {
-                      e.preventDefault();
+                      e.preventDefault(); // Prevent default behavior for sublinks
                       handleMobileDropdownToggle(label.en);
                     }
                   }}
-                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex items-center justify-between"
+                  className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] hover:rounded-md transition-all duration-200 flex justify-between"
                 >
-                  <span>{label[currentLocale as "en" | "kn"]}</span>
+                  {label[currentLocale as "en" | "kn"]}
                   {subLinks && (
                     <FaChevronDown
                       className={`ml-2 transition-transform duration-200 ${
@@ -200,7 +207,10 @@ export default function Navbar() {
                       <Link
                         key={subLink.label.en}
                         href={subLink.href}
-                        onClick={closeMenu}
+                        onClick={() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          closeMenu();
+                        }}
                         className="text-[#8B0000] font-medium block px-4 py-2 hover:bg-[#F6E27F] transition-all duration-200"
                       >
                         {subLink.label[currentLocale as "en" | "kn"]}

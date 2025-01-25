@@ -37,6 +37,7 @@ const BookingPage = () => {
   }, []);
 
   const handleDateSelect = (hallId: number, date: string) => {
+    window.scrollTo({top: 30,behavior:'smooth'});
     setSelectedHallId(hallId); // Ensure hallId is a number
     setSelectedDate(date);
   };

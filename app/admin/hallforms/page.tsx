@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner"; // Import the LoadingSpinner component
+import HallFormsList from "../components/HallFormsList"; // Import the new HallFormsList component
 import Swal from "sweetalert2";
 
 // Interface for each HallForm entry
@@ -9,16 +10,29 @@ interface HallForm {
   id: number;
   name: string;
   reason: string;
-  gotra?: string; // Optional
+  gotra?: string;
   mobileNumber: string;
-  date: string; // DD/MM/YYYY format date string
+  date: Date; // Date type instead of string
   hallId: number;
   hallName: string;
+  isBooked: boolean;
 }
 
 // Interface for API response that includes the nested hall object
-interface ApiHallForm extends HallForm {
-  hall: { name: string };
+interface ApiHallForm {
+  id: number;
+  name: string;
+  reason: string;
+  mobileNumber: string;
+  date: string; // Still string from the API
+  hallId: number;
+  hall: {
+    name: string;
+    hallAvailability: {
+      date: string;
+      is_booked: boolean;
+    }[];
+  };
 }
 
 export default function HallForms(): JSX.Element {
@@ -37,7 +51,7 @@ export default function HallForms(): JSX.Element {
   // State for filtered results
   const [filteredHallForms, setFilteredHallForms] = useState<HallForm[]>([]);
 
-  // Fetch Hall Forms with Hall name included
+  // Fetch Hall Forms with Hall name and isBooked status included
   const fetchHallForms = async () => {
     setLoading(true);
     try {
@@ -45,12 +59,24 @@ export default function HallForms(): JSX.Element {
       if (!res.ok) throw new Error("Failed to load hall forms");
 
       const { data }: { data: ApiHallForm[] } = await res.json(); // Type response data
-      const formattedData = data.map((form) => ({
-        ...form,
-        hallName: form.hall.name || "N/A", // Access hall name safely
-        bookingId: `${form.id}`, // Format id as bookingId
-        date: new Date(form.date).toLocaleDateString("en-GB"), // Format date as DD/MM/YYYY
-      }));
+      const formattedData = data.map((form) => {
+        const availability = form.hall.hallAvailability.find(
+          (avail) =>
+            new Date(avail.date).toISOString() ===
+            new Date(form.date).toISOString()
+        );
+
+        return {
+          id: form.id,
+          name: form.name,
+          reason: form.reason,
+          mobileNumber: form.mobileNumber,
+          date: new Date(form.date), // Convert date string to Date object
+          hallId: form.hallId,
+          hallName: form.hall.name || "N/A", // Access hall name safely
+          isBooked: availability?.is_booked || false, // Check if the hall is booked
+        };
+      });
 
       setHallForms(formattedData);
       setFilteredHallForms(formattedData); // Initialize filtered results
@@ -99,6 +125,33 @@ export default function HallForms(): JSX.Element {
     }
   };
 
+  const confirmBooking = async (id: number, date: Date) => {
+    try {
+      const response = await fetch(`/api/hallforms/${id}/confirm-reserve`, {
+        method: "PATCH", // Use PATCH instead of POST
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ date: date.toISOString() }), // Send the date in ISO format
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to confirm reservation");
+      }
+
+      Swal.fire("Success!", "The reservation has been confirmed.", "success");
+
+      // Refresh the hall forms list
+      fetchHallForms();
+    } catch (error) {
+      Swal.fire(
+        "Error!",
+        error instanceof Error
+          ? error.message
+          : "Failed to confirm reservation",
+        "error"
+      );
+    }
+  };
+
   // Function to handle filter input changes
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -118,7 +171,9 @@ export default function HallForms(): JSX.Element {
           .toLowerCase()
           .includes(name.toLowerCase());
         const matchesMobile = form.mobileNumber.includes(mobileNumber);
-        const matchesDate = form.date.includes(date);
+        const matchesDate = date
+          ? form.date.toLocaleDateString("en-GB").includes(date)
+          : true;
         const matchesId = form.id.toString().includes(id);
 
         return matchesName && matchesMobile && matchesDate && matchesId;
@@ -176,34 +231,12 @@ export default function HallForms(): JSX.Element {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {filteredHallForms.map((form) => (
-          <div
-            key={form.id}
-            className="bg-white border-l-4 border-orange-500 shadow-lg rounded-lg p-6 transition duration-300 transform hover:scale-105 flex flex-col justify-between max-w-xs mx-auto"
-          >
-            <h2 className="text-xl font-semibold text-orange-600 mb-2">
-              {form.name}
-            </h2>
-            <p className="text-gray-700 mb-2">Booking ID: {form.id}</p>
-            <p className="text-gray-700 mb-2">Hall Name: {form.hallName}</p>
-            <p className="text-gray-700 mb-2">Reason: {form.reason}</p>
-            {form.gotra && (
-              <p className="text-gray-700 mb-2">Gotra: {form.gotra}</p>
-            )}
-            <p className="text-gray-700 mb-2">Mobile: {form.mobileNumber}</p>
-            <p className="text-sm text-gray-500 font-medium">
-              Date: {form.date}
-            </p>
-            <button
-              onClick={() => deleteHallForm(form.id)}
-              className="mt-4 bg-red-500 text-white px-3 py-1 rounded block" // Visible on all devices
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </div>
+      {/* Render HallFormsList */}
+      <HallFormsList
+        hallForms={filteredHallForms}
+        onConfirm={confirmBooking}
+        onDelete={deleteHallForm}
+      />
     </div>
   );
 }
