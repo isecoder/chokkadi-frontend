@@ -133,11 +133,11 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
     const nextMonthFirstDay = new Date(year, month + 1, 1);
     days.push(nextMonthFirstDay.toISOString().split("T")[0]);
   
-    // Fill the rest of the calendar grid
-    while (days.length % 7 !== 0) {
-      days.push(""); // Fill empty days to complete the week
+    // Fill the rest of the calendar grid to complete the grid
+    while (days.length < 35) { // Ensure 35 days in the grid
+      days.push("");
     }
-  
+
     return days;
   };
   
@@ -187,7 +187,10 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
           Next
         </button>
       </div>
-      <div className="grid grid-cols-7 md:grid-cols-5 sm:grid-cols-3 gap-2">
+      <div className="grid grid-cols-7 gap-2">
+        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => (
+          <div key={index} className="text-center font-medium">{day}</div>
+        ))}
         {daysInMonth.map((day, index) => {
           if (!day) {
             return <div key={index} className="text-center"></div>;
@@ -239,4 +242,5 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
     </div>
   );
 };
+
 export default Calendar;
