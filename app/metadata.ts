@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Shrirama Temple, Hariharapallathadka',
     description: 'Discover the divine amalgamation of Lord Vishnu and Lord Shiva at Shrirama Temple in Hariharapallathadka, Karnataka.',
-    url: 'https://www.shriharihareshwara.org',
+    url: 'https://www.srtchokkadi.org',
     siteName: 'Shrirama Temple',
     images: [
       {

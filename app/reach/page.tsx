@@ -30,7 +30,7 @@ const howToReachMessages: Record<LocaleType, MessageType[]> = {
     },
     {
       title: "Nearest Airport",
-      description: "Mangalore International Airport (92.7 km)",
+      description: "Mangaluru International Airport (92.7 km)",
     },
   ],
   kn: [
