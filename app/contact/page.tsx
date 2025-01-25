@@ -14,7 +14,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
-    address: "Shrirama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
+    address: "Shrirama Temple, Chokkadi,\n Amarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
     priest: "Priest: +919741251613",
     president: "President: +919448625254,+917019616082",
     tele: "Temple Office: 08257200585",
@@ -24,7 +24,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     postalAddress: "ದೇವಾಲಯದ ವಿಳಾಸ",
     contactDetails: "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
-    address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
+    address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\n ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
     priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919741251613",
     president: "ಅಧ್ಯಕ್ಷರು: +919448625254,+917019616082",
     tele: "ದೇವಾಲಯದ ಕಚೇರಿ: 08257200585",
@@ -60,7 +60,14 @@ const Contact: React.FC = () => {
           {/* Address and Contact Details */}
           <div className="flex-1 text-center lg:text-left">
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.postalAddress}</h2>
-            <p className="text-green-600 mb-8">{text.address}</p>
+            <p className="text-green-600 mb-8">
+              {text.address.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </p>
 
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
             <p className="text-green-600">
