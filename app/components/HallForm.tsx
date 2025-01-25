@@ -141,6 +141,17 @@ const HallForm: React.FC<HallFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
+      {/* Selected Date */}
+      <div>
+  <label className="block text-sm font-medium">Selected Date</label>
+  <input
+    type="text"
+    value={new Date(selectedDate).toLocaleDateString("en-GB")}
+    disabled
+    className="mt-1 p-2 border rounded w-full bg-gray-100 text-gray-700"
+  />
+</div>
+
       {/* Full Name */}
       <div>
         <label className="block text-sm font-medium">Full Name</label>
