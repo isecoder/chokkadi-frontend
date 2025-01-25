@@ -61,7 +61,7 @@ const footerText: Record<
       links: [
         { name: "ಮುಖಪುಟ", path: "/" },
         { name: "ದೇವಾಲಯದ ಬಗ್ಗೆ", path: "/history" },
-        { name: "ಮಂಟಪ ಬುಕಿಂಗ್", path: "/booking" },
+        { name: "ಸಭಾಂಗಣ ಬುಕಿಂಗ್", path: "/booking" },
         { name: "ಸುದ್ದಿಗಳು", path: "/newsupdates" },
         { name: "ಗ್ಯಾಲರಿ", path: "/gallery" },
       ],

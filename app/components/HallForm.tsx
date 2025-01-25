@@ -72,6 +72,11 @@ const HallForm: React.FC<HallFormProps> = ({
     }
   };
 
+  const formatDate = (date: string) => {
+    const [year, month, day] = date.split("-");
+    return `${day}-${month}-${year}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isOtpVerified) {
@@ -101,8 +106,9 @@ const HallForm: React.FC<HallFormProps> = ({
       const data = await response.json();
       if (response.ok) {
         const { bookingId, formDetails } = data.data;
+        const formattedDate = formatDate(formDetails.date);
         alert(
-          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at {Contact Number} for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formDetails.date}\n\nFailure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
+          `Hare Raama!\nThank you for reserving the hall at Shrirama Temple Chokkadi.\nYour request is under review. Please contact the temple authority at {Contact Number} for confirmation within 26 hours to finalize your booking.\n\nBooking Id: ${bookingId}\n\nDetails provided by you in the form:\n    Name: ${formDetails.name}\n    Purpose: ${formDetails.reason}\n    Mobile: ${formDetails.mobileNumber}\n    Booking Date: ${formattedDate}\n\nTo confirm the booking, please make the necessary payment and contact the temple authority. Failure to confirm within the given time may result in cancellation of the reservation.\n\nThank you,\nShrirama Temple Chokkadi`
         );
         setName("");
         setReason("");
