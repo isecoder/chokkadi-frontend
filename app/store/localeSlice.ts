@@ -6,11 +6,13 @@ const translations = {
     welcome: "Welcome to our site!",
     language: "Language",
     greeting: "Hello, how can we assist you today?",
+    reserveAHall: "Reserve a Hall", // Added translation
   },
   kn: {
     welcome: "ನಮ್ಮ ತಾಣಕ್ಕೆ ಸ್ವಾಗತ!",
     language: "ಭಾಷೆ",
     greeting: "ಹಲೋ, ಇಂದು ನಾವು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?",
+    reserveAHall: "ಹಾಲ್ ಕಾಯ್ದಿರಿಸಿ", // Added translation
   },
 };
 
