@@ -145,7 +145,7 @@ const HallList: React.FC<HallListProps> = ({ halls, onDateSelect }) => {
           className="border p-4 rounded-lg text-center shadow-lg"
         >
           <h2 className="text-xl font-semibold text-gray-700">{hall.name}</h2>
-          <p className="text-gray-600 text-sm">{hall.description}</p>
+          <p className="text-green-600 text-sm">{hall.description}</p>
           <div className="mt-2">
             {hall.images.length > 0 ? (
               hall.images.map((imageUrl, index) => (
