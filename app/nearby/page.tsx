@@ -24,6 +24,7 @@ import P16 from "/app/nearby/p16.jpg";
 import P17 from "/app/nearby/p17.jpg";
 import P18 from "/app/nearby/p18.png";
 import P19 from "/app/nearby/p19.jpg";
+import P20 from "/app/nearby/p20.jpg";
 
 type LocaleType = "en" | "kn";
 type ImageType = typeof P1;
@@ -69,6 +70,15 @@ const placesContent: Record<
           </span>
         ),
         image: P9,
+      },
+      {
+        name: "Shri Ullakulu Temple,Chokkadi",
+        description: (
+          <span>
+            &quot;The Chokkadi Ullakulu Temple, located in Chokkadi village, Sulya taluk, Dakshina Kannada, is dedicated to the Ullakulu Daiva, a revered guardian deity of Tulu Nadu. It is known for its annual Nema festival, featuring unique rituals like Addanapettu, symbolizing conflict resolution and community harmony. The temple holds cultural significance for nearby villages and is deeply rooted in local folklore. Image Courtesy: Anoop Soorinje&quot;
+          </span>
+        ),
+        image: P20,
       },
       {
         name: "Kukke Shri Subrahmanya Temple",
@@ -326,6 +336,15 @@ const placesContent: Record<
         image: P9,
       },
       {
+        name: "ಶ್ರೀ ಉಳ್ಳಾಕುಲು ದೈವಸ್ಥಾನ,ಚೊಕ್ಕಾಡಿ",
+        description: (
+          <span>
+            &quot;ಚೊಕ್ಕಾಡಿ ಉಳ್ಳಾಕುಲು ದೈವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡದ ಸುಳ್ಯ ತಾಲೂಕಿನ ಅಮರಪಡ್ನೂರು ಗ್ರಾಮದಲ್ಲಿರುವ ಚೊಕ್ಕಾಡಿಯಲ್ಲಿದೆ.ಇದು ತುಳುನಾಡಿನ ಪ್ರಧಾನ ದೈವವಾದ ಉಳ್ಳಾಕುಲು ದೈವಕ್ಕೆ ಸಮರ್ಪಿತವಾಗಿದೆ. ಪ್ರತಿ ವರ್ಷ ನಡೆಯುವ ನೇಮೋತ್ಸವ, ಅಡ್ಡಣಪೆಟ್ಟು ಮುಂತಾದ ವಿಶಿಷ್ಟ ವಿಧಿ ವಿಧಾನಗಳು ಇಲ್ಲಿ ನಡೆಯುತ್ತದೆ.ಈ ದೈವಸ್ಥಾನವು ಸುತ್ತಮುತ್ತಲಿನ ಗ್ರಾಮಗಳಲ್ಲಿ ಮಹತ್ವವನ್ನು ಹೊಂದಿದೆ.&quot;
+          </span>
+        ),
+        image: P20,
+      },
+      {
         name: "ಕುಕ್ಕೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
         description: (
           <span>
@@ -576,13 +595,14 @@ export default function Nearby() {
             key={index}
             className="bg-[var(--card-background)] bg-opacity-90 rounded-lg shadow-lg p-4 flex flex-col items-center"
           >
-            <Image
-              src={image}
-              alt={`Image of ${name}`}
-              className="rounded-lg"
-              width={270}
-              height={180}
-            />
+            <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
+              <Image
+                src={image}
+                alt={`Image of ${name}`}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
             <h2 className="text-[var(--primary)] font-semibold text-lg mt-4">
               {name}
             </h2>
