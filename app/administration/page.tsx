@@ -24,6 +24,7 @@ interface AdministrationContent {
   members: string[];
   templePriestTitle: string;
   templePriestName: string;
+  priestContactNumber: string;
 }
 
 const administrationContent: Record<LocaleType, AdministrationContent> = {
@@ -55,6 +56,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     ],
     templePriestTitle: "Temple Priest:",
     templePriestName: "Shri Raghurama Sharma",
+    priestContactNumber: "Contact Number:+919741251613"
   },
   kn: {
     sevaSamithiTitle: "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿ",
@@ -62,7 +64,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
       "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಶ್ರೀ ರಾಮಚಂದ್ರಾಪುರ ಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಪರಮಪೂಜ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಮಹಾಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿಯು ಮಠದ ಮಾರ್ಗದರ್ಶನದ ಪ್ರಕಾರ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
     managementPresidentTitle: "ಅಧ್ಯಕ್ಷರು:",
     managementPresidentName: "ಶ್ರೀ ಮಹೇಶ್ ಭಟ್ ಚೂಂತಾರು",
-    contactNumber: "ದೂರವಾಣಿ ಸಂ: +91 9448625254, +91 7019616082",
+    contactNumber: "ದೂರವಾಣಿ ಸಂ: +919448625254, +917019616082",
     managementVicePresidentTitle: "ಉಪಾಧ್ಯಕ್ಷರು:",
     managementVicePresidentName: "ಶ್ರೀ ಕೃಷ್ಣಮೂರ್ತಿ ನೇಣಾರು",
     viceContactNumber: "ದೂರವಾಣಿ ಸಂ: +91 9008145925",
@@ -84,6 +86,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     ],
     templePriestTitle: "ಅರ್ಚಕರು:",
     templePriestName: "ಶ್ರೀ ರಘುರಾಮ ಶರ್ಮಾ",
+    priestContactNumber: "ದೂರವಾಣಿ ಸಂ: +919741251613"
   },
 };
 

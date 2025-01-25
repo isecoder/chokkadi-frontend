@@ -66,14 +66,14 @@ const Contact: React.FC = () => {
             <p className="text-green-600">
               <strong>Contact Number:</strong>
             </p>
+            <p className="text-green-600">
+              <strong>{text.tele}</strong>
+            </p>
             <p>
               <strong className="text-green-600">{text.president}</strong>
             </p>
             <p className="text-green-600">
               <strong>{text.priest}</strong>
-            </p>
-            <p className="text-green-600">
-              <strong>{text.tele}</strong>
             </p>
             <p>
               <strong className="text-green-600">{text.email}</strong>
