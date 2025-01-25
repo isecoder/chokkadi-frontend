@@ -6,9 +6,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import store from "./store";
 import Navbar from "./components/navbar";
-import dynamic from 'next/dynamic';
-const Footer = dynamic(() => import('./components/footer'), { ssr: false });
-
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("./components/footer"), { ssr: false });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
+        <title>Shrirama Temple, Chokkadi</title>
         {/* Google Analytics script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
@@ -57,7 +57,9 @@ export default function RootLayout({ children }: LayoutProps) {
           `}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Provider store={store}>
           <div className="flex flex-col min-h-screen">
             <Navbar />
