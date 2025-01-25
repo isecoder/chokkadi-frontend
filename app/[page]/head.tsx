@@ -32,9 +32,10 @@ export default function Head() {
       <title>{metadata.title}</title>
       <meta name="description" content={metadata.description} />
       <meta property="og:title" content={metadata.title} />
+      <link rel="icon" href="/favicon.ico" />
       <meta property="og:description" content={metadata.description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`http://www.shriRama.org/${page}`} />
+      <meta property="og:url" content={`http://www.srtchokkadi.org/${page}`} />
     </>
   );
 }
