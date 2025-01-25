@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
       onClick={handleLocaleChange}
       className="py-2 px-4 rounded-md font-bold text-white transition duration-200 bg-orange-500 hover:bg-orange-600"
     >
-      {locale === "kn" ? "ಕನ್ನಡ" : "English"}
+      {locale === "en" ? "ಕನ್ನಡಕ್ಕೆ ಬದಲಾಯಿಸಿ" : "Switch to English"}
     </button>
   );
 }
