@@ -566,15 +566,15 @@ export default function Nearby() {
   if (!isLocaleLoaded) return null;
 
   return (
-    <main className="min-h-screen flex flex-col items-center p-6 bg-gradient-to-b from-[#fff9c4] to-[#fff59d] font-serif">
-      <h1 className="text-3xl font-bold mb-6 text-center text-green-800">
+    <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
+      <h1 className="text-3xl font-bold mb-6 text-[var(--foreground)] text-center">
         {title}
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {places.map(({ name, description, image }, index) => (
           <div
             key={index}
-            className="bg-[#fff8e1] rounded-lg shadow-md p-4 flex flex-col items-center"
+            className="bg-[var(--card-background)] bg-opacity-90 rounded-lg shadow-lg p-4 flex flex-col items-center"
           >
             <Image
               src={image}
@@ -583,28 +583,28 @@ export default function Nearby() {
               width={270}
               height={180}
             />
-            <h2 className="text-green-800 font-semibold text-lg mt-4">
+            <h2 className="text-[var(--primary)] font-semibold text-lg mt-4">
               {name}
             </h2>
             <button
               onClick={() => setActivePlace(index)}
               aria-label={`View details about ${name}`}
-              className="mt-2 bg-green-700 text-white px-4 py-2 rounded-md"
+              className="mt-2 bg-[var(--button-background)] text-[var(--button-text)] px-4 py-2 rounded-md"
             >
               {buttonLabel}
             </button>
 
             {activePlace === index && (
               <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-10 overflow-auto">
-                <div className="bg-[#fff8e1] p-6 rounded-md max-w-lg mx-auto">
-                  <h2 className="text-xl font-bold mb-2 text-green-800">
+                <div className="bg-[var(--card-background)] bg-opacity-95 p-6 rounded-md max-w-lg mx-auto">
+                  <h2 className="text-xl font-bold mb-2 text-[var(--primary)]">
                     {name}
                   </h2>
-                  <p className="text-green-900">{description}</p>
+                  <p className="text-[var(--text)]">{description}</p>
                   <button
                     onClick={() => setActivePlace(null)}
                     aria-label="Close details"
-                    className="mt-4 bg-green-700 text-white px-4 py-2 rounded-md"
+                    className="mt-4 bg-[var(--button-background)] text-[var(--button-text)] px-4 py-2 rounded-md"
                   >
                     Close
                   </button>
