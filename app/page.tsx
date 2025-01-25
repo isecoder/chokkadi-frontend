@@ -54,7 +54,7 @@ export default function Component() {
               <div className="text-sm sm:text-base text-justify mb-4">
                 {welcomeContent[currentLocale]}
               </div>
-              <Link href="/history">
+              <Link href="/temple">
                 <button className="bg-[var(--background)] text-[var(--foreground)] font-bold px-4 py-2 border border-[var(--border-color)] rounded-md hover:bg-[var(--border-color)] hover:text-[var(--background)] transition-all duration-300">
                   Read more
                 </button>
