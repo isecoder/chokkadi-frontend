@@ -593,9 +593,9 @@ export default function Nearby() {
         {places.map(({ name, description, image }, index) => (
           <div
             key={index}
-            className="bg-[var(--card-background)] bg-opacity-90 rounded-lg shadow-lg p-4 flex flex-col items-center"
+            className="relative bg-[var(--card-background)] bg-opacity-90 rounded-lg shadow-lg p-4 flex flex-col items-center"
           >
-            <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
+            <div className="relative w-full aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
               <Image
                 src={image}
                 alt={`Image of ${name}`}
@@ -613,18 +613,18 @@ export default function Nearby() {
             >
               {buttonLabel}
             </button>
-
+  
             {activePlace === index && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-10 overflow-auto">
-                <div className="bg-[var(--card-background)] bg-opacity-95 p-6 rounded-md max-w-lg mx-auto">
-                  <h2 className="text-xl font-bold mb-2 text-[var(--primary)]">
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-10 overflow-auto">
+                <div className="bg-[#f8f18f] p-6 rounded-md max-w-lg mx-auto">
+                  <h2 className="text-xl font-bold mb-2 text-green-800">
                     {name}
                   </h2>
-                  <p className="text-[var(--text)]">{description}</p>
+                  <p className="text-green-900">{description}</p>
                   <button
                     onClick={() => setActivePlace(null)}
                     aria-label="Close details"
-                    className="mt-4 bg-[var(--button-background)] text-[var(--button-text)] px-4 py-2 rounded-md"
+                    className="mt-4 bg-green-700 text-white px-4 py-2 rounded-md"
                   >
                     Close
                   </button>
@@ -636,4 +636,5 @@ export default function Nearby() {
       </div>
     </main>
   );
+  
 }
