@@ -90,8 +90,6 @@ const HallForm: React.FC<HallFormProps> = ({
           formDetails: {
             name,
             reason: reason === "Others" ? customReason : reason,
-            mobileNumber: "+91" + mobileNumber,
-            mobileNumberConfirmation: "+91" + mobileNumber,
             date: selectedDate,
             hallId: selectedHallId,
           },
@@ -100,7 +98,28 @@ const HallForm: React.FC<HallFormProps> = ({
 
       const data = await response.json();
       if (response.ok) {
-        alert("Reserve successful!");
+        // Generate the Booking ID
+        const generatedBookingId = `DES${data.bookingId.padStart(2, "0")}`;
+
+        // Show success message
+        alert(`
+          Hare Raama!
+          Thank you for reserving the hall at Shrirama Temple Chokkadi.
+          Your request is under review. Please contact the temple authority at {Contact Number} for confirmation within 26 hours to finalize your booking.
+
+          Booking ID: ${generatedBookingId}
+          Name: ${name}
+          Purpose: ${reason === "Others" ? customReason : reason}
+          Mobile: +91${mobileNumber}
+          Booking Date: ${selectedDate}
+
+          Failure to confirm within the given time may result in cancellation of the reservation.
+
+          Thank you,
+          Shrirama Temple Chokkadi
+        `);
+
+        // Reset form state
         setName("");
         setReason("");
         setCustomReason("");
