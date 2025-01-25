@@ -9,27 +9,42 @@ import { changeLocale } from "../store/localeSlice";
 type LocaleType = "en" | "kn";
 
 // Define text content for each language
-const contactText: Record<LocaleType, { postalAddress: string; contactDetails: string; googleMap: string; address: string; priest: string; president: string; tele: string; email: string }> = {
+const contactText: Record<
+  LocaleType,
+  {
+    postalAddress: string;
+    contactDetails: string;
+    googleMap: string;
+    address: string;
+    contactNumber: string;
+    priest: string;
+    president: string;
+    tele: string;
+    email: string;
+  }
+> = {
   en: {
     postalAddress: "Postal Address",
     contactDetails: "Contact Details",
     googleMap: "Google Map",
     address: "Shrirama Temple, Chokkadi,\n Amarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
+    contactNumber: "Contact Number:",
     priest: "Priest: +919741251613",
     president: "President: +919448625254,+917019616082",
     tele: "Temple Office: 08257200585",
-    email: "E-mail: srtchokkadi@gmail.com"
+    email: "E-mail: srtchokkadi@gmail.com",
   },
   kn: {
     postalAddress: "ದೇವಾಲಯದ ವಿಳಾಸ",
     contactDetails: "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
     address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\n ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
+    contactNumber: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ:",
     priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919741251613",
     president: "ಅಧ್ಯಕ್ಷರು: +919448625254,+917019616082",
     tele: "ದೇವಾಲಯದ ಕಚೇರಿ: 08257200585",
-    email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com"
-  }
+    email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com",
+  },
 };
 
 const Contact: React.FC = () => {
@@ -71,7 +86,7 @@ const Contact: React.FC = () => {
 
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
             <p className="text-green-600">
-              <strong>Contact Number:</strong>
+              <strong>{text.contactNumber}</strong>
             </p>
             <p className="text-green-600">
               <strong>{text.tele}</strong>
