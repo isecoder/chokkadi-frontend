@@ -24,7 +24,7 @@ const donationText: Record<
     bank: "Bank of Baroda",
     branch: "Kukkujadka",
     accountNumber: "70690100003088",
-    ifscCode: "BARBOVJKJDK",
+    ifscCode: "BARB0VJKJDK",
   },
   kn: {
     title: "ಖಾತೆ ವಿವರಗಳು",
@@ -32,7 +32,7 @@ const donationText: Record<
     bank: "ಬ್ಯಾಂಕ್ ಆಫ್ ಬರೋಡಾ",
     branch: "ಕುಕ್ಕುಜಡ್ಕ",
     accountNumber: "70690100003088",
-    ifscCode: "BARBOVJKJDK",
+    ifscCode: "BARB0VJKJDK",
   },
 };
 
