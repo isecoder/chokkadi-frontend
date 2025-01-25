@@ -41,6 +41,36 @@ const placesContent: Record<
     buttonLabel: "View Details",
     places: [
       {
+        name: "Shree Parivara Panchalingeshwara Temple, Panja",
+        description: (
+          <span>
+            &quot;Shree Parivara Panchalingeshwara Temple, located in Panja
+            village along the Manjeshwara-Puttur-Subrahmanya state highway, is a
+            historic Hindu temple dating back to the 13th century. According to
+            local legends, the five Shiva Lingams enshrined here were installed
+            by the Pandavas during their exile, linking the temple to the
+            Mahabharata. Devotees visit to perform rituals like Rudrabhisheka,
+            seeking blessings for marriage and relief from personal crises. The
+            temple hosts annual events such as Brahmarathotsava and monthly
+            rituals believed to eliminate various doshas. It is approximately
+            18.5 km from Shrirama Temple. For more information, please contact
+            the temple authorities at 08257 278355.,&quot;
+          </span>
+        ),
+        image: P4,
+      },
+      {
+        name: "Shree Durgaparameshwari Temple,Kanjarpane",
+        description: (
+          <span>
+            &quot;Shree DurgaparameshwariTemple, located in Amaramudnoor
+            village.Dedicated to Goddess Durga. This temple is located
+            approximately 5 km from Chokkadi.,&quot;
+          </span>
+        ),
+        image: P9,
+      },
+      {
         name: "Kukke Shri Subrahmanya Temple",
         description: (
           <span>
@@ -86,25 +116,6 @@ const placesContent: Record<
           </span>
         ),
         image: P3,
-      },
-      {
-        name: "Shree Parivara Panchalingeshwara Temple, Panja",
-        description: (
-          <span>
-            &quot;Shree Parivara Panchalingeshwara Temple, located in Panja
-            village along the Manjeshwara-Puttur-Subrahmanya state highway, is a
-            historic Hindu temple dating back to the 13th century. According to
-            local legends, the five Shiva Lingams enshrined here were installed
-            by the Pandavas during their exile, linking the temple to the
-            Mahabharata. Devotees visit to perform rituals like Rudrabhisheka,
-            seeking blessings for marriage and relief from personal crises. The
-            temple hosts annual events such as Brahmarathotsava and monthly
-            rituals believed to eliminate various doshas. It is approximately
-            18.5 km from Shrirama Temple. For more information, please contact
-            the temple authorities at 08257 278355.,&quot;
-          </span>
-        ),
-        image: P4,
       },
       {
         name: "Kanchodu Shri Manjunatheshwara Temple",
@@ -171,17 +182,6 @@ const placesContent: Record<
         image: P8,
       },
       {
-        name: "Shree Durgaparameshwari Temple,Kanjarpane",
-        description: (
-          <span>
-            &quot;Shree DurgaparameshwariTemple, located in Amaramudnoor
-            village.Dedicated to Goddess Durga. This temple is located
-            approximately 5 km from Chokkadi.,&quot;
-          </span>
-        ),
-        image: P9,
-      },
-      {
         name: "Shree Chennakeshava Temple,Sullia",
         description: (
           <span>
@@ -208,6 +208,47 @@ const placesContent: Record<
           </span>
         ),
         image: P11,
+      },
+      {
+        name: "Mahathobhara Shri Mahalingeshwara Temple,Puttur",
+        description: (
+          <span>
+            &quot;Mahathobhara Shri Mahalingeshwara Temple in Puttur, Karnataka,
+            is a 12th-century temple dedicated to Lord Shiva, renowned for its
+            grand festivals like Rathotsava and Mahashivaratri. Its legend ties
+            to a sacred Shiva Linga immovably placed, symbolizing divine
+            presence. It is located 41.9 km from Chokkadi.&quot;
+          </span>
+        ),
+        image: P16,
+      },
+      {
+        name: "Shri Durgaparameshwari Temple,Marakatha",
+        description: (
+          <span>
+            &quot;Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a
+            revered Hindu temple dedicated to Goddess Durga Parameshwari.
+            Situated 31.8 km from Sullia and 26.8 km from Shrirama Temple in
+            Chokkadi, it draws devotees seeking blessings and spiritual solace.
+            Managed by local authorities, the temple hosts various rituals and
+            festivals honoring the Goddess. For inquiries, please contact 08257
+            282166.&quot;
+          </span>
+        ),
+        image: P17,
+      },
+      {
+        name: "Shri Jaladurga Devi Temple,Peruvaje",
+        description: (
+          <span>
+            &quot;Shri Jaladurga Devi Temple, located in Peruvaje, Karnataka, is
+            a historic temple dedicated to Goddess Jaladurga Devi, renowned for
+            its annual fair and Brahmarathotsava festival. The temple is
+            beautifully adorned with various flowers during festivals,
+            attracting numerous devotees.&quot;
+          </span>
+        ),
+        image: P18,
       },
       {
         name: "Bisle Ghat Viewpoint",
@@ -251,53 +292,39 @@ const placesContent: Record<
         ),
         image: P15,
       },
-      {
-        name: "Mahathobhara Shri Mahalingeshwara Temple,Puttur",
-        description: (
-          <span>
-            &quot;Mahathobhara Shri Mahalingeshwara Temple in Puttur, Karnataka,
-            is a 12th-century temple dedicated to Lord Shiva, renowned for its
-            grand festivals like Rathotsava and Mahashivaratri. Its legend ties
-            to a sacred Shiva Linga immovably placed, symbolizing divine
-            presence. It is located 41.9 km from Chokkadi.&quot;
-          </span>
-        ),
-        image: P16,
-      },
-      {
-        name: "Shri Durgaparameshwari Temple,Marakatha",
-        description: (
-          <span>
-            &quot;Shri Durgaparameshwari Temple in Marakatha, Sullia Taluk, is a
-            revered Hindu temple dedicated to Goddess Durga Parameshwari.
-            Situated 31.8 km from Sullia and 26.8 km from Shrirama Temple in
-            Chokkadi, it draws devotees seeking blessings and spiritual solace.
-            Managed by local authorities, the temple hosts various rituals and
-            festivals honoring the Goddess. For inquiries, please contact 08257
-            282166.&quot;
-          </span>
-        ),
-        image: P17,
-      },
-      {
-        name: "Shri Jaladurga Devi Temple,Peruvaje",
-        description: (
-          <span>
-            &quot;Shri Jaladurga Devi Temple, located in Peruvaje, Karnataka, is
-            a historic temple dedicated to Goddess Jaladurga Devi, renowned for
-            its annual fair and Brahmarathotsava festival. The temple is
-            beautifully adorned with various flowers during festivals,
-            attracting numerous devotees.&quot;
-          </span>
-        ),
-        image: P18,
-      },
     ],
   },
   kn: {
     title: "ಸಮೀಪದ ಸ್ಥಳಗಳು",
     buttonLabel: "ಹೆಚ್ಚಿನ ವಿವರಗಳು",
     places: [
+      {
+        name: "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ,ಪಂಜ",
+        description: (
+          <span>
+            &quot;ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಾಲಯವು ಪಂಜ ಗ್ರಾಮದಲ್ಲಿ 13ನೇ
+            ಶತಮಾನದಿಂದ ಇತಿಹಾಸ ಹೊಂದಿರುವ ಪವಿತ್ರ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ. ಮಹಾಭಾರತದ
+            ಕಾಲದಲ್ಲಿ ಪಾಂಡವರು ವನವಾಸದ ಸಮಯದಲ್ಲಿ ಐದು ಶಿವಲಿಂಗಗಳನ್ನು
+            ಪ್ರತಿಷ್ಠಾಪಿಸಿದ್ದರೆಂಬ ಇತಿಹಾಸವಿದೆ. ವಿವಾಹ, ಸಂತಾನ ಫಲ, ಮತ್ತು ಮೃತ್ಯು
+            ಕಂಟಕವಿರುವವರು ಇಲ್ಲಿ ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ ಮಾಡಿಸಿದರೆ ನಿವಾರಣೆಯಾಗುತ್ತದೆ ಎಂಬ
+            ನಂಬಿಕೆಯಿದೆ. ಈ ದೇವಸ್ಥಾನವು ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಾಲಯದಿಂದ ಅಂದಾಜು 18.5
+            ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದಯವಿಟ್ಟು ದೇವಾಲಯವನ್ನು ಸಂಪರ್ಕಿಸಿ:
+            08257 278355.&quot;
+          </span>
+        ),
+        image: P4,
+      },
+      {
+        name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಕಂಜರ್ಪಣೆ",
+        description: (
+          <span>
+            &quot;ಅಮರಮುಡ್ನೂರು ಗ್ರಾಮದಲ್ಲಿ ತಾಯಿ ದುರ್ಗಾದೇವಿಯನ್ನು ಆರಾಧಿಸಲಾಗುವ
+            ದೇವಸ್ಥಾನವಿದು. ಚೊಕ್ಕಾಡಿಯಿಂದ 5 ಕಿ.ಮೀ ದೂರದಲ್ಲಿ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ
+            ದೇವಸ್ಥಾನವಿದೆ .&quot;,
+          </span>
+        ),
+        image: P9,
+      },
       {
         name: "ಕುಕ್ಕೆ ಶ್ರೀ ಸುಬ್ರಹ್ಮಣ್ಯ ದೇವಸ್ಥಾನ",
         description: (
@@ -351,22 +378,6 @@ const placesContent: Record<
           </span>
         ),
         image: P3,
-      },
-      {
-        name: "ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ,ಪಂಜ",
-        description: (
-          <span>
-            &quot;ಶ್ರೀ ಪರಿವಾರ ಪಂಚಲಿಂಗೇಶ್ವರ ದೇವಾಲಯವು ಪಂಜ ಗ್ರಾಮದಲ್ಲಿ 13ನೇ
-            ಶತಮಾನದಿಂದ ಇತಿಹಾಸ ಹೊಂದಿರುವ ಪವಿತ್ರ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ. ಮಹಾಭಾರತದ
-            ಕಾಲದಲ್ಲಿ ಪಾಂಡವರು ವನವಾಸದ ಸಮಯದಲ್ಲಿ ಐದು ಶಿವಲಿಂಗಗಳನ್ನು
-            ಪ್ರತಿಷ್ಠಾಪಿಸಿದ್ದರೆಂಬ ಇತಿಹಾಸವಿದೆ. ವಿವಾಹ, ಸಂತಾನ ಫಲ, ಮತ್ತು ಮೃತ್ಯು
-            ಕಂಟಕವಿರುವವರು ಇಲ್ಲಿ ಏಕಾದಶ ರುದ್ರಾಭಿಷೇಕ ಮಾಡಿಸಿದರೆ ನಿವಾರಣೆಯಾಗುತ್ತದೆ ಎಂಬ
-            ನಂಬಿಕೆಯಿದೆ. ಈ ದೇವಸ್ಥಾನವು ಶ್ರೀ ಹರಿಹರೇಶ್ವರ ದೇವಾಲಯದಿಂದ ಅಂದಾಜು 18.5
-            ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದಯವಿಟ್ಟು ದೇವಾಲಯವನ್ನು ಸಂಪರ್ಕಿಸಿ:
-            08257 278355.&quot;
-          </span>
-        ),
-        image: P4,
       },
       {
         name: "ಕಾಂಚೋಡು ಶ್ರೀ ಮಂಜುನಾಥೇಶ್ವರ ದೇವಸ್ಥಾನ",
@@ -425,17 +436,6 @@ const placesContent: Record<
         image: P8,
       },
       {
-        name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಕಂಜರ್ಪಣೆ",
-        description: (
-          <span>
-            &quot;ಅಮರಮುಡ್ನೂರು ಗ್ರಾಮದಲ್ಲಿ ತಾಯಿ ದುರ್ಗಾದೇವಿಯನ್ನು ಆರಾಧಿಸಲಾಗುವ
-            ದೇವಸ್ಥಾನವಿದು. ಚೊಕ್ಕಾಡಿಯಿಂದ 5 ಕಿ.ಮೀ ದೂರದಲ್ಲಿ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ
-            ದೇವಸ್ಥಾನವಿದೆ .&quot;,
-          </span>
-        ),
-        image: P9,
-      },
-      {
         name: "ಶ್ರೀ ಚೆನ್ನಕೇಶವ ದೇವಸ್ಥಾನ, ಸುಳ್ಯ",
         description: (
           <span>
@@ -457,6 +457,44 @@ const placesContent: Record<
           </span>
         ),
         image: P11,
+      },
+      {
+        name: "ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ, ಪುತ್ತೂರು",
+        description: (
+          <span>
+            &quot;ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ
+            ಪುತ್ತೂರಿನಲ್ಲಿರುವ 12ನೇ ಶತಮಾನದ ಶಿವನಿಗೆ ಮೀಸಲಾಗಿರುವ ಪ್ರಸಿದ್ಧ
+            ದೇವಾಲಯವಾಗಿದೆ.ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 41.9 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.&quot;,
+          </span>
+        ),
+        image: P16,
+      },
+      {
+        name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಮರಕತ",
+        description: (
+          <span>
+            {" "}
+            &quot;ಸುಳ್ಯ ತಾಲೂಕಿನ ಮರಕತದಲ್ಲಿರುವ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನವು
+            ದುರ್ಗಾಪರಮೇಶ್ವರಿ ತಾಯಿ ದುರ್ಗೆಗೆ ಅರ್ಪಿತವಾದ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ.ಸುಳ್ಯದಿಂದ
+            25 ಕಿಲೋಮೀಟರ್ ಮತ್ತು ಚೊಕ್ಕಾಡಿಯಿಂದ 26.8 ಕಿಲೋಮೀಟರ್ ದೂರದಲ್ಲಿರುವ ಈ
+            ದೇವಾಲಯವನ್ನು ಸ್ಥಳೀಯ ಆಡಳಿತವು ದೇವಾಲಯವನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ, ಇಲ್ಲಿ ವಿವಿಧ
+            ಪೂಜೆಗಳು ಮತ್ತು ಉತ್ಸವಗಳು ನಡೆಯುತ್ತವೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದೇವಾಲಯದ
+            ದೂರವಾಣಿ ಸಂಖ್ಯೆ 08257 282166 ಕರೆ ಮಾಡಬಹುದು.&quot;,
+          </span>
+        ),
+        image: P17,
+      },
+      {
+        name: "ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಸ್ಥಾನ, ಪೆರುವಾಜೆ",
+        description: (
+          <span>
+            &quot;ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಾಲಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಪೆರುವಾಜೆಯಲ್ಲಿದೆ. ತಾಯಿ
+            ದುರ್ಗೆಗೆ ಮೀಸಲಾಗಿರುವ ಐತಿಹಾಸಿಕ ಹಿಂದು ದೇವಾಲಯವಾಗಿದೆ. ಈ ದೇವಾಲಯವು
+            ಪ್ರತಿವರ್ಷ ನಡೆಯುವ ಜಾತ್ರೆ ಮಹೋತ್ಸವ ಮತ್ತು ಬ್ರಹ್ಮರಥೋತ್ಸವಕ್ಕೆ
+            ಪ್ರಸಿದ್ಧವಾಗಿದೆ, ಇದು ಸಾವಿರಾರು ಭಕ್ತರನ್ನು ಆಕರ್ಷಿಸುತ್ತದೆ.&quot;,
+          </span>
+        ),
+        image: P18,
       },
       {
         name: "ಬಿಸ್ಲೆ ಘಾಟ್ ವೀಕ್ಷಣಾ ಸ್ಥಳ",
@@ -506,44 +544,6 @@ const placesContent: Record<
         ),
         image: P15,
       },
-      {
-        name: "ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನ, ಪುತ್ತೂರು",
-        description: (
-          <span>
-            &quot;ಮಹತೋಭಾರ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಸ್ಥಾನವು ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ
-            ಪುತ್ತೂರಿನಲ್ಲಿರುವ 12ನೇ ಶತಮಾನದ ಶಿವನಿಗೆ ಮೀಸಲಾಗಿರುವ ಪ್ರಸಿದ್ಧ
-            ದೇವಾಲಯವಾಗಿದೆ.ಇದು ಚೊಕ್ಕಾಡಿಯಿಂದ 41.9 ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.&quot;,
-          </span>
-        ),
-        image: P16,
-      },
-      {
-        name: "ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನ, ಮರಕತ",
-        description: (
-          <span>
-            {" "}
-            &quot;ಸುಳ್ಯ ತಾಲೂಕಿನ ಮರಕತದಲ್ಲಿರುವ ಶ್ರೀ ದುರ್ಗಾಪರಮೇಶ್ವರಿ ದೇವಸ್ಥಾನವು
-            ದುರ್ಗಾಪರಮೇಶ್ವರಿ ತಾಯಿ ದುರ್ಗೆಗೆ ಅರ್ಪಿತವಾದ ಹಿಂದೂ ದೇವಾಲಯವಾಗಿದೆ.ಸುಳ್ಯದಿಂದ
-            25 ಕಿಲೋಮೀಟರ್ ಮತ್ತು ಚೊಕ್ಕಾಡಿಯಿಂದ 26.8 ಕಿಲೋಮೀಟರ್ ದೂರದಲ್ಲಿರುವ ಈ
-            ದೇವಾಲಯವನ್ನು ಸ್ಥಳೀಯ ಆಡಳಿತವು ದೇವಾಲಯವನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ, ಇಲ್ಲಿ ವಿವಿಧ
-            ಪೂಜೆಗಳು ಮತ್ತು ಉತ್ಸವಗಳು ನಡೆಯುತ್ತವೆ. ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ದೇವಾಲಯದ
-            ದೂರವಾಣಿ ಸಂಖ್ಯೆ 08257 282166 ಕರೆ ಮಾಡಬಹುದು.&quot;,
-          </span>
-        ),
-        image: P17,
-      },
-      {
-        name: "ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಸ್ಥಾನ, ಪೆರುವಾಜೆ",
-        description: (
-          <span>
-            &quot;ಶ್ರೀ ಜಲದುರ್ಗಾ ದೇವಿ ದೇವಾಲಯ ಸುಳ್ಯ ತಾಲೂಕಿನ ಪೆರುವಾಜೆಯಲ್ಲಿದೆ. ತಾಯಿ
-            ದುರ್ಗೆಗೆ ಮೀಸಲಾಗಿರುವ ಐತಿಹಾಸಿಕ ಹಿಂದು ದೇವಾಲಯವಾಗಿದೆ. ಈ ದೇವಾಲಯವು
-            ಪ್ರತಿವರ್ಷ ನಡೆಯುವ ಜಾತ್ರೆ ಮಹೋತ್ಸವ ಮತ್ತು ಬ್ರಹ್ಮರಥೋತ್ಸವಕ್ಕೆ
-            ಪ್ರಸಿದ್ಧವಾಗಿದೆ, ಇದು ಸಾವಿರಾರು ಭಕ್ತರನ್ನು ಆಕರ್ಷಿಸುತ್ತದೆ.&quot;,
-          </span>
-        ),
-        image: P18,
-      },
     ],
   },
 };
@@ -574,7 +574,7 @@ export default function Nearby() {
         {places.map(({ name, description, image }, index) => (
           <div
             key={index}
-            className="bg-[#ffecb3] rounded-lg shadow-md p-4 flex flex-col items-center"
+            className="bg-[#fff8e1] rounded-lg shadow-md p-4 flex flex-col items-center"
           >
             <Image
               src={image}
@@ -596,7 +596,7 @@ export default function Nearby() {
 
             {activePlace === index && (
               <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-10 overflow-auto">
-                <div className="bg-[#ffecb3] p-6 rounded-md max-w-lg mx-auto">
+                <div className="bg-[#fff8e1] p-6 rounded-md max-w-lg mx-auto">
                   <h2 className="text-xl font-bold mb-2 text-green-800">
                     {name}
                   </h2>
