@@ -44,19 +44,19 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     managementTreasurerName: "Shri Sathyavenkatesha Hebbar",
     membersTitle: "Members:",
     members: [
-      "Shri Anekaru Ganapayya",
+      "Shri Anekara Ganapayya",
       "Shri Gopalakrishna Bhat Katta",
-      "Shriramachandra Kote",
+      "Shri Ramachandra Kote",
       "Shri Adarsha Krishna Nenaru",
       "Shri Karthikesha Hebbar",
       "Shri Krishnaprasad K",
       "Shri Praneetha Venkatesha Sharma",
-      "Shri Sudeshna Deraje",
+      "Shri Sudheshna Deraje",
       "Shri Ashraya Nenaru",
     ],
     templePriestTitle: "Temple Priest:",
     templePriestName: "Shri Raghurama Sharma",
-    priestContactNumber: "Contact Number:+919741251613"
+    priestContactNumber: "Contact Number: +91 9741251613",
   },
   kn: {
     sevaSamithiTitle: "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿ",
@@ -86,7 +86,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
     ],
     templePriestTitle: "ಅರ್ಚಕರು:",
     templePriestName: "ಶ್ರೀ ರಘುರಾಮ ಶರ್ಮಾ",
-    priestContactNumber: "ದೂರವಾಣಿ ಸಂ: +919741251613"
+    priestContactNumber: "ದೂರವಾಣಿ ಸಂ: +919741251613",
   },
 };
 
@@ -106,7 +106,9 @@ const Administration: React.FC = () => {
   }, [dispatch]);
 
   if (!isLocaleLoaded) {
-    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">Loading...</div>
+    );
   }
 
   return (
@@ -119,7 +121,6 @@ const Administration: React.FC = () => {
           <p className="mb-8">{content.sevaSamithiDescription}</p>
         </section>
 
-        {/* Management Roles */}
         {[
           { title: content.managementPresidentTitle, name: content.managementPresidentName, contact: content.contactNumber },
           { title: content.managementVicePresidentTitle, name: content.managementVicePresidentName, contact: content.viceContactNumber },
@@ -133,7 +134,6 @@ const Administration: React.FC = () => {
           </section>
         ))}
 
-        {/* Members Section */}
         <section aria-labelledby="members">
           <h3 id="members" className="text-[var(--primary)] font-bold mb-6">{content.membersTitle}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -143,10 +143,10 @@ const Administration: React.FC = () => {
           </div>
         </section>
 
-        {/* Temple Priest */}
         <section aria-labelledby="priest" className="mt-10">
           <h3 id="priest" className="text-[var(--primary)] font-bold mb-2">{content.templePriestTitle}</h3>
           <p className="font-semibold text-[var(--primary)]">{content.templePriestName}</p>
+          <p>{content.priestContactNumber}</p>
         </section>
       </div>
     </div>
