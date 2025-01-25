@@ -36,7 +36,8 @@ export default function HallFormsList({
           <h2 className="text-xl font-semibold text-orange-600 mb-2">
             {form.name}
           </h2>
-          <p className="text-gray-700 mb-2">Booking ID: {form.id}</p>
+          {/* Add the DES prefix for display */}
+          <p className="text-gray-700 mb-2">Booking ID: DES{form.id}</p>
           <p className="text-gray-700 mb-2">Hall Name: {form.hallName}</p>
           <p className="text-gray-700 mb-2">Reason: {form.reason}</p>
           {form.gotra && (
@@ -55,14 +56,14 @@ export default function HallFormsList({
           </p>
           {!form.isBooked && (
             <button
-              onClick={() => onConfirm(form.id, form.date)} // Pass Date object
+              onClick={() => onConfirm(form.id, form.date)} // Pass numeric ID and Date object
               className="mt-4 bg-blue-500 text-white px-3 py-1 rounded block"
             >
               Confirm
             </button>
           )}
           <button
-            onClick={() => onDelete(form.id)}
+            onClick={() => onDelete(form.id)} // Pass numeric ID
             className="mt-2 bg-red-500 text-white px-3 py-1 rounded block"
           >
             Delete

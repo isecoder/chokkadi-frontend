@@ -16,6 +16,7 @@ interface HallForm {
   hallId: number;
   hallName: string;
   isBooked: boolean;
+  displayId: string; // Separate property for prefixed ID
 }
 
 // Interface for API response that includes the nested hall object
@@ -68,6 +69,7 @@ export default function HallForms(): JSX.Element {
 
         return {
           id: form.id,
+          displayId: `DES${form.id}`, // Add prefixed ID for display
           name: form.name,
           reason: form.reason,
           mobileNumber: form.mobileNumber,
@@ -174,7 +176,7 @@ export default function HallForms(): JSX.Element {
         const matchesDate = date
           ? form.date.toLocaleDateString("en-GB").includes(date)
           : true;
-        const matchesId = form.id.toString().includes(id);
+        const matchesId = form.displayId.includes(id); // Use displayId for filter
 
         return matchesName && matchesMobile && matchesDate && matchesId;
       });
@@ -233,7 +235,7 @@ export default function HallForms(): JSX.Element {
 
       {/* Render HallFormsList */}
       <HallFormsList
-        hallForms={filteredHallForms}
+        hallForms={filteredHallForms} // Pass unchanged HallForms
         onConfirm={confirmBooking}
         onDelete={deleteHallForm}
       />
