@@ -60,7 +60,7 @@ const footerText: Record<
       title: "ಲಿಂಕ್ಸ್",
       links: [
         { name: "ಮುಖಪುಟ", path: "/" },
-        { name: "ದೇವಾಲಯದ ಬಗ್ಗೆ", path: "/history" },
+        { name: "ದೇವಾಲಯದ ಬಗ್ಗೆ", path: "/administration" },
         { name: "ಸಭಾಂಗಣ ಬುಕಿಂಗ್", path: "/booking" },
         { name: "ಸುದ್ದಿಗಳು", path: "/newsupdates" },
         { name: "ಗ್ಯಾಲರಿ", path: "/gallery" },
