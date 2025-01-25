@@ -198,7 +198,7 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
 
           const availability = availabilityData.find((data) => data.date === day);
           const isToday = new Date(day).toDateString() === new Date().toDateString();
-          const isTomorrow = new Date(day).toDateString() === new Date(new Date().setDate(new Date().getDate() + 1)).toDateString();
+         
 
           return (
             <div key={day} className="text-center">
@@ -207,7 +207,6 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
                   !availability?.isBooked &&
                   availability?.reason !== "On hold" &&
                   !isToday &&
-                  !isTomorrow &&
                   onDateSelect(hallId, day)
                 }
                 className={`p-2 rounded-lg w-full ${
@@ -220,8 +219,7 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
                 disabled={
                   availability?.isBooked ||
                   availability?.reason === "On hold" ||
-                  isToday ||
-                  isTomorrow
+                  isToday
                 }
               >
                 <span>{new Date(day).getDate()}</span>
