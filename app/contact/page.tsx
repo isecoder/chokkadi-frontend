@@ -15,7 +15,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     contactDetails: "Contact Details",
     googleMap: "Google Map",
     address: "Shrirama Temple, Chokkadi\nAmarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
-    priest: "Priest: +919481266745",
+    priest: "Priest: +919741251613",
     president: "President: +919448625254,+917019616082",
     tele: "Temple Office: 08257200585",
     email: "E-mail: srtchokkadi@gmail.com"
@@ -25,7 +25,7 @@ const contactText: Record<LocaleType, { postalAddress: string; contactDetails: s
     contactDetails: "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
     address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\nಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
-    priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919481266745",
+    priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919741251613",
     president: "ಅಧ್ಯಕ್ಷರು: +919448625254,+917019616082",
     tele: "ದೇವಾಲಯದ ಕಚೇರಿ: 08257200585",
     email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com"
