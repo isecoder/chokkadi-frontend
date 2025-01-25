@@ -7,6 +7,7 @@ import { changeLocale } from "./store/localeSlice"
 import Hero from "./components/hero"
 import Link from "next/link"
 import Image from "next/image"
+import { Analytics } from "@vercel/analytics/react"
 
 type LocaleType = "en" | "kn"
 
@@ -36,8 +37,6 @@ export default function Component() {
 
   return (
     <>
-        
-
       <main className="min-h-screen flex flex-col items-center p-4 sm:p-8 text-center">
         <Hero />
         <div className="w-full max-w-6xl mt-8 sm:mt-20">
@@ -63,6 +62,9 @@ export default function Component() {
           </div>
         </div>
       </main>
+
+      {/* Include Vercel Analytics */}
+      <Analytics />
     </>
   )
 }
