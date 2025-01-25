@@ -90,7 +90,13 @@ export default function NewsUpdates(): JSX.Element {
         </p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <div
+        className={`mt-10 ${
+          newsUpdates.length === 1
+            ? "flex justify-center items-center"
+            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        }`}
+      >
         {newsUpdates.map((news) => (
           <div
             key={news.news_id}
@@ -102,20 +108,21 @@ export default function NewsUpdates(): JSX.Element {
             <p className="text-sm text-green-600 mb-2">
               Date: {news.created_at}
             </p>
-            <p className="text-green-700 mb-4 line-clamp-3">
-              {showKannada ? news.content_kannada : news.content}
-            </p>
-            {news.images.length > 0 && (
-              <div className="relative w-full h-40 mb-4">
+            <div className="relative w-full h-40 mb-4 overflow-hidden rounded-lg">
+              {news.images.length > 0 && (
                 <Image
                   src={news.images[0].public_url}
                   alt={news.images[0].alt_text}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
                   className="rounded-lg"
+                  style={{ aspectRatio: "9 / 16" }} // Enforces 9:16 image ratio
                 />
-              </div>
-            )}
+              )}
+            </div>
+            <p className="text-green-700 mb-4 line-clamp-3">
+              {showKannada ? news.content_kannada : news.content}
+            </p>
             <button
               className="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200 ease-in-out"
               onClick={() => openNewsDetail(news)}

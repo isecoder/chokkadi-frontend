@@ -110,7 +110,7 @@ const NewsDetail = () => {
             {newsDetail.images.map((image, idx) => (
               <div
                 key={idx}
-                className="relative w-1/6 aspect-[9/16] overflow-hidden rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform"
+                className="relative w-1/2 sm:w-1/4 md:w-1/6 aspect-[9/16] overflow-hidden rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform"
                 onClick={() => handleImageClick(idx)}
               >
                 <Image
