@@ -21,6 +21,10 @@ const navLinks: NavLink[] = [
     href: "",
     label: { en: "ABOUT", kn: "ದೇವಾಲಯದ ಮಾಹಿತಿ" },
     subLinks: [
+      {
+        href: "/history",
+        label: { en: "History", kn: "ಇತಿಹಾಸ" },
+      },
       { href: "/temple", label: { en: "Temple Timings", kn: "ದೇವಾಲಯದ ಸಮಯ" } },
       {
         href: "/administration",
