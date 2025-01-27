@@ -29,10 +29,10 @@ const contactText: Record<
     googleMap: "Google Map",
     address: "Shrirama Temple, Chokkadi,\n Amarapadnur Village,\nSullia Taluk, Dakshina Kannada,\nPIN-574212",
     contactNumber: "Contact Number:",
-    priest: "Priest: +919741251613",
-    president: "President: +919448625254,+917019616082",
-    tele: "Temple Office: 08257200585",
-    email: "E-mail: srtchokkadi@gmail.com",
+    priest: "Priest:",
+    president: "President:",
+    tele: "Temple Office:",
+    email: "E-mail:",
   },
   kn: {
     postalAddress: "ದೇವಾಲಯದ ವಿಳಾಸ",
@@ -40,10 +40,10 @@ const contactText: Record<
     googleMap: "ಗೂಗಲ್ ಮ್ಯಾಪ್ ನಕ್ಷೆ",
     address: "ಶ್ರೀರಾಮ ದೇವಾಲಯ, ಚೊಕ್ಕಾಡಿ,\n ಅಮರಪಡ್ನೂರು ಗ್ರಾಮ,\nಸುಳ್ಯ ತಾಲೂಕು, ದ.ಕ.,\nಪಿನ್-574212",
     contactNumber: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ:",
-    priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು: +919741251613",
-    president: "ಅಧ್ಯಕ್ಷರು: +919448625254,+917019616082",
-    tele: "ದೇವಾಲಯದ ಕಚೇರಿ: 08257200585",
-    email: "ಇ-ಮೇಲ್: srtchokkadi@gmail.com",
+    priest: "ಪ್ರಧಾನ ಅರ್ಚಕರು:",
+    president: "ಅಧ್ಯಕ್ಷರು:",
+    tele: "ದೇವಾಲಯದ ಕಚೇರಿ:",
+    email: "ಇ-ಮೇಲ್:",
   },
 };
 
@@ -86,49 +86,38 @@ const Contact: React.FC = () => {
 
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
             <p className="text-green-600">
-              <strong>
-                {text.contactNumber.split(",").map((number, index) => (
-                  <React.Fragment key={index}>
-                    <a href={`tel:${number.trim()}`} className="hover:underline">
-                      {number.trim()}
-                    </a>
-                    {index < text.contactNumber.split(",").length - 1 && ", "}
-                  </React.Fragment>
-                ))}
-              </strong>
+              <strong>{text.contactNumber} </strong>
+              <a href="tel:+919741251613" className="hover:underline">
+                +919741251613
+              </a>
             </p>
             <p className="text-green-600">
-              <strong>
-                <a href={`tel:${text.tele.trim()}`} className="hover:underline">
-                  {text.tele}
-                </a>
-              </strong>
-            </p>
-            <p>
-              <strong className="text-green-600">
-                {text.president.split(",").map((number, index) => (
-                  <React.Fragment key={index}>
-                    <a href={`tel:${number.trim()}`} className="hover:underline">
-                      {number.trim()}
-                    </a>
-                    {index < text.president.split(",").length - 1 && ", "}
-                  </React.Fragment>
-                ))}
-              </strong>
+              <strong>{text.tele} </strong>
+              <a href="tel:08257200585" className="hover:underline">
+                08257200585
+              </a>
             </p>
             <p className="text-green-600">
-              <strong>
-                <a href={`tel:${text.priest.split(": ")[1]}`} className="hover:underline">
-                  {text.priest}
-                </a>
-              </strong>
+              <strong>{text.president} </strong>
+              <a href="tel:+919448625254" className="hover:underline">
+                +919448625254
+              </a>
+              ,{" "}
+              <a href="tel:+917019616082" className="hover:underline">
+                +917019616082
+              </a>
             </p>
-            <p>
-              <strong className="text-green-600">
-                <a href={`mailto:${text.email.split(": ")[1]}`} className="hover:underline">
-                  {text.email}
-                </a>
-              </strong>
+            <p className="text-green-600">
+              <strong>{text.priest} </strong>
+              <a href="tel:+919741251613" className="hover:underline">
+                +919741251613
+              </a>
+            </p>
+            <p className="text-green-600">
+              <strong>{text.email} </strong>
+              <a href="mailto:srtchokkadi@gmail.com" className="hover:underline">
+                srtchokkadi@gmail.com
+              </a>
             </p>
           </div>
 
