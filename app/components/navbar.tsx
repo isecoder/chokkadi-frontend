@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -59,6 +59,34 @@ export default function Navbar() {
   );
   const [mounted, setMounted] = useState(false);
 
+  const dropdownRef = useRef<HTMLDivElement | null>(null);  
+  const menuRef = useRef<HTMLDivElement | null>(null);     
+  
+
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && event.target instanceof Node && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(null); 
+    }
+  
+    if (menuRef.current && event.target instanceof Node && !menuRef.current.contains(event.target)) {
+      setMenuOpen(false);  // Close the mobile menu
+    }
+  };
+  
+
+  useEffect(() => {
+   
+    document.addEventListener("mousedown", handleClickOutside);
+
+   
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
+  
   // Access the current locale from Redux
   const currentLocale = useSelector((state: RootState) => state.locale.locale);
 
@@ -179,7 +207,7 @@ export default function Navbar() {
 
         {/* Mobile Dropdown */}
         {menuOpen && (
-          <div className="flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md">
+          <div ref={menuRef} className="flex flex-col items-center space-y-4 bg-gradient-to-r from-white to-orange-200 text-center shadow-md">
             {navLinks.map(({ href, label, subLinks }) => (
               <div key={label.en} className="w-full relative">
                 <Link
