@@ -86,19 +86,49 @@ const Contact: React.FC = () => {
 
             <h2 className="text-green-600 font-semibold text-lg uppercase mb-4 tracking-wide">{text.contactDetails}</h2>
             <p className="text-green-600">
-              <strong>{text.contactNumber}</strong>
+              <strong>
+                {text.contactNumber.split(",").map((number, index) => (
+                  <React.Fragment key={index}>
+                    <a href={`tel:${number.trim()}`} className="hover:underline">
+                      {number.trim()}
+                    </a>
+                    {index < text.contactNumber.split(",").length - 1 && ", "}
+                  </React.Fragment>
+                ))}
+              </strong>
             </p>
             <p className="text-green-600">
-              <strong>{text.tele}</strong>
+              <strong>
+                <a href={`tel:${text.tele.trim()}`} className="hover:underline">
+                  {text.tele}
+                </a>
+              </strong>
             </p>
             <p>
-              <strong className="text-green-600">{text.president}</strong>
+              <strong className="text-green-600">
+                {text.president.split(",").map((number, index) => (
+                  <React.Fragment key={index}>
+                    <a href={`tel:${number.trim()}`} className="hover:underline">
+                      {number.trim()}
+                    </a>
+                    {index < text.president.split(",").length - 1 && ", "}
+                  </React.Fragment>
+                ))}
+              </strong>
             </p>
             <p className="text-green-600">
-              <strong>{text.priest}</strong>
+              <strong>
+                <a href={`tel:${text.priest.split(": ")[1]}`} className="hover:underline">
+                  {text.priest}
+                </a>
+              </strong>
             </p>
             <p>
-              <strong className="text-green-600">{text.email}</strong>
+              <strong className="text-green-600">
+                <a href={`mailto:${text.email.split(": ")[1]}`} className="hover:underline">
+                  {text.email}
+                </a>
+              </strong>
             </p>
           </div>
 
