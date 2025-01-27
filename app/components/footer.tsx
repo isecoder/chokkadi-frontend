@@ -119,7 +119,10 @@ const Footer: React.FC = () => {
                       d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"
                     ></path>
                   </svg>
-                  <p className="mt-0.5">{text.contactNumbers}</p>
+                  {/* Clickable Phone Number */}
+                  <a href={`tel:${text.contactNumbers}`} className="hover:underline">
+                    {text.contactNumbers}
+                  </a>
                 </div>
                 <div className="flex items-center space-x-2">
                   <svg
@@ -132,7 +135,10 @@ const Footer: React.FC = () => {
                   >
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5v2zM4 18v-8l8 5 8-5v8H4z" />
                   </svg>
-                  <p className="mt-0.5">{text.email}</p>
+                  {/* Clickable Email */}
+                  <a href={`mailto:${text.email}`} className="hover:underline">
+                    {text.email}
+                  </a>
                 </div>
                 {/* Facebook Link */}
                 <div className="flex items-center space-x-2 mt-2">
