@@ -192,7 +192,7 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
 
   <div className="flex items-center gap-2 max-w relative" ref={dropdownRef}>
     <button
-      className="px-6 py-2 bg-[#ff9718] rounded-lg hover:bg-orange-300 relative"
+      className="px-5 py-2 bg-[#ff9718] rounded-lg hover:bg-orange-300 relative"
       onClick={() => setShowDropdown(!showDropdown)}
     >
       <span className="flex items-center gap-1 text-white font-medium">
