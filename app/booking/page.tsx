@@ -67,7 +67,7 @@ const BookingPage = () => {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
+    <main className=" bg-[var(--background)] ">
     <div className="bg-[var(--background)] container max-w-prose mx-auto p-4 mb-80">
       <h1 className="text-2xl font-bold mb-6 mt-10 text-center">
         {reserveAHall}

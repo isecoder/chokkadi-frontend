@@ -81,7 +81,8 @@ export default function NewsUpdates(): JSX.Element {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-[#FFFFCC]">
+    <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
+    <div className="container mx-auto p-6 ">
       {error && <p className="text-red-500 text-center">{error}</p>}
       {loading && <LoadingSpinner />}
       {!loading && newsUpdates.length === 0 && !error && (
@@ -133,5 +134,6 @@ export default function NewsUpdates(): JSX.Element {
         ))}
       </div>
     </div>
+    </main> 
   );
 }
