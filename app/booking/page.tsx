@@ -67,7 +67,8 @@ const BookingPage = () => {
   }
 
   return (
-    <div className="container max-w-prose mx-auto p-4 mb-80">
+    <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
+    <div className="bg-[var(--background)] container max-w-prose mx-auto p-4 mb-80">
       <h1 className="text-2xl font-bold mb-6 mt-10 text-center">
         {reserveAHall}
       </h1>
@@ -90,6 +91,7 @@ const BookingPage = () => {
       )}
       {message && <div className="text-center text-red-500">{message}</div>}
     </div>
+    </main>
   );
 };
 
