@@ -31,7 +31,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
   en: {
     sevaSamithiTitle: "Shrirama Seva Samithi",
     sevaSamithiDescription:
-      "Shrirama Seva Samithi operates under the guidance of Sri Ramachandrapura Matha, led by His Holiness Sri Sri Raghaveshwara Bharathi Swamiji. The Seva Samithi diligently follows the instructions and traditions set forth by the Matha to uphold the spiritual and cultural values of the temple.",
+      "Shrirama Seva Samithi operates under the guidance of Jagadguru Shankaracharya Mahasamsthanam - Sri Samsthana Gokarna Sri RamachandrapuraMatha, led by His Holiness Srimad Jagadguru Shankaracharya Sri Sri Raghaveshwara Bharati Mahaswamiji. The Seva Samithi diligently follows the instructions and traditions set forth by the Matha to uphold the spiritual and cultural values of the temple.",
     managementPresidentTitle: "President:",
     managementPresidentName: "Shri Mahesh Bhat Choontharu",
     contactNumber: "Contact no: +91 9448625254, +91 7019616082",
@@ -61,7 +61,7 @@ const administrationContent: Record<LocaleType, AdministrationContent> = {
   kn: {
     sevaSamithiTitle: "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿ",
     sevaSamithiDescription:
-      "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಶ್ರೀ ರಾಮಚಂದ್ರಾಪುರ ಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಪರಮಪೂಜ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಮಹಾಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿಯು ಮಠದ ಮಾರ್ಗದರ್ಶನದ ಪ್ರಕಾರ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
+      "ಶ್ರೀ ರಾಮ ಸೇವಾ ಸಮಿತಿಯು ಜಗದ್ಗುರು ಶಂಕರಾಚಾರ್ಯ ಮಹಾಸಂಸ್ಥಾನಂ - ಶ್ರೀಸಂಸ್ಥಾನ ಗೋಕರ್ಣ ಶ್ರೀ ರಾಮಚಂದ್ರಾಪುರಮಠದ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ, ಇದನ್ನು ಜಗದ್ಗುರು ಶಂಕರಾಚಾರ್ಯ ಮಹಾಸಂಸ್ಥಾನಂ - ಶ್ರೀಸಂಸ್ಥಾನ ಗೋಕರ್ಣ ಶ್ರೀ ರಾಮಚಂದ್ರಾಪುರಮಠ, ಪರಮಪೂಜ್ಯ ಶ್ರೀಮಜ್ಜಗದ್ಗುರು ಶಂಕರಾಚಾರ್ಯ ಶ್ರೀ ಶ್ರೀ ರಾಘವೇಶ್ವರ ಭಾರತೀ ಮಹಾಸ್ವಾಮೀಜಿಯವರು ನೇತೃತ್ವ ವಹಿಸಿದ್ದಾರೆ. ಸೇವಾ ಸಮಿತಿಯು ಮಠದ ಮಾರ್ಗದರ್ಶನದ ಪ್ರಕಾರ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
     managementPresidentTitle: "ಅಧ್ಯಕ್ಷರು:",
     managementPresidentName: "ಶ್ರೀ ಮಹೇಶ್ ಭಟ್ ಚೂಂತಾರು",
     contactNumber: "ದೂರವಾಣಿ ಸಂ: +919448625254, +917019616082",
