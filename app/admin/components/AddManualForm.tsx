@@ -100,7 +100,7 @@ export default function AddManualForm({ onAddSuccess }: AddManualFormProps) {
   return (
     <div>
       {/* 1. Display the Calendar first, using 'calendarKey' for forced re-render */}
-      <Calendar key={calendarKey} hallId={1} onDateSelect={handleDateSelect} />
+      <Calendar key={calendarKey} hallId={3} onDateSelect={handleDateSelect} />
 
       {/* 2. Show the form only if a date is selected */}
       {showForm && (
