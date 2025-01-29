@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/LoadingSpinner"; // Import the LoadingSpinner component
 import HallFormsList from "../components/HallFormsList"; // Import the new HallFormsList component
 import Swal from "sweetalert2";
+import AddManualForm from "../components/AddManualForm"; // Import the AddHallForms component
 
 // Interface for each HallForm entry
 interface HallForm {
@@ -231,6 +232,11 @@ export default function HallForms(): JSX.Element {
           onChange={handleFilterChange}
           className="border border-gray-300 rounded-md p-2 flex-1"
         />
+      </div>
+
+      {/* Add Hall Form */}
+      <div className="mb-6">
+        <AddManualForm onAddSuccess={fetchHallForms} />
       </div>
 
       {/* Render HallFormsList */}
