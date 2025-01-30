@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Share2, Copy, Facebook, Twitter, MessageCircle } from "lucide-react";
+import { Share2, Copy, Facebook, Twitter, MessageCircle, X } from "lucide-react";
 
 interface NewsUpdate {
   news_id: number;
@@ -18,13 +18,77 @@ interface NewsUpdate {
   images: { public_url: string; alt_text: string }[];
 }
 
+const SharePopup = ({
+  url,
+  text,
+  onClose,
+}: {
+  url: string;
+  text: string;
+  onClose: () => void;
+}) => {
+  const shareOptions = [
+    {
+      name: "Copy Link",
+      icon: Copy,
+      action: () => {
+        navigator.clipboard.writeText(url);
+        onClose();
+      },
+    },
+    {
+      name: "WhatsApp",
+      icon: MessageCircle,
+      action: () => window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank"),
+    },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      action: () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank"),
+    },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      action: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank"),
+    },
+  ];
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-5 rounded-lg shadow-lg w-80">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold">Share this News</h2>
+          <button onClick={onClose}>
+            <X className="w-5 h-5 text-gray-600 hover:text-black" />
+          </button>
+        </div>
+        <div className="flex flex-col space-y-3">
+          {shareOptions.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                option.action();
+                onClose();
+              }}
+              className="flex items-center p-2 border rounded-lg hover:bg-gray-100 transition"
+            >
+              <option.icon className="w-5 h-5 mr-3 text-blue-500" />
+              {option.name}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function NewsUpdates(): JSX.Element {
   const [newsUpdates, setNewsUpdates] = useState<NewsUpdate[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const showKannada = useSelector(
-    (state: RootState) => state.locale.locale === "kn"
-  );
+  const [shareData, setShareData] = useState<{ url: string; text: string } | null>(null);
+
+  const showKannada = useSelector((state: RootState) => state.locale.locale === "kn");
   const router = useRouter();
 
   const fetchNewsUpdates = async () => {
@@ -35,22 +99,18 @@ export default function NewsUpdates(): JSX.Element {
 
       const { data: newsData } = await res.json();
 
-      const formattedNews = newsData.map((news: any) => {
-        const images = news.NewsImages.map((newsImage: any) => ({
+      const formattedNews = newsData.map((news: any) => ({
+        news_id: news.news_id,
+        title: news.title,
+        content: news.content,
+        title_kannada: news.title_kannada,
+        content_kannada: news.content_kannada,
+        created_at: new Date(news.created_at).toLocaleDateString(),
+        images: news.NewsImages.map((newsImage: any) => ({
           public_url: newsImage.Images.public_url,
           alt_text: newsImage.Images.alt_text,
-        }));
-
-        return {
-          news_id: news.news_id,
-          title: news.title,
-          content: news.content,
-          title_kannada: news.title_kannada,
-          content_kannada: news.content_kannada,
-          created_at: new Date(news.created_at).toLocaleDateString(),
-          images,
-        };
-      });
+        })),
+      }));
 
       setNewsUpdates(formattedNews);
     } catch (err) {
@@ -69,42 +129,30 @@ export default function NewsUpdates(): JSX.Element {
     router.push(`/newsupdates/${news.news_id}`);
   };
 
-  const shareNews = (news: NewsUpdate) => {
+  const shareNews = async (news: NewsUpdate) => {
     const url = `${window.location.origin}/newsupdates/${news.news_id}`;
     const text = `${showKannada ? news.title_kannada : news.title} - Read more at ${url}`;
 
-    if (navigator.share) {
-      navigator.share({
-        title: news.title,
-        text: text,
-        url: url,
-      }).catch(console.error);
-    } else {
-      const shareOptions = [
-        { name: "Copy Link", icon: Copy, action: () => navigator.clipboard.writeText(url).then(() => alert("Link copied to clipboard!")) },
-        { name: "WhatsApp", icon: MessageCircle, action: () => window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank") },
-        { name: "Twitter", icon: Twitter, action: () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank") },
-        { name: "Facebook", icon: Facebook, action: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank") },
-      ];
-      
-      alert("Choose an option to share");
-      shareOptions.forEach(option => {
-        if (confirm(`Share via ${option.name}?`)) {
-          option.action();
-        }
-      });
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: news.title, text, url });
+      } else {
+        setShareData({ url, text });
+      }
+    } catch (error: any) {
+      if (error.name !== "AbortError") {
+        console.error("Share failed:", error);
+      }
     }
   };
 
   return (
     <main className="min-h-screen flex flex-col items-center p-6 bg-[var(--background)] font-serif">
-      <div className="container mx-auto p-6 ">
+      <div className="container mx-auto p-6">
         {error && <p className="text-red-500 text-center">{error}</p>}
         {loading && <LoadingSpinner />}
         {!loading && newsUpdates.length === 0 && !error && (
-          <p className="text-center text-green-700 font-medium">
-            No news updates available.
-          </p>
+          <p className="text-center text-green-700 font-medium">No news updates available.</p>
         )}
 
         <div
@@ -122,9 +170,7 @@ export default function NewsUpdates(): JSX.Element {
               <h2 className="text-2xl font-bold text-green-700 mb-2">
                 {showKannada ? news.title_kannada : news.title}
               </h2>
-              <p className="text-sm text-green-600 mb-2">
-                Date: {news.created_at}
-              </p>
+              <p className="text-sm text-green-600 mb-2">Date: {news.created_at}</p>
               <div className="relative w-full h-40 mb-4 overflow-hidden rounded-lg">
                 {news.images.length > 0 && (
                   <Image
@@ -158,6 +204,7 @@ export default function NewsUpdates(): JSX.Element {
           ))}
         </div>
       </div>
+      {shareData && <SharePopup url={shareData.url} text={shareData.text}  onClose={() => setShareData(null)} />}
     </main>
   );
 }
