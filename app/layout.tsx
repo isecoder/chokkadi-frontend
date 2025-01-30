@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const description =
     "Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi.";
   const url = process.env.NEXT_PUBLIC_URL; // ✅ Corrected from NEXT_PUBLIC_SITE_URL
-  const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/og-image.jpg`; // ✅ Fixed
+  const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/d13f23e6-fc07-47b9-9520-7cbdaf6af92c.webp`; // ✅ Fixed
 
   return {
     title,
