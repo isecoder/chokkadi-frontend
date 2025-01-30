@@ -215,20 +215,21 @@ export default function NewsUpdates(): JSX.Element {
               <p className="text-green-700 mb-4 line-clamp-3">
                 {showKannada ? news.content_kannada : news.content}
               </p>
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col sm:flex-row items-center gap-2 mt-4">
                 <button
-                  className="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200 ease-in-out"
+                  className="h-10 w-full sm:w-auto bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200 ease-in-out flex items-center justify-center"
                   onClick={() => openNewsDetail(news)}
                 >
                   Read More
                 </button>
                 <button
-                  className="flex items-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200 ease-in-out"
+                  className="h-10 w-full sm:w-auto flex items-center justify-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200 ease-in-out"
                   onClick={() => shareNews(news)}
                 >
                   <Share2 className="w-4 h-4 mr-2" /> Share
                 </button>
               </div>
+
             </div>
           ))}
         </div>
