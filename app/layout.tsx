@@ -23,8 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = "Shrirama Temple, Chokkadi";
   const description =
     "Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi.";
-  const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/images/og-image.jpg`; // Update this path
-  const url = process.env.NEXT_PUBLIC_SITE_URL;
+  const url = process.env.NEXT_PUBLIC_URL; // ✅ Corrected from NEXT_PUBLIC_SITE_URL
+  const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/og-image.jpg`; // ✅ Fixed
 
   return {
     title,
