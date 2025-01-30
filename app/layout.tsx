@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -18,33 +17,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// ✅ Add Open Graph metadata for WhatsApp, Twitter, and Facebook preview
-export async function generateMetadata(): Promise<Metadata> {
-  const title = "Shrirama Temple, Chokkadi";
-  const description =
-    "Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi.";
-  const url = process.env.NEXT_PUBLIC_URL; // ✅ Corrected from NEXT_PUBLIC_SITE_URL
-  const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL}/d13f23e6-fc07-47b9-9520-7cbdaf6af92c.webp`; // ✅ Fixed
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url,
-      images: [{ url: imageUrl }],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [imageUrl],
-    },
-  };
-}
-
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -53,6 +25,11 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
+        <title>Shrirama Temple, Chokkadi</title> {/* ✅ Global title */}
+        <meta
+          name="description"
+          content="Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi."
+        />
         {/* Google Analytics script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
@@ -66,7 +43,6 @@ export default function RootLayout({ children }: LayoutProps) {
             gtag('config', 'GA_TRACKING_ID');
           `}
         </Script>
-
         {/* Disable right-click, image download, and content copy */}
         <Script id="disable-actions" strategy="afterInteractive">
           {`
