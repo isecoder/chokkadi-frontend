@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Share2, Copy, Facebook, Twitter, Whatsapp } from "lucide-react";
+import { Share2, Copy, Facebook, Twitter, MessageCircle } from "lucide-react";
 
 interface NewsUpdate {
   news_id: number;
@@ -82,7 +82,7 @@ export default function NewsUpdates(): JSX.Element {
     } else {
       const shareOptions = [
         { name: "Copy Link", icon: Copy, action: () => navigator.clipboard.writeText(url).then(() => alert("Link copied to clipboard!")) },
-        { name: "WhatsApp", icon: Whatsapp, action: () => window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank") },
+        { name: "WhatsApp", icon: MessageCircle, action: () => window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank") },
         { name: "Twitter", icon: Twitter, action: () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, "_blank") },
         { name: "Facebook", icon: Facebook, action: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank") },
       ];
