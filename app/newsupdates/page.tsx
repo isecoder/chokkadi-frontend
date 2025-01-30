@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef,useCallback } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -46,18 +46,18 @@ const SharePopup = ({
 }) => {
   const popupRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
       onClose();
     }
-  };
-
+  }, [onClose]);
+  
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   const shareOptions = [
     {
@@ -169,11 +169,14 @@ export default function NewsUpdates(): JSX.Element {
       } else {
         setShareData({ url, text });
       }
-    } catch (error: any) {
-      if (error.name !== "AbortError") {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
         console.error("Share failed:", error);
+      } else {
+        console.error("An unknown error occurred");
       }
     }
+    
   };
 
   return (
