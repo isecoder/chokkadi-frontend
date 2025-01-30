@@ -51,7 +51,7 @@ export default function AddManualForm({ onAddSuccess }: AddManualFormProps) {
           ...formData,
           mobileNumber: `+91${formData.mobileNumber}`,
           mobileNumberConfirmation: `+91${formData.mobileNumberConfirmation}`,
-          hallId: 1, // Assuming hallId is always 1 in this example
+          hallId: 3, // Assuming hallId is always 1 in this example
           date: selectedDate,
         },
       };
