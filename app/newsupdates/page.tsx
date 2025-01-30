@@ -138,10 +138,8 @@ export default function NewsUpdates(): JSX.Element {
         title_kannada: news.title_kannada,
         content_kannada: news.content_kannada,
         created_at: new Date(news.created_at).toLocaleDateString(),
-        images: news.NewsImages.map((newsImage) => ({
-          public_url: newsImage.Images.public_url,
-          alt_text: newsImage.Images.alt_text,
-        })),
+        images: news.NewsImages.flatMap((newsImage) => newsImage.Images),
+       
       }));
 
       setNewsUpdates(formattedNews);
