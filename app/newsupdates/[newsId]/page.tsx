@@ -24,7 +24,8 @@ const NewsDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(
     null
-  ); // For image navigation
+  );
+
   const showKannada = useSelector(
     (state: RootState) => state.locale.locale === "kn"
   );
@@ -66,11 +67,11 @@ const NewsDetail = () => {
   };
 
   const handleImageClick = (index: number) => {
-    setCurrentImageIndex(index); // Set the clicked image's index
+    setCurrentImageIndex(index);
   };
 
   const closeZoom = () => {
-    setCurrentImageIndex(null); // Close the modal
+    setCurrentImageIndex(null);
   };
 
   const navigateImage = (direction: "prev" | "next") => {
@@ -118,8 +119,8 @@ const NewsDetail = () => {
                 <Image
                   src={image.public_url}
                   alt={image.alt_text}
-                  width={500} // Adjust width based on your preference
-                  height={300} // Adjust height to maintain aspect ratio
+                  width={500}
+                  height={300}
                   objectFit="cover"
                   className="rounded-lg"
                 />
@@ -132,21 +133,18 @@ const NewsDetail = () => {
       {/* Zoomed Image Modal */}
       {currentImageIndex !== null && newsDetail && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          {/* Close Button */}
           <button
             className="absolute top-4 right-4 text-white bg-orange-600 hover:bg-orange-700 py-2 px-4 rounded-lg shadow-md"
             onClick={closeZoom}
           >
             &times;
           </button>
-          {/* Previous Button */}
           <button
             className="absolute left-4 text-white bg-orange-600 hover:bg-orange-700 py-2 px-4 rounded-lg shadow-md"
             onClick={() => navigateImage("prev")}
           >
             &larr;
           </button>
-          {/* Image Display */}
           <div className="relative max-w-3xl w-full p-4">
             <Image
               src={newsDetail.images[currentImageIndex].public_url}
@@ -158,7 +156,6 @@ const NewsDetail = () => {
               className="rounded-lg"
             />
           </div>
-          {/* Next Button */}
           <button
             className="absolute right-4 text-white bg-orange-600 hover:bg-orange-700 py-2 px-4 rounded-lg shadow-md"
             onClick={() => navigateImage("next")}

@@ -1,13 +1,10 @@
-"use client";
-
+import { Metadata } from "next";
 import Script from "next/script";
-import { Provider } from "react-redux";
 import localFont from "next/font/local";
 import "./globals.css";
-import store from "./store";
 import Navbar from "./components/navbar";
-import dynamic from "next/dynamic";
-const Footer = dynamic(() => import("./components/footer"), { ssr: false });
+import FooterWrapper from "./components/footer-wrapper";
+import ReduxProvider from "./components/redux-provider"; // ✅ Import Client Wrapper for Redux
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,6 +18,33 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+// ✅ Add Open Graph metadata for WhatsApp, Twitter, and Facebook preview
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "Shrirama Temple, Chokkadi";
+  const description =
+    "Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi.";
+  const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/images/og-image.jpg`; // Update this path
+  const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      images: [{ url: imageUrl }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -29,7 +53,6 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
-        <title>Shrirama Temple, Chokkadi</title>
         {/* Google Analytics script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
@@ -60,13 +83,15 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider store={store}>
+        <ReduxProvider>
+          {" "}
+          {/* ✅ Wrap everything inside Redux Provider */}
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">{children}</main>
-            <Footer />
+            <FooterWrapper />
           </div>
-        </Provider>
+        </ReduxProvider>
       </body>
     </html>
   );
