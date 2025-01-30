@@ -44,6 +44,8 @@ export async function generateMetadata({
 
     const { data } = await res.json();
 
+    console.log("Fetched metadata data:", JSON.stringify(data, null, 2));
+
     const title = data.title || "Shrirama Temple, Chokkadi";
     const description =
       data.content?.substring(0, 150) ||
@@ -51,9 +53,11 @@ export async function generateMetadata({
 
     // ✅ Use the first image if available, otherwise use a fallback image
     const imageUrl =
-      data.NewsImages?.length > 0
+      data.NewsImages && data.NewsImages.length > 0 && data.NewsImages[0].Images
         ? data.NewsImages[0].Images.public_url
-        : `/default-og-image.webp`;
+        : "/default-og-image.webp";
+
+    console.log("Using Image URL for Metadata:", imageUrl); // Debugging
 
     return {
       title,
