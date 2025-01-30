@@ -1,12 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Share2, Copy, Facebook, Twitter, MessageCircle, X } from "lucide-react";
+
+interface NewsImage {
+  public_url: string;
+  alt_text: string;
+}
 
 interface NewsUpdate {
   news_id: number;
@@ -15,7 +20,19 @@ interface NewsUpdate {
   title_kannada?: string;
   content_kannada?: string;
   created_at: string;
-  images: { public_url: string; alt_text: string }[];
+  images: NewsImage[];
+}
+
+interface NewsDataResponse {
+  data: {
+    news_id: number;
+    title: string;
+    content: string;
+    title_kannada?: string;
+    content_kannada?: string;
+    created_at: string;
+    NewsImages: { Images: NewsImage[] }[]; 
+  }[];
 }
 
 const SharePopup = ({
@@ -27,6 +44,21 @@ const SharePopup = ({
   text: string;
   onClose: () => void;
 }) => {
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const shareOptions = [
     {
       name: "Copy Link",
@@ -55,7 +87,7 @@ const SharePopup = ({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-5 rounded-lg shadow-lg w-80">
+      <div ref={popupRef} className="bg-white p-5 rounded-lg shadow-lg w-80">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">Share this News</h2>
           <button onClick={onClose}>
@@ -97,16 +129,16 @@ export default function NewsUpdates(): JSX.Element {
       const res = await fetch(`/api/news-updates`);
       if (!res.ok) throw new Error("Failed to load news updates");
 
-      const { data: newsData } = await res.json();
+      const { data: newsData }: NewsDataResponse = await res.json();
 
-      const formattedNews = newsData.map((news: any) => ({
+      const formattedNews = newsData.map((news) => ({
         news_id: news.news_id,
         title: news.title,
         content: news.content,
         title_kannada: news.title_kannada,
         content_kannada: news.content_kannada,
         created_at: new Date(news.created_at).toLocaleDateString(),
-        images: news.NewsImages.map((newsImage: any) => ({
+        images: news.NewsImages.map((newsImage) => ({
           public_url: newsImage.Images.public_url,
           alt_text: newsImage.Images.alt_text,
         })),
@@ -156,11 +188,7 @@ export default function NewsUpdates(): JSX.Element {
         )}
 
         <div
-          className={`mt-10 ${
-            newsUpdates.length === 1
-              ? "flex justify-center items-center"
-              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          }`}
+          className={`mt-10 ${newsUpdates.length === 1 ? "flex justify-center items-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"}`}
         >
           {newsUpdates.map((news) => (
             <div
@@ -204,7 +232,7 @@ export default function NewsUpdates(): JSX.Element {
           ))}
         </div>
       </div>
-      {shareData && <SharePopup url={shareData.url} text={shareData.text}  onClose={() => setShareData(null)} />}
+      {shareData && <SharePopup url={shareData.url} text={shareData.text} onClose={() => setShareData(null)} />}
     </main>
   );
 }
