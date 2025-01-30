@@ -77,7 +77,9 @@ const NewsDetail = () => {
     if (currentImageIndex !== null && newsDetail?.images) {
       const totalImages = newsDetail.images.length;
       if (direction === "prev") {
-        setCurrentImageIndex((currentImageIndex - 1 + totalImages) % totalImages);
+        setCurrentImageIndex(
+          (currentImageIndex - 1 + totalImages) % totalImages
+        );
       } else {
         setCurrentImageIndex((currentImageIndex + 1) % totalImages);
       }
@@ -110,13 +112,14 @@ const NewsDetail = () => {
             {newsDetail.images.map((image, idx) => (
               <div
                 key={idx}
-                className="relative w-1/2 sm:w-1/4 md:w-1/6 aspect-[9/16] overflow-hidden rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform"
+                className="relative w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 overflow-hidden rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform"
                 onClick={() => handleImageClick(idx)}
               >
                 <Image
                   src={image.public_url}
                   alt={image.alt_text}
-                  layout="fill"
+                  width={500} // Adjust width based on your preference
+                  height={300} // Adjust height to maintain aspect ratio
                   objectFit="cover"
                   className="rounded-lg"
                 />
