@@ -165,7 +165,7 @@ export default function NewsUpdates(): JSX.Element {
 
     try {
       if (navigator.share) {
-        await navigator.share({ title: text, url });
+        await navigator.share({ title: news.title, text });
       } else {
         setShareData({ url, text });
       }
