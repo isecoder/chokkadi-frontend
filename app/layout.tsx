@@ -1,9 +1,13 @@
+"use client";
+
 import Script from "next/script";
+import { Provider } from "react-redux";
 import localFont from "next/font/local";
 import "./globals.css";
+import store from "./store";
 import Navbar from "./components/navbar";
-import FooterWrapper from "./components/footer-wrapper";
-import ReduxProvider from "./components/redux-provider"; // ✅ Import Client Wrapper for Redux
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("./components/footer"), { ssr: false });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,11 +29,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
-        <title>Shrirama Temple, Chokkadi</title> {/* ✅ Global title */}
-        <meta
-          name="description"
-          content="Explore the rich heritage and spiritual essence of Shrirama Temple, Chokkadi."
-        />
+        <title>Shrirama Temple, Chokkadi</title>
         {/* Google Analytics script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps) {
             gtag('config', 'GA_TRACKING_ID');
           `}
         </Script>
+
         {/* Disable right-click, image download, and content copy */}
         <Script id="disable-actions" strategy="afterInteractive">
           {`
@@ -59,15 +60,13 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReduxProvider>
-          {" "}
-          {/* ✅ Wrap everything inside Redux Provider */}
+        <Provider store={store}>
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">{children}</main>
-            <FooterWrapper />
+            <Footer />
           </div>
-        </ReduxProvider>
+        </Provider>
       </body>
     </html>
   );
