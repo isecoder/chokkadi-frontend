@@ -17,7 +17,7 @@ const welcomeTitle: Record<LocaleType, string> = {
 }
 
 const welcomeContent: Record<LocaleType, string> = {
-  en: "Shrirama Temple is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parasurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands.",
+  en: "Shrirama Temple is a sacred and revered temple nestled in the serene surroundings of Tulunadu, created by Lord Parashurama in South India. Located at the foothills of the Western Ghats in the Sullia Taluk of Dakshina Kannada district, this region is known for its lush green forests and expansive agricultural lands.",
   kn: "ಶ್ರೀರಾಮ ದೇವಾಲಯವು ದಕ್ಷಿಣ ಭಾರತದ ಪಶ್ಚಿಮ ಘಟ್ಟದ ಕಾಲುಭಾಗದಲ್ಲಿ ಪರಶುರಾಮ ಸೃಷ್ಟಿಯ ತುಳುನಾಡಿನಲ್ಲಿ ಇರುವ ಪುಣ್ಯ ಕ್ಷೇತ್ರ. ದಕ್ಷಿಣ ಕನ್ನಡ ಜಿಲ್ಲೆಯ ಗ್ರಾಮೀಣ ಭಾಗದ ಸುಳ್ಯ ತಾಲೂಕಿನ ಅಮರಪಡ್ನೂರು ಎಂಬ ಗ್ರಾಮದಲ್ಲಿ ಶ್ರೀರಾಮ ದೇವರು ನೆಲೆಸಿದ್ದಾರೆ. ",
 }
 
