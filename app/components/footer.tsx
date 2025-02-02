@@ -164,7 +164,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="text-left lg:text-center mb-5">
+          <div className="text-left  lg:text-center mb-5 ">
             <h3 className="text-lg font-bold mb-6 flex items-center space-x-2">
               <p></p>
               <span className="font-bold">{text.quickLinks.title}</span>
@@ -174,6 +174,7 @@ const Footer: React.FC = () => {
                 <li key={index}>
                   <Link
                     href={link.path}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="hover:underline hover:text-yellow-300 flex font-bold items-center"
                   >
                     <span className="inline-block w-4"></span>
@@ -203,6 +204,7 @@ const Footer: React.FC = () => {
         <p>
           © 2025 | Disclaimer -{" "}
           <Link
+           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             href="/policy"
             className="text-yellow-400 hover:underline"
           >
@@ -210,6 +212,7 @@ const Footer: React.FC = () => {
           </Link>{" "}
           |{" "}
           <Link
+           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             href="/policy"
             className="text-yellow-400 hover:underline"
           >
@@ -217,6 +220,7 @@ const Footer: React.FC = () => {
           </Link>{" "}
           |{" "}
           <Link
+           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             href="/admin"
             className="text-yellow-400 hover:underline"
           >
