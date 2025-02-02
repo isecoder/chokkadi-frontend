@@ -164,7 +164,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="text-left  lg:text-center mb-5 ">
+          <div className="text-left  lg:text-center mb-5 sm:item-center ml-10  ">
             <h3 className="text-lg font-bold mb-6 flex items-center space-x-2">
               <p></p>
               <span className="font-bold">{text.quickLinks.title}</span>
