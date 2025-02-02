@@ -6,42 +6,42 @@ export async function GET() {
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Home Page -->
     <url>
-      <loc>http://www.shriRama.org/</loc>
+      <loc>https://www.srtchokkadi.org/</loc>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
 
     <!-- About Page -->
     <url>
-      <loc>http://www.shriRama.org/about</loc>
+      <loc>https://www.srtchokkadi.org/about</loc>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
 
-    <!-- Sevas Page -->
+    <!-- Hall Booking Page -->
     <url>
-      <loc>http://www.shriRama.org/sevas</loc>
+      <loc>https://www.srtchokkadi.org/hall-booking</loc>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
 
     <!-- Donation Page -->
     <url>
-      <loc>http://www.shriRama.org/donate</loc>
+      <loc>https://www.srtchokkadi.org/donate</loc>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
     </url>
 
     <!-- Gallery Page -->
     <url>
-      <loc>http://www.shriRama.org/gallery</loc>
+      <loc>https://www.srtchokkadi.org/gallery</loc>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
     </url>
 
     <!-- Contact Page -->
     <url>
-      <loc>http://www.shriRama.org/contact</loc>
+      <loc>https://www.srtchokkadi.org/contact</loc>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
     </url>

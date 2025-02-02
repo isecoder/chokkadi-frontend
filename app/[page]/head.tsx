@@ -9,7 +9,7 @@ const pageMetadata: { [key: string]: { title: string; description: string } } = 
     description: 'Stay updated on the latest events, festivals, and ceremonies at Shrirama Temple.',
   },
   sevas: {
-    title: 'Sevas - Shrirama Temple',
+    title: 'Hall booking - Shrirama Temple',
     description: 'Explore the various Sevas offered at Shrirama Temple to connect with the divine.',
   },
   gallery: {
