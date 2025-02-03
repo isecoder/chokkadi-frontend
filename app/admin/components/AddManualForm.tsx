@@ -113,7 +113,7 @@ export default function AddManualForm({ onAddSuccess }: AddManualFormProps) {
           <div className="mb-4">
             <label className="block font-medium mb-2">Selected Date</label>
             <div className="border border-gray-300 rounded-md p-2">
-              {new Date(selectedDate).toLocaleDateString()}
+              {new Date(selectedDate).toLocaleDateString("en-GB")}
             </div>
           </div>
 
