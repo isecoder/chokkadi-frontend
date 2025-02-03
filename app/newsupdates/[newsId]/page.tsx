@@ -63,7 +63,11 @@ const NewsDetail = () => {
   }, [fetchNewsDetail]);
 
   const handleBackButtonClick = () => {
-    router.back();
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
   };
 
   const handleImageClick = (index: number) => {
