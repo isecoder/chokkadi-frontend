@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef,useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -19,7 +19,7 @@ interface NewsUpdate {
   content: string;
   title_kannada?: string;
   content_kannada?: string;
-  created_at: string;
+  created_at: Date;
   images: NewsImage[];
 }
 
@@ -31,7 +31,7 @@ interface NewsDataResponse {
     title_kannada?: string;
     content_kannada?: string;
     created_at: string;
-    NewsImages: { Images: NewsImage[] }[]; 
+    NewsImages: { Images: NewsImage[] }[];
   }[];
 }
 
@@ -51,7 +51,7 @@ const SharePopup = ({
       onClose();
     }
   }, [onClose]);
-  
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
@@ -131,16 +131,17 @@ export default function NewsUpdates(): JSX.Element {
 
       const { data: newsData }: NewsDataResponse = await res.json();
 
-      const formattedNews = newsData.map((news) => ({
-        news_id: news.news_id,
-        title: news.title,
-        content: news.content,
-        title_kannada: news.title_kannada,
-        content_kannada: news.content_kannada,
-        created_at: new Date(news.created_at).toLocaleDateString(),
-        images: news.NewsImages.flatMap((newsImage) => newsImage.Images),
-       
-      }));
+      const formattedNews = newsData
+        .map((news) => ({
+          news_id: news.news_id,
+          title: news.title,
+          content: news.content,
+          title_kannada: news.title_kannada,
+          content_kannada: news.content_kannada,
+          created_at: new Date(news.created_at), // Convert to Date object
+          images: news.NewsImages.flatMap((newsImage) => newsImage.Images),
+        }))
+        .sort((a, b) => b.created_at.getTime() - a.created_at.getTime()); // Sort latest first
 
       setNewsUpdates(formattedNews);
     } catch (err) {
@@ -176,7 +177,6 @@ export default function NewsUpdates(): JSX.Element {
         console.error("An unknown error occurred");
       }
     }
-    
   };
 
   return (
@@ -199,7 +199,7 @@ export default function NewsUpdates(): JSX.Element {
               <h2 className="text-2xl font-bold text-green-700 mb-2">
                 {showKannada ? news.title_kannada : news.title}
               </h2>
-              <p className="text-sm text-green-600 mb-2">Date: {news.created_at}</p>
+              <p className="text-sm text-green-600 mb-2">Date: {news.created_at.toLocaleDateString()}</p>
               <div className="relative w-full h-40 mb-4 overflow-hidden rounded-lg">
                 {news.images.length > 0 && (
                   <Image
@@ -229,7 +229,6 @@ export default function NewsUpdates(): JSX.Element {
                   <Share2 className="w-4 h-4 mr-2" /> Share
                 </button>
               </div>
-
             </div>
           ))}
         </div>
