@@ -28,6 +28,7 @@ interface ApiHallForm {
   mobileNumber: string;
   date: string; // Still string from the API
   hallId: number;
+  paymentDetails?: string | null; // <-- Added paymentDetails field
   hall: {
     name: string;
     hallAvailability: {
@@ -60,29 +61,32 @@ export default function HallForms(): JSX.Element {
       const res = await fetch(`/api/hallforms`);
       if (!res.ok) throw new Error("Failed to load hall forms");
 
-      const { data }: { data: ApiHallForm[] } = await res.json(); // Type response data
-      const formattedData = data.map((form) => {
-        const availability = form.hall.hallAvailability.find(
-          (avail) =>
-            new Date(avail.date).toISOString() ===
-            new Date(form.date).toISOString()
-        );
+      const { data }: { data: ApiHallForm[] } = await res.json();
+      const formattedData = data
+        .map((form) => {
+          const availability = form.hall.hallAvailability.find(
+            (avail) =>
+              new Date(avail.date).toISOString() ===
+              new Date(form.date).toISOString()
+          );
 
-        return {
-          id: form.id,
-          displayId: `DES${form.id}`, // Add prefixed ID for display
-          name: form.name,
-          reason: form.reason,
-          mobileNumber: form.mobileNumber,
-          date: new Date(form.date), // Convert date string to Date object
-          hallId: form.hallId,
-          hallName: form.hall.name || "N/A", // Access hall name safely
-          isBooked: availability?.is_booked || false, // Check if the hall is booked
-        };
-      });
+          return {
+            id: form.id,
+            displayId: `DES${form.id}`,
+            name: form.name,
+            reason: form.reason,
+            mobileNumber: form.mobileNumber,
+            date: new Date(form.date),
+            hallId: form.hallId,
+            hallName: form.hall.name || "N/A",
+            isBooked: availability?.is_booked || false,
+            paymentDetails: form.paymentDetails || null,
+          };
+        })
+        .sort((a, b) => a.id - b.id); // <-- Sorting by ID in ascending order
 
       setHallForms(formattedData);
-      setFilteredHallForms(formattedData); // Initialize filtered results
+      setFilteredHallForms(formattedData);
     } catch (err) {
       console.error(err);
       setError("Failed to load hall forms. Please try again later.");
@@ -241,9 +245,10 @@ export default function HallForms(): JSX.Element {
 
       {/* Render HallFormsList */}
       <HallFormsList
-        hallForms={filteredHallForms} // Pass unchanged HallForms
+        hallForms={filteredHallForms}
         onConfirm={confirmBooking}
         onDelete={deleteHallForm}
+        fetchHallForms={fetchHallForms} // <-- Pass the function
       />
     </div>
   );
