@@ -133,19 +133,28 @@ const Calendar: React.FC<CalendarProps> = ({ hallId, onDateSelect }) => {
     const startDate = new Date(year, month, 1);
     const endDate = new Date(year, month + 1, 0);
     const startDay = startDate.getDay();
-
+console.log(new Date().getDay());
     const today = new Date();
-    const tomorrow = new Date(today);
+    let tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 2);
-
-    for (let i = 0; i < startDay; i++) {
-      days.push("");
-    }
-if(currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()){
-  for (let i = 0; i < 4; i++) {
-    days.push("");
+    if (tomorrow.getMonth() !== today.getMonth()) {
+      tomorrow = new Date(today.getFullYear(), today.getMonth() + 1, 1);
   }
-}
+  
+    let adjustedStartDay = today.getDay() + 2;
+    if (adjustedStartDay >= 7) {
+        adjustedStartDay -= 7;
+    }
+    if(currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()){
+    for (let i = 0; i < adjustedStartDay; i++) {
+        days.push("");
+    }
+  }
+  else{
+     for (let i = 0; i < startDay; i++) {
+      days.push("");
+      } }
+
     for (
       let date = new Date(year, month, 1);
       date <= endDate;

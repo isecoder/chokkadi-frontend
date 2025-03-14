@@ -35,9 +35,14 @@ const navLinks: NavLink[] = [
         label: { en: "Temple Facilities", kn: "ಸೌಲಭ್ಯಗಳು" },
       },
       {
+        href: "/sevas",
+        label: { en: "Sevas", kn: "ಸೇವೆಗಳು " },
+      },
+      {
         href: "/reach",
         label: { en: "How to Reach", kn: "ದೇವಾಲಯ ತಲುಪುವ ಮಾಹಿತಿ" },
       },
+      
       {
         href: "/nearby",
         label: { en: "Nearby Places", kn: "ಹತ್ತಿರದ ಸ್ಥಳಗಳು" },

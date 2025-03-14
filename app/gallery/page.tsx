@@ -65,6 +65,16 @@ export default function Gallery(): JSX.Element {
     }
   };
 
+  const videos = [
+    {
+      title:
+        " ಚೊಕ್ಕಾಡಿ ಜಾತ್ರೆ 2025 | ಶ್ರೀರಾಮ ದೇವರ ನೃತ್ಯ ಬಲಿ | Thidambu Nritham | Shrirama Temple |",
+      video_url:
+        "https://www.youtube.com/embed/HJkodXXXDkQ?si=AvZ-u_1fiRm7zxyC",
+    },
+   
+  ];
+
   useEffect(() => {
     fetchGalleryData();
   }, []);
@@ -92,7 +102,7 @@ export default function Gallery(): JSX.Element {
 
       {/* Centered Title for the Temple */}
       <div className="text-center mb-4">
-        <h1 className="text-3xl font-bold text-green-800">Shrirama Temple Chokkadi</h1>
+        <h1 className="text-3xl font-bold p-9 text-green-800">Shrirama Temple Chokkadi</h1>
       </div>
 
       {/* Image Gallery Section */}
@@ -133,6 +143,21 @@ export default function Gallery(): JSX.Element {
         onClose={closeImageModal}
         onNavigate={navigateImage}
       />
+     <h2 className="text-xl font-semibold mt-10 mb-4 p-2">VIDEOS</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        {videos.map((video, index) => (
+          <div key={index} className="w-full h-64">
+            <iframe
+              src={video.video_url}
+              title={video.title}
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
