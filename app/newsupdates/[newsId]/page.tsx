@@ -95,7 +95,7 @@ const NewsDetail = () => {
   if (error) return <p className="text-green-600 text-center">{error}</p>;
 
   return (
-    <div className="container mx-auto p-6 bg-[#FFFFCC]">
+    <div className="container mx-auto p-6 lg:px-48  bg-[#FFFFCC]">
       <button
         onClick={handleBackButtonClick}
         className="mb-4 px-4 py-2 text-white bg-orange-600 hover:bg-orange-700 rounded-lg shadow-md"
