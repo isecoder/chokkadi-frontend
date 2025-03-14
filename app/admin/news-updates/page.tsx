@@ -22,6 +22,7 @@ export default function NewsUpdates(): JSX.Element {
   const [newsUpdates, setNewsUpdates] = useState<NewsUpdate[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [editingNews, setEditingNews] = useState<NewsUpdate | null>(null);
   const showKannada = useSelector(
     (state: RootState) => state.locale.locale === "kn"
   );
@@ -110,7 +111,6 @@ export default function NewsUpdates(): JSX.Element {
 
   return (
     <div className="container mx-auto p-6">
-      {/* Add News Update Section */}
       <AddNewsUpdate onAdd={fetchNewsUpdates} />
 
       {error && <p className="text-red-500 text-center">{error}</p>}
@@ -149,15 +149,30 @@ export default function NewsUpdates(): JSX.Element {
                 />
               </div>
             ))}
-            <button
-              onClick={() => deleteNewsUpdate(news.news_id)}
-              className="mt-2 bg-red-500 text-white px-3 py-1 rounded"
-            >
-              Delete
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={() => deleteNewsUpdate(news.news_id)}
+                className="mt-2 bg-red-500 text-white px-3 py-1 rounded"
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => setEditingNews(news)}
+                className="mt-2 bg-blue-500 text-white px-3 py-1 rounded"
+              >
+                Update
+              </button>
+            </div>
           </div>
         ))}
       </div>
+      {editingNews && (
+        <AddNewsUpdate
+          news={editingNews}
+          onAdd={fetchNewsUpdates}
+          onClose={() => setEditingNews(null)}
+        />
+      )}
     </div>
   );
 }
