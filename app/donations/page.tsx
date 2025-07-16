@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-
+import Image from "next/image";
 // Define types for locales
 type LocaleType = "en" | "kn";
 
@@ -55,7 +55,7 @@ const DonationsPage: React.FC = () => {
   return (
     <main className="min-h-screen flex flex-col items-center p-6 bg-yellow-200 font-serif">
       <h1 className="text-3xl font-bold mb-6 text-green-800 text-center">{text.title}</h1>
-      <div className="max-w-2xl w-full p-6 space-y-6">
+      {/* <div className="max-w-2xl w-full p-6 space-y-6">
         <div className="p-4 bg-yellow-300 rounded-lg shadow-md">
           <p className="text-green-700 text-base font-semibold">
             Bank (ಬ್ಯಾಂಕ್): <span className="font-bold">{text.bank}</span>
@@ -76,7 +76,14 @@ const DonationsPage: React.FC = () => {
             IFSC Code (ಐಎಫ್ಎಸ್ಸಿ ಕೋಡ್): <span className="font-bold">{text.ifscCode}</span>
           </p>
         </div>
-      </div>
+      </div> */}
+    <Image
+    src="/donation.jpg"
+    alt="Donation QR"
+    width={400}
+    height={400}
+    className=" mt-8 rounded-lg shadow-lg mb-10 "
+    />
     </main>
   );
 };
