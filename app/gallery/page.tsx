@@ -66,14 +66,25 @@ export default function Gallery(): JSX.Element {
   };
 
   const videos = [
-    {
-      title:
-        " ಚೊಕ್ಕಾಡಿ ಜಾತ್ರೆ 2025 | ಶ್ರೀರಾಮ ದೇವರ ನೃತ್ಯ ಬಲಿ | Thidambu Nritham | Shrirama Temple |",
-      video_url:
-        "https://www.youtube.com/embed/HJkodXXXDkQ?si=AvZ-u_1fiRm7zxyC",
-    },
-   
-  ];
+  {
+    title:
+      "ಚೊಕ್ಕಾಡಿ ಜಾತ್ರೆ 2025 | ಶ್ರೀರಾಮ ದೇವರ ನೃತ್ಯ ಬಲಿ | Thidambu Nritham | Shrirama Temple |",
+    video_url:
+      "https://www.youtube.com/embed/HJkodXXXDkQ?si=AvZ-u_1fiRm7zxyC",
+  },
+  {
+    title:
+      "ಚೊಕ್ಕಾಡಿ ಶ್ರೀರಾಮ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ | ಚೊಕ್ಕಾಡಿ ರಾಮ ದೇವರಿಗೆ ವೈದಿಕರಿಂದ ವೇದ ಸುತ್ತು",
+    video_url:
+      "https://www.youtube.com/embed/dvMRE8vF7cE?si=S3gSTXJrAMJnp6wQ",
+  },
+  {
+    title:
+      "ಚೊಕ್ಕಾಡಿ ಜಾತ್ರೆ | ಚೊಕ್ಕಾಡಿ ಶ್ರೀರಾಮ ದೇವಾಲಯದ ವಾರ್ಷಿಕೋತ್ಸವ | ಚೊಕ್ಕಾಡಿ ರಾಮ ದೇವರಿಗೆ ವೈದಿಕರಿಂದ ವೇದ ಸುತ್ತು",
+    video_url:
+      "https://www.youtube.com/embed/2MRzZ2qcf-s?si=LIEv_yG17KbHpHNd",
+  },
+];
 
   useEffect(() => {
     fetchGalleryData();
