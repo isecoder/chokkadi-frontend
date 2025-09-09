@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
-type LocaleType = "en" | "kn"; // Define the language type
+type LocaleType = "en" | "kn";
 
 const hallFormText: Record<
   LocaleType,
@@ -17,14 +17,8 @@ const hallFormText: Record<
     customReason: string;
     mobileNumber: string;
     enterMobile: string;
-    sendOtp: string;
-    enterOtp: string;
-    verifyOtp: string;
     reserveNow: string;
     submitting: string;
-    otpSent: string;
-    otpVerified: string;
-    verifyBeforeSubmit: string;
     selectDate: string;
     bookingSuccess: string;
   }
@@ -40,14 +34,8 @@ const hallFormText: Record<
     customReason: "Custom Reason",
     mobileNumber: "Mobile Number",
     enterMobile: "Enter your mobile number",
-    sendOtp: "Send OTP",
-    enterOtp: "Enter OTP",
-    verifyOtp: "Verify OTP",
     reserveNow: "Reserve Now",
     submitting: "Submitting...",
-    otpSent: "OTP sent successfully!",
-    otpVerified: "OTP verified successfully!",
-    verifyBeforeSubmit: "Please verify your OTP before submitting.",
     selectDate: "Selected Date",
     bookingSuccess: "Reservation successful!",
   },
@@ -62,14 +50,8 @@ const hallFormText: Record<
     customReason: "ಇತರ ಕಾರಣ",
     mobileNumber: "ಮೊಬೈಲ್ ನಂಬರ್",
     enterMobile: "ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ",
-    sendOtp: "OTP ಕಳುಹಿಸಿ",
-    enterOtp: "OTP ನಮೂದಿಸಿ",
-    verifyOtp: "OTP ಪರಿಶೀಲಿಸಿ",
     reserveNow: "ಇಲ್ಲಿ ಬುಕ್ ಮಾಡಿ",
     submitting: "ಸಲ್ಲಿಸುತ್ತಿದೆ...",
-    otpSent: "OTP ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ!",
-    otpVerified: "OTP ಯಶಸ್ವಿಯಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ!",
-    verifyBeforeSubmit: "ದಯವಿಟ್ಟು OTP ಪರಿಶೀಲಿಸಿ, ನಂತರ ಸಲ್ಲಿಸಿ.",
     selectDate: "ಆಯ್ಕೆ ಮಾಡಿದ ದಿನಾಂಕ",
     bookingSuccess: "ಬುಕಿಂಗ್ ಯಶಸ್ವಿಯಾಗಿದೆ!",
   },
@@ -90,15 +72,12 @@ const HallForm: React.FC<HallFormProps> = ({
   const [reason, setReason] = useState<string>("");
   const [customReason, setCustomReason] = useState<string>("");
   const [mobileNumber, setMobileNumber] = useState<string>("");
-  const [otp, setOtp] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [isOtpSent, setIsOtpSent] = useState<boolean>(false);
-  const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
 
   const currentLocale: LocaleType = useSelector(
     (state: RootState) => state.locale.locale
   ) as LocaleType;
-  const text = hallFormText[currentLocale]; // This ensures `text` is always defined
+  const text = hallFormText[currentLocale];
 
   const reasonColors: Record<string, string> = {
     Wedding: "bg-blue-200 text-blue-700",
@@ -107,60 +86,8 @@ const HallForm: React.FC<HallFormProps> = ({
     Others: "bg-purple-200 text-purple-700",
   };
 
-  const sendOtp = async () => {
-    if (!mobileNumber || mobileNumber.length !== 10) {
-      setMessage("Please enter a valid 10-digit mobile number.");
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/otp/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mobileNumber: "+91" + mobileNumber }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("OTP sent successfully!");
-        setIsOtpSent(true);
-      } else {
-        setMessage(`Error: ${data.message || "Failed to send OTP."}`);
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      setMessage("Error: Failed to send OTP.");
-    }
-  };
-
-  const verifyOtp = async () => {
-    if (!otp) {
-      setMessage("Please enter the OTP.");
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/otp/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mobileNumber: "+91" + mobileNumber, otp }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("OTP verified successfully!");
-        setIsOtpVerified(true);
-      } else {
-        setMessage(`Error: ${data.message || "Failed to verify OTP."}`);
-      }
-    } catch (error) {
-      console.error("Error verifying OTP:", error);
-      setMessage("Error: Failed to verify OTP.");
-    }
-  };
-
   const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 10) {
       setMobileNumber(value);
     }
@@ -168,8 +95,9 @@ const HallForm: React.FC<HallFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isOtpVerified) {
-      setMessage("Please verify your OTP before submitting.");
+
+    if (!mobileNumber || mobileNumber.length !== 10) {
+      setMessage("Please enter a valid 10-digit mobile number.");
       return;
     }
 
@@ -185,7 +113,7 @@ const HallForm: React.FC<HallFormProps> = ({
             name,
             reason: reason === "Others" ? customReason : reason,
             mobileNumber: "+91" + mobileNumber,
-            mobileNumberConfirmation: "+91" + mobileNumber,
+            mobileNumberConfirmation: "+91" + mobileNumber, // auto confirm
             date: selectedDate,
             hallId: selectedHallId,
           },
@@ -205,9 +133,6 @@ const HallForm: React.FC<HallFormProps> = ({
         setReason("");
         setCustomReason("");
         setMobileNumber("");
-        setOtp("");
-        setIsOtpSent(false);
-        setIsOtpVerified(false);
       } else {
         setMessage(`Error: ${data.message || "Failed to reserve hall."}`);
       }
@@ -218,6 +143,7 @@ const HallForm: React.FC<HallFormProps> = ({
       setIsSubmitting(false);
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
       {/* Selected Date */}
@@ -264,7 +190,7 @@ const HallForm: React.FC<HallFormProps> = ({
         </select>
       </div>
 
-      {/* Custom Reason (Only if "Others" is Selected) */}
+      {/* Custom Reason */}
       {reason === "Others" && (
         <div>
           <label className="block text-sm font-medium">
@@ -300,43 +226,9 @@ const HallForm: React.FC<HallFormProps> = ({
             required
           />
         </div>
-
-        {/* Send OTP Button */}
-        {!isOtpSent && (
-          <button
-            type="button"
-            onClick={sendOtp}
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            {text.sendOtp}
-          </button>
-        )}
       </div>
 
-      {/* OTP Input & Verification */}
-      {isOtpSent && (
-        <div>
-          <label className="block text-sm font-medium">{text.enterOtp}</label>
-          <input
-            type="text"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-            className="mt-1 p-2 border rounded w-full"
-            required
-          />
-          {!isOtpVerified && (
-            <button
-              type="button"
-              onClick={verifyOtp}
-              className="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              {text.verifyOtp}
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* Submit Button */}
+      {/* Submit */}
       <button
         type="submit"
         disabled={isSubmitting}
